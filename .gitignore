@@ -1,0 +1,26 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.venv/
+venv/
+
+# Local app data
+nota_proceso_flask/data.json
+
+# Large educational assets (keep local, do not push)
+KET y PET/
+Planes y programas/
+textos_extraidos/
+_docx_temp/
+*.mp3
+*.pdf
+*.odttf
+*.jpeg
+*.jpg
+*.png
+*.vsix
+
+# Temp files
+tmpclaude-*-cwd
