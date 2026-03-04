@@ -1,0 +1,24 @@
+services:
+  - type: web
+    name: nota-proceso-flask
+    env: python
+    plan: free
+    region: oregon
+    rootDir: nota_proceso_flask
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn app:app --bind 0.0.0.0:$PORT
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.11.9
+      - key: FLASK_DEBUG
+        value: "0"
+      - key: DATABASE_URL
+        fromDatabase:
+          name: nota-proceso-db
+          property: connectionString
+
+databases:
+  - name: nota-proceso-db
+    databaseName: nota_proceso
+    user: nota_proceso_user
+    plan: free

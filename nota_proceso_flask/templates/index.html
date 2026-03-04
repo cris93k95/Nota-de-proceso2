@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Nota de Proceso (Flask)</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}" />
+</head>
+<body class="bg-slate-100 min-h-screen p-4 sm:p-6">
+  <div class="max-w-7xl mx-auto">
+    <header class="text-center mb-6">
+      <h1 class="text-3xl font-bold text-slate-800">Nota de Proceso · Flask</h1>
+      <p class="text-slate-500 text-sm mt-1">Cursos, periodos, marcas C/I/S, reportes PDF e importación Excel</p>
+    </header>
+
+    <div class="bg-white rounded-xl shadow-sm border border-slate-200 p-3 mb-4 flex flex-wrap gap-2 items-center">
+      <button id="addCourseBtn" class="bg-indigo-600 text-white font-bold py-2 px-4 rounded-lg hover:bg-indigo-700 text-sm">+ Agregar Curso</button>
+      <div class="h-6 border-l border-slate-200 mx-1"></div>
+
+      <button id="exportBtn" class="bg-emerald-600 text-white font-bold py-2 px-4 rounded-lg hover:bg-emerald-700 text-sm">Exportar JSON</button>
+      <label class="bg-blue-600 text-white font-bold py-2 px-4 rounded-lg hover:bg-blue-700 text-sm cursor-pointer">
+        Importar JSON<input type="file" id="importJsonInput" accept=".json" class="hidden" />
+      </label>
+    </div>
+
+    <div id="courseTabs" class="flex border-b border-slate-200 bg-slate-50 rounded-t-xl px-2 pt-2 gap-1 overflow-x-auto shadow-sm"></div>
+    <div id="coursePanels"></div>
+  </div>
+
+  <script src="{{ url_for('static', filename='app.js') }}"></script>
+</body>
+</html>
