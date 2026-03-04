@@ -126,8 +126,12 @@ def update_state(mutator):
 def calc_grade(marks: list[str], num_classes: int, exigency: float = 0.60) -> float | None:
     if not marks or num_classes <= 0:
         return None
-    score = sum(WEIGHTS.get(m, 0.0) for m in marks)
-    max_score = float(num_classes)
+    absence_count = sum(1 for m in marks if m == "A")
+    effective_classes = max(0, num_classes - absence_count)
+    if effective_classes <= 0:
+        return None
+    score = sum(0.0 if m == "A" else WEIGHTS.get(m, 0.0) for m in marks)
+    max_score = float(effective_classes)
     passing_score = max_score * exigency
     if max_score == 0:
         return 7.0
@@ -389,7 +393,7 @@ def api_set_mark(course_name: str, period_id: str):
     student_name = payload.get("student")
     class_idx = int(payload.get("class_idx"))
     mark = payload.get("mark", "")
-    if mark not in {"", "C", "I", "S"}:
+    if mark not in {"", "C", "I", "S", "A"}:
         return jsonify({"error": "Marca inválida"}), 400
 
     def mut(state):
@@ -506,7 +510,10 @@ def _build_individual_pdf(course_name: str, course: dict) -> bytes:
             table_data = [["Clase", "Etiqueta", "Marca", "Puntaje"]]
             for i, cls in enumerate(classes):
                 mark = marks[i] if i < len(marks) else ""
-                pts = WEIGHTS.get(mark, "-") if mark else "-"
+                if mark == "A":
+                    pts = "N/A"
+                else:
+                    pts = WEIGHTS.get(mark, "-") if mark else "-"
                 table_data.append([f"C{i+1}", cls.get("label", ""), mark or "-", str(pts)])
             table_data.append(["", "", "NOTA", f"{grade:.1f}" if grade is not None else "-"])
 

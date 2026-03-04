@@ -33,9 +33,12 @@ async function api(url, opts = {}) {
 
 function calcGrade(marks, numClasses, exigencyPct) {
   if (!marks || !numClasses) return null;
+  const absenceCount = marks.filter((m) => m === "A").length;
+  const effectiveClasses = Math.max(0, numClasses - absenceCount);
+  if (effectiveClasses <= 0) return null;
   const exig = (exigencyPct || 60) / 100;
-  const score = marks.reduce((a, m) => a + (WEIGHTS[m] ?? 0), 0);
-  const maxScore = numClasses;
+  const score = marks.reduce((a, m) => a + (m === "A" ? 0 : (WEIGHTS[m] ?? 0)), 0);
+  const maxScore = effectiveClasses;
   const passingScore = maxScore * exig;
   let grade;
   if (score >= passingScore) {
@@ -193,7 +196,7 @@ function buildCoursePanel(courseName) {
 
     classes.forEach((_, i) => {
       const m = marks[i] || "";
-      const cls = m === "C" ? "mark-C" : m === "I" ? "mark-I" : m === "S" ? "mark-S" : "mark-none";
+      const cls = m === "C" ? "mark-C" : m === "I" ? "mark-I" : m === "S" ? "mark-S" : m === "A" ? "mark-A" : "mark-none";
       html += `<td class="p-2 text-center"><button class="mark-btn ${cls} rounded-lg py-1 px-3 text-xs" data-course="${esc(courseName)}" data-period="${esc(period.id)}" data-student="${esc(st.name)}" data-class-idx="${i}">${m || "&nbsp;&nbsp;&nbsp;"}</button></td>`;
     });
 
@@ -210,6 +213,7 @@ function nextMark(cur) {
   if (!cur) return "C";
   if (cur === "C") return "I";
   if (cur === "I") return "S";
+  if (cur === "S") return "A";
   return "";
 }
 
