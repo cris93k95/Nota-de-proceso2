@@ -1,0 +1,998 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>1° Medio - Unidad 1: The World of Technical Work</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: #f5f5f5; color: #333; line-height: 1.6; }
+        .header { background: linear-gradient(135deg, #1a237e, #283593); color: white; padding: 30px; text-align: center; }
+        .header h1 { font-size: 1.8em; margin-bottom: 5px; }
+        .header h2 { font-size: 1.3em; font-weight: 300; margin-bottom: 10px; }
+        .header .subtitle { font-size: 0.95em; opacity: 0.9; }
+        .meta-info { display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; margin-top: 15px; }
+        .meta-info span { background: rgba(255,255,255,0.15); padding: 5px 15px; border-radius: 20px; font-size: 0.85em; }
+        .container { max-width: 1100px; margin: 20px auto; padding: 0 15px; }
+        .unit-overview { background: white; border-radius: 10px; padding: 25px; margin-bottom: 25px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); }
+        .unit-overview h3 { color: #1a237e; margin-bottom: 15px; font-size: 1.2em; border-bottom: 2px solid #1a237e; padding-bottom: 8px; }
+        .overview-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
+        .overview-item { padding: 10px; background: #f8f9ff; border-radius: 6px; }
+        .overview-item strong { color: #1a237e; }
+        .overview-item ul { margin-left: 20px; margin-top: 5px; }
+        .overview-item ul li { margin-bottom: 3px; font-size: 0.9em; }
+        .clase-card { background: white; border-radius: 10px; margin-bottom: 20px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); overflow: hidden; }
+        .clase-card.evaluacion { border-left: 5px solid #c62828; }
+        .clase-header { padding: 15px 20px; display: flex; justify-content: space-between; align-items: center; }
+        .clase-header.normal { background: #e8eaf6; }
+        .clase-header.eval { background: #ffebee; }
+        .clase-header .clase-num { font-size: 1.1em; font-weight: 700; color: #1a237e; }
+        .clase-header .clase-fecha { font-size: 0.85em; color: #666; }
+        .clase-header .badge { padding: 3px 10px; border-radius: 12px; font-size: 0.75em; font-weight: 600; }
+        .badge-oa { background: #e3f2fd; color: #1565c0; }
+        .badge-eval { background: #ffcdd2; color: #c62828; }
+        .clase-body { padding: 20px; }
+        .objetivo { background: #fff3e0; border-left: 4px solid #ef6c00; padding: 12px 15px; margin-bottom: 15px; border-radius: 0 6px 6px 0; }
+        .objetivo strong { color: #ef6c00; }
+        .fase { margin-bottom: 12px; }
+        .fase-title { display: inline-block; padding: 3px 12px; border-radius: 4px; font-weight: 600; font-size: 0.85em; color: white; margin-bottom: 6px; }
+        .fase-inicio { background: #2e7d32; }
+        .fase-desarrollo { background: #1565c0; }
+        .fase-cierre { background: #6a1b9a; }
+        .fase-content { padding-left: 15px; font-size: 0.92em; }
+        .fase-content ol, .fase-content ul { margin-left: 15px; }
+        .fase-content li { margin-bottom: 4px; }
+        .recursos { background: #f1f8e9; padding: 10px 15px; border-radius: 6px; margin-top: 10px; font-size: 0.88em; }
+        .recursos strong { color: #33691e; }
+        .evaluacion-box { background: #fce4ec; padding: 10px 15px; border-radius: 6px; margin-top: 10px; font-size: 0.88em; }
+        .evaluacion-box strong { color: #c62828; }
+        .notas-dist { background: white; border-radius: 10px; padding: 25px; margin-bottom: 25px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); }
+        .notas-dist h3 { color: #c62828; margin-bottom: 15px; font-size: 1.1em; }
+        table.notas { width: 100%; border-collapse: collapse; }
+        table.notas th { background: #1a237e; color: white; padding: 8px 12px; text-align: left; font-size: 0.9em; }
+        table.notas td { padding: 8px 12px; border-bottom: 1px solid #e0e0e0; font-size: 0.88em; }
+        table.notas tr:nth-child(even) { background: #f8f9ff; }
+        .footer { text-align: center; padding: 20px; color: #999; font-size: 0.8em; }
+        @media print {
+            body { background: white; }
+            .clase-card { break-inside: avoid; page-break-inside: avoid; box-shadow: none; border: 1px solid #ddd; }
+            .header { background: #1a237e !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+        }
+        @media (max-width: 768px) {
+            .overview-grid { grid-template-columns: 1fr; }
+            .meta-info { flex-direction: column; align-items: center; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="header">
+    <h1>PLANIFICACIÓN CLASE A CLASE — 1° MEDIO</h1>
+    <h2>Unidad 1: The World of Technical Work</h2>
+    <p class="subtitle">Inglés — Liceo Técnico Profesional — Año Escolar 2026 — Versión horario Lu+Vi (1°A, 1°C, 1°D)</p>
+    <div class="meta-info">
+        <span>📅 4 marzo – 3 mayo</span>
+        <span>⏱ 15 sesiones de 90 min</span>
+        <span>📚 4 hrs/semana (2 sesiones)</span>
+        <span>🎯 Ajustada a calendario 2026 + feriados Chile</span>
+    </div>
+</div>
+
+<div class="container">
+
+    <!-- VISIÓN GENERAL DE LA UNIDAD -->
+    <div class="unit-overview">
+        <h3>Visión General de la Unidad 1</h3>
+        <div class="overview-grid">
+            <div class="overview-item">
+                <strong>OA Basales trabajados:</strong>
+                <ul>
+                    <li><b>OA1:</b> Comprensión de textos orales adaptados y auténticos simples (exposiciones, conversaciones, descripciones, instrucciones).</li>
+                    <li><b>OA5:</b> Presentar información oral usando recursos multimodales, demostrando coherencia y vocabulario apropiado.</li>
+                    <li><b>OA7:</b> Reaccionar a textos leídos o escuchados haciendo conexiones, explicando relaciones, expresando opiniones.</li>
+                    <li><b>OA8:</b> Demostrar conocimiento y uso del lenguaje: Present Perfect (simple + since/for), Used to, Passive Voice.</li>
+                    <li><b>OA9:</b> Comprensión de ideas generales e información explícita en textos adaptados y auténticos simples.</li>
+                    <li><b>OA12:</b> Seleccionar y usar estrategias de lectura: pre-lectura, lectura y post-lectura.</li>
+                </ul>
+            </div>
+            <div class="overview-item">
+                <strong>Contenidos lingüísticos:</strong>
+                <ul>
+                    <li>Vocabulario técnico general (herramientas, equipos, materiales) de las 5 especialidades TP</li>
+                    <li>Present Perfect Simple (have/has + past participle)</li>
+                    <li>Present Perfect con since/for (duración)</li>
+                    <li>Used to + infinitive (hábitos pasados)</li>
+                    <li>Conectores de secuencia (first, then, next, after that, finally)</li>
+                    <li>Vocabulario de seguridad laboral</li>
+                </ul>
+                <br>
+                <strong>Especialidades TP integradas:</strong>
+                <ul>
+                    <li>Mecánica Automotriz</li>
+                    <li>Mecánica Industrial</li>
+                    <li>Electricidad</li>
+                    <li>Electrónica</li>
+                    <li>Gráfica</li>
+                </ul>
+            </div>
+            <div class="overview-item">
+                <strong>Habilidades priorizadas:</strong>
+                <ul>
+                    <li><b>Lectura:</b> Textos descriptivos, instructivos y estudios de caso técnicos. Estrategias de skimming, scanning e inferencia.</li>
+                    <li><b>Expresión Oral:</b> Descripciones de procesos, presentaciones breves, interacciones en pares sobre temas técnicos.</li>
+                </ul>
+            </div>
+            <div class="overview-item">
+                <strong>Evaluaciones de la unidad:</strong><br><small>Distribución Semestre 1: 2 notas en U1 y 3 notas en U2.</small>
+                <ul>
+                    <li>Clase 1: Evaluación diagnóstica (no calificada)</li>
+                    <li>Clases 13–14: <b>Nota 1</b> — Presentación oral "My Future Career"</li>
+                    <li>Clase 15: <b>Nota 2</b> — Prueba de comprensión lectora</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==================== CLASE 1 ==================== -->
+    <div class="clase-card">
+        <div class="clase-header normal">
+            <span class="clase-num">Clase 1</span>
+            <span class="clase-fecha">Semana 1 · marzo</span>
+            <span class="badge badge-oa">OA9</span>
+        </div>
+        <div class="clase-body">
+            <div class="objetivo">
+                <strong>Objetivo de la clase:</strong> Identificar el nivel de competencia en inglés de los estudiantes mediante una evaluación diagnóstica integrada con contexto técnico-profesional.
+            </div>
+            <div class="fase">
+                <span class="fase-title fase-inicio">INICIO (15 min)</span>
+                <div class="fase-content">
+                    <ul>
+                        <li>El docente se presenta en inglés de manera simple y clara: <em>"Hello! My name is… I am your English teacher this year."</em></li>
+                        <li>Hace preguntas básicas a algunos estudiantes: <em>"What's your name? How old are you? What specialty are you interested in?"</em></li>
+                        <li>Escribe en la pizarra: <em>"This year, we will learn English for YOUR career."</em> Explica brevemente la dinámica del curso: inglés conectado a las especialidades TP.</li>
+                        <li>Activa conocimientos previos: <em>"What English words related to technical work do you already know?"</em> Brainstorm en la pizarra.</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="fase">
+                <span class="fase-title fase-desarrollo">DESARROLLO (60 min)</span>
+                <div class="fase-content">
+                    <p><b>Evaluación diagnóstica en 3 partes:</b></p>
+                    <ol>
+                        <li><b>Reading comprehension (20 min):</b> Texto corto adaptado: <em>"Carlos works at a small automotive workshop in Santiago. Every day, he checks engines, changes oil, and repairs brakes…"</em> Los estudiantes responden 5 preguntas de comprensión (opción múltiple + respuesta breve).</li>
+                        <li><b>Vocabulary matching (15 min):</b> Actividad de asociación imagen-palabra con 15 herramientas y equipos técnicos comunes (hammer, screwdriver, wrench, wire, circuit, printer, etc.).</li>
+                        <li><b>Oral assessment (25 min):</b> En parejas, los estudiantes realizan una breve conversación guiada: <em>"Tell your partner: your name, your age, one hobby, and which specialty you like."</em> El docente circula escuchando y registrando niveles de producción oral.</li>
+                    </ol>
+                </div>
+            </div>
+            <div class="fase">
+                <span class="fase-title fase-cierre">CIERRE (15 min)</span>
+                <div class="fase-content">
+                    <ul>
+                        <li>Puesta en común: <em>"What was easy? What was difficult?"</em> Los estudiantes comparten sus impresiones sobre la evaluación.</li>
+                        <li>Presentación del programa del año: el docente muestra brevemente ejemplos reales de manuales técnicos en inglés, videos de diagnóstico automotriz en inglés, instrucciones de equipos electrónicos en inglés.</li>
+                        <li>Mensaje motivador: <em>"English is a tool for your career. This year, you will learn to read technical texts and speak about your specialty."</em></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="recursos">
+                <strong>Recursos:</strong> Evaluación diagnóstica impresa, imágenes de herramientas y equipos técnicos, proyector, ejemplos de manuales técnicos reales en inglés.
+            </div>
+            <div class="evaluacion-box">
+                <strong>Evaluación:</strong> Diagnóstica (no calificada). Registrar niveles de lectura, vocabulario y producción oral para ajustar planificaciones siguientes.
+            </div>
+        </div>
+    </div>
+
+    <!-- ==================== CLASE 2 ==================== -->
+    <div class="clase-card">
+        <div class="clase-header normal">
+            <span class="clase-num">Clase 2</span>
+            <span class="clase-fecha">Semana 1 · marzo</span>
+            <span class="badge badge-oa">OA9 · OA12</span>
+        </div>
+        <div class="clase-body">
+            <div class="objetivo">
+                <strong>Objetivo de la clase:</strong> Reconocer y categorizar vocabulario técnico básico de herramientas comunes a las cinco especialidades técnico-profesionales.
+            </div>
+            <div class="fase">
+                <span class="fase-title fase-inicio">INICIO (15 min)</span>
+                <div class="fase-content">
+                    <ul>
+                        <li>Proyectar imagen de un taller desordenado con diversas herramientas. Preguntar: <em>"What can you see? Name everything you recognize in English."</em></li>
+                        <li>Brainstorm colectivo en la pizarra: organizar las respuestas de los estudiantes en una nube de palabras.</li>
+                        <li>Pregunta motivadora: <em>"A mechanic, an electrician, and an electronics technician walk into a workshop. Which tools does each one need?"</em></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="fase">
+                <span class="fase-title fase-desarrollo">DESARROLLO (60 min)</span>
+                <div class="fase-content">
+                    <ol>
+                        <li><b>Vocabulary presentation (20 min):</b> Presentación con imágenes y pronunciación guiada de 20 herramientas y equipos: <em>hammer, screwdriver, wrench, pliers, drill, multimeter, soldering iron, measuring tape, safety goggles, gloves, helmet, wire cutter, welding torch, caliper, saw, sandpaper, level, clamp, socket set, Allen key</em>. Los estudiantes repiten pronunciación y escriben las palabras en su cuaderno con un dibujo simple.</li>
+                        <li><b>Reading (20 min):</b> Texto corto: <em>"The Right Tool for the Right Job"</em> — Texto descriptivo donde un supervisor de taller explica la importancia de elegir la herramienta correcta. Los estudiantes subrayan todas las herramientas mencionadas y responden: <em>What happens when you use the wrong tool?</em></li>
+                        <li><b>Categorización grupal (20 min):</b> En grupos de 4-5, los estudiantes reciben tarjetas con las 20 herramientas y deben clasificarlas en un diagrama de Venn con las 5 especialidades. Discuten: <em>"Some tools belong to more than one specialty!"</em> Pegan las tarjetas en un papelógrafo.</li>
+                    </ol>
+                </div>
+            </div>
+            <div class="fase">
+                <span class="fase-title fase-cierre">CIERRE (15 min)</span>
+                <div class="fase-content">
+                    <ul>
+                        <li>Juego: <em>"Guess the tool"</em> — El docente describe una herramienta sin nombrarla (<em>"It's a small device that measures voltage, current, and resistance"</em>), los estudiantes adivinan.</li>
+                        <li>Luego, 3-4 estudiantes voluntarios hacen lo mismo para sus compañeros.</li>
+                        <li>Ticket de salida: <em>"Write 3 tools you use (or will use) in your specialty."</em></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="recursos">
+                <strong>Recursos:</strong> Flashcards impresas de herramientas (20), texto <em>"The Right Tool for the Right Job"</em> impreso, diagrama de Venn en papelógrafo, tarjetas de herramientas recortables, proyector.
+            </div>
+        </div>
+    </div>
+
+    <!-- ==================== CLASE 3 ==================== -->
+    <div class="clase-card">
+        <div class="clase-header normal">
+            <span class="clase-num">Clase 3</span>
+            <span class="clase-fecha">Semana 2 · marzo</span>
+            <span class="badge badge-oa">OA1 · OA9</span>
+        </div>
+        <div class="clase-body">
+            <div class="objetivo">
+                <strong>Objetivo de la clase:</strong> Comprender información explícita en un texto descriptivo sobre un taller automotriz, identificando vocabulario específico de la especialidad de Mecánica Automotriz.
+            </div>
+            <div class="fase">
+                <span class="fase-title fase-inicio">INICIO (15 min)</span>
+                <div class="fase-content">
+                    <ul>
+                        <li>Proyectar video corto (2-3 min) de un taller mecánico automotriz en funcionamiento (sugerencia: buscar en YouTube <em>"a day in an auto repair shop"</em>).</li>
+                        <li>Preguntas orales: <em>"What do you see? What are they doing? What tools are they using?"</em></li>
+                        <li>Escribir respuestas de los estudiantes en la pizarra para construir vocabulario colectivo.</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="fase">
+                <span class="fase-title fase-desarrollo">DESARROLLO (60 min)</span>
+                <div class="fase-content">
+                    <ol>
+                        <li><b>Pre-reading vocabulary (15 min):</b> Presentar vocabulario específico con imágenes: <em>engine, brake, transmission, exhaust pipe, spark plug, oil filter, tire, suspension, hood, dashboard, steering wheel, radiator, battery, alternator</em>. Pronunciación coral y práctica individual.</li>
+                        <li><b>Reading – Estudio de caso (25 min):</b> <em>"A Day at González Automotive Workshop"</em> — Caso de un mecánico que recibe un auto con problemas: el motor hace ruidos extraños y pierde potencia. El texto describe el proceso de diagnóstico paso a paso. Los estudiantes leen y responden:
+                            <ul>
+                                <li><em>What is the problem with the car?</em></li>
+                                <li><em>What tools does the mechanic use?</em></li>
+                                <li><em>What does he check first? And then?</em></li>
+                                <li><em>What is the solution?</em></li>
+                            </ul>
+                        </li>
+                        <li><b>Post-reading (20 min):</b> En parejas, completar un diagrama de las partes del auto mencionadas en el texto (worksheet con imagen de un auto y flechas para etiquetar). Luego verificar en conjunto con el proyector.</li>
+                    </ol>
+                </div>
+            </div>
+            <div class="fase">
+                <span class="fase-title fase-cierre">CIERRE (15 min)</span>
+                <div class="fase-content">
+                    <ul>
+                        <li>Pregunta oral a los estudiantes: <em>"If you worked at this workshop, what would be your favorite task? Why?"</em></li>
+                        <li>3-4 estudiantes comparten sus respuestas de forma oral (frases simples).</li>
+                        <li>Resumen: <em>"Today we learned about the automotive workshop. Next class, we'll visit a different type of workshop."</em></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="recursos">
+                <strong>Recursos:</strong> Video de taller automotriz (YouTube), texto caso de estudio impreso, diagrama de un auto para etiquetar, flashcards de vocabulario automotriz, proyector.
+            </div>
+        </div>
+    </div>
+
+    <!-- ==================== CLASE 4 ==================== -->
+    <div class="clase-card">
+        <div class="clase-header normal">
+            <span class="clase-num">Clase 4</span>
+            <span class="clase-fecha">Semana 2 · marzo</span>
+            <span class="badge badge-oa">OA1 · OA9 · OA7</span>
+        </div>
+        <div class="clase-body">
+            <div class="objetivo">
+                <strong>Objetivo de la clase:</strong> Comprender información específica en un estudio de caso sobre seguridad en mecánica industrial e identificar vocabulario de herramientas y maquinaria pesada.
+            </div>
+            <div class="fase">
+                <span class="fase-title fase-inicio">INICIO (15 min)</span>
+                <div class="fase-content">
+                    <ul>
+                        <li>Repaso rápido: <em>"Who remembers vocabulary from last class?"</em> Juego de vocabulario oral: el docente dice la definición, los estudiantes dicen la palabra.</li>
+                        <li>Mostrar imágenes de un taller de mecánica industrial. Preguntar: <em>"How is this different from an automotive workshop?"</em></li>
+                        <li>Escribir respuestas comparativas en la pizarra.</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="fase">
+                <span class="fase-title fase-desarrollo">DESARROLLO (60 min)</span>
+                <div class="fase-content">
+                    <ol>
+                        <li><b>Vocabulary (15 min):</b> Presentar vocabulario con imágenes: <em>lathe, milling machine, welding torch, grinding wheel, bench vise, steel, iron, bolt, nut, screw, drill press, file, hacksaw, anvil, PPE (Personal Protective Equipment)</em>. Pronunciación y escritura.</li>
+                        <li><b>Reading – Estudio de caso (25 min):</b> <em>"Welding Safety: A Case Study"</em> — Un trabajador nuevo en una fábrica sufre quemaduras porque no usó el equipo de seguridad correcto al soldar. El texto describe qué pasó, por qué pasó, y qué debió hacer diferente. Lectura guiada con:
+                            <ul>
+                                <li>Skimming: <em>What is the general topic?</em> (2 min)</li>
+                                <li>Scanning: <em>Find: Who? Where? When? What happened?</em> (8 min)</li>
+                                <li>Comprensión detallada: preguntas de respuesta breve (15 min)</li>
+                            </ul>
+                        </li>
+                        <li><b>Post-reading discussion (20 min):</b> En parejas, discutir: <em>"What went wrong? What safety rules were broken? What should the worker have done differently?"</em> Cada pareja escribe 3 recomendaciones de seguridad en inglés y las comparte con otra pareja.</li>
+                    </ol>
+                </div>
+            </div>
+            <div class="fase">
+                <span class="fase-title fase-cierre">CIERRE (15 min)</span>
+                <div class="fase-content">
+                    <ul>
+                        <li>Actividad grupal: <em>"Safety First! Name 5 safety rules in English for an industrial workshop."</em></li>
+                        <li>Escribir las reglas en la pizarra como poster colectivo.</li>
+                        <li>Reflexión: <em>"Is safety important only in industrial workshops, or in all specialties?"</em></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="recursos">
+                <strong>Recursos:</strong> Imágenes de maquinaria industrial, texto caso de estudio <em>"Welding Safety"</em> impreso, imágenes de EPP (equipo de protección personal), pizarra.
+            </div>
+        </div>
+    </div>
+
+    <!-- ==================== CLASE 5 ==================== -->
+    <div class="clase-card">
+        <div class="clase-header normal">
+            <span class="clase-num">Clase 5</span>
+            <span class="clase-fecha">Semana 3 · marzo</span>
+            <span class="badge badge-oa">OA9 · OA12</span>
+        </div>
+        <div class="clase-body">
+            <div class="objetivo">
+                <strong>Objetivo de la clase:</strong> Aplicar estrategias de lectura (pre-lectura, lectura y post-lectura) para comprender un texto sobre instalaciones eléctricas básicas e identificar vocabulario técnico de Electricidad.
+            </div>
+            <div class="fase">
+                <span class="fase-title fase-inicio">INICIO (15 min)</span>
+                <div class="fase-content">
+                    <ul>
+                        <li>Repaso rápido: Matching game en la pizarra — herramientas de clases anteriores ↔ especialidad correspondiente.</li>
+                        <li>Introducir el tema: <em>"What electrical devices do you use every day?"</em> Los estudiantes nombran dispositivos. Escribir en la pizarra.</li>
+                        <li>Pregunta desafiante: <em>"Do you know how electricity gets from the power plant to your phone charger?"</em></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="fase">
+                <span class="fase-title fase-desarrollo">DESARROLLO (60 min)</span>
+                <div class="fase-content">
+                    <ol>
+                        <li><b>Vocabulary (15 min):</b> Presentar con imágenes y diagrama: <em>wire, cable, circuit, switch, outlet, plug, fuse, voltage, current, resistance, transformer, circuit breaker, ground/earth, insulation, conductor</em>. Práctica de pronunciación con énfasis en sonidos difíciles (<em>circuit</em> /ˈsɜːrkɪt/, <em>voltage</em> /ˈvoʊltɪdʒ/).</li>
+                        <li><b>Pre-reading strategy (5 min):</b> Enseñar la estrategia de <em>skimming</em>: leer solo el título, subtítulos e imágenes primero. <em>"What do you think the text is about? Write a prediction."</em></li>
+                        <li><b>Reading (25 min):</b> <em>"Understanding Basic Electrical Circuits"</em> — Texto con diagrama de un circuito eléctrico simple. Los estudiantes:
+                            <ul>
+                                <li>Primera lectura rápida: confirmar o corregir su predicción.</li>
+                                <li>Segunda lectura detallada: etiquetar el diagrama del circuito con los componentes mencionados.</li>
+                                <li>Responder preguntas de comprensión: <em>What is the function of a fuse? What happens if the circuit is open?</em></li>
+                            </ul>
+                        </li>
+                        <li><b>Post-reading (15 min):</b> En parejas, explicar oralmente cómo funciona el circuito usando el diagrama como apoyo: <em>"First, the current comes from… then it goes through…"</em></li>
+                    </ol>
+                </div>
+            </div>
+            <div class="fase">
+                <span class="fase-title fase-cierre">CIERRE (15 min)</span>
+                <div class="fase-content">
+                    <ul>
+                        <li>Exit ticket: Dibujar y etiquetar un circuito simple usando al menos 5 palabras de vocabulario en inglés aprendidas hoy.</li>
+                        <li>2-3 voluntarios muestran su diagrama y explican brevemente.</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="recursos">
+                <strong>Recursos:</strong> Diagrama de circuito eléctrico, texto impreso, flashcards de vocabulario eléctrico, hojas para exit ticket, proyector.
+            </div>
+        </div>
+    </div>
+
+    <!-- ==================== CLASE 6 ==================== -->
+    <div class="clase-card">
+        <div class="clase-header normal">
+            <span class="clase-num">Clase 6</span>
+            <span class="clase-fecha">Semana 3 · marzo</span>
+            <span class="badge badge-oa">OA9 · OA2</span>
+        </div>
+        <div class="clase-body">
+            <div class="objetivo">
+                <strong>Objetivo de la clase:</strong> Comprender un texto instructivo sobre el armado de un circuito electrónico simple, identificando vocabulario de componentes y conectores de secuencia.
+            </div>
+            <div class="fase">
+                <span class="fase-title fase-inicio">INICIO (15 min)</span>
+                <div class="fase-content">
+                    <ul>
+                        <li>Mostrar imágenes (o componentes reales si se tienen) de: resistor, capacitor, LED, transistor, circuit board, soldering iron.</li>
+                        <li>Preguntar: <em>"Can you guess what each one does? Have you seen these before?"</em></li>
+                        <li>Breve comparación: <em>"Last class we talked about electricity. Electronics is different. How?"</em> (Electricidad = energía; Electrónica = información/control).</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="fase">
+                <span class="fase-title fase-desarrollo">DESARROLLO (60 min)</span>
+                <div class="fase-content">
+                    <ol>
+                        <li><b>Vocabulary (15 min):</b> Presentar con imágenes: <em>resistor, capacitor, diode, LED, transistor, PCB (printed circuit board), solder, oscilloscope, breadboard, IC (integrated circuit), sensor, microcontroller, antenna, relay</em>. Pronunciación guiada.</li>
+                        <li><b>Reading (25 min):</b> <em>"How to Build a Simple LED Circuit"</em> — Texto instructivo paso a paso. Actividad: los estudiantes reciben los pasos en desorden (scrambled sentences) y deben ordenarlos según el texto. Luego verifican leyendo el texto original. Preguntas: <em>What components do you need? What is the first step? What happens if you connect the LED wrong?</em></li>
+                        <li><b>Sequence connectors focus (10 min):</b> Identificar en el texto los conectores: <em>first, second, then, next, after that, finally</em>. ¿Por qué son importantes en un texto instructivo?</li>
+                        <li><b>Oral practice (10 min):</b> En parejas, un estudiante cierra el texto y el otro le guía oralmente para "armar" el circuito paso a paso usando los conectores.</li>
+                    </ol>
+                </div>
+            </div>
+            <div class="fase">
+                <span class="fase-title fase-cierre">CIERRE (15 min)</span>
+                <div class="fase-content">
+                    <ul>
+                        <li>Quick oral check: 3-4 estudiantes explican un paso del proceso con sus propias palabras.</li>
+                        <li>Reflexión: <em>"Why is it important to follow the correct order in electronics?"</em></li>
+                        <li>Preview: <em>"Next class, we'll explore the world of graphic arts."</em></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="recursos">
+                <strong>Recursos:</strong> Imágenes/componentes electrónicos reales, texto instructivo impreso, tarjetas con pasos desordenados (scrambled sentences), proyector.
+            </div>
+        </div>
+    </div>
+
+    <!-- ==================== CLASE 7 ==================== -->
+    <div class="clase-card">
+        <div class="clase-header normal">
+            <span class="clase-num">Clase 7</span>
+            <span class="clase-fecha">Semana 4 · marzo</span>
+            <span class="badge badge-oa">OA9 · OA12</span>
+        </div>
+        <div class="clase-body">
+            <div class="objetivo">
+                <strong>Objetivo de la clase:</strong> Comprender un texto descriptivo sobre los procesos de la industria gráfica e identificar la secuencia de producción de un producto impreso.
+            </div>
+            <div class="fase">
+                <span class="fase-title fase-inicio">INICIO (15 min)</span>
+                <div class="fase-content">
+                    <ul>
+                        <li>Mostrar diferentes productos impresos: un libro, una revista, un sticker, un envase, una polera estampada.</li>
+                        <li>Preguntar: <em>"How were these made? What do they have in common? What is different?"</em></li>
+                        <li>Conectar con la realidad: <em>"The graphic arts industry is everywhere. Almost everything you read was printed somehow."</em></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="fase">
+                <span class="fase-title fase-desarrollo">DESARROLLO (60 min)</span>
+                <div class="fase-content">
+                    <ol>
+                        <li><b>Vocabulary (15 min):</b> Presentar con imágenes: <em>printing press, ink, paper, design, layout, proof, binding, cutting, color separation, digital file, offset, CMYK, resolution, substrate, lamination</em>. Pronunciación y escritura.</li>
+                        <li><b>Reading (25 min):</b> <em>"From Digital File to Printed Product"</em> — Texto que describe el proceso completo de impresión desde el diseño digital hasta el producto final encuadernado. Los estudiantes:
+                            <ul>
+                                <li>Pre-reading: predicción a partir de imágenes y título.</li>
+                                <li>Reading: identificar las etapas del proceso y subrayar vocabulario nuevo.</li>
+                                <li>Comprensión: responder 6 preguntas sobre el proceso.</li>
+                            </ul>
+                        </li>
+                        <li><b>Post-reading (20 min):</b> En parejas, crear un flowchart (diagrama de flujo) del proceso de impresión basándose en el texto. Usar flechas y vocabulario clave en inglés.</li>
+                    </ol>
+                </div>
+            </div>
+            <div class="fase">
+                <span class="fase-title fase-cierre">CIERRE (15 min)</span>
+                <div class="fase-content">
+                    <ul>
+                        <li>Gallery walk: las parejas pegan sus flowcharts y los demás los observan.</li>
+                        <li>La clase vota por el más completo y preciso.</li>
+                        <li>Cierre: <em>"Now we have explored all 5 specialties! Which one has the most interesting vocabulary for you?"</em> Breve encuesta a mano alzada.</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="recursos">
+                <strong>Recursos:</strong> Productos impresos como muestra, texto descriptivo impreso, hojas para flowchart, lápices de colores, cinta adhesiva para gallery walk.
+            </div>
+        </div>
+    </div>
+
+    <!-- ==================== CLASE 8 ==================== -->
+    <div class="clase-card">
+        <div class="clase-header normal">
+            <span class="clase-num">Clase 8</span>
+            <span class="clase-fecha">Semana 4 · marzo/abril</span>
+            <span class="badge badge-oa">OA8 · OA9 · OA5</span>
+        </div>
+        <div class="clase-body">
+            <div class="objetivo">
+                <strong>Objetivo de la clase:</strong> Sintetizar y aplicar el vocabulario técnico de las cinco especialidades en actividades integradas de comprensión lectora y producción oral.
+            </div>
+            <div class="fase">
+                <span class="fase-title fase-inicio">INICIO (15 min)</span>
+                <div class="fase-content">
+                    <ul>
+                        <li><em>"Vocabulary Relay Race"</em>: Equipos de 5 compiten. Se proyectan imágenes de herramientas y equipos técnicos; el primer equipo en identificar correctamente gana un punto.</li>
+                        <li>Breve recuento: <em>"We have explored 5 specialties. Today we bring them all together."</em></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="fase">
+                <span class="fase-title fase-desarrollo">DESARROLLO (60 min)</span>
+                <div class="fase-content">
+                    <ol>
+                        <li><b>Vocabulary game: "Technical English Bingo" (20 min):</b> Los estudiantes reciben cartones de bingo con palabras técnicas. El docente lee definiciones o describe el objeto/concepto sin nombrarlo. Los estudiantes marcan la palabra correcta. Quien completa una línea gana.</li>
+                        <li><b>Reading (25 min):</b> <em>"Five Careers, Five Futures"</em> — Cinco textos breves (un párrafo cada uno) donde un joven de cada especialidad describe su trabajo: qué hace, qué herramientas usa, qué le gusta. Los estudiantes leen todos y completan una tabla comparativa:
+                            <table style="width:100%; border-collapse:collapse; margin:10px 0; font-size:0.85em;">
+                                <tr style="background:#e0e0e0;"><th style="border:1px solid #ccc;padding:4px;">Specialty</th><th style="border:1px solid #ccc;padding:4px;">What they do</th><th style="border:1px solid #ccc;padding:4px;">Tools they use</th><th style="border:1px solid #ccc;padding:4px;">What they like</th></tr>
+                                <tr><td style="border:1px solid #ccc;padding:4px;">Automotive</td><td style="border:1px solid #ccc;padding:4px;"></td><td style="border:1px solid #ccc;padding:4px;"></td><td style="border:1px solid #ccc;padding:4px;"></td></tr>
+                                <tr><td style="border:1px solid #ccc;padding:4px;">Industrial</td><td style="border:1px solid #ccc;padding:4px;"></td><td style="border:1px solid #ccc;padding:4px;"></td><td style="border:1px solid #ccc;padding:4px;"></td></tr>
+                                <tr><td style="border:1px solid #ccc;padding:4px;">Electricity</td><td style="border:1px solid #ccc;padding:4px;"></td><td style="border:1px solid #ccc;padding:4px;"></td><td style="border:1px solid #ccc;padding:4px;"></td></tr>
+                                <tr><td style="border:1px solid #ccc;padding:4px;">Electronics</td><td style="border:1px solid #ccc;padding:4px;"></td><td style="border:1px solid #ccc;padding:4px;"></td><td style="border:1px solid #ccc;padding:4px;"></td></tr>
+                                <tr><td style="border:1px solid #ccc;padding:4px;">Graphic Arts</td><td style="border:1px solid #ccc;padding:4px;"></td><td style="border:1px solid #ccc;padding:4px;"></td><td style="border:1px solid #ccc;padding:4px;"></td></tr>
+                            </table>
+                        </li>
+                        <li><b>Oral practice (15 min):</b> En grupos de 5, cada estudiante "representa" una especialidad diferente y tiene 1 minuto para explicar (en inglés simple) qué hace y por qué le gusta. Los demás escuchan y pueden hacer 1 pregunta.</li>
+                    </ol>
+                </div>
+            </div>
+            <div class="fase">
+                <span class="fase-title fase-cierre">CIERRE (15 min)</span>
+                <div class="fase-content">
+                    <ul>
+                        <li>Reflexión abierta: <em>"Which specialty vocabulary was easiest for you? Which was the hardest? Why?"</em></li>
+                        <li>Anticipar gramática: <em>"Next class, we'll learn a new grammar structure that will help you talk about experiences and achievements in your career."</em></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="recursos">
+                <strong>Recursos:</strong> Cartones de bingo técnico, textos <em>"Five Careers, Five Futures"</em> impresos, tabla comparativa impresa, proyector.
+            </div>
+        </div>
+    </div>
+
+    <!-- ==================== CLASE 9 ==================== -->
+    <div class="clase-card">
+        <div class="clase-header normal">
+            <span class="clase-num">Clase 9</span>
+            <span class="clase-fecha">Semana 5 · abril</span>
+            <span class="badge badge-oa">OA8</span>
+        </div>
+        <div class="clase-body">
+            <div class="objetivo">
+                <strong>Objetivo de la clase:</strong> Comprender la estructura y el uso del Present Perfect Simple para describir logros y experiencias en contextos técnico-profesionales.
+            </div>
+            <div class="fase">
+                <span class="fase-title fase-inicio">INICIO (15 min)</span>
+                <div class="fase-content">
+                    <ul>
+                        <li>Escribir en la pizarra dos oraciones: <em>"I have repaired 50 cars."</em> vs. <em>"I repaired a car yesterday."</em></li>
+                        <li>Preguntar: <em>"What is the difference? When do we use each one?"</em> Recoger ideas de los estudiantes.</li>
+                        <li>Conectar con contexto técnico: <em>"When a mechanic says 'I have repaired 50 cars', does it matter when? No! It matters the experience, the achievement."</em></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="fase">
+                <span class="fase-title fase-desarrollo">DESARROLLO (60 min)</span>
+                <div class="fase-content">
+                    <ol>
+                        <li><b>Grammar presentation (20 min):</b>
+                            <ul>
+                                <li>Estructura: <em>Subject + have/has + past participle</em></li>
+                                <li>Usos: experiencias (<em>Have you ever welded?</em>), logros (<em>She has installed 200 panels</em>), acciones inconclusas (<em>He has worked here for 10 years</em>)</li>
+                                <li>Forma negativa e interrogativa</li>
+                                <li>Ejemplos técnicos de las 5 especialidades:
+                                    <em>"She has repaired many engines" / "They have built 30 circuits" / "He has designed a new logo" / "We have installed the wiring" / "I have welded 100 structures"</em></li>
+                                <li>Lista de participios irregulares relevantes: <em>built, done, made, cut, put, seen, written, broken, chosen, driven</em></li>
+                            </ul>
+                        </li>
+                        <li><b>Controlled practice (15 min):</b> Ejercicios de gap-fill con oraciones técnicas. Los estudiantes completan con la forma correcta del Present Perfect. Revisión en conjunto.</li>
+                        <li><b>Reading (25 min):</b> <em>"An Experienced Mechanic: Interview with Don Pedro"</em> — Texto tipo entrevista donde un mecánico con 30 años de experiencia habla de su carrera usando Present Perfect. Los estudiantes:
+                            <ul>
+                                <li>Subrayan todas las formas de Present Perfect en el texto.</li>
+                                <li>Responden: <em>How long has Don Pedro worked as a mechanic? What has he done in his career? Has he ever had an accident?</em></li>
+                            </ul>
+                        </li>
+                    </ol>
+                </div>
+            </div>
+            <div class="fase">
+                <span class="fase-title fase-cierre">CIERRE (15 min)</span>
+                <div class="fase-content">
+                    <ul>
+                        <li>Ronda oral rápida: cada estudiante dice una oración usando Present Perfect relacionada con aprendizaje técnico o experiencias: <em>"I have learned about electrical circuits." / "I have never used a lathe."</em></li>
+                        <li>Ticket de salida: escribir 2 oraciones propias con Present Perfect.</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="recursos">
+                <strong>Recursos:</strong> Presentación gramática (pizarra/proyector), handout de gramática con reglas y ejemplos, ejercicios gap-fill impresos, texto entrevista impreso, lista de participios irregulares.
+            </div>
+        </div>
+    </div>
+
+    <!-- ==================== CLASE 10 ==================== -->
+    <div class="clase-card">
+        <div class="clase-header normal">
+            <span class="clase-num">Clase 10</span>
+            <span class="clase-fecha">Semana 5 · abril</span>
+            <span class="badge badge-oa">OA8 · OA5</span>
+        </div>
+        <div class="clase-body">
+            <div class="objetivo">
+                <strong>Objetivo de la clase:</strong> Diferenciar el uso de "since" y "for" con Present Perfect para describir la duración de actividades técnico-profesionales.
+            </div>
+            <div class="fase">
+                <span class="fase-title fase-inicio">INICIO (15 min)</span>
+                <div class="fase-content">
+                    <ul>
+                        <li>Repaso: <em>"What have you learned so far in English class?"</em> Los estudiantes responden usando Present Perfect.</li>
+                        <li>Escribir: <em>"I have studied English FOR 8 years."</em> y <em>"I have studied English SINCE 2018."</em></li>
+                        <li>Preguntar: <em>"Both sentences are correct. What is the difference between FOR and SINCE?"</em> Recoger respuestas.</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="fase">
+                <span class="fase-title fase-desarrollo">DESARROLLO (60 min)</span>
+                <div class="fase-content">
+                    <ol>
+                        <li><b>Grammar focus (15 min):</b> Dibujar una línea de tiempo en la pizarra.
+                            <ul>
+                                <li><em>SINCE</em> = punto específico en el tiempo (2015, Monday, January, I was 10)</li>
+                                <li><em>FOR</em> = duración (3 years, 2 months, a long time, 10 minutes)</li>
+                                <li>Ejemplos técnicos: <em>"He has worked at the factory since 2015."</em> / <em>"He has worked at the factory for 10 years."</em> / <em>"This machine has been here since 1990."</em> / <em>"They have used this software for 5 years."</em></li>
+                            </ul>
+                        </li>
+                        <li><b>Practice (15 min):</b> Ejercicios: completar oraciones con <em>since</em> o <em>for</em> + corrección de errores en oraciones incorrectas. Revisión en conjunto.</li>
+                        <li><b>Reading (20 min):</b> <em>"Five Professionals, Five Stories"</em> — Perfiles breves de 5 profesionales técnicos (uno de cada especialidad) que describen su trayectoria usando <em>since</em> y <em>for</em>:
+                            <ul>
+                                <li><em>"María has worked as an electrician since 2010. She has installed systems for 15 years…"</em></li>
+                            </ul>
+                            Los estudiantes leen y completan una tabla: Nombre / Especialidad / Tiempo trabajando (since ___ / for ___).</li>
+                        <li><b>Pair interview (10 min):</b> Los estudiantes se entrevistan usando Present Perfect + since/for: <em>"How long have you studied at this school? How long have you been interested in [specialty]?"</em></li>
+                    </ol>
+                </div>
+            </div>
+            <div class="fase">
+                <span class="fase-title fase-cierre">CIERRE (15 min)</span>
+                <div class="fase-content">
+                    <ul>
+                        <li>Escribir 2 oraciones sobre sí mismos usando <em>since</em> y <em>for</em>. Compartir con la clase.</li>
+                        <li>Quick quiz oral: el docente dice una expresión de tiempo y los estudiantes dicen si va con <em>since</em> o <em>for</em>: <em>"2020" → since. "Three hours" → for. "Last Monday" → since.</em></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="recursos">
+                <strong>Recursos:</strong> Línea de tiempo visual, ejercicios impresos (since/for), perfiles de profesionales impresos, tabla para completar.
+            </div>
+        </div>
+    </div>
+
+    <!-- ==================== CLASE 11 ==================== -->
+    <div class="clase-card">
+        <div class="clase-header normal">
+            <span class="clase-num">Clase 11</span>
+            <span class="clase-fecha">Semana 6 · abril</span>
+            <span class="badge badge-oa">OA8 · OA9</span>
+        </div>
+        <div class="clase-body">
+            <div class="objetivo">
+                <strong>Objetivo de la clase:</strong> Comprender y utilizar la estructura "used to + infinitive" para comparar prácticas técnicas del pasado con las actuales.
+            </div>
+            <div class="fase">
+                <span class="fase-title fase-inicio">INICIO (15 min)</span>
+                <div class="fase-content">
+                    <ul>
+                        <li>Proyectar imágenes comparativas: taller antiguo (1950-1970) vs. taller moderno. <em>"What has changed?"</em></li>
+                        <li>Recoger observaciones: <em>"Before, they used hand tools. Now, they use machines."</em></li>
+                        <li>Introducir: <em>"In English, we have a special way to talk about things that were true in the past but are NOT true anymore."</em></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="fase">
+                <span class="fase-title fase-desarrollo">DESARROLLO (60 min)</span>
+                <div class="fase-content">
+                    <ol>
+                        <li><b>Grammar presentation (15 min):</b>
+                            <ul>
+                                <li>Estructura: <em>Subject + used to + infinitive</em> (para hábitos/situaciones pasadas que ya no existen)</li>
+                                <li>Afirmativa: <em>"Mechanics used to fix cars without computers."</em></li>
+                                <li>Negativa: <em>"They didn't use to have digital multimeters."</em></li>
+                                <li>Interrogativa: <em>"Did they use to weld by hand?"</em></li>
+                                <li>Contraste con presente: <em>"Mechanics used to use only hand tools. Now they use diagnostic software."</em></li>
+                            </ul>
+                        </li>
+                        <li><b>Reading (25 min):</b> <em>"Then and Now: How Technology Changed the Workshop"</em> — Texto comparativo con secciones para las 5 especialidades. Cada sección describe cómo era el trabajo antes (<em>used to</em>) y cómo es ahora. Los estudiantes:
+                            <ul>
+                                <li>Resaltan todas las estructuras con <em>used to</em>.</li>
+                                <li>Completan tabla comparativa: Antes (used to) / Ahora (present simple) para cada especialidad.</li>
+                            </ul>
+                        </li>
+                        <li><b>Production (10 min):</b> Los estudiantes crean 5 oraciones comparativas usando <em>used to</em> sobre su especialidad preferida (<em>"Printers used to use only black ink. Now they use CMYK."</em>).</li>
+                        <li><b>Pair share (10 min):</b> Leer oraciones al compañero. El compañero reacciona: <em>"Really? That's interesting!"</em> o hace una pregunta de seguimiento.</li>
+                    </ol>
+                </div>
+            </div>
+            <div class="fase">
+                <span class="fase-title fase-cierre">CIERRE (15 min)</span>
+                <div class="fase-content">
+                    <ul>
+                        <li>Ranking grupal: <em>"What is the most important technological change in technical work?"</em> Cada grupo propone una respuesta y justifica.</li>
+                        <li>Votación por la mejor respuesta.</li>
+                        <li>Resumen gramática: <em>"Used to = past habits/situations that no longer exist."</em></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="recursos">
+                <strong>Recursos:</strong> Imágenes comparativas (talleres antiguo vs moderno), texto comparativo impreso, tabla para completar, handout de gramática.
+            </div>
+        </div>
+    </div>
+
+    <!-- ==================== CLASE 12 ==================== -->
+    <div class="clase-card">
+        <div class="clase-header normal">
+            <span class="clase-num">Clase 12</span>
+            <span class="clase-fecha">Semana 6 · abril</span>
+            <span class="badge badge-oa">OA9 · OA12 · OA7</span>
+        </div>
+        <div class="clase-body">
+            <div class="objetivo">
+                <strong>Objetivo de la clase:</strong> Analizar un estudio de caso sobre un accidente laboral aplicando estrategias de lectura (pre-lectura, lectura focalizada y post-lectura).
+            </div>
+            <div class="fase">
+                <span class="fase-title fase-inicio">INICIO (15 min)</span>
+                <div class="fase-content">
+                    <ul>
+                        <li>Discusión inicial: <em>"Why is safety important in a workshop?"</em> Brainstorm de vocabulario de seguridad: <em>helmet, goggles, gloves, safety boots, mask, ear protection, fire extinguisher, first aid kit</em>.</li>
+                        <li>Estrategia de pre-lectura: Mostrar solo el título del texto: <em>"The Day Everything Went Wrong at Rivera's Workshop"</em>. Preguntar: <em>"What do you think happened? Make a prediction."</em></li>
+                        <li>Los estudiantes escriben su predicción en el cuaderno.</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="fase">
+                <span class="fase-title fase-desarrollo">DESARROLLO (60 min)</span>
+                <div class="fase-content">
+                    <ol>
+                        <li><b>First reading – Skimming (10 min):</b> Leer rápidamente para captar la idea general. <em>"What happened? Where? When?"</em> Confirmar o corregir predicciones.</li>
+                        <li><b>Second reading – Scanning (20 min):</b> Lectura focalizada para buscar detalles específicos. Los estudiantes completan un <em>"Incident Report Form"</em>:
+                            <ul>
+                                <li>Who was involved?</li>
+                                <li>What happened?</li>
+                                <li>What caused the accident?</li>
+                                <li>What was the consequence?</li>
+                                <li>What safety rules were broken?</li>
+                                <li>What should they do next?</li>
+                            </ul>
+                        </li>
+                        <li><b>Post-reading discussion (20 min):</b> En grupos de 4, discutir: <em>"What went wrong? What safety rules were broken? What would you do differently?"</em> Cada grupo prepara 3 recomendaciones de seguridad en inglés.</li>
+                        <li><b>Group sharing (10 min):</b> Cada grupo presenta su recomendación principal.</li>
+                    </ol>
+                </div>
+            </div>
+            <div class="fase">
+                <span class="fase-title fase-cierre">CIERRE (15 min)</span>
+                <div class="fase-content">
+                    <ul>
+                        <li>Actividad colaborativa: crear un <em>"Workshop Safety Code"</em> colectivo con las mejores recomendaciones de todos los grupos. Escribirlo en la pizarra/papelógrafo.</li>
+                        <li>Reflexión sobre estrategias: <em>"Today we used 3 strategies: predicting, skimming, and scanning. Which was most useful?"</em></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="recursos">
+                <strong>Recursos:</strong> Texto caso de estudio impreso, <em>Incident Report Form</em> impreso, imágenes de EPP, papelógrafo para Safety Code colectivo.
+            </div>
+        </div>
+    </div>
+
+    <!-- ==================== CLASE 13 ==================== -->
+    <div class="clase-card evaluacion">
+        <div class="clase-header eval">
+            <span class="clase-num">Clase 13</span>
+            <span class="clase-fecha">Semana 8 · abril</span>
+            <span class="badge badge-eval">EVALUACIÓN — NOTA 1 (Grupo A)</span>
+        </div>
+        <div class="clase-body">
+            <div class="objetivo">
+                <strong>Objetivo de la clase:</strong> Producir una presentación oral breve sobre la carrera técnica de su interés, demostrando uso de vocabulario técnico, Present Perfect y "used to".
+            </div>
+            <div class="fase">
+                <span class="fase-title fase-inicio">INICIO (15 min)</span>
+                <div class="fase-content">
+                    <ul>
+                        <li>Warm-up breve: repasar tips de presentación: <em>"Speak clearly. Make eye contact. Use your cards as a guide, not a script. Relax!"</em></li>
+                        <li>Recordar criterios de evaluación (rúbrica visible en proyector).</li>
+                        <li>Sorteo o confirmación del orden de presentación del Grupo A (primera mitad del curso).</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="fase">
+                <span class="fase-title fase-desarrollo">DESARROLLO (60 min)</span>
+                <div class="fase-content">
+                    <ol>
+                        <li>Los estudiantes del Grupo A presentan por turnos (2-3 min cada uno + 1 min de preguntas de los compañeros o del docente).</li>
+                        <li>Los estudiantes que no presentan completan una ficha de evaluación entre pares (<em>peer evaluation form</em>) para cada presentador: <em>¿Entendiste el mensaje? ¿Qué vocabulario técnico usó? ¿Qué fue lo mejor de su presentación?</em></li>
+                        <li>El docente evalúa con la rúbrica oficial mientras escucha cada presentación.</li>
+                    </ol>
+                </div>
+            </div>
+            <div class="fase">
+                <span class="fase-title fase-cierre">CIERRE (15 min)</span>
+                <div class="fase-content">
+                    <ul>
+                        <li>Feedback colectivo general (sin mencionar notas individuales): fortalezas observadas y áreas de mejora comunes.</li>
+                        <li>Recordar al Grupo B que presenta la próxima clase.</li>
+                        <li>Motivar: <em>"Great job! Speaking in English in front of your classmates is brave. Be proud of your effort."</em></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="recursos">
+                <strong>Recursos:</strong> Rúbrica de evaluación, fichas de evaluación entre pares, cronómetro/timer, proyector con rúbrica visible.
+            </div>
+            <div class="evaluacion-box">
+                <strong>Evaluación:</strong> SUMATIVA — Nota 1 del semestre (Expresión Oral). Rúbrica de 5 criterios × 3 niveles = 15 puntos. Escala 60%.
+            </div>
+        </div>
+    </div>
+
+    <!-- ==================== CLASE 14 ==================== -->
+    <div class="clase-card evaluacion">
+        <div class="clase-header eval">
+            <span class="clase-num">Clase 14</span>
+            <span class="clase-fecha">Semana 9 · abril/mayo</span>
+            <span class="badge badge-eval">EVALUACIÓN — NOTA 1 (Grupo B)</span>
+        </div>
+        <div class="clase-body">
+            <div class="objetivo">
+                <strong>Objetivo de la clase:</strong> Producir una presentación oral breve sobre la carrera técnica de su interés, demostrando uso de vocabulario técnico, Present Perfect y "used to".
+            </div>
+            <div class="fase">
+                <span class="fase-title fase-inicio">INICIO (15 min)</span>
+                <div class="fase-content">
+                    <ul>
+                        <li>Warm-up: mismos tips de presentación. Reconocer al Grupo A por sus presentaciones.</li>
+                        <li>Rúbrica visible en proyector.</li>
+                        <li>Orden de presentación del Grupo B.</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="fase">
+                <span class="fase-title fase-desarrollo">DESARROLLO (60 min)</span>
+                <div class="fase-content">
+                    <ol>
+                        <li>Los estudiantes del Grupo B presentan por turnos (2-3 min + 1 min Q&amp;A).</li>
+                        <li>Grupo A completa fichas de evaluación entre pares.</li>
+                        <li>El docente evalúa con rúbrica.</li>
+                    </ol>
+                    <p style="margin-top:10px;"><b>Si sobra tiempo tras las presentaciones:</b></p>
+                    <ul>
+                        <li>Actividad de reflexión: <em>"What was the most interesting presentation? What specialty was the most popular? Why?"</em></li>
+                        <li>Premios simbólicos: <em>"Best vocabulary use"</em>, <em>"Most creative presentation"</em>, <em>"Best pronunciation"</em> (votación del curso).</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="fase">
+                <span class="fase-title fase-cierre">CIERRE (15 min)</span>
+                <div class="fase-content">
+                    <ul>
+                        <li>Feedback colectivo general de ambos grupos.</li>
+                        <li>Anticipar: <em>"Next class is our reading comprehension test. Let's review what we need to study."</em></li>
+                        <li>Entregar guía de estudio para la prueba: vocabulario de las 5 especialidades, Present Perfect, Used to, estrategias de lectura.</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="recursos">
+                <strong>Recursos:</strong> Rúbrica de evaluación, fichas de evaluación entre pares, cronómetro, guía de estudio para prueba.
+            </div>
+            <div class="evaluacion-box">
+                <strong>Evaluación:</strong> SUMATIVA — Nota 1 del semestre (Expresión Oral) — continuación Grupo B.
+            </div>
+        </div>
+    </div>
+
+    <!-- ==================== CLASE 15 ==================== -->
+    <div class="clase-card evaluacion">
+        <div class="clase-header eval">
+            <span class="clase-num">Clase 15</span>
+            <span class="clase-fecha">Semana 9 · mayo</span>
+            <span class="badge badge-eval">EVALUACIÓN — NOTA 2</span>
+        </div>
+        <div class="clase-body">
+            <div class="objetivo">
+                <strong>Objetivo de la clase:</strong> Demostrar comprensión de ideas generales e información explícita en textos técnicos, aplicando estrategias de lectura y vocabulario de la unidad.
+            </div>
+            <div class="fase">
+                <span class="fase-title fase-inicio">INICIO (10 min)</span>
+                <div class="fase-content">
+                    <ul>
+                        <li>Instrucciones claras sobre la prueba: formato, tiempo, materiales permitidos.</li>
+                        <li>Resolver dudas de último momento.</li>
+                        <li>Recordar: <em>"Read each text carefully. Use the strategies we practiced: skimming first, then scanning for details."</em></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="fase">
+                <span class="fase-title fase-desarrollo">DESARROLLO (65 min)</span>
+                <div class="fase-content">
+                    <p><b>Prueba escrita en 3 secciones:</b></p>
+                    <ol>
+                        <li><b>Sección I – Vocabulary (20 min, 20 pts):</b>
+                            <ul>
+                                <li>Matching: 10 herramientas/equipos técnicos con su definición en inglés.</li>
+                                <li>Classification: clasificar 10 palabras según la especialidad a la que pertenecen.</li>
+                            </ul>
+                        </li>
+                        <li><b>Sección II – Reading Comprehension (25 min, 30 pts):</b>
+                            <ul>
+                                <li>Texto: Estudio de caso sobre una situación real en un taller (diferente a los trabajados en clase pero con vocabulario similar).</li>
+                                <li>Preguntas: 5 opción múltiple + 5 respuesta breve (What? Who? Where? Why? How?).</li>
+                            </ul>
+                        </li>
+                        <li><b>Sección III – Grammar in Context (20 min, 20 pts):</b>
+                            <ul>
+                                <li>Gap-fill: 5 oraciones con Present Perfect (completar con la forma correcta del verbo).</li>
+                                <li>Since/For: 5 oraciones (elegir la opción correcta).</li>
+                                <li>Used to: 5 oraciones (reescribir usando "used to" a partir de información dada).</li>
+                                <li>Todas las oraciones en contexto técnico-profesional.</li>
+                            </ul>
+                        </li>
+                    </ol>
+                    <p><em>Total: 70 puntos. Escala: 60% de exigencia.</em></p>
+                </div>
+            </div>
+            <div class="fase">
+                <span class="fase-title fase-cierre">CIERRE (15 min)</span>
+                <div class="fase-content">
+                    <ul>
+                        <li>Recoger pruebas.</li>
+                        <li>Breve conversación de cierre: <em>"How did you find the test? What was easy? What was challenging?"</em></li>
+                        <li>Preview de la Unidad 2: <em>"In Unit 2, we'll go deeper into each specialty. We'll read case studies about real problems and learn to describe how things work using Passive Voice."</em></li>
+                        <li>Felicitar a los estudiantes por completar la primera unidad.</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="recursos">
+                <strong>Recursos:</strong> Prueba impresa, hojas de respuesta.
+            </div>
+            <div class="evaluacion-box">
+                <strong>Evaluación:</strong> SUMATIVA — Nota 2 del semestre (Comprensión Lectora + Vocabulario + Gramática). 70 puntos, escala 60%.
+            </div>
+        </div>
+    </div>
+
+    <!-- DISTRIBUCIÓN DE NOTAS SEMESTRE 1 -->
+    <div class="notas-dist">
+        <h3>📝 Resumen de Evaluaciones — Unidad 1 (Notas 1–2 de 5 del semestre)</h3>
+        <table class="notas">
+            <tr>
+                <th>Nota</th>
+                <th>Tipo</th>
+                <th>Clase</th>
+                <th>Habilidad</th>
+                <th>Instrumento</th>
+                <th>Puntaje</th>
+            </tr>
+            <tr>
+                <td><b>Nota 1</b></td>
+                <td>Presentación oral</td>
+                <td>Clases 13-14</td>
+                <td>Expresión Oral</td>
+                <td>Rúbrica (5 criterios × 3 niveles)</td>
+                <td>15 pts / 60%</td>
+            </tr>
+            <tr>
+                <td><b>Nota 2</b></td>
+                <td>Prueba escrita</td>
+                <td>Clase 15</td>
+                <td>Comprensión Lectora + Vocabulario + Gramática</td>
+                <td>Prueba: matching, reading, gap-fill</td>
+                <td>70 pts / 60%</td>
+            </tr>
+        </table>
+    </div>
+
+    <div class="footer">
+        <p>Planificación elaborada para Liceo Técnico Profesional — Asignatura de Inglés — 1° Medio 2026</p>
+        <p>Basada en OA del MINEDUC (Actualización Priorización Curricular 2023) con integración de especialidades TP</p>
+    </div>
+
+</div>
+
+</body>
+</html>

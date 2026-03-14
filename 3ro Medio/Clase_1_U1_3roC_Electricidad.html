@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clase 1 — 3°C Electricidad — Technical Skills & Career Paths</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Inter', sans-serif; background: #f0f2f5; color: #333; line-height: 1.7; }
+
+        /* HEADER */
+        .header { background: linear-gradient(135deg, #e65100, #ff8f00); color: white; padding: 35px 20px; text-align: center; position: relative; overflow: hidden; }
+        .header::before { content: '⚡'; position: absolute; top: 10px; right: 30px; font-size: 80px; opacity: 0.15; }
+        .header h1 { font-size: 2em; font-weight: 700; margin-bottom: 5px; }
+        .header h2 { font-size: 1.2em; font-weight: 300; margin-bottom: 8px; }
+        .header .meta { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; margin-top: 12px; }
+        .header .meta span { background: rgba(255,255,255,0.2); padding: 5px 14px; border-radius: 20px; font-size: 0.85em; }
+
+        .container { max-width: 900px; margin: 25px auto; padding: 0 15px; }
+
+        /* OBJECTIVE */
+        .objective-card { background: white; border-radius: 12px; padding: 25px; margin-bottom: 25px; box-shadow: 0 2px 12px rgba(0,0,0,0.06); border-left: 5px solid #e65100; }
+        .objective-card h3 { color: #e65100; font-size: 1.15em; margin-bottom: 10px; }
+        .objective-card p { font-size: 1em; }
+        .objetivo-en { background: #fff3e0; padding: 10px 15px; border-radius: 8px; margin-top: 10px; font-style: italic; color: #bf360c; }
+
+        /* SECTION CARDS */
+        .section { background: white; border-radius: 12px; margin-bottom: 25px; overflow: hidden; box-shadow: 0 2px 12px rgba(0,0,0,0.06); }
+        .section-header { padding: 16px 25px; color: white; font-weight: 600; font-size: 1.1em; display: flex; align-items: center; gap: 10px; }
+        .section-header.inicio { background: #2e7d32; }
+        .section-header.desarrollo { background: #1565c0; }
+        .section-header.cierre { background: #6a1b9a; }
+        .section-body { padding: 20px 25px; }
+        .section-body li { margin-bottom: 8px; }
+        .section-body ol li { margin-bottom: 12px; }
+
+        /* VOCABULARY */
+        .vocab-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 12px; margin: 15px 0; }
+        .vocab-card { background: #fff3e0; border: 2px solid #ffcc02; border-radius: 10px; padding: 14px; text-align: center; cursor: pointer; transition: all 0.3s; position: relative; }
+        .vocab-card:hover { transform: translateY(-3px); box-shadow: 0 4px 15px rgba(230,81,0,0.2); }
+        .vocab-card .word { font-size: 1.15em; font-weight: 700; color: #e65100; }
+        .vocab-card .meaning { font-size: 0.85em; color: #666; margin-top: 5px; display: none; }
+        .vocab-card.revealed .meaning { display: block; }
+        .vocab-card .hint { font-size: 0.75em; color: #999; margin-top: 4px; }
+        .vocab-card.revealed .hint { display: none; }
+
+        /* READING TEXT */
+        .reading-box { background: #fafafa; border: 1px solid #e0e0e0; border-radius: 10px; padding: 25px; margin: 15px 0; position: relative; }
+        .reading-box h4 { color: #e65100; margin-bottom: 12px; font-size: 1.1em; }
+        .reading-box p { margin-bottom: 10px; font-size: 0.95em; line-height: 1.9; }
+        .highlight-word { background: #ffe0b2; padding: 1px 4px; border-radius: 3px; font-weight: 600; cursor: help; }
+        .highlight-word:hover { background: #ffcc80; }
+
+        /* ACTIVITIES */
+        .activity { background: #f5f5f5; border-radius: 10px; padding: 20px; margin: 15px 0; }
+        .activity h4 { color: #1565c0; margin-bottom: 12px; }
+        .quiz-item { background: white; border-radius: 8px; padding: 15px; margin-bottom: 12px; border: 1px solid #e0e0e0; }
+        .quiz-item p { font-weight: 600; margin-bottom: 8px; }
+        .quiz-options { display: flex; gap: 15px; flex-wrap: wrap; }
+        .quiz-btn { padding: 8px 20px; border-radius: 8px; border: 2px solid #e0e0e0; background: white; cursor: pointer; font-size: 0.9em; font-weight: 500; transition: all 0.2s; }
+        .quiz-btn:hover { border-color: #e65100; background: #fff3e0; }
+        .quiz-btn.correct { border-color: #2e7d32; background: #e8f5e9; color: #2e7d32; font-weight: 700; }
+        .quiz-btn.incorrect { border-color: #c62828; background: #ffebee; color: #c62828; text-decoration: line-through; }
+        .quiz-btn:disabled { cursor: default; opacity: 0.7; }
+
+        /* MATCHING */
+        .matching-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin: 15px 0; }
+        .match-col h5 { text-align: center; margin-bottom: 10px; color: #e65100; }
+        .match-item { background: white; border: 2px solid #e0e0e0; border-radius: 8px; padding: 12px; text-align: center; margin-bottom: 8px; cursor: pointer; transition: all 0.2s; font-weight: 500; }
+        .match-item:hover { border-color: #e65100; }
+        .match-item.selected { border-color: #e65100; background: #fff3e0; }
+        .match-item.matched { border-color: #2e7d32; background: #e8f5e9; color: #2e7d32; }
+
+        /* TICKET */
+        .ticket-section { background: linear-gradient(135deg, #fff8e1, #fff3e0); border: 2px dashed #e65100; border-radius: 12px; padding: 25px; margin: 20px 0; }
+        .ticket-section h3 { color: #e65100; margin-bottom: 15px; }
+        .ticket-input { width: 100%; padding: 10px 15px; border: 1px solid #ddd; border-radius: 8px; font-size: 0.95em; margin-bottom: 8px; font-family: inherit; }
+        .ticket-input:focus { outline: none; border-color: #e65100; box-shadow: 0 0 0 3px rgba(230,81,0,0.1); }
+
+        /* BUTTONS */
+        .btn { padding: 10px 24px; border-radius: 8px; border: none; cursor: pointer; font-weight: 600; font-size: 0.95em; transition: all 0.2s; }
+        .btn-primary { background: #e65100; color: white; }
+        .btn-primary:hover { background: #bf360c; }
+        .btn-success { background: #2e7d32; color: white; }
+        .btn-success:hover { background: #1b5e20; }
+
+        /* SCORE */
+        .score-bar { background: white; border-radius: 10px; padding: 15px 25px; margin-top: 25px; box-shadow: 0 2px 12px rgba(0,0,0,0.06); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; }
+        .score-bar .score { font-size: 1.3em; font-weight: 700; color: #e65100; }
+
+        .footer { text-align: center; padding: 20px; color: #999; font-size: 0.8em; margin-top: 20px; }
+
+        .teacher-note { background: #e3f2fd; border-left: 4px solid #1565c0; padding: 12px 16px; border-radius: 0 8px 8px 0; margin: 12px 0; font-size: 0.88em; }
+        .teacher-note strong { color: #1565c0; }
+
+        @media print { body { background: white; } .section, .objective-card, .ticket-section { break-inside: avoid; } }
+        @media (max-width: 600px) { .vocab-grid { grid-template-columns: repeat(2, 1fr); } .matching-grid { grid-template-columns: 1fr; } }
+    </style>
+</head>
+<body>
+
+<div class="header">
+    <h1>CLASS 1 — 3°C ELECTRICIDAD</h1>
+    <h2>Unit 1: Technical Skills & Career Paths</h2>
+    <div class="meta">
+        <span>📅 5 de marzo, 2026</span>
+        <span>⏱ 90 minutos</span>
+        <span>⚡ Especialidad: Electricidad</span>
+        <span>🎯 OA1</span>
+    </div>
+</div>
+
+<div class="container">
+
+    <!-- OBJETIVO -->
+    <div class="objective-card">
+        <h3>🎯 Objetivo de la Clase</h3>
+        <p>Identificar vocabulario técnico básico en inglés relacionado con la especialidad de <strong>Electricidad</strong> mediante la exploración de textos e imágenes del campo profesional.</p>
+        <div class="objetivo-en">"Today we will learn key English words used in the electrical field and read about a day as an electrician."</div>
+    </div>
+
+    <!-- ===================== INICIO ===================== -->
+    <div class="section">
+        <div class="section-header inicio">🟢 INICIO — Warm-up (15 min)</div>
+        <div class="section-body">
+            <div class="teacher-note">
+                <strong>🗣 Teacher says:</strong> <em>"Good morning! This year, we will learn English for your career in Electricidad. Let's start!"</em>
+            </div>
+            <h4 style="margin: 15px 0 10px; color: #2e7d32;">💡 Activación de conocimientos previos</h4>
+            <p><strong>Pregunta al curso:</strong> <em>"What English words do you already know from your specialty?"</em></p>
+            <p>Escribe las respuestas en la pizarra. Luego muestra las siguientes imágenes y pregunta: <em>"What do you see? Can you name anything in English?"</em></p>
+
+            <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; margin: 15px 0;">
+                <div style="background: #fff3e0; border-radius: 8px; padding: 15px; text-align: center;">
+                    <div style="font-size: 2.5em;">🔌</div>
+                    <p style="font-weight: 600; margin-top: 5px;">Electrical Panel</p>
+                </div>
+                <div style="background: #fff3e0; border-radius: 8px; padding: 15px; text-align: center;">
+                    <div style="font-size: 2.5em;">🔧</div>
+                    <p style="font-weight: 600; margin-top: 5px;">Electrician's Tools</p>
+                </div>
+                <div style="background: #fff3e0; border-radius: 8px; padding: 15px; text-align: center;">
+                    <div style="font-size: 2.5em;">💡</div>
+                    <p style="font-weight: 600; margin-top: 5px;">Wiring Installation</p>
+                </div>
+                <div style="background: #fff3e0; border-radius: 8px; padding: 15px; text-align: center;">
+                    <div style="font-size: 2.5em;">⚡</div>
+                    <p style="font-weight: 600; margin-top: 5px;">Circuit Breaker</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===================== DESARROLLO ===================== -->
+    <div class="section">
+        <div class="section-header desarrollo">🔵 DESARROLLO — Main Activities (60 min)</div>
+        <div class="section-body">
+
+            <!-- ACTIVITY 1: VOCABULARY -->
+            <h4 style="color: #1565c0; margin-bottom: 10px;">📖 Activity 1: Key Vocabulary (20 min)</h4>
+            <p style="margin-bottom: 10px;">Haz clic en cada tarjeta para ver el significado en español. Copia en tu cuaderno cada palabra con su traducción y un dibujo.</p>
+
+            <div class="vocab-grid" id="vocabGrid">
+                <div class="vocab-card" onclick="this.classList.toggle('revealed')">
+                    <div class="word">Wire</div>
+                    <div class="meaning">Cable / Alambre</div>
+                    <div class="hint">👆 clic para ver</div>
+                </div>
+                <div class="vocab-card" onclick="this.classList.toggle('revealed')">
+                    <div class="word">Circuit</div>
+                    <div class="meaning">Circuito</div>
+                    <div class="hint">👆 clic para ver</div>
+                </div>
+                <div class="vocab-card" onclick="this.classList.toggle('revealed')">
+                    <div class="word">Breaker</div>
+                    <div class="meaning">Interruptor automático / Disyuntor</div>
+                    <div class="hint">👆 clic para ver</div>
+                </div>
+                <div class="vocab-card" onclick="this.classList.toggle('revealed')">
+                    <div class="word">Panel</div>
+                    <div class="meaning">Tablero eléctrico</div>
+                    <div class="hint">👆 clic para ver</div>
+                </div>
+                <div class="vocab-card" onclick="this.classList.toggle('revealed')">
+                    <div class="word">Switch</div>
+                    <div class="meaning">Interruptor</div>
+                    <div class="hint">👆 clic para ver</div>
+                </div>
+                <div class="vocab-card" onclick="this.classList.toggle('revealed')">
+                    <div class="word">Outlet</div>
+                    <div class="meaning">Enchufe / Tomacorriente</div>
+                    <div class="hint">👆 clic para ver</div>
+                </div>
+                <div class="vocab-card" onclick="this.classList.toggle('revealed')">
+                    <div class="word">Voltage</div>
+                    <div class="meaning">Voltaje</div>
+                    <div class="hint">👆 clic para ver</div>
+                </div>
+                <div class="vocab-card" onclick="this.classList.toggle('revealed')">
+                    <div class="word">Current</div>
+                    <div class="meaning">Corriente (eléctrica)</div>
+                    <div class="hint">👆 clic para ver</div>
+                </div>
+                <div class="vocab-card" onclick="this.classList.toggle('revealed')">
+                    <div class="word">Resistance</div>
+                    <div class="meaning">Resistencia</div>
+                    <div class="hint">👆 clic para ver</div>
+                </div>
+                <div class="vocab-card" onclick="this.classList.toggle('revealed')">
+                    <div class="word">Multimeter</div>
+                    <div class="meaning">Multímetro</div>
+                    <div class="hint">👆 clic para ver</div>
+                </div>
+                <div class="vocab-card" onclick="this.classList.toggle('revealed')">
+                    <div class="word">Pliers</div>
+                    <div class="meaning">Alicates</div>
+                    <div class="hint">👆 clic para ver</div>
+                </div>
+                <div class="vocab-card" onclick="this.classList.toggle('revealed')">
+                    <div class="word">Conduit</div>
+                    <div class="meaning">Conducto / Tubo protector</div>
+                    <div class="hint">👆 clic para ver</div>
+                </div>
+                <div class="vocab-card" onclick="this.classList.toggle('revealed')">
+                    <div class="word">Transformer</div>
+                    <div class="meaning">Transformador</div>
+                    <div class="hint">👆 clic para ver</div>
+                </div>
+                <div class="vocab-card" onclick="this.classList.toggle('revealed')">
+                    <div class="word">Grounding</div>
+                    <div class="meaning">Conexión a tierra</div>
+                    <div class="hint">👆 clic para ver</div>
+                </div>
+            </div>
+
+            <button class="btn btn-primary" onclick="document.querySelectorAll('.vocab-card').forEach(c => c.classList.add('revealed'))">Revelar todas</button>
+
+            <!-- ACTIVITY 2: MATCHING -->
+            <h4 style="color: #1565c0; margin: 25px 0 10px;">🔗 Activity 2: Matching — Tools & Components (15 min)</h4>
+            <p style="margin-bottom: 10px;">Selecciona un elemento de la columna izquierda y luego su pareja en la columna derecha.</p>
+
+            <div class="matching-grid">
+                <div class="match-col">
+                    <h5>📷 Descripción</h5>
+                    <div class="match-item" data-match="A" onclick="selectMatch(this, 'left')">Measures voltage and current</div>
+                    <div class="match-item" data-match="B" onclick="selectMatch(this, 'left')">Protects circuits from overload</div>
+                    <div class="match-item" data-match="C" onclick="selectMatch(this, 'left')">Carries electricity through walls</div>
+                    <div class="match-item" data-match="D" onclick="selectMatch(this, 'left')">Tool to cut and bend wires</div>
+                    <div class="match-item" data-match="E" onclick="selectMatch(this, 'left')">Where you plug in a device</div>
+                    <div class="match-item" data-match="F" onclick="selectMatch(this, 'left')">Turns lights on and off</div>
+                    <div class="match-item" data-match="G" onclick="selectMatch(this, 'left')">Safety connection to the earth</div>
+                </div>
+                <div class="match-col">
+                    <h5>🔤 English Word</h5>
+                    <div class="match-item" data-match="F" onclick="selectMatch(this, 'right')">Switch</div>
+                    <div class="match-item" data-match="C" onclick="selectMatch(this, 'right')">Wire</div>
+                    <div class="match-item" data-match="A" onclick="selectMatch(this, 'right')">Multimeter</div>
+                    <div class="match-item" data-match="E" onclick="selectMatch(this, 'right')">Outlet</div>
+                    <div class="match-item" data-match="G" onclick="selectMatch(this, 'right')">Grounding</div>
+                    <div class="match-item" data-match="B" onclick="selectMatch(this, 'right')">Breaker</div>
+                    <div class="match-item" data-match="D" onclick="selectMatch(this, 'right')">Pliers</div>
+                </div>
+            </div>
+            <p id="matchScore" style="text-align: center; font-weight: 600; color: #2e7d32; margin-top: 10px;"></p>
+
+            <!-- ACTIVITY 3: READING -->
+            <h4 style="color: #1565c0; margin: 25px 0 10px;">📚 Activity 3: Reading — "A Day as an Electrician" (15 min)</h4>
+            <p style="margin-bottom: 5px;">Lee el siguiente texto. Las palabras destacadas son del vocabulario de hoy. Subráyalas en tu ficha.</p>
+
+            <div class="reading-box">
+                <h4>⚡ A Day as an Electrician</h4>
+                <p>My name is Carlos. I am an <strong>electrician</strong>. I work in Santiago, Chile. Every morning, I check my tools: my <span class="highlight-word" title="Multímetro">multimeter</span>, my <span class="highlight-word" title="Alicates">pliers</span>, and my safety equipment.</p>
+                <p>At 8:00 AM, I go to the construction site. Today, I need to install new <span class="highlight-word" title="Cable">wires</span> in the building. First, I put the wires inside the <span class="highlight-word" title="Conducto">conduit</span> on the wall. Then, I connect them to the electrical <span class="highlight-word" title="Tablero eléctrico">panel</span>.</p>
+                <p>After lunch, I check the <span class="highlight-word" title="Circuito">circuits</span>. I use my <span class="highlight-word" title="Multímetro">multimeter</span> to measure the <span class="highlight-word" title="Voltaje">voltage</span> and the <span class="highlight-word" title="Corriente">current</span>. Everything looks good. The <span class="highlight-word" title="Resistencia">resistance</span> is correct.</p>
+                <p>At 3:00 PM, I install a new <span class="highlight-word" title="Interruptor automático">breaker</span> in the panel. I also install three <span class="highlight-word" title="Enchufe">outlets</span> and two <span class="highlight-word" title="Interruptor">switches</span> in the rooms. Finally, I check the <span class="highlight-word" title="Conexión a tierra">grounding</span> connection. Safety is very important!</p>
+                <p>I finish work at 5:00 PM. I like my job because I help people have electricity in their homes. Being an electrician is a great career!</p>
+            </div>
+
+            <!-- ACTIVITY 4: TRUE/FALSE -->
+            <h4 style="color: #1565c0; margin: 25px 0 10px;">✅ Activity 4: Comprehension Check — True or False? (10 min)</h4>
+
+            <div class="activity">
+                <div class="quiz-item">
+                    <p>1. Carlos works as an electrician in Valparaíso.</p>
+                    <div class="quiz-options">
+                        <button class="quiz-btn" onclick="checkAnswer(this, false)">TRUE</button>
+                        <button class="quiz-btn" onclick="checkAnswer(this, true)">FALSE</button>
+                    </div>
+                </div>
+                <div class="quiz-item">
+                    <p>2. Carlos uses a multimeter to measure voltage.</p>
+                    <div class="quiz-options">
+                        <button class="quiz-btn" onclick="checkAnswer(this, true)">TRUE</button>
+                        <button class="quiz-btn" onclick="checkAnswer(this, false)">FALSE</button>
+                    </div>
+                </div>
+                <div class="quiz-item">
+                    <p>3. Carlos installs wires inside the conduit.</p>
+                    <div class="quiz-options">
+                        <button class="quiz-btn" onclick="checkAnswer(this, true)">TRUE</button>
+                        <button class="quiz-btn" onclick="checkAnswer(this, false)">FALSE</button>
+                    </div>
+                </div>
+                <div class="quiz-item">
+                    <p>4. Carlos does not check the grounding connection.</p>
+                    <div class="quiz-options">
+                        <button class="quiz-btn" onclick="checkAnswer(this, false)">TRUE</button>
+                        <button class="quiz-btn" onclick="checkAnswer(this, true)">FALSE</button>
+                    </div>
+                </div>
+                <div class="quiz-item">
+                    <p>5. Carlos finishes work at 5:00 PM.</p>
+                    <div class="quiz-options">
+                        <button class="quiz-btn" onclick="checkAnswer(this, true)">TRUE</button>
+                        <button class="quiz-btn" onclick="checkAnswer(this, false)">FALSE</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===================== CIERRE ===================== -->
+    <div class="section">
+        <div class="section-header cierre">🟣 CIERRE — Exit Ticket (15 min)</div>
+        <div class="section-body">
+
+            <div class="ticket-section">
+                <h3>🎫 Exit Ticket — Write 5 new words you learned today</h3>
+                <p style="margin-bottom: 15px;">Escribe 5 palabras nuevas que aprendiste hoy con su significado en español.</p>
+                <div id="ticketInputs">
+                    <div style="display: flex; gap: 10px; margin-bottom: 8px;">
+                        <input class="ticket-input" placeholder="1. English word" style="flex:1">
+                        <input class="ticket-input" placeholder="Significado en español" style="flex:1">
+                    </div>
+                    <div style="display: flex; gap: 10px; margin-bottom: 8px;">
+                        <input class="ticket-input" placeholder="2. English word" style="flex:1">
+                        <input class="ticket-input" placeholder="Significado en español" style="flex:1">
+                    </div>
+                    <div style="display: flex; gap: 10px; margin-bottom: 8px;">
+                        <input class="ticket-input" placeholder="3. English word" style="flex:1">
+                        <input class="ticket-input" placeholder="Significado en español" style="flex:1">
+                    </div>
+                    <div style="display: flex; gap: 10px; margin-bottom: 8px;">
+                        <input class="ticket-input" placeholder="4. English word" style="flex:1">
+                        <input class="ticket-input" placeholder="Significado en español" style="flex:1">
+                    </div>
+                    <div style="display: flex; gap: 10px; margin-bottom: 8px;">
+                        <input class="ticket-input" placeholder="5. English word" style="flex:1">
+                        <input class="ticket-input" placeholder="Significado en español" style="flex:1">
+                    </div>
+                </div>
+            </div>
+
+            <div style="background: #e8f5e9; border-radius: 10px; padding: 20px; margin-top: 15px;">
+                <h4 style="color: #2e7d32; margin-bottom: 10px;">💬 Reflection Question</h4>
+                <p><em>"Why is it important to know English in your career as an electrician?"</em></p>
+                <p style="font-size: 0.9em; color: #666; margin-top: 8px;">2-3 estudiantes comparten su respuesta oralmente con el curso.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- SCORE -->
+    <div class="score-bar">
+        <span>📊 Tu progreso en la clase:</span>
+        <span class="score" id="totalScore">0 / 12 puntos</span>
+    </div>
+
+    <div class="footer">
+        <p>3°C Electricidad — Clase 1, Unidad 1 — Inglés 2026</p>
+        <p>Liceo Técnico Profesional</p>
+    </div>
+</div>
+
+<script>
+    let score = 0;
+    const totalPoints = 12; // 5 T/F + 7 matching
+
+    function checkAnswer(btn, isCorrect) {
+        const parent = btn.parentElement;
+        const buttons = parent.querySelectorAll('.quiz-btn');
+        buttons.forEach(b => b.disabled = true);
+        if (isCorrect) {
+            btn.classList.add('correct');
+            score++;
+        } else {
+            btn.classList.add('incorrect');
+            buttons.forEach(b => { if (b !== btn) b.classList.add('correct'); });
+        }
+        updateScore();
+    }
+
+    let selectedLeft = null;
+    let selectedRight = null;
+    let matchesFound = 0;
+
+    function selectMatch(el, side) {
+        if (el.classList.contains('matched')) return;
+        if (side === 'left') {
+            if (selectedLeft) selectedLeft.classList.remove('selected');
+            selectedLeft = el;
+            el.classList.add('selected');
+        } else {
+            if (selectedRight) selectedRight.classList.remove('selected');
+            selectedRight = el;
+            el.classList.add('selected');
+        }
+        if (selectedLeft && selectedRight) {
+            if (selectedLeft.dataset.match === selectedRight.dataset.match) {
+                selectedLeft.classList.remove('selected');
+                selectedRight.classList.remove('selected');
+                selectedLeft.classList.add('matched');
+                selectedRight.classList.add('matched');
+                matchesFound++;
+                score++;
+                updateScore();
+                if (matchesFound === 7) {
+                    document.getElementById('matchScore').textContent = '🎉 ¡Todas las parejas encontradas!';
+                }
+            } else {
+                selectedLeft.classList.remove('selected');
+                selectedRight.classList.remove('selected');
+                selectedLeft.style.animation = 'shake 0.3s';
+                selectedRight.style.animation = 'shake 0.3s';
+                setTimeout(() => {
+                    if(selectedLeft) selectedLeft.style.animation = '';
+                    if(selectedRight) selectedRight.style.animation = '';
+                }, 300);
+            }
+            selectedLeft = null;
+            selectedRight = null;
+        }
+    }
+
+    function updateScore() {
+        document.getElementById('totalScore').textContent = score + ' / ' + totalPoints + ' puntos';
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3° Medio Mecánica Industrial - Unidad 1: Technical Skills & Career Paths</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: #f5f5f5; color: #333; line-height: 1.6; }
+        .header { background: linear-gradient(135deg, #263238, #455a64); color: white; padding: 30px; text-align: center; }
+        .header h1 { font-size: 1.8em; margin-bottom: 5px; }
+        .header h2 { font-size: 1.3em; font-weight: 300; margin-bottom: 10px; }
+        .header .subtitle { font-size: 0.95em; opacity: 0.9; }
+        .meta-info { display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; margin-top: 15px; }
+        .meta-info span { background: rgba(255,255,255,0.15); padding: 5px 15px; border-radius: 20px; font-size: 0.85em; }
+        .container { max-width: 1100px; margin: 20px auto; padding: 0 15px; }
+        .unit-overview { background: white; border-radius: 10px; padding: 25px; margin-bottom: 25px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); }
+        .unit-overview h3 { color: #263238; margin-bottom: 15px; font-size: 1.2em; border-bottom: 2px solid #263238; padding-bottom: 8px; }
+        .overview-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
+        .overview-item { padding: 10px; background: #eceff1; border-radius: 6px; }
+        .overview-item strong { color: #263238; }
+        .overview-item ul { margin-left: 20px; margin-top: 5px; }
+        .overview-item ul li { margin-bottom: 3px; font-size: 0.9em; }
+        .clase-card { background: white; border-radius: 10px; margin-bottom: 20px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); overflow: hidden; }
+        .clase-card.evaluacion { border-left: 5px solid #c62828; }
+        .clase-header { padding: 15px 20px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px; }
+        .clase-header.normal { background: #cfd8dc; }
+        .clase-header.eval { background: #ffebee; }
+        .clase-header .clase-num { font-size: 1.1em; font-weight: 700; color: #263238; }
+        .clase-header .clase-fecha { font-size: 0.85em; color: #666; }
+        .clase-header .badge { padding: 3px 10px; border-radius: 12px; font-size: 0.75em; font-weight: 600; }
+        .badge-oa { background: #eceff1; color: #263238; }
+        .badge-eval { background: #ffcdd2; color: #c62828; }
+        .clase-body { padding: 20px; }
+        .objetivo { background: #fff3e0; border-left: 4px solid #ef6c00; padding: 12px 15px; margin-bottom: 15px; border-radius: 0 6px 6px 0; }
+        .objetivo strong { color: #ef6c00; }
+        .fase { margin-bottom: 12px; }
+        .fase-title { display: inline-block; padding: 3px 12px; border-radius: 4px; font-weight: 600; font-size: 0.85em; color: white; margin-bottom: 6px; }
+        .fase-inicio { background: #2e7d32; }
+        .fase-desarrollo { background: #1565c0; }
+        .fase-cierre { background: #6a1b9a; }
+        .fase-content { padding-left: 15px; font-size: 0.92em; }
+        .fase-content ol, .fase-content ul { margin-left: 15px; }
+        .fase-content li { margin-bottom: 4px; }
+        .recursos { background: #f1f8e9; padding: 10px 15px; border-radius: 6px; margin-top: 10px; font-size: 0.88em; }
+        .recursos strong { color: #33691e; }
+        .evaluacion-box { background: #fce4ec; padding: 10px 15px; border-radius: 6px; margin-top: 10px; font-size: 0.88em; }
+        .evaluacion-box strong { color: #c62828; }
+        .sugerencia { background: #e8f5e9; border-left: 4px solid #2e7d32; padding: 10px 15px; border-radius: 0 6px 6px 0; margin-top: 10px; font-size: 0.88em; }
+        .sugerencia strong { color: #2e7d32; }
+        .notas-dist { background: white; border-radius: 10px; padding: 25px; margin-bottom: 25px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); }
+        .notas-dist h3 { color: #c62828; margin-bottom: 15px; font-size: 1.1em; }
+        table.notas { width: 100%; border-collapse: collapse; }
+        table.notas th { background: #263238; color: white; padding: 8px 12px; text-align: left; font-size: 0.9em; }
+        table.notas td { padding: 8px 12px; border-bottom: 1px solid #e0e0e0; font-size: 0.88em; }
+        table.notas tr:nth-child(even) { background: #eceff1; }
+        .footer { text-align: center; padding: 20px; color: #999; font-size: 0.8em; }
+        @media print {
+            body { background: white; }
+            .clase-card { break-inside: avoid; page-break-inside: avoid; box-shadow: none; border: 1px solid #ddd; }
+            .header { background: #263238 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+        }
+        @media (max-width: 768px) {
+            .overview-grid { grid-template-columns: 1fr; }
+            .meta-info { flex-direction: column; align-items: center; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="header">
+    <h1>PLANIFICACIÓN CLASE A CLASE — 3° MEDIO — MECÁNICA INDUSTRIAL</h1>
+    <h2>Unidad 1: Technical Skills & Career Paths</h2>
+    <p class="subtitle">Inglés — Liceo Técnico Profesional — Año Escolar 2026 — Semestre 1</p>
+    <div class="meta-info">
+        <span>📅 4 marzo – 3 mayo (9 sesiones efectivas)</span>
+        <span>⏱ 9 clases de 90 min (Clases 1–9)</span>
+        <span>📚 2 hrs/semana (1 sesión)</span>
+        <span>🎯 Foco: Vocabulario técnico, lectura de perfiles laborales y presentación oral de habilidades</span>
+    </div>
+</div>
+
+<div class="container">
+
+    <div class="unit-overview">
+        <h3>Visión General de la Unidad 1</h3>
+        <div class="overview-grid">
+            <div class="overview-item">
+                <strong>OA Basales trabajados (3° Medio):</strong>
+                <ul>
+                    <li><b>OA1:</b> Comprender información central de textos orales y escritos en contextos de interés.</li><li><b>OA4:</b> Producir y comprender con fluidez textos orales y escritos breves y claros.</li>
+                </ul>
+            </div>
+            <div class="overview-item">
+                <strong>Evaluaciones de la unidad:</strong>
+                <ul>
+            <li>Clase 7: <b>Nota 1 S1</b> — Presentación oral: describir habilidades técnicas en Mecánica Industrial. 20 pts.</li>
+        </ul>
+            </div>
+            <div class="overview-item">
+                <strong>Habilidades priorizadas:</strong>
+                <ul>
+                    <li><b>Lectura:</b> Textos técnicos, estudios de caso, reportes e instrucciones de mecánica industrial.</li>
+                    <li><b>Expresión Oral:</b> Descripciones, explicaciones de procedimientos, debates y presentaciones.</li>
+                </ul>
+            </div>
+            <div class="overview-item">
+                <strong>Especialidad:</strong>
+                <ul><li>Mecánica Industrial</li></ul>
+                <strong>Nivel de los estudiantes:</strong>
+                <ul><li>A1-A2 (Básico)</li></ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==================== CLASE 1 ==================== -->
+    <div class="clase-card">
+        <div class="clase-header normal">
+            <span class="clase-num">Clase 1</span>
+            <span class="badge badge-oa">OA1</span>  
+        </div>
+        <div class="clase-body">
+            <div class="objetivo">
+                <strong>Objetivo de la clase (Bloom):</strong> Identificar vocabulario técnico básico en inglés relacionado con la especialidad de Mecánica Industrial mediante la exploración de textos e imágenes del campo profesional.
+            </div>
+            <div class="fase">
+                <span class="fase-title fase-inicio">INICIO (15 min)</span>
+                <div class="fase-content">
+                    <ul>
+                <li>Docente saluda en inglés y presenta el objetivo: <em>"This year, we will learn English for your career in Mecánica Industrial."</em></li>
+                <li>Activación de conocimientos previos: <em>"What English words do you already know from your specialty?"</em> — Lluvia de ideas en la pizarra.</li>
+                <li>Se muestran 3-4 imágenes reales de talleres/laboratorios de mecánica industrial y se pregunta: <em>"What do you see? Can you name anything in English?"</em></li>
+            </ul>
+                </div>
+            </div>
+            <div class="fase">
+                <span class="fase-title fase-desarrollo">DESARROLLO (60 min)</span>
+                <div class="fase-content">
+                    <ol>
+                <li><b>Vocabulary introduction (20 min):</b> Presentación visual de 14 palabras clave del área: lathe, mill, drill press, welder, caliper, micrometer, file, grinding wheel, vise, clamp, blueprint, tolerance, steel, aluminum. Los estudiantes copian en sus cuadernos con dibujo/imagen asociada.</li>
+                <li><b>Matching activity (15 min):</b> Ficha con imágenes de herramientas/componentes — los estudiantes asocian imagen con palabra en inglés. Trabajo en parejas.</li>
+                <li><b>Listening & Reading (15 min):</b> Docente lee a short adapted text: <em>'A Day in an Industrial Workshop'</em> describing tasks: operating a lathe, welding metal pieces, measuring with a caliper. Los estudiantes siguen la lectura en una ficha y subrayan las palabras nuevas.</li>
+                <li><b>Comprehension check (10 min):</b> 5 preguntas True/False sobre el texto leído. Corrección grupal.</li>
+            </ol>
+                </div>
+            </div>
+            <div class="fase">
+                <span class="fase-title fase-cierre">CIERRE (15 min)</span>
+                <div class="fase-content">
+                    <ul>
+                <li>Ticket de salida: los estudiantes escriben 5 palabras nuevas que aprendieron hoy y su significado.</li>
+                <li>Pregunta de reflexión: <em>"Why is it important to know English in your career?"</em> — 2-3 estudiantes comparten oralmente.</li>
+            </ul>
+                </div>
+            </div>
+            <div class="recursos">
+                <strong>📦 Recursos:</strong> Imágenes impresas/proyectadas de talleres de mecánica industrial, ficha de vocabulario con 14 palabras, ficha de lectura impresa, pizarra.
+            </div>
+            <div class="evaluacion-box">
+                <strong>📋 Evaluación:</strong> Diagnóstica informal — el docente observa nivel de reconocimiento de vocabulario y capacidad de lectura.
+            </div>
+            
+        </div>
+    </div>
+
+    <!-- ==================== CLASE 2 ==================== -->
+    <div class="clase-card">
+        <div class="clase-header normal">
+            <span class="clase-num">Clase 2</span>
+            <span class="badge badge-oa">OA1</span> <span class="badge badge-oa">OA3</span>  
+        </div>
+        <div class="clase-body">
+            <div class="objetivo">
+                <strong>Objetivo de la clase (Bloom):</strong> Comprender información explícita en un texto adaptado sobre el perfil laboral y la rutina diaria de un profesional de Mecánica Industrial.
+            </div>
+            <div class="fase">
+                <span class="fase-title fase-inicio">INICIO (15 min)</span>
+                <div class="fase-content">
+                    <ul>
+                <li>Warm-up: Repaso rápido del vocabulario de la clase anterior con flashcards (docente muestra imagen, estudiantes dicen la palabra en inglés).</li>
+                <li>Pre-reading: <em>"What does a mecánica professional do every day? What tasks do they perform?"</em> — Lluvia de ideas en español e inglés.</li>
+                <li>Se enseñan 3 expresiones de rutina: <em>"Every day, he/she checks…", "He/she uses… to…", "First…, then…, finally…"</em></li>
+            </ul>
+                </div>
+            </div>
+            <div class="fase">
+                <span class="fase-title fase-desarrollo">DESARROLLO (60 min)</span>
+                <div class="fase-content">
+                    <ol>
+                <li><b>Pre-reading strategies (10 min):</b> Los estudiantes observan el título, imágenes y subtítulos del texto. Hacen predicciones: <em>"What is this text about?"</em></li>
+                <li><b>Reading (20 min):</b> Lectura guiada de a short adapted text: <em>'A Day in an Industrial Workshop'</em> describing tasks: operating a lathe, welding metal pieces, measuring with a caliper. El docente lee en voz alta primero; luego los estudiantes releen en silencio. Subrayan verbos de acción y vocabulario técnico.</li>
+                <li><b>Comprehension tasks (20 min):</b>
+                    <ul>
+                        <li>a) Responder 6 preguntas de comprensión (3 explícitas + 3 inferenciales).</li>
+                        <li>b) Completar una tabla: Task / Tool used / Time of day.</li>
+                        <li>c) Identificar el propósito del texto: informar, instruir o persuadir.</li>
+                    </ul>
+                </li>
+                <li><b>Oral practice (10 min):</b> En parejas, los estudiantes se turnan describiendo una tarea del texto: <em>"The mechanic/electrician/technician checks the… every morning."</em></li>
+            </ol>
+                </div>
+            </div>
+            <div class="fase">
+                <span class="fase-title fase-cierre">CIERRE (15 min)</span>
+                <div class="fase-content">
+                    <ul>
+                <li>Post-reading: los estudiantes resumen el texto en 3 oraciones simples en inglés (pueden usar el texto como apoyo).</li>
+                <li>Reflexión oral: <em>"What was the most interesting task mentioned in the text? Why?"</em></li>
+            </ul>
+                </div>
+            </div>
+            <div class="recursos">
+                <strong>📦 Recursos:</strong> Ficha de lectura impresa (texto adaptado A1-A2), ficha de preguntas de comprensión, tabla para completar, pizarra.
+            </div>
+            <div class="evaluacion-box">
+                <strong>📋 Evaluación:</strong> Formativa — revisión de respuestas de comprensión y observación de producción oral en parejas.
+            </div>
+            <div class="sugerencia"><strong>💡 Sugerencia:</strong> Si los estudiantes terminan rápido la actividad de comprensión, pueden crear 2 preguntas adicionales sobre el texto para intercambiar con otro compañero.</div>
+        </div>
+    </div>
+
+    <!-- ==================== CLASE 3 ==================== -->
+    <div class="clase-card">
+        <div class="clase-header normal">
+            <span class="clase-num">Clase 3</span>
+            <span class="badge badge-oa">OA1</span> <span class="badge badge-oa">OA4</span>  
+        </div>
+        <div class="clase-body">
+            <div class="objetivo">
+                <strong>Objetivo de la clase (Bloom):</strong> Aplicar vocabulario técnico de Mecánica Industrial en oraciones simples utilizando Simple Present para describir rutinas laborales.
+            </div>
+            <div class="fase">
+                <span class="fase-title fase-inicio">INICIO (15 min)</span>
+                <div class="fase-content">
+                    <ul>
+                <li>Vocabulary warm-up: Juego <em>"Word Race"</em> — dos equipos compiten por escribir la mayor cantidad de palabras técnicas en inglés en 2 minutos.</li>
+                <li>Docente presenta el objetivo: <em>"Today we will learn to describe what professionals do every day using Simple Present."</em></li>
+                <li>Repaso rápido de Simple Present: <em>"He checks / She uses / They repair"</em> — estructura en la pizarra.</li>
+            </ul>
+                </div>
+            </div>
+            <div class="fase">
+                <span class="fase-title fase-desarrollo">DESARROLLO (60 min)</span>
+                <div class="fase-content">
+                    <ol>
+                <li><b>Vocabulary expansion (15 min):</b> Se introducen 8 verbos de acción comunes en el área: </li>
+                <ul><li>Ej: <em>check, repair, install, measure, test, replace, adjust, calibrate</em></li></ul>
+                <li>Los estudiantes completan oraciones: <em>"A industrial technician _____ (verb) the _____ (tool/part) every day."</em></li>
+                <li><b>Sentence building (20 min):</b> Con tarjetas recortables (sujeto + verbo + objeto), los estudiantes construyen 8 oraciones correctas sobre rutinas del área. Trabajo en parejas.</li>
+                <li><b>Oral drill (15 min):</b> Actividad <em>"Interview a Technician"</em> — En parejas, A es un periodista y B es un técnico. A pregunta: <em>"What do you do every day?"</em> B responde usando Simple Present y vocabulario técnico. Luego cambian roles.</li>
+                <li><b>Writing (10 min):</b> Cada estudiante escribe un párrafo de 5 oraciones: <em>"My name is… I study Mecánica Industrial. Every day at the workshop, I…"</em></li>
+            </ol>
+                </div>
+            </div>
+            <div class="fase">
+                <span class="fase-title fase-cierre">CIERRE (15 min)</span>
+                <div class="fase-content">
+                    <ul>
+                <li>3 estudiantes leen sus párrafos frente al curso.</li>
+                <li>Corrección colaborativa: el docente y los compañeros ayudan a mejorar la pronunciación y gramática.</li>
+                <li>Ticket de salida: escribir 3 oraciones nuevas sobre rutinas técnicas.</li>
+            </ul>
+                </div>
+            </div>
+            <div class="recursos">
+                <strong>📦 Recursos:</strong> Tarjetas recortables (sujetos, verbos, objetos), ficha de ejercicios de completación, pizarra, cuaderno.
+            </div>
+            <div class="evaluacion-box">
+                <strong>📋 Evaluación:</strong> Formativa — revisión de párrafos escritos; observación de producción oral en actividad de entrevista.
+            </div>
+            
+        </div>
+    </div>
+
+    <!-- ==================== CLASE 4 ==================== -->
+    <div class="clase-card">
+        <div class="clase-header normal">
+            <span class="clase-num">Clase 4</span>
+            <span class="badge badge-oa">OA1</span> <span class="badge badge-oa">OA3</span>  
+        </div>
+        <div class="clase-body">
+            <div class="objetivo">
+                <strong>Objetivo de la clase (Bloom):</strong> Analizar un estudio de caso técnico en inglés identificando el problema, las causas posibles y los pasos de diagnóstico en el contexto de Mecánica Industrial.
+            </div>
+            <div class="fase">
+                <span class="fase-title fase-inicio">INICIO (15 min)</span>
+                <div class="fase-content">
+                    <ul>
+                <li>Docente proyecta una imagen de un problema técnico (ej: máquina dañada, falla visible) y pregunta: <em>"What do you think happened? What is the problem?"</em></li>
+                <li>Se introduce vocabulario clave para resolución de problemas: <em>problem, cause, symptom, diagnosis, solution, step, check, inspect, test, replace</em>.</li>
+                <li>Pre-reading: <em>"Today we will read a real case study. You will be the technician who solves the problem."</em></li>
+            </ul>
+                </div>
+            </div>
+            <div class="fase">
+                <span class="fase-title fase-desarrollo">DESARROLLO (60 min)</span>
+                <div class="fase-content">
+                    <ol>
+                <li><b>Reading the case study (25 min):</b> Case Study: <em>'The Defective Weld'</em> — A welded joint fails inspection. Students read the diagnostic steps: visual inspection, check welding parameters, test joint strength.
+                    <ul>
+                        <li>Primera lectura silenciosa (5 min). Estudiantes subrayan palabras desconocidas.</li>
+                        <li>Segunda lectura guiada por el docente. Se aclara vocabulario en contexto.</li>
+                        <li>Completar ficha de análisis: <b>Problem → Symptoms → Diagnostic Steps → Solution</b></li>
+                    </ul>
+                </li>
+                <li><b>Group discussion (15 min):</b> En grupos de 3-4, los estudiantes discuten:
+                    <ul>
+                        <li><em>"What was the problem?"</em></li>
+                        <li><em>"What steps did the technician follow?"</em></li>
+                        <li><em>"Do you agree with the solution? Why or why not?"</em></li>
+                    </ul>
+                </li>
+                <li><b>Sequencing activity (10 min):</b> Los estudiantes reciben los pasos del diagnóstico desordenados y deben ponerlos en orden correcto usando: <em>First… Then… After that… Finally…</em></li>
+                <li><b>Oral report (10 min):</b> Un representante de cada grupo explica al curso: <em>"The problem was… First, the technician… Then… The solution was…"</em></li>
+            </ol>
+                </div>
+            </div>
+            <div class="fase">
+                <span class="fase-title fase-cierre">CIERRE (15 min)</span>
+                <div class="fase-content">
+                    <ul>
+                <li>Reflexión: <em>"Was this case study similar to situations you have seen in your workshop? Tell us."</em></li>
+                <li>Los estudiantes escriben en su cuaderno una oración sobre lo que aprendieron: <em>"Today I learned that…"</em></li>
+            </ul>
+                </div>
+            </div>
+            <div class="recursos">
+                <strong>📦 Recursos:</strong> Ficha de estudio de caso impresa, ficha de análisis (Problem/Symptoms/Steps/Solution), tarjetas de secuencia recortables, pizarra.
+            </div>
+            <div class="evaluacion-box">
+                <strong>📋 Evaluación:</strong> Formativa — revisión de ficha de análisis completada; evaluación de participación oral en grupo.
+            </div>
+            <div class="sugerencia"><strong>💡 Sugerencia:</strong> <b>Actividad de extensión:</b> Los estudiantes pueden inventar su propio caso de estudio breve (5 oraciones) describiendo un problema diferente del área, para compartir en la siguiente clase.</div>
+        </div>
+    </div>
+
+    <!-- ==================== CLASE 5 ==================== -->
+    <div class="clase-card">
+        <div class="clase-header normal">
+            <span class="clase-num">Clase 5</span>
+            <span class="badge badge-oa">OA1</span> <span class="badge badge-oa">OA4</span>  
+        </div>
+        <div class="clase-body">
+            <div class="objetivo">
+                <strong>Objetivo de la clase (Bloom):</strong> Comprender información específica en un video técnico en inglés y producir descripciones orales breves sobre equipos y procesos de Mecánica Industrial.
+            </div>
+            <div class="fase">
+                <span class="fase-title fase-inicio">INICIO (15 min)</span>
+                <div class="fase-content">
+                    <ul>
+                <li>Warm-up: repaso del caso de estudio de la clase anterior — <em>"Who remembers the problem? What was the solution?"</em> 2-3 estudiantes recuentan oralmente.</li>
+                <li>Pre-viewing: el docente introduce el video: YouTube video: 'How a Lathe Works' (animated, 5 min) — students watch and label parts of the machine.</li>
+                <li>Se entregan 5 preguntas guía que los estudiantes deben responder durante el video.</li>
+            </ul>
+                </div>
+            </div>
+            <div class="fase">
+                <span class="fase-title fase-desarrollo">DESARROLLO (60 min)</span>
+                <div class="fase-content">
+                    <ol>
+                <li><b>First viewing (10 min):</b> Estudiantes miran el video completo con subtítulos en inglés para comprensión general. No responden preguntas aún.</li>
+                <li><b>Second viewing (10 min):</b> Se reproduce el video por segmentos, pausando para que los estudiantes respondan las 5 preguntas guía en su ficha.</li>
+                <li><b>Vocabulary from video (10 min):</b> Docente extrae 8-10 palabras/frases clave del video y las presenta en contexto. Estudiantes las registran con definición simple.</li>
+                <li><b>Oral practice — Describe & Explain (20 min):</b> Actividad en parejas: Describe the main machines in an industrial workshop (lathe, mill, drill press, welder) and what each one does. Cada estudiante tiene 2 minutos para su descripción. El compañero toma notas y hace 1 pregunta.</li>
+                <li><b>Class sharing (10 min):</b> 3-4 voluntarios presentan su descripción al curso. Retroalimentación del docente en pronunciación y contenido.</li>
+            </ol>
+                </div>
+            </div>
+            <div class="fase">
+                <span class="fase-title fase-cierre">CIERRE (15 min)</span>
+                <div class="fase-content">
+                    <ul>
+                <li>Quick quiz oral: el docente dice una definición y los estudiantes deben decir la palabra técnica correspondiente.</li>
+                <li>Reflexión: <em>"What new thing did you learn from the video?"</em> — Ticket de salida escrito (2-3 oraciones).</li>
+            </ul>
+                </div>
+            </div>
+            <div class="recursos">
+                <strong>📦 Recursos:</strong> Video proyectado (YouTube, 5 min con subtítulos), ficha de preguntas guía, ficha de vocabulario del video, pizarra.
+            </div>
+            <div class="evaluacion-box">
+                <strong>📋 Evaluación:</strong> Formativa — revisión de respuestas del video; observación de producción oral en actividad de descripción.
+            </div>
+            
+        </div>
+    </div>
+
+    <!-- ==================== CLASE 6 ==================== -->
+    <div class="clase-card">
+        <div class="clase-header normal">
+            <span class="clase-num">Clase 6</span>
+            <span class="badge badge-oa">OA1</span> <span class="badge badge-oa">OA3</span>  
+        </div>
+        <div class="clase-body">
+            <div class="objetivo">
+                <strong>Objetivo de la clase (Bloom):</strong> Comprender y evaluar reglas de seguridad escritas en inglés relevantes al taller de Mecánica Industrial, identificando información explícita e implícita.
+            </div>
+            <div class="fase">
+                <span class="fase-title fase-inicio">INICIO (15 min)</span>
+                <div class="fase-content">
+                    <ul>
+                <li>Docente muestra imágenes de EPP (PPE) y pregunta: <em>"What are these items? When do you use them?"</em> — Lluvia de ideas.</li>
+                <li>Vocabulario previo: <em>safety goggles, gloves, helmet, boots, fire extinguisher, first aid kit, warning sign</em>.</li>
+                <li>Pregunta de activación: <em>"Have you ever seen a safety manual in English? What information does it contain?"</em></li>
+            </ul>
+                </div>
+            </div>
+            <div class="fase">
+                <span class="fase-title fase-desarrollo">DESARROLLO (60 min)</span>
+                <div class="fase-content">
+                    <ol>
+                <li><b>Reading (25 min):</b> Lectura del texto <em>'Safety in the Industrial Workshop'</em> — PPE (helmet, face shield, gloves), machine guards, welding safety, lifting procedures.
+                    <ul>
+                        <li>Estrategia de lectura: <b>scanning</b> — los estudiantes buscan información específica: <em>"Find 3 rules about protective equipment"</em> y <em>"Find 2 emergency procedures."</em></li>
+                        <li>Segunda lectura para comprensión global. Completar tabla: <b>Safety Rule → Reason → Equipment Needed</b>.</li>
+                    </ul>
+                </li>
+                <li><b>Critical thinking (15 min):</b> En grupos de 3, los estudiantes discuten:
+                    <ul>
+                        <li><em>"Which rule is the most important? Why?"</em></li>
+                        <li><em>"What happens if you don't follow this rule?"</em></li>
+                        <li><em>"Are there rules missing? What would you add?"</em></li>
+                    </ul>
+                </li>
+                <li><b>Poster creation (20 min):</b> Cada grupo crea un mini-póster de seguridad en inglés (en papel A3) con 5 reglas ilustradas: <em>"Always wear…", "Never touch…", "In case of emergency…"</em></li>
+            </ol>
+                </div>
+            </div>
+            <div class="fase">
+                <span class="fase-title fase-cierre">CIERRE (15 min)</span>
+                <div class="fase-content">
+                    <ul>
+                <li>Cada grupo presenta su póster brevemente al curso (1 min por grupo).</li>
+                <li>Votación: <em>"Which poster is the clearest? The most creative?"</em></li>
+                <li>Docente recuerda que la próxima clase es preparación para la evaluación oral.</li>
+            </ul>
+                </div>
+            </div>
+            <div class="recursos">
+                <strong>📦 Recursos:</strong> Texto de seguridad impreso, fichas de análisis, papel A3, marcadores de colores, imágenes de EPP, pizarra.
+            </div>
+            <div class="evaluacion-box">
+                <strong>📋 Evaluación:</strong> Formativa — revisión de tabla de comprensión; evaluación de pósters de seguridad (contenido + uso del inglés).
+            </div>
+            <div class="sugerencia"><strong>💡 Sugerencia:</strong> <b>Sugerencia de evaluación:</b> Los pósters pueden exhibirse en el taller de la especialidad como recurso visual permanente.</div>
+        </div>
+    </div>
+
+    <!-- ==================== CLASE 7 ==================== -->
+    <div class="clase-card">
+        <div class="clase-header normal">
+            <span class="clase-num">Clase 7</span>
+            <span class="badge badge-oa">OA4</span>  
+        </div>
+        <div class="clase-body">
+            <div class="objetivo">
+                <strong>Objetivo de la clase (Bloom):</strong> Organizar y ensayar una presentación oral en inglés sobre las habilidades técnicas y conocimientos adquiridos en Mecánica Industrial.
+            </div>
+            <div class="fase">
+                <span class="fase-title fase-inicio">INICIO (15 min)</span>
+                <div class="fase-content">
+                    <ul>
+                <li>Docente presenta la evaluación oral (Nota 1 S1) con la rúbrica: <em>"Present 'My Industrial Skills': describe 3 machines you know, 2 tools you can use, and why industrial mechanics is essential."</em></li>
+                <li>Se revisan criterios de evaluación: contenido (4 pts), vocabulario técnico (4 pts), pronunciación (4 pts), fluidez (4 pts), estructura (4 pts). Total: 20 puntos.</li>
+                <li>Se muestra un modelo de presentación (docente hace una demo breve).</li>
+            </ul>
+                </div>
+            </div>
+            <div class="fase">
+                <span class="fase-title fase-desarrollo">DESARROLLO (60 min)</span>
+                <div class="fase-content">
+                    <ol>
+                <li><b>Planning (15 min):</b> Cada estudiante completa una ficha de planificación:
+                    <ul>
+                        <li>Introduction: Name, specialty, why I chose it</li>
+                        <li>Body: 3 tools/equipment + 2 systems/processes I know</li>
+                        <li>Conclusion: Why mecánica industrial is important for society</li>
+                    </ul>
+                </li>
+                <li><b>Script writing (20 min):</b> Los estudiantes escriben un guion de 8-12 oraciones. El docente circula apoyando con vocabulario y estructura.</li>
+                <li><b>Peer rehearsal (20 min):</b> En parejas, los estudiantes practican su presentación. El compañero da retroalimentación usando una checklist: <em>"Did they mention 3 tools? Was the pronunciation clear? Did they use technical vocabulary?"</em></li>
+                <li><b>Final adjustments (5 min):</b> Los estudiantes ajustan su guion basándose en la retroalimentación recibida.</li>
+            </ol>
+                </div>
+            </div>
+            <div class="fase">
+                <span class="fase-title fase-cierre">CIERRE (15 min)</span>
+                <div class="fase-content">
+                    <ul>
+                <li>El docente resuelve dudas finales de pronunciación (practica palabras difíciles con todo el grupo).</li>
+                <li>Recordatorio: <em>"Next class is your oral presentation. Bring your notes but try to speak without reading."</em></li>
+            </ul>
+                </div>
+            </div>
+            <div class="recursos">
+                <strong>📦 Recursos:</strong> Ficha de planificación de presentación, rúbrica impresa (una por estudiante), modelo de presentación (escrito en PPT o pizarra), checklist de retroalimentación entre pares.
+            </div>
+            <div class="evaluacion-box">
+                <strong>📋 Evaluación:</strong> Preparación — no calificada. El docente revisa borradores y da retroalimentación individual.
+            </div>
+            <div class="sugerencia"><strong>💡 Sugerencia:</strong> <b>Sugerencia:</b> Permitir que los estudiantes usen apoyo visual (imágenes, diagramas) en su presentación para reducir la dependencia del texto escrito.</div>
+        </div>
+    </div>
+
+    <!-- ==================== CLASE 8 ==================== -->
+    <div class="clase-card evaluacion">
+        <div class="clase-header eval">
+            <span class="clase-num">Clase 8</span>
+            <span class="badge badge-oa">OA4</span>  <span class="badge badge-eval">EVALUACIÓN</span>
+        </div>
+        <div class="clase-body">
+            <div class="objetivo">
+                <strong>Objetivo de la clase (Bloom):</strong> Producir una presentación oral breve y clara en inglés describiendo sus habilidades técnicas y conocimientos en Mecánica Industrial.
+            </div>
+            <div class="fase">
+                <span class="fase-title fase-inicio">INICIO (15 min)</span>
+                <div class="fase-content">
+                    <ul>
+                <li>Docente recuerda los criterios de evaluación y la estructura esperada.</li>
+                <li>Warm-up de pronunciación grupal: se practican 5 palabras técnicas difíciles del área.</li>
+                <li>Se establece el orden de presentaciones y las normas de audiencia (escuchar con respeto, no interrumpir).</li>
+            </ul>
+                </div>
+            </div>
+            <div class="fase">
+                <span class="fase-title fase-desarrollo">DESARROLLO (60 min)</span>
+                <div class="fase-content">
+                    <ol>
+                <li><b>Presentaciones orales (55 min):</b> Cada estudiante presenta durante 2-3 minutos. Present 'My Industrial Skills': describe 3 machines you know, 2 tools you can use, and why industrial mechanics is essential.
+                    <ul>
+                        <li>El docente evalúa con la rúbrica (contenido, vocabulario, pronunciación, fluidez, estructura).</li>
+                        <li>Los compañeros completan una ficha de <em>peer feedback</em> por cada presentador (1 fortaleza + 1 sugerencia).</li>
+                    </ul>
+                </li>
+                <li><b>Si sobra tiempo:</b> Ronda de preguntas breves del docente a algunos presentadores: <em>"Which tool is the most useful? Why?"</em></li>
+            </ol>
+                </div>
+            </div>
+            <div class="fase">
+                <span class="fase-title fase-cierre">CIERRE (15 min)</span>
+                <div class="fase-content">
+                    <ul>
+                <li>Retroalimentación general del docente: aspectos positivos y áreas de mejora del grupo.</li>
+                <li>Los estudiantes entregan sus fichas de <em>peer feedback</em>.</li>
+                <li>Reflexión: <em>"How did you feel presenting in English? What can you improve?"</em></li>
+            </ul>
+                </div>
+            </div>
+            <div class="recursos">
+                <strong>📦 Recursos:</strong> Rúbrica de evaluación oral, fichas de peer feedback, cronómetro, proyector (para apoyo visual de estudiantes).
+            </div>
+            <div class="evaluacion-box">
+                <strong>📋 Evaluación:</strong> <b>SUMATIVA — Nota 1 Semestre 1:</b> Presentación oral 'My Technical Skills in Mecánica Industrial'. Rúbrica de 5 criterios × 4 puntos = 20 pts. Exigencia 60%.
+            </div>
+            <div class="sugerencia"><strong>💡 Sugerencia:</strong> <b>Consideración:</b> Para estudiantes con alta ansiedad, permitir presentar en parejas o en formato grabado (video). Mantener los mismos criterios de evaluación.</div>
+        </div>
+    </div>
+
+    <!-- ==================== CLASE 9 ==================== -->
+    <div class="clase-card">
+        <div class="clase-header normal">
+            <span class="clase-num">Clase 9</span>
+            <span class="badge badge-oa">OA1</span> <span class="badge badge-oa">OA3</span> <span class="badge badge-oa">OA4</span>  
+        </div>
+        <div class="clase-body">
+            <div class="objetivo">
+                <strong>Objetivo de la clase (Bloom):</strong> Sintetizar los aprendizajes de vocabulario técnico, lectura y expresión oral adquiridos en la Unidad 1 sobre Mecánica Industrial.
+            </div>
+            <div class="fase">
+                <span class="fase-title fase-inicio">INICIO (15 min)</span>
+                <div class="fase-content">
+                    <ul>
+                <li>Docente felicita por las presentaciones orales y comparte resultados generales (sin notas individuales).</li>
+                <li>Actividad de activación: <em>"Word Cloud"</em> — cada estudiante escribe en un papelito 3 palabras que resumen lo que aprendió en la unidad. Se pegan en la pizarra.</li>
+                <li>Pregunta: <em>"How many technical words in English can you remember from this unit?"</em></li>
+            </ul>
+                </div>
+            </div>
+            <div class="fase">
+                <span class="fase-title fase-desarrollo">DESARROLLO (60 min)</span>
+                <div class="fase-content">
+                    <ol>
+                <li><b>Vocabulary review game (20 min):</b> Juego tipo <em>"Jeopardy"</em> con categorías: Tools, Safety, Processes, Job Descriptions. Equipos de 4-5 compiten por puntos respondiendo en inglés.</li>
+                <li><b>Reading review (15 min):</b> Mini-lectura nueva (media página): un breve artículo sobre una innovación reciente en mecánica industrial. Los estudiantes practican estrategias aprendidas: predicción, scanning, inferencia.</li>
+                <li><b>Speaking circle (15 min):</b> Actividad <em>"Hot Seat"</em>: un estudiante se sienta al frente y los compañeros le hacen preguntas en inglés sobre la especialidad. El estudiante responde improvisando.</li>
+                <li><b>Self-assessment (10 min):</b> Los estudiantes completan una ficha de autoevaluación: <em>"I can name ___ tools in English. I can describe ___. I need to practice more on ___."</em></li>
+            </ol>
+                </div>
+            </div>
+            <div class="fase">
+                <span class="fase-title fase-cierre">CIERRE (15 min)</span>
+                <div class="fase-content">
+                    <ul>
+                <li>Docente introduce brevemente la Unidad 2: <em>"Next unit, we will explore technical challenges and global issues related to your field."</em></li>
+                <li>Distribución de resultados individuales de la evaluación oral (rúbricas con retroalimentación).</li>
+            </ul>
+                </div>
+            </div>
+            <div class="recursos">
+                <strong>📦 Recursos:</strong> Papelitos para Word Cloud, juego Jeopardy (PPT o pizarra), mini-lectura impresa, ficha de autoevaluación.
+            </div>
+            <div class="evaluacion-box">
+                <strong>📋 Evaluación:</strong> Formativa — autoevaluación y observación de participación en actividades de revisión.
+            </div>
+            
+        </div>
+    </div>
+
+    <div class="footer">
+        <p>Planificación elaborada para Liceo Técnico Profesional — Inglés 3° Medio — Especialidad: Mecánica Industrial — 2026</p>
+        <p>Basada en OA de Bases Curriculares 3° Medio (Decreto N°193/2019) y Programa de Estudio (Decreto N°496/2020)</p>
+    </div>
+</div>
+</body>
+</html>

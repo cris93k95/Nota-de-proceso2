@@ -1,0 +1,648 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>4° Medio Electricidad - Unidad 4: Innovation, Project Defense & Closure</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: #f5f5f5; color: #333; line-height: 1.6; }
+        .header { background: linear-gradient(135deg, #e65100, #f57c00); color: white; padding: 30px; text-align: center; }
+        .header h1 { font-size: 1.8em; margin-bottom: 5px; }
+        .header h2 { font-size: 1.3em; font-weight: 300; margin-bottom: 10px; }
+        .header .subtitle { font-size: 0.95em; opacity: 0.9; }
+        .meta-info { display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; margin-top: 15px; }
+        .meta-info span { background: rgba(255,255,255,0.15); padding: 5px 15px; border-radius: 20px; font-size: 0.85em; }
+        .container { max-width: 1100px; margin: 20px auto; padding: 0 15px; }
+        .unit-overview { background: white; border-radius: 10px; padding: 25px; margin-bottom: 25px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); }
+        .unit-overview h3 { color: #e65100; margin-bottom: 15px; font-size: 1.2em; border-bottom: 2px solid #e65100; padding-bottom: 8px; }
+        .overview-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
+        .overview-item { padding: 10px; background: #fff3e0; border-radius: 6px; }
+        .overview-item strong { color: #e65100; }
+        .overview-item ul { margin-left: 20px; margin-top: 5px; }
+        .overview-item ul li { margin-bottom: 3px; font-size: 0.9em; }
+        .clase-card { background: white; border-radius: 10px; margin-bottom: 20px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); overflow: hidden; }
+        .clase-card.evaluacion { border-left: 5px solid #c62828; }
+        .clase-header { padding: 15px 20px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px; }
+        .clase-header.normal { background: #ffe0b2; }
+        .clase-header.eval { background: #ffebee; }
+        .clase-header .clase-num { font-size: 1.1em; font-weight: 700; color: #e65100; }
+        .clase-header .clase-fecha { font-size: 0.85em; color: #666; }
+        .clase-header .badge { padding: 3px 10px; border-radius: 12px; font-size: 0.75em; font-weight: 600; }
+        .badge-oa { background: #fff3e0; color: #e65100; }
+        .badge-eval { background: #ffcdd2; color: #c62828; }
+        .clase-body { padding: 20px; }
+        .objetivo { background: #fff3e0; border-left: 4px solid #ef6c00; padding: 12px 15px; margin-bottom: 15px; border-radius: 0 6px 6px 0; }
+        .objetivo strong { color: #ef6c00; }
+        .fase { margin-bottom: 12px; }
+        .fase-title { display: inline-block; padding: 3px 12px; border-radius: 4px; font-weight: 600; font-size: 0.85em; color: white; margin-bottom: 6px; }
+        .fase-inicio { background: #2e7d32; }
+        .fase-desarrollo { background: #1565c0; }
+        .fase-cierre { background: #6a1b9a; }
+        .fase-content { padding-left: 15px; font-size: 0.92em; }
+        .fase-content ol, .fase-content ul { margin-left: 15px; }
+        .fase-content li { margin-bottom: 4px; }
+        .recursos { background: #f1f8e9; padding: 10px 15px; border-radius: 6px; margin-top: 10px; font-size: 0.88em; }
+        .recursos strong { color: #33691e; }
+        .evaluacion-box { background: #fce4ec; padding: 10px 15px; border-radius: 6px; margin-top: 10px; font-size: 0.88em; }
+        .evaluacion-box strong { color: #c62828; }
+        .sugerencia { background: #e8f5e9; border-left: 4px solid #2e7d32; padding: 10px 15px; border-radius: 0 6px 6px 0; margin-top: 10px; font-size: 0.88em; }
+        .sugerencia strong { color: #2e7d32; }
+        .notas-dist { background: white; border-radius: 10px; padding: 25px; margin-bottom: 25px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); }
+        .notas-dist h3 { color: #c62828; margin-bottom: 15px; font-size: 1.1em; }
+        table.notas { width: 100%; border-collapse: collapse; }
+        table.notas th { background: #e65100; color: white; padding: 8px 12px; text-align: left; font-size: 0.9em; }
+        table.notas td { padding: 8px 12px; border-bottom: 1px solid #e0e0e0; font-size: 0.88em; }
+        table.notas tr:nth-child(even) { background: #fff3e0; }
+        .footer { text-align: center; padding: 20px; color: #999; font-size: 0.8em; }
+        @media print {
+            body { background: white; }
+            .clase-card { break-inside: avoid; page-break-inside: avoid; box-shadow: none; border: 1px solid #ddd; }
+            .header { background: #e65100 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+        }
+        @media (max-width: 768px) {
+            .overview-grid { grid-template-columns: 1fr; }
+            .meta-info { flex-direction: column; align-items: center; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="header">
+    <h1>PLANIFICACIÓN CLASE A CLASE — 4° MEDIO — ELECTRICIDAD</h1>
+    <h2>Unidad 4: Innovation, Project Defense & Closure</h2>
+    <p class="subtitle">Inglés — Liceo Técnico Profesional — Año Escolar 2026 — Semestre 2</p>
+    <div class="meta-info">
+        <span>📅 31 agosto – 13 noviembre (10 sesiones; sin clases 14–20 sept.)</span>
+        <span>⏱ 10 clases de 90 min (Clases 24–33)</span>
+        <span>📚 2 hrs/semana (1 sesión)</span>
+        <span>🎯 Foco: Innovación tecnológica, debate final, defensa de proyecto, cierre del año</span>
+    </div>
+</div>
+
+<div class="container">
+
+    <div class="unit-overview">
+        <h3>Visión General de la Unidad 4</h3>
+        <div class="overview-grid">
+            <div class="overview-item">
+                <strong>OA Basales trabajados (4° Medio):</strong>
+                <ul>
+                    <li><b>OA1:</b> Comprender textos orales y escritos que contengan información relevante.</li><li><b>OA3:</b> Utilizar su conocimiento del inglés para construir postura personal crítica.</li><li><b>OA4:</b> Producir y comprender con fluidez textos orales y escritos claros.</li>
+                </ul>
+            </div>
+            <div class="overview-item">
+                <strong>Evaluaciones de la unidad:</strong>
+                <ul>
+            <li>Clase 28: <b>Nota 2 S2</b> — Prueba de comprensión lectora avanzada. 30 pts.</li>
+            <li>Clase 30: <b>Nota 3 S2</b> — Proyecto final: defensa de proyecto en inglés. 20 pts.</li>
+        </ul>
+            </div>
+            <div class="overview-item">
+                <strong>Habilidades priorizadas:</strong>
+                <ul>
+                    <li><b>Lectura:</b> Textos técnicos avanzados, estudios de caso, manuales e informes de electricidad.</li>
+                    <li><b>Expresión Oral:</b> Entrevistas, explicaciones de procedimientos, debates y defensa de proyectos.</li>
+                </ul>
+            </div>
+            <div class="overview-item">
+                <strong>Especialidad:</strong>
+                <ul><li>Electricidad</li></ul>
+                <strong>Nivel de los estudiantes:</strong>
+                <ul><li>A1-A2 (Básico)</li></ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==================== CLASE 24 ==================== -->
+    <div class="clase-card">
+        <div class="clase-header normal">
+            <span class="clase-num">Clase 24</span>
+            <span class="badge badge-oa">OA1</span>  
+        </div>
+        <div class="clase-body">
+            <div class="objetivo">
+                <strong>Objetivo de la clase (Bloom):</strong> Identificar y comprender las principales tendencias de innovación en Electricidad a partir de un texto técnico en inglés.
+            </div>
+            <div class="fase">
+                <span class="fase-title fase-inicio">INICIO (15 min)</span>
+                <div class="fase-content">
+                    <ul>
+                <li>Warm-up: imágenes de innovaciones tecnológicas del área. <em>"What do you know about these technologies? Which one excites you most?"</em></li>
+                <li>Brainstorm: <em>"What will electricidad look like in 10 years?"</em> — mapa conceptual en pizarra.</li>
+                <li>Vocabulario: <em>innovation, disruption, automation, sustainability, efficiency, breakthrough, emerging technology</em>.</li>
+            </ul>
+                </div>
+            </div>
+            <div class="fase">
+                <span class="fase-title fase-desarrollo">DESARROLLO (60 min)</span>
+                <div class="fase-content">
+                    <ol>
+                <li><b>Reading (25 min):</b> <em>The Future of Electrical Engineering</em> — smart grids, energy storage (batteries), microgrids, vehicle-to-grid technology, home automation, and the changing role of electricians in a decarbonized world. Texto adaptado A2-B1 (1.5 páginas).
+                    <ul>
+                        <li>Pre-reading: predicciones.</li>
+                        <li>Lectura guiada con pausas para vocabulario.</li>
+                        <li>Completar tabla: <b>Innovation → How it works → Impact on profession → Required skills → My opinion</b></li>
+                    </ul>
+                </li>
+                <li><b>Comprehension (15 min):</b> 6 preguntas: 3 explícitas + 3 de opinión.</li>
+                <li><b>Discussion (15 min):</b> En parejas: <em>"Which innovation will most affect your career? How are you preparing for it?"</em></li>
+                <li><b>Vocabulary log (5 min):</b> 10 palabras nuevas con oración propia.</li>
+            </ol>
+                </div>
+            </div>
+            <div class="fase">
+                <span class="fase-title fase-cierre">CIERRE (15 min)</span>
+                <div class="fase-content">
+                    <ul>
+                <li>3 estudiantes comparten su opinión sobre la innovación más importante.</li>
+                <li>Conexión con proyecto final: <em>"These topics could be great for your final project!"</em></li>
+            </ul>
+                </div>
+            </div>
+            <div class="recursos">
+                <strong>📦 Recursos:</strong> Texto de innovación en electricidad impreso, ficha de análisis, imágenes de innovaciones, pizarra.
+            </div>
+            <div class="evaluacion-box">
+                <strong>📋 Evaluación:</strong> Formativa — calidad de la tabla de análisis y participación en discusión.
+            </div>
+            
+        </div>
+    </div>
+
+    <!-- ==================== CLASE 25 ==================== -->
+    <div class="clase-card">
+        <div class="clase-header normal">
+            <span class="clase-num">Clase 25</span>
+            <span class="badge badge-oa">OA1</span> <span class="badge badge-oa">OA3</span>  
+        </div>
+        <div class="clase-body">
+            <div class="objetivo">
+                <strong>Objetivo de la clase (Bloom):</strong> Comprender un video en inglés sobre innovación en Electricidad y construir una postura crítica personal fundamentada.
+            </div>
+            <div class="fase">
+                <span class="fase-title fase-inicio">INICIO (15 min)</span>
+                <div class="fase-content">
+                    <ul>
+                <li>Warm-up: <em>"Imagine your workplace in 2035. What technology will you use daily?"</em> — quick-write (3 min).</li>
+                <li>Pre-viewing: preguntas guía y vocabulario clave del video.</li>
+                <li>Predicción a partir del título.</li>
+            </ul>
+                </div>
+            </div>
+            <div class="fase">
+                <span class="fase-title fase-desarrollo">DESARROLLO (60 min)</span>
+                <div class="fase-content">
+                    <ol>
+                <li><b>Video (15 min):</b> a YouTube video about a smart grid implementation project in a European city (adapted, 5 min) Primera reproducción completa; segunda con pausas.</li>
+                <li><b>Comprehension (10 min):</b> Responder preguntas guía. Corrección en parejas.</li>
+                <li><b>Critical discussion (25 min):</b> Mesa redonda:
+                    <ul>
+                        <li><em>"Is this innovation positive or negative for workers?"</em></li>
+                        <li><em>"How will this affect job opportunities in Chile?"</em></li>
+                        <li><em>"What new skills will technicians need?"</em></li>
+                    </ul>
+                    Los estudiantes deben usar evidencia del video y de textos anteriores para argumentar.
+                </li>
+                <li><b>Written opinion (10 min):</b> Párrafo: <em>"In my opinion, [innovation] will [positively/negatively] affect my career because..."</em></li>
+            </ol>
+                </div>
+            </div>
+            <div class="fase">
+                <span class="fase-title fase-cierre">CIERRE (15 min)</span>
+                <div class="fase-content">
+                    <ul>
+                <li>3-4 estudiantes leen su opinión escrita.</li>
+                <li>Vocabulario nuevo registrado.</li>
+            </ul>
+                </div>
+            </div>
+            <div class="recursos">
+                <strong>📦 Recursos:</strong> Video sobre innovación en electricidad (YouTube, 5 min adaptado), preguntas guía, ficha de opinión.
+            </div>
+            <div class="evaluacion-box">
+                <strong>📋 Evaluación:</strong> Formativa — calidad del análisis crítico y del párrafo de opinión.
+            </div>
+            
+        </div>
+    </div>
+
+    <!-- ==================== CLASE 26 ==================== -->
+    <div class="clase-card">
+        <div class="clase-header normal">
+            <span class="clase-num">Clase 26</span>
+            <span class="badge badge-oa">OA1</span> <span class="badge badge-oa">OA3</span>  
+        </div>
+        <div class="clase-body">
+            <div class="objetivo">
+                <strong>Objetivo de la clase (Bloom):</strong> Comparar y evaluar críticamente dos modelos profesionales dentro de Electricidad, argumentando ventajas y desventajas en inglés.
+            </div>
+            <div class="fase">
+                <span class="fase-title fase-inicio">INICIO (15 min)</span>
+                <div class="fase-content">
+                    <ul>
+                <li>Warm-up: <em>"Would you prefer to work in a traditional workplace or a high-tech one? Why?"</em> — quick poll.</li>
+                <li>Se introduce el concepto de análisis comparativo: pros, cons, conclusion.</li>
+                <li>Vocabulario: <em>advantage, disadvantage, whereas, on the other hand, in contrast, similarly, overall</em>.</li>
+            </ul>
+                </div>
+            </div>
+            <div class="fase">
+                <span class="fase-title fase-desarrollo">DESARROLLO (60 min)</span>
+                <div class="fase-content">
+                    <ol>
+                <li><b>Reading (25 min):</b> Case Study: <em>Traditional Grid vs. Smart Grid</em> — comparing Chile's current electrical infrastructure with a smart grid model: costs, benefits, reliability, environmental impact, and job implications for electricians. Texto adaptado A2-B1 (1.5 páginas).
+                    <ul>
+                        <li>Los estudiantes completan una tabla comparativa doble: <b>Aspect / Model A / Model B / My preference</b></li>
+                        <li>Aspectos: cost, skills needed, job satisfaction, salary, future prospects, environmental impact.</li>
+                    </ul>
+                </li>
+                <li><b>Debate preparation (15 min):</b> La clase se divide en dos: defensores del Modelo A y defensores del Modelo B. Cada grupo prepara 3 argumentos.</li>
+                <li><b>Mini-debate (15 min):</b> Intercambio estructurado de argumentos. El docente modera.</li>
+                <li><b>Individual conclusion (5 min):</b> Cada estudiante escribe: <em>"After analyzing both models, I believe... because..."</em></li>
+            </ol>
+                </div>
+            </div>
+            <div class="fase">
+                <span class="fase-title fase-cierre">CIERRE (15 min)</span>
+                <div class="fase-content">
+                    <ul>
+                <li>Votación final: ¿Qué modelo tiene mejor futuro?</li>
+                <li>Conexión con su propia carrera y decisiones futuras.</li>
+            </ul>
+                </div>
+            </div>
+            <div class="recursos">
+                <strong>📦 Recursos:</strong> Texto comparativo impreso, tabla de análisis doble, vocabulario de comparación en pizarra.
+            </div>
+            <div class="evaluacion-box">
+                <strong>📋 Evaluación:</strong> Formativa — calidad de la tabla comparativa, argumentos del debate y conclusión escrita.
+            </div>
+            
+        </div>
+    </div>
+
+    <!-- ==================== CLASE 27 ==================== -->
+    <div class="clase-card">
+        <div class="clase-header normal">
+            <span class="clase-num">Clase 27</span>
+            <span class="badge badge-oa">OA3</span> <span class="badge badge-oa">OA4</span>  
+        </div>
+        <div class="clase-body">
+            <div class="objetivo">
+                <strong>Objetivo de la clase (Bloom):</strong> Defender una postura personal fundamentada sobre el futuro de Electricidad en un debate estructurado en inglés.
+            </div>
+            <div class="fase">
+                <span class="fase-title fase-inicio">INICIO (15 min)</span>
+                <div class="fase-content">
+                    <ul>
+                <li>Docente presenta el tema del debate final: <em>"Should Chile invest in nuclear energy or continue expanding solar and wind power?"</em></li>
+                <li>Los estudiantes eligen su postura y forman grupos.</li>
+                <li>Se repasan las reglas y vocabulario de debate.</li>
+            </ul>
+                </div>
+            </div>
+            <div class="fase">
+                <span class="fase-title fase-desarrollo">DESARROLLO (60 min)</span>
+                <div class="fase-content">
+                    <ol>
+                <li><b>Argument preparation (10 min):</b> Los grupos finalizan sus argumentos con evidencia de todos los textos del semestre.</li>
+                <li><b>Debate (30 min):</b> Estructura completa:
+                    <ul>
+                        <li>Opening statements (2 min).</li>
+                        <li>Arguments (3 por lado).</li>
+                        <li>Rebuttals (5 min).</li>
+                        <li>Open questions (5 min).</li>
+                        <li>Closing statements (2 min).</li>
+                    </ul>
+                </li>
+                <li><b>Evaluation prep (15 min):</b> Docente prepara a los estudiantes para la prueba de lectura:
+                    <ul>
+                        <li>Repaso de estrategias: scanning, inference, vocabulary in context, critical opinion.</li>
+                        <li>Formato de la prueba: vocabulario (8 pts) + comprensión (12 pts) + análisis crítico (10 pts) = 30 pts.</li>
+                    </ul>
+                </li>
+                <li><b>Practice (5 min):</b> Mini-ejercicio de scanning con un texto breve.</li>
+            </ol>
+                </div>
+            </div>
+            <div class="fase">
+                <span class="fase-title fase-cierre">CIERRE (15 min)</span>
+                <div class="fase-content">
+                    <ul>
+                <li>Reflexión del debate: <em>"Did anyone change their opinion after hearing the other side?"</em></li>
+                <li>Recordatorio de la evaluación de lectura de la próxima clase.</li>
+            </ul>
+                </div>
+            </div>
+            <div class="recursos">
+                <strong>📦 Recursos:</strong> Vocabulario de debate, textos de referencia, ficha de preparación para evaluación.
+            </div>
+            <div class="evaluacion-box">
+                <strong>📋 Evaluación:</strong> Formativa — participación en debate y preparación para evaluación.
+            </div>
+            
+        </div>
+    </div>
+
+    <!-- ==================== CLASE 28 ==================== -->
+    <div class="clase-card evaluacion">
+        <div class="clase-header eval">
+            <span class="clase-num">Clase 28</span>
+            <span class="badge badge-oa">OA1</span> <span class="badge badge-oa">OA3</span>  <span class="badge badge-eval">EVALUACIÓN</span>
+        </div>
+        <div class="clase-body">
+            <div class="objetivo">
+                <strong>Objetivo de la clase (Bloom):</strong> Comprender y analizar críticamente un texto técnico avanzado en inglés sobre innovación en Electricidad, demostrando competencias de lectura desarrolladas durante el año.
+            </div>
+            <div class="fase">
+                <span class="fase-title fase-inicio">INICIO (15 min)</span>
+                <div class="fase-content">
+                    <ul>
+                <li>Docente recuerda estrategias de lectura: <em>"Use everything you have learned: scan first, then read for detail, then analyze."</em></li>
+                <li>Se distribuye la prueba. Formato: Sección A (vocabulario, 8 pts), Sección B (comprensión, 12 pts), Sección C (análisis crítico, 10 pts).</li>
+                <li>Tiempo: 70 minutos.</li>
+            </ul>
+                </div>
+            </div>
+            <div class="fase">
+                <span class="fase-title fase-desarrollo">DESARROLLO (60 min)</span>
+                <div class="fase-content">
+                    <ol>
+                <li><b>Evaluación escrita (70 min):</b> Texto sobre innovación y futuro de electricidad (1.5 páginas, adaptado A2-B1).
+                    <ul>
+                        <li><b>Sección A — Vocabulario (8 pts):</b> 8 palabras técnicas: matching con definiciones.</li>
+                        <li><b>Sección B — Comprensión (12 pts):</b> 4 preguntas explícitas (2 pts c/u) + 2 preguntas inferenciales (2 pts c/u).</li>
+                        <li><b>Sección C — Análisis crítico (10 pts):</b> 2 preguntas de postura personal fundamentada (5 pts c/u): <em>"Do you agree with the author? Why?"</em>, <em>"How will this innovation affect your career? Give specific reasons."</em></li>
+                    </ul>
+                    Total: 30 puntos.
+                </li>
+            </ol>
+                </div>
+            </div>
+            <div class="fase">
+                <span class="fase-title fase-cierre">CIERRE (15 min)</span>
+                <div class="fase-content">
+                    <ul>
+                <li>Entrega de pruebas.</li>
+                <li><em>"How did it go? We will review results next class along with your project presentations."</em></li>
+            </ul>
+                </div>
+            </div>
+            <div class="recursos">
+                <strong>📦 Recursos:</strong> Prueba impresa (texto + preguntas en 3 secciones).
+            </div>
+            <div class="evaluacion-box">
+                <strong>📋 Evaluación:</strong> <b>SUMATIVA — Nota 2 Semestre 2:</b> Prueba de comprensión lectora avanzada. 30 pts (8 + 12 + 10). Exigencia 60%.
+            </div>
+            
+        </div>
+    </div>
+
+    <!-- ==================== CLASE 29 ==================== -->
+    <div class="clase-card">
+        <div class="clase-header normal">
+            <span class="clase-num">Clase 29</span>
+            <span class="badge badge-oa">OA1</span> <span class="badge badge-oa">OA2</span> <span class="badge badge-oa">OA4</span>  
+        </div>
+        <div class="clase-body">
+            <div class="objetivo">
+                <strong>Objetivo de la clase (Bloom):</strong> Finalizar la preparación del proyecto final de Electricidad, incorporando retroalimentación y ensayando la presentación oral.
+            </div>
+            <div class="fase">
+                <span class="fase-title fase-inicio">INICIO (15 min)</span>
+                <div class="fase-content">
+                    <ul>
+                <li>Devolución de resultados de la prueba de lectura con retroalimentación general.</li>
+                <li>Recordatorio del proyecto final: <em>"Your presentation is next class. Today is your last preparation session."</em></li>
+                <li>Se repasan criterios: contenido técnico (5 pts), organización (5 pts), vocabulario (3 pts), pronunciación (4 pts), capacidad de responder preguntas (3 pts) = 20 pts.</li>
+            </ul>
+                </div>
+            </div>
+            <div class="fase">
+                <span class="fase-title fase-desarrollo">DESARROLLO (60 min)</span>
+                <div class="fase-content">
+                    <ol>
+                <li><b>Report finalization (20 min):</b> Los grupos finalizan su informe escrito (1 página). El docente revisa y da feedback rápido a cada grupo.</li>
+                <li><b>Presentation rehearsal (25 min):</b> Cada grupo ensaya su presentación oral (5 min) frente a otro grupo. El grupo observador da feedback constructivo:
+                    <ul>
+                        <li>¿Se entiende el contenido?</li>
+                        <li>¿El vocabulario técnico es correcto?</li>
+                        <li>¿Hablan con claridad?</li>
+                        <li>¿Pueden responder preguntas?</li>
+                    </ul>
+                </li>
+                <li><b>Visual aids (10 min):</b> Los grupos preparan su material visual: póster, diapositivas o ficha resumen.</li>
+                <li><b>Final check (5 min):</b> Docente confirma orden de presentaciones para la próxima clase.</li>
+            </ol>
+                </div>
+            </div>
+            <div class="fase">
+                <span class="fase-title fase-cierre">CIERRE (15 min)</span>
+                <div class="fase-content">
+                    <ul>
+                <li><em>"You are ready! Remember: speak clearly, use your vocabulary, and be confident. I believe in you!"</em></li>
+                <li>Orden de presentaciones publicado.</li>
+            </ul>
+                </div>
+            </div>
+            <div class="recursos">
+                <strong>📦 Recursos:</strong> Informes de los grupos, rúbrica de proyecto final, materiales para visual aids, cronómetro.
+            </div>
+            <div class="evaluacion-box">
+                <strong>📋 Evaluación:</strong> Formativa — progreso del proyecto y calidad del ensayo.
+            </div>
+            
+        </div>
+    </div>
+
+    <!-- ==================== CLASE 30 ==================== -->
+    <div class="clase-card evaluacion">
+        <div class="clase-header eval">
+            <span class="clase-num">Clase 30</span>
+            <span class="badge badge-oa">OA1</span> <span class="badge badge-oa">OA2</span> <span class="badge badge-oa">OA3</span> <span class="badge badge-oa">OA4</span>  <span class="badge badge-eval">EVALUACIÓN</span>
+        </div>
+        <div class="clase-body">
+            <div class="objetivo">
+                <strong>Objetivo de la clase (Bloom):</strong> Presentar y defender oralmente un proyecto de investigación técnica en inglés sobre Electricidad, demostrando dominio de vocabulario, comprensión lectora y pensamiento crítico.
+            </div>
+            <div class="fase">
+                <span class="fase-title fase-inicio">INICIO (15 min)</span>
+                <div class="fase-content">
+                    <ul>
+                <li>Docente organiza el aula para presentaciones: espacio para el grupo, proyector/pizarra, sillas tipo auditorio.</li>
+                <li>Se repasan criterios de evaluación y reglas: 5 min de presentación + 2 min de preguntas por grupo.</li>
+                <li>Se entregan fichas de peer feedback a la audiencia.</li>
+            </ul>
+                </div>
+            </div>
+            <div class="fase">
+                <span class="fase-title fase-desarrollo">DESARROLLO (60 min)</span>
+                <div class="fase-content">
+                    <ol>
+                <li><b>Project presentations (55 min):</b> Los grupos presentan en orden:
+                    <ul>
+                        <li>Cada grupo presenta su investigación (5 min): tema, investigación, análisis, conclusiones.</li>
+                        <li>Después de cada presentación: 2 preguntas del docente + 1-2 del público.</li>
+                        <li>La audiencia completa fichas de peer feedback.</li>
+                    </ul>
+                    Temas posibles: smart grid technology, battery storage systems, solar panel installation, electric vehicle charging infrastructure, home automation, microgrid design.
+                </li>
+                <li><b>Peer evaluation (5 min):</b> La audiencia vota: mejor presentación, vocabulario más impresionante, mejor uso de evidencia.</li>
+            </ol>
+                </div>
+            </div>
+            <div class="fase">
+                <span class="fase-title fase-cierre">CIERRE (15 min)</span>
+                <div class="fase-content">
+                    <ul>
+                <li>Retroalimentación general: destacar logros del grupo y aspectos memorables.</li>
+                <li>Entrega de fichas de peer feedback a cada grupo.</li>
+                <li><em>"This is what professional English communication looks like. You should be proud!"</em></li>
+            </ul>
+                </div>
+            </div>
+            <div class="recursos">
+                <strong>📦 Recursos:</strong> Rúbrica de proyecto final (5 criterios = 20 pts), fichas de peer feedback, proyector, cronómetro.
+            </div>
+            <div class="evaluacion-box">
+                <strong>📋 Evaluación:</strong> <b>SUMATIVA — Nota 3 Semestre 2:</b> Proyecto final — Defensa de proyecto en inglés. 20 pts, 60% exigencia.
+            </div>
+            <div class="sugerencia"><strong>💡 Sugerencia:</strong> <b>Nota:</b> Si no alcanzan todas las presentaciones, continuar al inicio de la clase siguiente.</div>
+        </div>
+    </div>
+
+    <!-- ==================== CLASE 31 ==================== -->
+    <div class="clase-card">
+        <div class="clase-header normal">
+            <span class="clase-num">Clase 31</span>
+            <span class="badge badge-oa">OA1</span> <span class="badge badge-oa">OA2</span> <span class="badge badge-oa">OA3</span> <span class="badge badge-oa">OA4</span>  
+        </div>
+        <div class="clase-body">
+            <div class="objetivo">
+                <strong>Objetivo de la clase (Bloom):</strong> Sintetizar, reflexionar y evaluar el progreso personal en inglés técnico a lo largo de los dos años de formación en Electricidad.
+            </div>
+            <div class="fase">
+                <span class="fase-title fase-inicio">INICIO (15 min)</span>
+                <div class="fase-content">
+                    <ul>
+                <li>Si quedan presentaciones pendientes, se completan primero.</li>
+                <li>Devolución de rúbricas del proyecto final y notas finales del año.</li>
+                <li><em>"This is our last class together. Let's celebrate and reflect on everything you have achieved."</em></li>
+            </ul>
+                </div>
+            </div>
+            <div class="fase">
+                <span class="fase-title fase-desarrollo">DESARROLLO (60 min)</span>
+                <div class="fase-content">
+                    <ol>
+                <li><b>Year review game (15 min):</b> <em>"The Grand Finale Quiz"</em> — equipos compiten con preguntas de todo el año: vocabulario, lectura, entrevistas, procedimientos, innovación, escritura. Formato <em>"Who Wants to Be a Millionaire"</em>.</li>
+                <li><b>Reflection writing (15 min):</b> Cada estudiante escribe un párrafo en inglés: <em>"When I started 3° Medio, I could... Now, finishing 4° Medio, I can... The most important thing I learned in English was... English will help me in my career because... My advice for future students is..."</em></li>
+                <li><b>Sharing circle (15 min):</b> Voluntarios leen sus reflexiones. El grupo aplaude cada contribución. El docente comparte sus propias reflexiones sobre el curso.</li>
+                <li><b>Final self-assessment (10 min):</b> Ficha comparativa: <em>"Beginning of 3° Medio vs. End of 4° Medio: what can I do now in English?"</em> — vocabulary, reading, speaking, writing.</li>
+                <li><b>Certificate ceremony (5 min):</b> Entrega simbólica de certificados: <em>"Technical English Communicator — Electricidad"</em>.</li>
+            </ol>
+                </div>
+            </div>
+            <div class="fase">
+                <span class="fase-title fase-cierre">CIERRE (15 min)</span>
+                <div class="fase-content">
+                    <ul>
+                <li>Mensaje de cierre del docente: <em>"You are leaving this school with a skill that many don't have: the ability to communicate in English in your profession. Never stop learning. I am very proud of each one of you."</em></li>
+                <li>Foto grupal y despedida.</li>
+            </ul>
+                </div>
+            </div>
+            <div class="recursos">
+                <strong>📦 Recursos:</strong> Quiz final en PPT/pizarra, ficha de reflexión, ficha de autoevaluación comparativa, certificados impresos.
+            </div>
+            <div class="evaluacion-box">
+                <strong>📋 Evaluación:</strong> Formativa — reflexión escrita y autoevaluación de cierre de ciclo.
+            </div>
+            <div class="sugerencia"><strong>💡 Sugerencia:</strong> <b>Sugerencia:</b> Preparar certificados personalizados de <em>Technical English Communicator</em> como reconocimiento del esfuerzo de dos años (3° y 4° Medio).</div>
+        </div>
+    </div>
+
+    <!-- ==================== CLASE 32 ==================== -->
+    <div class="clase-card">
+        <div class="clase-header normal">
+            <span class="clase-num">Clase 32</span>
+            <span class="badge badge-oa">OA1</span> <span class="badge badge-oa">OA4</span>  
+        </div>
+        <div class="clase-body">
+            <div class="objetivo">
+                <strong>Objetivo de la clase (Bloom):</strong> Consolidar aprendizajes de la unidad mediante actividades integradas de lectura técnica, producción oral y transferencia al contexto laboral.
+            </div>
+            <div class="fase">
+                <span class="fase-title fase-inicio">INICIO (15 min)</span>
+                <div class="fase-content">
+                    <ul><li>Activación de conocimientos previos con repaso focalizado de vocabulario técnico.</li><li>Presentación de objetivo de consolidación y criterios de desempeño.</li></ul>
+                </div>
+            </div>
+            <div class="fase">
+                <span class="fase-title fase-desarrollo">DESARROLLO (60 min)</span>
+                <div class="fase-content">
+                    <ol><li><b>Revisión guiada:</b> análisis de un insumo técnico breve en inglés.</li><li><b>Aplicación:</b> actividad colaborativa orientada a resolución de situaciones profesionales.</li><li><b>Comunicación:</b> presentación oral breve de resultados con retroalimentación docente.</li></ol>
+                </div>
+            </div>
+            <div class="fase">
+                <span class="fase-title fase-cierre">CIERRE (15 min)</span>
+                <div class="fase-content">
+                    <ul><li>Síntesis de aprendizajes logrados.</li><li>Autoevaluación y compromiso de mejora para la siguiente sesión.</li></ul>
+                </div>
+            </div>
+            <div class="recursos">
+                <strong>📦 Recursos:</strong> Guías de consolidación, texto técnico breve, pizarra y recursos digitales de apoyo.
+            </div>
+            <div class="evaluacion-box">
+                <strong>📋 Evaluación:</strong> Formativa — desempeño en aplicación, comunicación y reflexión.
+            </div>
+            
+        </div>
+    </div>
+
+    <!-- ==================== CLASE 33 ==================== -->
+    <div class="clase-card">
+        <div class="clase-header normal">
+            <span class="clase-num">Clase 33</span>
+            <span class="badge badge-oa">OA1</span> <span class="badge badge-oa">OA4</span>  
+        </div>
+        <div class="clase-body">
+            <div class="objetivo">
+                <strong>Objetivo de la clase (Bloom):</strong> Consolidar aprendizajes de la unidad mediante actividades integradas de lectura técnica, producción oral y transferencia al contexto laboral.
+            </div>
+            <div class="fase">
+                <span class="fase-title fase-inicio">INICIO (15 min)</span>
+                <div class="fase-content">
+                    <ul><li>Activación de conocimientos previos con repaso focalizado de vocabulario técnico.</li><li>Presentación de objetivo de consolidación y criterios de desempeño.</li></ul>
+                </div>
+            </div>
+            <div class="fase">
+                <span class="fase-title fase-desarrollo">DESARROLLO (60 min)</span>
+                <div class="fase-content">
+                    <ol><li><b>Revisión guiada:</b> análisis de un insumo técnico breve en inglés.</li><li><b>Aplicación:</b> actividad colaborativa orientada a resolución de situaciones profesionales.</li><li><b>Comunicación:</b> presentación oral breve de resultados con retroalimentación docente.</li></ol>
+                </div>
+            </div>
+            <div class="fase">
+                <span class="fase-title fase-cierre">CIERRE (15 min)</span>
+                <div class="fase-content">
+                    <ul><li>Síntesis de aprendizajes logrados.</li><li>Autoevaluación y compromiso de mejora para la siguiente sesión.</li></ul>
+                </div>
+            </div>
+            <div class="recursos">
+                <strong>📦 Recursos:</strong> Guías de consolidación, texto técnico breve, pizarra y recursos digitales de apoyo.
+            </div>
+            <div class="evaluacion-box">
+                <strong>📋 Evaluación:</strong> Formativa — desempeño en aplicación, comunicación y reflexión.
+            </div>
+            
+        </div>
+    </div>
+
+    <div class="footer">
+        <p>Planificación elaborada para Liceo Técnico Profesional — Inglés 4° Medio — Especialidad: Electricidad — 2026</p>
+        <p>Basada en OA de Bases Curriculares 3°-4° Medio (Decreto N°193/2019) y Programa de Estudio (Decreto N°496/2020)</p>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3° Medio Mecánica Industrial - Unidad 2: Technical Challenges & Global Issues</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: #f5f5f5; color: #333; line-height: 1.6; }
+        .header { background: linear-gradient(135deg, #263238, #455a64); color: white; padding: 30px; text-align: center; }
+        .header h1 { font-size: 1.8em; margin-bottom: 5px; }
+        .header h2 { font-size: 1.3em; font-weight: 300; margin-bottom: 10px; }
+        .header .subtitle { font-size: 0.95em; opacity: 0.9; }
+        .meta-info { display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; margin-top: 15px; }
+        .meta-info span { background: rgba(255,255,255,0.15); padding: 5px 15px; border-radius: 20px; font-size: 0.85em; }
+        .container { max-width: 1100px; margin: 20px auto; padding: 0 15px; }
+        .unit-overview { background: white; border-radius: 10px; padding: 25px; margin-bottom: 25px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); }
+        .unit-overview h3 { color: #263238; margin-bottom: 15px; font-size: 1.2em; border-bottom: 2px solid #263238; padding-bottom: 8px; }
+        .overview-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
+        .overview-item { padding: 10px; background: #eceff1; border-radius: 6px; }
+        .overview-item strong { color: #263238; }
+        .overview-item ul { margin-left: 20px; margin-top: 5px; }
+        .overview-item ul li { margin-bottom: 3px; font-size: 0.9em; }
+        .clase-card { background: white; border-radius: 10px; margin-bottom: 20px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); overflow: hidden; }
+        .clase-card.evaluacion { border-left: 5px solid #c62828; }
+        .clase-header { padding: 15px 20px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px; }
+        .clase-header.normal { background: #cfd8dc; }
+        .clase-header.eval { background: #ffebee; }
+        .clase-header .clase-num { font-size: 1.1em; font-weight: 700; color: #263238; }
+        .clase-header .clase-fecha { font-size: 0.85em; color: #666; }
+        .clase-header .badge { padding: 3px 10px; border-radius: 12px; font-size: 0.75em; font-weight: 600; }
+        .badge-oa { background: #eceff1; color: #263238; }
+        .badge-eval { background: #ffcdd2; color: #c62828; }
+        .clase-body { padding: 20px; }
+        .objetivo { background: #fff3e0; border-left: 4px solid #ef6c00; padding: 12px 15px; margin-bottom: 15px; border-radius: 0 6px 6px 0; }
+        .objetivo strong { color: #ef6c00; }
+        .fase { margin-bottom: 12px; }
+        .fase-title { display: inline-block; padding: 3px 12px; border-radius: 4px; font-weight: 600; font-size: 0.85em; color: white; margin-bottom: 6px; }
+        .fase-inicio { background: #2e7d32; }
+        .fase-desarrollo { background: #1565c0; }
+        .fase-cierre { background: #6a1b9a; }
+        .fase-content { padding-left: 15px; font-size: 0.92em; }
+        .fase-content ol, .fase-content ul { margin-left: 15px; }
+        .fase-content li { margin-bottom: 4px; }
+        .recursos { background: #f1f8e9; padding: 10px 15px; border-radius: 6px; margin-top: 10px; font-size: 0.88em; }
+        .recursos strong { color: #33691e; }
+        .evaluacion-box { background: #fce4ec; padding: 10px 15px; border-radius: 6px; margin-top: 10px; font-size: 0.88em; }
+        .evaluacion-box strong { color: #c62828; }
+        .sugerencia { background: #e8f5e9; border-left: 4px solid #2e7d32; padding: 10px 15px; border-radius: 0 6px 6px 0; margin-top: 10px; font-size: 0.88em; }
+        .sugerencia strong { color: #2e7d32; }
+        .notas-dist { background: white; border-radius: 10px; padding: 25px; margin-bottom: 25px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); }
+        .notas-dist h3 { color: #c62828; margin-bottom: 15px; font-size: 1.1em; }
+        table.notas { width: 100%; border-collapse: collapse; }
+        table.notas th { background: #263238; color: white; padding: 8px 12px; text-align: left; font-size: 0.9em; }
+        table.notas td { padding: 8px 12px; border-bottom: 1px solid #e0e0e0; font-size: 0.88em; }
+        table.notas tr:nth-child(even) { background: #eceff1; }
+        .footer { text-align: center; padding: 20px; color: #999; font-size: 0.8em; }
+        @media print {
+            body { background: white; }
+            .clase-card { break-inside: avoid; page-break-inside: avoid; box-shadow: none; border: 1px solid #ddd; }
+            .header { background: #263238 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+        }
+        @media (max-width: 768px) {
+            .overview-grid { grid-template-columns: 1fr; }
+            .meta-info { flex-direction: column; align-items: center; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="header">
+    <h1>PLANIFICACIÓN CLASE A CLASE — 3° MEDIO — MECÁNICA INDUSTRIAL</h1>
+    <h2>Unidad 2: Technical Challenges & Global Issues</h2>
+    <p class="subtitle">Inglés — Liceo Técnico Profesional — Año Escolar 2026 — Semestre 1</p>
+    <div class="meta-info">
+        <span>📅 4 mayo – 21 junio (7 sesiones; 1 opcional para patrón jueves)</span>
+        <span>⏱ 7 clases de 90 min (Clases 10–16)</span>
+        <span>📚 2 hrs/semana (1 sesión)</span>
+        <span>🎯 Foco: Lectura de estudios de caso globales, debate y evaluación integradora</span>
+    </div>
+</div>
+
+<div class="container">
+
+    <div class="unit-overview">
+        <h3>Visión General de la Unidad 2</h3>
+        <div class="overview-grid">
+            <div class="overview-item">
+                <strong>OA Basales trabajados (3° Medio):</strong>
+                <ul>
+                    <li><b>OA1:</b> Comprender información central de textos orales y escritos.</li><li><b>OA3:</b> Utilizar su conocimiento del inglés para construir postura personal crítica.</li><li><b>OA4:</b> Producir y comprender con fluidez textos orales y escritos.</li>
+                </ul>
+            </div>
+            <div class="overview-item">
+                <strong>Evaluaciones de la unidad:</strong>
+                <ul>
+            <li>Clase 14: <b>Nota 2 S1</b> — Prueba de comprensión lectora: texto técnico-global. 30 pts.</li>
+            <li>Clase 16: <b>Nota 3 S1</b> — Evaluación integradora semestral. 45 pts.</li>
+        </ul>
+            </div>
+            <div class="overview-item">
+                <strong>Habilidades priorizadas:</strong>
+                <ul>
+                    <li><b>Lectura:</b> Textos técnicos, estudios de caso, reportes e instrucciones de mecánica industrial.</li>
+                    <li><b>Expresión Oral:</b> Descripciones, explicaciones de procedimientos, debates y presentaciones.</li>
+                </ul>
+            </div>
+            <div class="overview-item">
+                <strong>Especialidad:</strong>
+                <ul><li>Mecánica Industrial</li></ul>
+                <strong>Nivel de los estudiantes:</strong>
+                <ul><li>A1-A2 (Básico)</li></ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==================== CLASE 10 ==================== -->
+    <div class="clase-card">
+        <div class="clase-header normal">
+            <span class="clase-num">Clase 10</span>
+            <span class="badge badge-oa">OA3</span>  
+        </div>
+        <div class="clase-body">
+            <div class="objetivo">
+                <strong>Objetivo de la clase (Bloom):</strong> Identificar temas globales actuales relacionados con la especialidad de Mecánica Industrial a partir de un texto introductorio en inglés.
+            </div>
+            <div class="fase">
+                <span class="fase-title fase-inicio">INICIO (15 min)</span>
+                <div class="fase-content">
+                    <ul>
+                <li>Docente presenta el tema de la unidad: <em>"This unit connects your specialty with global issues: automation and robotics in manufacturing: opportunities and challenges."</em></li>
+                <li>Brainstorm: <em>"What global problems are connected to mecánica industrial?"</em> — Se recogen ideas en mapa conceptual en la pizarra.</li>
+                <li>Vocabulario nuevo: automation, robot, CNC, efficiency, unemployment, productivity — presentación con imágenes y definiciones simples.</li>
+            </ul>
+                </div>
+            </div>
+            <div class="fase">
+                <span class="fase-title fase-desarrollo">DESARROLLO (60 min)</span>
+                <div class="fase-content">
+                    <ol>
+                <li><b>Reading introduction (20 min):</b> Texto adaptado (A2) sobre automation and robotics in manufacturing: opportunities and challenges. Primera lectura silenciosa, luego lectura guiada con pausas para aclarar vocabulario.</li>
+                <li><b>Comprehension (15 min):</b> Responder 6 preguntas: 3 de información explícita + 3 de opinión (<em>"Do you think this is a serious problem? Why?"</em>).</li>
+                <li><b>Vocabulary in context (10 min):</b> Los estudiantes buscan las 6 palabras nuevas en el texto y escriben una oración propia con cada una.</li>
+                <li><b>Discussion (15 min):</b> En parejas, los estudiantes comparten sus opiniones usando sentence starters: <em>"I think… because…", "In my opinion…", "I agree/disagree because…"</em></li>
+            </ol>
+                </div>
+            </div>
+            <div class="fase">
+                <span class="fase-title fase-cierre">CIERRE (15 min)</span>
+                <div class="fase-content">
+                    <ul>
+                <li>3 estudiantes comparten su opinión con la clase.</li>
+                <li>Introducción de expresiones de opinión para la unidad: <em>"I believe that…", "According to the text…", "On the other hand…"</em></li>
+            </ul>
+                </div>
+            </div>
+            <div class="recursos">
+                <strong>📦 Recursos:</strong> Texto impreso sobre tema global del área, ficha de vocabulario, ficha de preguntas, pizarra.
+            </div>
+            <div class="evaluacion-box">
+                <strong>📋 Evaluación:</strong> Formativa — revisión de preguntas y observación de discusión oral.
+            </div>
+            
+        </div>
+    </div>
+
+    <!-- ==================== CLASE 11 ==================== -->
+    <div class="clase-card">
+        <div class="clase-header normal">
+            <span class="clase-num">Clase 11</span>
+            <span class="badge badge-oa">OA1</span> <span class="badge badge-oa">OA3</span>  
+        </div>
+        <div class="clase-body">
+            <div class="objetivo">
+                <strong>Objetivo de la clase (Bloom):</strong> Analizar un estudio de caso sobre un desafío técnico global relacionado con Mecánica Industrial, identificando causas, consecuencias y posibles soluciones.
+            </div>
+            <div class="fase">
+                <span class="fase-title fase-inicio">INICIO (15 min)</span>
+                <div class="fase-content">
+                    <ul>
+                <li>Repaso rápido del vocabulario de la clase anterior con juego de definiciones (docente dice definición, estudiantes dicen la palabra).</li>
+                <li>Pre-reading: Docente muestra 2-3 imágenes/estadísticas impactantes sobre balancing automation with employment in the manufacturing sector y pregunta: <em>"What do these images tell us?"</em></li>
+                <li>Se introducen conectores de causa-efecto: <em>"because", "as a result", "therefore", "so"</em></li>
+            </ul>
+                </div>
+            </div>
+            <div class="fase">
+                <span class="fase-title fase-desarrollo">DESARROLLO (60 min)</span>
+                <div class="fase-content">
+                    <ol>
+                <li><b>Reading the case study (25 min):</b> <em>'Robots in the Factory'</em> — How automation is changing industrial manufacturing: CNC machines, robotic welding, 3D printing. Texto de 1 página adaptado (A2). 
+                    <ul>
+                        <li>Lectura guiada con paradas para verificar comprensión.</li>
+                        <li>Completar organizador gráfico: <b>Problem → Causes → Effects → Possible Solutions</b></li>
+                    </ul>
+                </li>
+                <li><b>Group analysis (15 min):</b> En grupos de 3-4, responder: <em>"Which solution is the best? Why? What are the advantages and disadvantages?"</em> Cada grupo prepara 3 oraciones con conectores de causa-efecto.</li>
+                <li><b>Oral report (15 min):</b> Cada grupo presenta sus conclusiones: <em>"We believe the best solution is… because… As a result…"</em></li>
+                <li><b>Reflection writing (5 min):</b> Cada estudiante escribe 2 oraciones: <em>"I think the biggest challenge is… because…"</em></li>
+            </ol>
+                </div>
+            </div>
+            <div class="fase">
+                <span class="fase-title fase-cierre">CIERRE (15 min)</span>
+                <div class="fase-content">
+                    <ul>
+                <li>Docente sistematiza las ideas principales del caso de estudio.</li>
+                <li>Pregunta de cierre: <em>"How does this global issue affect YOUR future career?"</em></li>
+            </ul>
+                </div>
+            </div>
+            <div class="recursos">
+                <strong>📦 Recursos:</strong> Estudio de caso impreso, organizador gráfico, ficha de conectores, pizarra.
+            </div>
+            <div class="evaluacion-box">
+                <strong>📋 Evaluación:</strong> Formativa — revisión del organizador gráfico y evaluación de presentación grupal.
+            </div>
+            <div class="sugerencia"><strong>💡 Sugerencia:</strong> <b>Diferenciación:</b> Para estudiantes con mayor dificultad, proporcionar un glosario con las palabras clave del texto y oraciones modelo para completar.</div>
+        </div>
+    </div>
+
+    <!-- ==================== CLASE 12 ==================== -->
+    <div class="clase-card">
+        <div class="clase-header normal">
+            <span class="clase-num">Clase 12</span>
+            <span class="badge badge-oa">OA3</span> <span class="badge badge-oa">OA4</span>  
+        </div>
+        <div class="clase-body">
+            <div class="objetivo">
+                <strong>Objetivo de la clase (Bloom):</strong> Construir argumentos a favor y en contra sobre un tema técnico-ambiental relacionado con Mecánica Industrial utilizando expresiones de opinión en inglés.
+            </div>
+            <div class="fase">
+                <span class="fase-title fase-inicio">INICIO (15 min)</span>
+                <div class="fase-content">
+                    <ul>
+                <li>Docente presenta el tema del debate: <em>"Will robots replace industrial workers, or create new jobs?"</em></li>
+                <li>Quick poll: los estudiantes votan a mano alzada (a favor / en contra / no sé). Se registra en la pizarra.</li>
+                <li>Se enseñan expresiones para debatir: <em>"I strongly believe…", "On the other hand…", "However…", "For example…", "In conclusion…"</em></li>
+            </ul>
+                </div>
+            </div>
+            <div class="fase">
+                <span class="fase-title fase-desarrollo">DESARROLLO (60 min)</span>
+                <div class="fase-content">
+                    <ol>
+                <li><b>Reading for arguments (15 min):</b> Ficha con mini-textos (3-4 párrafos) presentando argumentos a favor y en contra. Los estudiantes los leen e identifican los puntos principales.</li>
+                <li><b>Argument building (20 min):</b> La clase se divide en dos grupos (For / Against). Cada grupo genera 4-5 argumentos en inglés usando las expresiones de debate. Escriben en papelógrafo.</li>
+                <li><b>Mini-debate (20 min):</b> Formato simple: un representante de cada lado presenta 2 argumentos (1 min c/u), luego réplica (30 seg c/u). Se repite con 2 parejas más de debatientes.</li>
+                <li><b>Vote again (5 min):</b> Se repite la votación. <em>"Did anyone change their opinion? Why?"</em></li>
+            </ol>
+                </div>
+            </div>
+            <div class="fase">
+                <span class="fase-title fase-cierre">CIERRE (15 min)</span>
+                <div class="fase-content">
+                    <ul>
+                <li>Reflexión: el docente destaca los mejores argumentos de ambos lados.</li>
+                <li>Se conecta con la evaluación de lectura: <em>"Next classes we'll read more about these issues and then have a reading test."</em></li>
+            </ul>
+                </div>
+            </div>
+            <div class="recursos">
+                <strong>📦 Recursos:</strong> Ficha de argumentos (mini-textos), ficha de expresiones de debate, papelógrafo, marcadores, pizarra.
+            </div>
+            <div class="evaluacion-box">
+                <strong>📋 Evaluación:</strong> Formativa — observación de participación en debate y calidad de argumentos en inglés.
+            </div>
+            <div class="sugerencia"><strong>💡 Sugerencia:</strong> <b>Sugerencia:</b> Grabar el mini-debate para reproducirlo después y que los estudiantes identifiquen sus propias fortalezas y errores.</div>
+        </div>
+    </div>
+
+    <!-- ==================== CLASE 13 ==================== -->
+    <div class="clase-card">
+        <div class="clase-header normal">
+            <span class="clase-num">Clase 13</span>
+            <span class="badge badge-oa">OA1</span> <span class="badge badge-oa">OA3</span>  
+        </div>
+        <div class="clase-body">
+            <div class="objetivo">
+                <strong>Objetivo de la clase (Bloom):</strong> Aplicar estrategias de lectura (skimming, scanning, inferencia) en textos técnicos sobre Mecánica Industrial como preparación para la evaluación de comprensión lectora.
+            </div>
+            <div class="fase">
+                <span class="fase-title fase-inicio">INICIO (15 min)</span>
+                <div class="fase-content">
+                    <ul>
+                <li>Docente repasa las estrategias de lectura trabajadas en la unidad: <em>skimming (idea general), scanning (información específica), inference (deducir significado), prediction</em>.</li>
+                <li>Warm-up: <em>"What do you do BEFORE reading a text? WHILE reading? AFTER reading?"</em> — Se completa un cuadro de 3 columnas en la pizarra.</li>
+            </ul>
+                </div>
+            </div>
+            <div class="fase">
+                <span class="fase-title fase-desarrollo">DESARROLLO (60 min)</span>
+                <div class="fase-content">
+                    <ol>
+                <li><b>Practice text 1 (20 min):</b> Texto similar al formato de evaluación sobre un tema técnico del área. Los estudiantes aplican:
+                    <ul>
+                        <li>Skimming: <em>"What is the main idea?"</em> (2 min)</li>
+                        <li>Scanning: <em>"Find 3 specific pieces of information"</em> (5 min)</li>
+                        <li>6 preguntas de comprensión con respuestas escritas (13 min)</li>
+                    </ul>
+                </li>
+                <li><b>Corrección colaborativa (10 min):</b> Se revisan las respuestas en conjunto, discutiendo cómo se encontró cada respuesta.</li>
+                <li><b>Practice text 2 (20 min):</b> Segundo texto de práctica con formato similar a la evaluación. Los estudiantes trabajan de manera individual.</li>
+                <li><b>Peer check (10 min):</b> Los estudiantes intercambian fichas y se corrigen mutuamente usando una pauta de respuestas.</li>
+            </ol>
+                </div>
+            </div>
+            <div class="fase">
+                <span class="fase-title fase-cierre">CIERRE (15 min)</span>
+                <div class="fase-content">
+                    <ul>
+                <li>Docente aclara dudas frecuentes y recuerda: <em>"The reading test is next class. Review your vocabulary and practice the strategies."</em></li>
+                <li>Tips para la prueba: <em>"Read the questions first. Underline key words. Don't translate everything — focus on understanding the main idea."</em></li>
+            </ul>
+                </div>
+            </div>
+            <div class="recursos">
+                <strong>📦 Recursos:</strong> 2 textos de práctica impresos (formato similar a evaluación), fichas de preguntas, pauta de respuestas para corrección entre pares.
+            </div>
+            <div class="evaluacion-box">
+                <strong>📋 Evaluación:</strong> Formativa — revisión de ejercicios de práctica; diagnóstico de áreas débiles antes de la evaluación.
+            </div>
+            
+        </div>
+    </div>
+
+    <!-- ==================== CLASE 14 ==================== -->
+    <div class="clase-card evaluacion">
+        <div class="clase-header eval">
+            <span class="clase-num">Clase 14</span>
+            <span class="badge badge-oa">OA1</span> <span class="badge badge-oa">OA3</span>  <span class="badge badge-eval">EVALUACIÓN</span>
+        </div>
+        <div class="clase-body">
+            <div class="objetivo">
+                <strong>Objetivo de la clase (Bloom):</strong> Demostrar comprensión de información central y específica en un texto técnico en inglés sobre Mecánica Industrial mediante una evaluación escrita.
+            </div>
+            <div class="fase">
+                <span class="fase-title fase-inicio">INICIO (15 min)</span>
+                <div class="fase-content">
+                    <ul>
+                <li>Docente organiza la sala en disposición de evaluación.</li>
+                <li>Instrucciones claras: <em>"You have 60 minutes. Read carefully. Answer in English. You can underline the text."</em></li>
+                <li>Repaso final de 2 minutos: <em>"Remember: read the questions first, then the text."</em></li>
+            </ul>
+                </div>
+            </div>
+            <div class="fase">
+                <span class="fase-title fase-desarrollo">DESARROLLO (60 min)</span>
+                <div class="fase-content">
+                    <ol>
+                <li><b>Evaluación escrita (60 min):</b> A text about CNC machines and their role in modern manufacturing — 8 questions (explicit + inferential).
+                    <ul>
+                        <li>Sección A: Verdadero/Falso con justificación (3 ítems — 9 pts)</li>
+                        <li>Sección B: Preguntas de comprensión explícita (3 preguntas — 12 pts)</li>
+                        <li>Sección C: Preguntas de inferencia y opinión (2 preguntas — 9 pts)</li>
+                        <li>Total: 30 puntos — Exigencia 60%</li>
+                    </ul>
+                </li>
+            </ol>
+                </div>
+            </div>
+            <div class="fase">
+                <span class="fase-title fase-cierre">CIERRE (15 min)</span>
+                <div class="fase-content">
+                    <ul>
+                <li>Recogida de evaluaciones. Retroalimentación inmediata: <em>"Was the text easy or difficult? Which part was the hardest?"</em></li>
+                <li>Adelanto: <em>"Next class we'll review the test and continue preparing for the final evaluation."</em></li>
+            </ul>
+                </div>
+            </div>
+            <div class="recursos">
+                <strong>📦 Recursos:</strong> Evaluación impresa (texto + preguntas), hojas de respuesta.
+            </div>
+            <div class="evaluacion-box">
+                <strong>📋 Evaluación:</strong> <b>SUMATIVA — Nota 2 Semestre 1:</b> Prueba de comprensión lectora — texto técnico de Mecánica Industrial. 30 pts, 60% exigencia.
+            </div>
+            <div class="sugerencia"><strong>💡 Sugerencia:</strong> <b>Adecuación:</b> Para estudiantes con necesidades especiales, considerar tiempo extra (+15 min) y/o reducir el número de preguntas manteniendo la misma profundidad.</div>
+        </div>
+    </div>
+
+    <!-- ==================== CLASE 15 ==================== -->
+    <div class="clase-card">
+        <div class="clase-header normal">
+            <span class="clase-num">Clase 15</span>
+            <span class="badge badge-oa">OA1</span> <span class="badge badge-oa">OA3</span> <span class="badge badge-oa">OA4</span>  
+        </div>
+        <div class="clase-body">
+            <div class="objetivo">
+                <strong>Objetivo de la clase (Bloom):</strong> Evaluar los resultados de la prueba de lectura para consolidar estrategias efectivas y corregir errores recurrentes en la comprensión de textos técnicos.
+            </div>
+            <div class="fase">
+                <span class="fase-title fase-inicio">INICIO (15 min)</span>
+                <div class="fase-content">
+                    <ul>
+                <li>Docente entrega las evaluaciones corregidas con retroalimentación escrita.</li>
+                <li>Se presentan los resultados generales (sin nombres): <em>"The average score was… The strongest area was… We need to improve…"</em></li>
+                <li>Los estudiantes revisan sus errores individualmente (5 min).</li>
+            </ul>
+                </div>
+            </div>
+            <div class="fase">
+                <span class="fase-title fase-desarrollo">DESARROLLO (60 min)</span>
+                <div class="fase-content">
+                    <ol>
+                <li><b>Error analysis (15 min):</b> El docente trabaja con los errores más comunes en la pizarra, explicando las estrategias correctas para encontrar las respuestas.</li>
+                <li><b>Vocabulary consolidation (15 min):</b> Juego <em>"Vocabulary Bingo"</em> con todas las palabras de las Unidades 1 y 2. Se consolidan términos técnicos y de opinión.</li>
+                <li><b>Integrated practice (20 min):</b> Actividad que combina lectura + escritura + oralidad: los estudiantes leen un mini-texto nuevo (5 oraciones), escriben 3 preguntas sobre él, y luego hacen las preguntas a un compañero oralmente.</li>
+                <li><b>Self-reflection (10 min):</b> Ficha de reflexión: <em>"What reading strategies work best for me? What vocabulary do I need to review? What is my goal for next semester?"</em></li>
+            </ol>
+                </div>
+            </div>
+            <div class="fase">
+                <span class="fase-title fase-cierre">CIERRE (15 min)</span>
+                <div class="fase-content">
+                    <ul>
+                <li>Docente introduce la evaluación integradora: <em>"Next class is our last evaluation for Semester 1: an integrated test."</em></li>
+                <li>Se explica brevemente el formato: vocabulario + gramática + mini-lectura + escritura breve.</li>
+            </ul>
+                </div>
+            </div>
+            <div class="recursos">
+                <strong>📦 Recursos:</strong> Evaluaciones corregidas, Bingo de vocabulario, mini-texto para actividad integradora, ficha de reflexión.
+            </div>
+            <div class="evaluacion-box">
+                <strong>📋 Evaluación:</strong> Formativa — análisis de errores y observación de práctica integrada.
+            </div>
+            <div class="sugerencia"><strong>💡 Sugerencia:</strong> Aplicar esta sesión como extensión para cursos de miércoles o convertirla en actividad de recuperación si el patrón horario es jueves.</div>
+        </div>
+    </div>
+
+    <!-- ==================== CLASE 16 ==================== -->
+    <div class="clase-card evaluacion">
+        <div class="clase-header eval">
+            <span class="clase-num">Clase 16</span>
+            <span class="badge badge-oa">OA1</span> <span class="badge badge-oa">OA3</span> <span class="badge badge-oa">OA4</span>  <span class="badge badge-eval">EVALUACIÓN</span>
+        </div>
+        <div class="clase-body">
+            <div class="objetivo">
+                <strong>Objetivo de la clase (Bloom):</strong> Demostrar dominio integrado de vocabulario, comprensión lectora y producción escrita en inglés técnico de Mecánica Industrial en una evaluación de cierre de semestre.
+            </div>
+            <div class="fase">
+                <span class="fase-title fase-inicio">INICIO (15 min)</span>
+                <div class="fase-content">
+                    <ul>
+                <li>Docente organiza la sala y da instrucciones: <em>"This is your final evaluation for Semester 1. You have 70 minutes."</em></li>
+                <li>Se explican las secciones: vocabulario, gramática en contexto, mini-lectura, escritura breve.</li>
+            </ul>
+                </div>
+            </div>
+            <div class="fase">
+                <span class="fase-title fase-desarrollo">DESARROLLO (60 min)</span>
+                <div class="fase-content">
+                    <ol>
+                <li><b>Evaluación integradora (70 min):</b>
+                    <ul>
+                        <li><b>Sección A — Vocabulary (10 pts):</b> Asociar 10 términos técnicos con sus definiciones/imágenes.</li>
+                        <li><b>Sección B — Grammar in context (10 pts):</b> Completar 5 oraciones con la forma verbal correcta (Simple Present, connectors, opinion expressions) en contexto técnico.</li>
+                        <li><b>Sección C — Reading (15 pts):</b> Texto breve sobre un tema del área + 5 preguntas de comprensión.</li>
+                        <li><b>Sección D — Writing (10 pts):</b> Escribir un párrafo de 6-8 oraciones: <em>"Describe a technical problem and its solution"</em> o <em>"Give your opinion about [global issue related to specialty]."</em></li>
+                        <li>Total: 45 puntos — Exigencia 60%</li>
+                    </ul>
+                </li>
+            </ol>
+                </div>
+            </div>
+            <div class="fase">
+                <span class="fase-title fase-cierre">CIERRE (15 min)</span>
+                <div class="fase-content">
+                    <ul>
+                <li>Recogida de evaluaciones. <em>"Congratulations on finishing Semester 1! Rest during the break and come back ready for more."</em></li>
+                <li>Mensaje motivador sobre los logros del semestre.</li>
+            </ul>
+                </div>
+            </div>
+            <div class="recursos">
+                <strong>📦 Recursos:</strong> Evaluación integradora impresa (4 secciones), hojas de respuesta.
+            </div>
+            <div class="evaluacion-box">
+                <strong>📋 Evaluación:</strong> <b>SUMATIVA — Nota 3 Semestre 1:</b> Evaluación integradora (vocabulario + gramática + lectura + escritura). 45 pts, 60% exigencia.
+            </div>
+            <div class="sugerencia"><strong>💡 Sugerencia:</strong> <b>Cierre de Semestre:</b> Antes de las vacaciones de invierno, entregar notas y retroalimentación general al curso. Destacar los logros y áreas de mejora para el Semestre 2.</div>
+        </div>
+    </div>
+
+    <div class="footer">
+        <p>Planificación elaborada para Liceo Técnico Profesional — Inglés 3° Medio — Especialidad: Mecánica Industrial — 2026</p>
+        <p>Basada en OA de Bases Curriculares 3° Medio (Decreto N°193/2019) y Programa de Estudio (Decreto N°496/2020)</p>
+    </div>
+</div>
+</body>
+</html>

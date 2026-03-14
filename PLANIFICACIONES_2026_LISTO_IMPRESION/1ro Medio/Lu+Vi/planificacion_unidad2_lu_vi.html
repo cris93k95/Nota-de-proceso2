@@ -1,0 +1,1005 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>1° Medio - Unidad 2: How Things Work</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: #f5f5f5; color: #333; line-height: 1.6; }
+        .header { background: linear-gradient(135deg, #004d40, #00695c); color: white; padding: 30px; text-align: center; }
+        .header h1 { font-size: 1.8em; margin-bottom: 5px; }
+        .header h2 { font-size: 1.3em; font-weight: 300; margin-bottom: 10px; }
+        .header .subtitle { font-size: 0.95em; opacity: 0.9; }
+        .meta-info { display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; margin-top: 15px; }
+        .meta-info span { background: rgba(255,255,255,0.15); padding: 5px 15px; border-radius: 20px; font-size: 0.85em; }
+        .container { max-width: 1100px; margin: 20px auto; padding: 0 15px; }
+        .unit-overview { background: white; border-radius: 10px; padding: 25px; margin-bottom: 25px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); }
+        .unit-overview h3 { color: #004d40; margin-bottom: 15px; font-size: 1.2em; border-bottom: 2px solid #004d40; padding-bottom: 8px; }
+        .overview-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
+        .overview-item { padding: 10px; background: #f0f9f4; border-radius: 6px; }
+        .overview-item strong { color: #004d40; }
+        .overview-item ul { margin-left: 20px; margin-top: 5px; }
+        .overview-item ul li { margin-bottom: 3px; font-size: 0.9em; }
+        .clase-card { background: white; border-radius: 10px; margin-bottom: 20px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); overflow: hidden; }
+        .clase-card.evaluacion { border-left: 5px solid #c62828; }
+        .clase-header { padding: 15px 20px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px; }
+        .clase-header.normal { background: #e0f2f1; }
+        .clase-header.eval { background: #ffebee; }
+        .clase-header .clase-num { font-size: 1.1em; font-weight: 700; color: #004d40; }
+        .clase-header .clase-fecha { font-size: 0.85em; color: #666; }
+        .clase-header .badge { padding: 3px 10px; border-radius: 12px; font-size: 0.75em; font-weight: 600; }
+        .badge-oa { background: #e0f2f1; color: #00695c; }
+        .badge-eval { background: #ffcdd2; color: #c62828; }
+        .clase-body { padding: 20px; }
+        .objetivo { background: #fff3e0; border-left: 4px solid #ef6c00; padding: 12px 15px; margin-bottom: 15px; border-radius: 0 6px 6px 0; }
+        .objetivo strong { color: #ef6c00; }
+        .fase { margin-bottom: 12px; }
+        .fase-title { display: inline-block; padding: 3px 12px; border-radius: 4px; font-weight: 600; font-size: 0.85em; color: white; margin-bottom: 6px; }
+        .fase-inicio { background: #2e7d32; }
+        .fase-desarrollo { background: #1565c0; }
+        .fase-cierre { background: #6a1b9a; }
+        .fase-content { padding-left: 15px; font-size: 0.92em; }
+        .fase-content ol, .fase-content ul { margin-left: 15px; }
+        .fase-content li { margin-bottom: 4px; }
+        .recursos { background: #f1f8e9; padding: 10px 15px; border-radius: 6px; margin-top: 10px; font-size: 0.88em; }
+        .recursos strong { color: #33691e; }
+        .evaluacion-box { background: #fce4ec; padding: 10px 15px; border-radius: 6px; margin-top: 10px; font-size: 0.88em; }
+        .evaluacion-box strong { color: #c62828; }
+        .notas-dist { background: white; border-radius: 10px; padding: 25px; margin-bottom: 25px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); }
+        .notas-dist h3 { color: #c62828; margin-bottom: 15px; font-size: 1.1em; }
+        table.notas { width: 100%; border-collapse: collapse; }
+        table.notas th { background: #004d40; color: white; padding: 8px 12px; text-align: left; font-size: 0.9em; }
+        table.notas td { padding: 8px 12px; border-bottom: 1px solid #e0e0e0; font-size: 0.88em; }
+        table.notas tr:nth-child(even) { background: #f0f9f4; }
+        .footer { text-align: center; padding: 20px; color: #999; font-size: 0.8em; }
+        @media print {
+            body { background: white; }
+            .clase-card { break-inside: avoid; page-break-inside: avoid; box-shadow: none; border: 1px solid #ddd; }
+            .header { background: #004d40 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+        }
+        @media (max-width: 768px) {
+            .overview-grid { grid-template-columns: 1fr; }
+            .meta-info { flex-direction: column; align-items: center; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="header">
+    <h1>PLANIFICACIÓN CLASE A CLASE — 1° MEDIO</h1>
+    <h2>Unidad 2: How Things Work — Processes and Descriptions</h2>
+    <p class="subtitle">Inglés — Liceo Técnico Profesional — Año Escolar 2026 — Versión horario Lu+Vi (1°A, 1°C, 1°D)</p>
+    <div class="meta-info">
+        <span>📅 4 mayo – 21 junio</span>
+        <span>⏱ 14 sesiones de 90 min</span>
+        <span>📚 4 hrs/semana (2 sesiones)</span>
+        <span>🎯 Ajustada a calendario 2026 + feriados Chile</span>
+    </div>
+</div>
+
+<div class="container">
+
+    <!-- VISIÓN GENERAL DE LA UNIDAD -->
+    <div class="unit-overview">
+        <h3>Visión General de la Unidad 2</h3>
+        <div class="overview-grid">
+            <div class="overview-item">
+                <strong>OA Basales trabajados:</strong>
+                <ul>
+                    <li><b>OA1:</b> Comprensión de textos orales adaptados y auténticos simples.</li>
+                    <li><b>OA2:</b> Identificar palabras clave, expresiones idiomáticas, collocations, conectores, sonidos vocales.</li>
+                    <li><b>OA5:</b> Presentar información oral usando recursos multimodales.</li>
+                    <li><b>OA7:</b> Reaccionar a textos leídos o escuchados expresando opiniones y conexiones.</li>
+                    <li><b>OA8:</b> Demostrar conocimiento y uso del lenguaje: Passive Voice, conectores de contraste y causa-efecto.</li>
+                    <li><b>OA9:</b> Comprensión de ideas generales e información explícita en textos.</li>
+                    <li><b>OA12:</b> Estrategias de lectura: pre-lectura, lectura y post-lectura.</li>
+                </ul>
+            </div>
+            <div class="overview-item">
+                <strong>Contenidos lingüísticos:</strong>
+                <ul>
+                    <li>Passive Voice (Present Simple y Past Simple): <em>is made, was repaired, are designed</em></li>
+                    <li>Conectores de contraste: <em>although, however, but, on the other hand</em></li>
+                    <li>Conectores de causa-efecto: <em>because, so that, as a result, therefore</em></li>
+                    <li>Vocabulario técnico avanzado por especialidad (materiales, procesos, maquinaria)</li>
+                    <li>Relative clauses: <em>who, which, that</em> (introducción)</li>
+                    <li>Descripciones de objetos en detalle: tamaño, material, función</li>
+                </ul>
+                <br>
+                <strong>Tipo de textos:</strong>
+                <ul>
+                    <li>Textos descriptivos de procesos técnicos</li>
+                    <li>Estudios de caso de fallas y diagnóstico</li>
+                    <li>Manuales técnicos simplificados</li>
+                    <li>Fichas técnicas de materiales</li>
+                </ul>
+            </div>
+            <div class="overview-item">
+                <strong>Habilidades priorizadas:</strong>
+                <ul>
+                    <li><b>Lectura:</b> Comprensión de textos descriptivos y de procesos técnicos. Identificación de información implícita y explícita. Inferencia de vocabulario por contexto.</li>
+                    <li><b>Expresión Oral:</b> Descripción de procesos y mecanismos. Explicación de cómo funcionan las cosas. Discusión sobre diagnóstico de fallas técnicas.</li>
+                </ul>
+            </div>
+            <div class="overview-item">
+                <strong>Evaluaciones de la unidad:</strong>
+                <ul>
+                    <li>Clase 30: <b>Nota 3</b> — Interrogación oral (describir un proceso/mecanismo usando Passive Voice)</li>
+                    <li>Clase 32: <b>Nota 4</b> — Prueba de comprensión lectora (estudio de caso técnico)</li>
+                    <li>Clase 14: <b>Nota 5</b> — Evaluación integradora de vocabulario y gramática</li>
+                </ul>
+                <p style="margin-top:8px; font-size:0.85em; color:#666;"><em>Nota: Las clases de esta unidad se numeran 19-34, continuando la secuencia de la Unidad 1.</em></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==================== CLASE 1 ==================== -->
+    <div class="clase-card">
+        <div class="clase-header normal">
+            <span class="clase-num">Clase 1</span>
+            <span class="clase-fecha">Semana 10 · mayo</span>
+            <span class="badge badge-oa">OA9 · OA8</span>
+        </div>
+        <div class="clase-body">
+            <div class="objetivo">
+                <strong>Objetivo de la clase:</strong> Comprender la estructura de la Passive Voice en Present Simple para describir procesos técnicos donde el agente no es relevante.
+            </div>
+            <div class="fase">
+                <span class="fase-title fase-inicio">INICIO (15 min)</span>
+                <div class="fase-content">
+                    <ul>
+                        <li>Bienvenida a la Unidad 2: <em>"In Unit 1, we learned about tools and specialties. Now we'll learn HOW things work and HOW things are made."</em></li>
+                        <li>Escribir en la pizarra: <em>"A mechanic repairs the engine."</em> → <em>"The engine is repaired (by a mechanic)."</em></li>
+                        <li>Preguntar: <em>"What is the difference? Which sentence focuses on the action/result?"</em></li>
+                        <li>Contextualizar: <em>"In technical manuals and processes, we often don't care WHO does it. We care about WHAT is done."</em></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="fase">
+                <span class="fase-title fase-desarrollo">DESARROLLO (60 min)</span>
+                <div class="fase-content">
+                    <ol>
+                        <li><b>Grammar presentation (20 min):</b>
+                            <ul>
+                                <li>Passive Voice Present Simple: <em>Subject + is/are + past participle</em></li>
+                                <li>Passive Voice Past Simple: <em>Subject + was/were + past participle</em></li>
+                                <li>Ejemplos técnicos por especialidad:
+                                    <ul>
+                                        <li>Automotriz: <em>"Cars are assembled in factories. The oil is changed every 5,000 km."</em></li>
+                                        <li>Industrial: <em>"Steel is heated to 1,500°C. The pieces are welded together."</em></li>
+                                        <li>Electricidad: <em>"Wires are connected to the circuit breaker. The voltage is measured."</em></li>
+                                        <li>Electrónica: <em>"Components are soldered to the PCB. The circuit is tested."</em></li>
+                                        <li>Gráfica: <em>"The file is prepared for printing. The ink is applied to the paper."</em></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                        <li><b>Controlled practice (15 min):</b> Ejercicios: transformar oraciones activas a pasivas en contexto técnico. 10 oraciones. Revisión en conjunto.</li>
+                        <li><b>Reading (25 min):</b> <em>"How a Car Is Assembled"</em> — Texto breve sobre el proceso de ensamblaje de un automóvil en una fábrica. Todo escrito en Passive Voice. Los estudiantes:
+                            <ul>
+                                <li>Subrayan todas las formas pasivas.</li>
+                                <li>Identifican los pasos del proceso.</li>
+                                <li>Responden: <em>How many steps are there? What is done first? What is the final step?</em></li>
+                            </ul>
+                        </li>
+                    </ol>
+                </div>
+            </div>
+            <div class="fase">
+                <span class="fase-title fase-cierre">CIERRE (15 min)</span>
+                <div class="fase-content">
+                    <ul>
+                        <li>Actividad oral rápida: cada estudiante describe un paso de un proceso técnico usando Passive Voice: <em>"In my specialty, _________ is/are _________."</em></li>
+                        <li>Ticket de salida: escribir 3 oraciones en Passive Voice sobre procesos de su especialidad preferida.</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="recursos">
+                <strong>Recursos:</strong> Presentación gramática (pizarra/proyector), ejercicios de transformación impresos, texto <em>"How a Car Is Assembled"</em> impreso, handout de gramática Passive Voice.
+            </div>
+        </div>
+    </div>
+
+    <!-- ==================== CLASE 2 ==================== -->
+    <div class="clase-card">
+        <div class="clase-header normal">
+            <span class="clase-num">Clase 2</span>
+            <span class="clase-fecha">Semana 10 · mayo</span>
+            <span class="badge badge-oa">OA8 · OA9</span>
+        </div>
+        <div class="clase-body">
+            <div class="objetivo">
+                <strong>Objetivo de la clase:</strong> Aplicar la Passive Voice para comprender y describir el proceso de fabricación de una pieza mecánica industrial.
+            </div>
+            <div class="fase">
+                <span class="fase-title fase-inicio">INICIO (15 min)</span>
+                <div class="fase-content">
+                    <ul>
+                        <li>Repaso rápido: el docente describe un proceso en activa y los estudiantes lo transforman a pasiva (oral, voluntarios).</li>
+                        <li>Mostrar un objeto metálico simple (tornillo, tuerca, ángulo de acero). <em>"How do you think this was made?"</em></li>
+                        <li>Recoger ideas en la pizarra.</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="fase">
+                <span class="fase-title fase-desarrollo">DESARROLLO (60 min)</span>
+                <div class="fase-content">
+                    <ol>
+                        <li><b>Vocabulary – Industrial processes (15 min):</b> <em>cast, forge, cut, grind, drill, polish, weld, assemble, measure, inspect, heat, cool, mold, stamp, bend</em>. Todos como participios pasados para usar en Passive Voice: <em>is cast, is forged, is cut…</em></li>
+                        <li><b>Reading (25 min):</b> <em>"From Raw Metal to Finished Product: How a Gear Is Made"</em> — Texto descriptivo de proceso con imágenes que muestra cómo se fabrica un engranaje desde el metal crudo hasta el producto final. Escrito mayoritariamente en Passive Voice. Los estudiantes:
+                            <ul>
+                                <li>Leen y numeran los pasos del proceso.</li>
+                                <li>Asocian cada paso con la imagen correspondiente.</li>
+                                <li>Identifican los verbos en Passive Voice y los subrayan.</li>
+                                <li>Completan un flowchart del proceso.</li>
+                            </ul>
+                        </li>
+                        <li><b>Oral practice (20 min):</b> En parejas, usando el flowchart como apoyo, describir oralmente el proceso completo. Un estudiante describe los primeros pasos, el otro los finales. Luego intercambian. Foco en uso correcto de Passive Voice.</li>
+                    </ol>
+                </div>
+            </div>
+            <div class="fase">
+                <span class="fase-title fase-cierre">CIERRE (15 min)</span>
+                <div class="fase-content">
+                    <ul>
+                        <li>2-3 parejas describen el proceso completo ante la clase.</li>
+                        <li>Reflexión: <em>"Why is Passive Voice so common in technical texts?"</em> (Respuesta esperada: porque importa el proceso, no quién lo hace.)</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="recursos">
+                <strong>Recursos:</strong> Objeto metálico real, texto con imágenes impreso, flashcards de procesos industriales, flowchart template.
+            </div>
+        </div>
+    </div>
+
+    <!-- ==================== CLASE 3 ==================== -->
+    <div class="clase-card">
+        <div class="clase-header normal">
+            <span class="clase-num">Clase 3</span>
+            <span class="clase-fecha">Semana 11 · mayo</span>
+            <span class="badge badge-oa">OA9 · OA12 · OA7</span>
+        </div>
+        <div class="clase-body">
+            <div class="objetivo">
+                <strong>Objetivo de la clase:</strong> Analizar un estudio de caso sobre diagnóstico de falla automotriz, aplicando estrategias de lectura para identificar causa, efecto y solución.
+            </div>
+            <div class="fase">
+                <span class="fase-title fase-inicio">INICIO (15 min)</span>
+                <div class="fase-content">
+                    <ul>
+                        <li>Introducir conectores de causa-efecto: <em>because, so, as a result, therefore, so that</em>. Escribir en la pizarra con ejemplos simples.</li>
+                        <li>Pregunta detonante: <em>"A car won't start. What could be the problem?"</em> Brainstorm de posibles fallas en inglés.</li>
+                        <li>Vocabulario de fallas: <em>overheating, leak, vibration, noise, warning light, malfunction, failure, breakdown</em>.</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="fase">
+                <span class="fase-title fase-desarrollo">DESARROLLO (60 min)</span>
+                <div class="fase-content">
+                    <ol>
+                        <li><b>Vocabulary – Problems and diagnosis (10 min):</b> <em>symptom, cause, diagnosis, repair, test, check, replace, adjust, overheating, leak, short circuit, worn out, cracked, loose</em>.</li>
+                        <li><b>Reading – Case Study (30 min):</b> <em>"The Mystery of the Overheating Engine"</em> — Un cliente lleva su auto al taller porque se recalienta. El mecánico sigue un proceso de diagnóstico: verifica el refrigerante, revisa el termostato, inspecciona la bomba de agua. Finalmente encuentra el problema (thermostat stuck closed). El texto usa Passive Voice y conectores de causa-efecto. Los estudiantes:
+                            <ul>
+                                <li>Pre-reading: predicción basada en el título.</li>
+                                <li>First reading: identificar problema, diagnóstico y solución.</li>
+                                <li>Second reading: completar un diagrama de causa-efecto:
+                                    <em>Symptom → Possible causes → Tests performed → Actual cause → Solution</em></li>
+                                <li>Subrayar conectores de causa-efecto en el texto.</li>
+                            </ul>
+                        </li>
+                        <li><b>Discussion (20 min):</b> En grupos de 4:
+                            <ul>
+                                <li><em>"Was the mechanic's diagnostic process logical?"</em></li>
+                                <li><em>"What would have happened if the mechanic hadn't checked the thermostat?"</em></li>
+                                <li><em>"Have you ever seen a car overheat? What happened?"</em></li>
+                            </ul>
+                            Cada grupo comparte su respuesta más interesante.
+                        </li>
+                    </ol>
+                </div>
+            </div>
+            <div class="fase">
+                <span class="fase-title fase-cierre">CIERRE (15 min)</span>
+                <div class="fase-content">
+                    <ul>
+                        <li>Quick write: usar 2 conectores de causa-efecto para escribir sobre cualquier falla técnica: <em>"The engine overheated because the thermostat was stuck. As a result, the coolant could not circulate."</em></li>
+                        <li>Compartir 3-4 ejemplos oralmente.</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="recursos">
+                <strong>Recursos:</strong> Texto caso de estudio impreso, diagrama causa-efecto impreso, flashcards de vocabulario de fallas, tarjetas de conectores.
+            </div>
+        </div>
+    </div>
+
+    <!-- ==================== CLASE 4 ==================== -->
+    <div class="clase-card">
+        <div class="clase-header normal">
+            <span class="clase-num">Clase 4</span>
+            <span class="clase-fecha">Semana 11 · mayo</span>
+            <span class="badge badge-oa">OA9 · OA8</span>
+        </div>
+        <div class="clase-body">
+            <div class="objetivo">
+                <strong>Objetivo de la clase:</strong> Comprender un texto técnico sobre detección de fallas en sistemas eléctricos residenciales, utilizando vocabulario de Electricidad y Passive Voice.
+            </div>
+            <div class="fase">
+                <span class="fase-title fase-inicio">INICIO (15 min)</span>
+                <div class="fase-content">
+                    <ul>
+                        <li>Pregunta: <em>"What do you do at home when the lights go out? What could cause a power outage?"</em></li>
+                        <li>Los estudiantes comparten experiencias.</li>
+                        <li>Introducir vocabulario: <em>power outage, short circuit, overload, tripped breaker, faulty wiring, grounding</em>.</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="fase">
+                <span class="fase-title fase-desarrollo">DESARROLLO (60 min)</span>
+                <div class="fase-content">
+                    <ol>
+                        <li><b>Vocabulary expansion (10 min):</b> Ampliar vocabulario eléctrico: <em>circuit breaker panel, main switch, branch circuit, load, amperage, insulation, conductor, neutral wire, live wire, earth wire</em>. Relacionar con un diagrama de un panel eléctrico residencial.</li>
+                        <li><b>Reading – Case Study (30 min):</b> <em>"Troubleshooting a Residential Electrical Fault"</em> — Un electricista es llamado a una casa porque varios circuitos se cortan frecuentemente. El texto describe el proceso sistemático de diagnóstico: inspección visual, medición con multímetro, prueba de aislamiento, identificación del cable dañado. Los estudiantes:
+                            <ul>
+                                <li>Leen y completan una tabla de diagnóstico: Step / Action / Tool used / Result</li>
+                                <li>Identifican oraciones en Passive Voice.</li>
+                                <li>Responden preguntas inferenciales: <em>"Why did the electrician test the insulation? What would happen if the faulty wire was not replaced?"</em></li>
+                            </ul>
+                        </li>
+                        <li><b>Oral pair work (20 min):</b> Los estudiantes role-play la situación: uno es el electricista, otro es el dueño de casa. El electricista explica qué encontró y qué necesita hacer (usando Passive Voice): <em>"The wire was found to be damaged. The circuit needs to be replaced. The breaker panel will be inspected."</em></li>
+                    </ol>
+                </div>
+            </div>
+            <div class="fase">
+                <span class="fase-title fase-cierre">CIERRE (15 min)</span>
+                <div class="fase-content">
+                    <ul>
+                        <li>2-3 parejas presentan su role-play ante la clase.</li>
+                        <li>Conectar con la realidad: <em>"Electrical faults can be dangerous. That's why electricians need to follow a systematic process."</em></li>
+                        <li>Ticket de salida: <em>"Name 3 steps an electrician follows to diagnose a fault."</em></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="recursos">
+                <strong>Recursos:</strong> Diagrama de panel eléctrico residencial, texto caso de estudio impreso, tabla de diagnóstico impresa, tarjetas para role-play.
+            </div>
+        </div>
+    </div>
+
+    <!-- ==================== CLASE 5 ==================== -->
+    <div class="clase-card">
+        <div class="clase-header normal">
+            <span class="clase-num">Clase 5</span>
+            <span class="clase-fecha">Semana 12 · mayo</span>
+            <span class="badge badge-oa">OA9 · OA1</span>
+        </div>
+        <div class="clase-body">
+            <div class="objetivo">
+                <strong>Objetivo de la clase:</strong> Comprender un texto descriptivo sobre el funcionamiento de componentes electrónicos, identificando la función de cada componente mediante lectura detallada.
+            </div>
+            <div class="fase">
+                <span class="fase-title fase-inicio">INICIO (15 min)</span>
+                <div class="fase-content">
+                    <ul>
+                        <li>Mostrar la placa madre de un computador (imagen o real). <em>"What is this? What components can you identify?"</em></li>
+                        <li>Repaso rápido de componentes electrónicos vistos en Unidad 1.</li>
+                        <li>Pregunta: <em>"Each component has a specific function. Can you describe what a resistor does? What about a capacitor?"</em></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="fase">
+                <span class="fase-title fase-desarrollo">DESARROLLO (60 min)</span>
+                <div class="fase-content">
+                    <ol>
+                        <li><b>Introducing Relative Clauses (10 min):</b> Presentar brevemente: <em>who</em> (personas), <em>which/that</em> (cosas). Ejemplo técnico: <em>"A resistor is a component which limits the flow of current."</em> / <em>"An electrician is a person who installs wiring systems."</em></li>
+                        <li><b>Reading (30 min):</b> <em>"Electronic Components: What They Are and How They Work"</em> — Texto tipo enciclopedia técnica con secciones para cada componente (resistor, capacitor, diode, transistor, LED, relay, sensor). Cada sección describe: qué es, cómo funciona, para qué se usa. Usa Passive Voice y Relative Clauses. Los estudiantes:
+                            <ul>
+                                <li>Leen cada sección y completan una ficha técnica por componente: Name / What it is / How it works / Where it is used.</li>
+                                <li>Subrayan relative clauses (which, that, who).</li>
+                                <li>Comparan con un compañero la información recopilada.</li>
+                            </ul>
+                        </li>
+                        <li><b>Oral activity – "Explain the component" (20 min):</b> Cada estudiante recibe una tarjeta con un componente y debe explicarlo oralmente a su grupo SIN decir el nombre. Los demás adivinan. Deben usar: <em>"It is a component which/that…"</em>, <em>"It is used in/for…"</em></li>
+                    </ol>
+                </div>
+            </div>
+            <div class="fase">
+                <span class="fase-title fase-cierre">CIERRE (15 min)</span>
+                <div class="fase-content">
+                    <ul>
+                        <li>Resumen oral: <em>"What is the most important electronic component? Why?"</em> Debate breve.</li>
+                        <li>Ticket de salida: escribir una oración con relative clause sobre un componente: <em>"A _______ is a component which _______."</em></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="recursos">
+                <strong>Recursos:</strong> Imagen/placa madre real, texto enciclopédico impreso, fichas técnicas para completar, tarjetas de componentes para juego.
+            </div>
+        </div>
+    </div>
+
+    <!-- ==================== CLASE 6 ==================== -->
+    <div class="clase-card">
+        <div class="clase-header normal">
+            <span class="clase-num">Clase 6</span>
+            <span class="clase-fecha">Semana 12 · mayo</span>
+            <span class="badge badge-oa">OA9 · OA12</span>
+        </div>
+        <div class="clase-body">
+            <div class="objetivo">
+                <strong>Objetivo de la clase:</strong> Comprender un texto sobre el proceso de impresión offset, aplicando estrategias de lectura para identificar etapas y materiales involucrados.
+            </div>
+            <div class="fase">
+                <span class="fase-title fase-inicio">INICIO (15 min)</span>
+                <div class="fase-content">
+                    <ul>
+                        <li>Mostrar un producto impreso de alta calidad (revista, catálogo). <em>"This was printed using a process called offset printing. Do you know what that means?"</em></li>
+                        <li>Pre-reading strategy: K-W-L chart. Los estudiantes completan la columna K (What I Know) y W (What I Want to know) sobre la impresión offset.</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="fase">
+                <span class="fase-title fase-desarrollo">DESARROLLO (60 min)</span>
+                <div class="fase-content">
+                    <ol>
+                        <li><b>Vocabulary (10 min):</b> <em>plate, roller, blanket cylinder, impression cylinder, fountain solution, registration, color separation, substrate, drying, trimming, folding</em>. Relacionar con diagrama de una prensa offset.</li>
+                        <li><b>Reading (30 min):</b> <em>"The Offset Printing Process Step by Step"</em> — Texto descriptivo de las etapas de la impresión offset, desde la preparación de archivos hasta el acabado. Escrito en Passive Voice. Los estudiantes:
+                            <ul>
+                                <li>Lectura rápida (skimming): identificar cuántas etapas hay.</li>
+                                <li>Lectura detallada (scanning): encontrar información específica sobre cada etapa.</li>
+                                <li>Post-reading: completar la columna L (What I Learned) del K-W-L chart.</li>
+                                <li>Ordenar imágenes del proceso según la secuencia descrita en el texto.</li>
+                            </ul>
+                        </li>
+                        <li><b>Comparative discussion (20 min):</b> En grupos: <em>"How is offset printing different from digital printing? Which one is better for large quantities? Which one for small?"</em> Cada grupo escribe 3 diferencias usando conectores de contraste: <em>however, on the other hand, although, while</em>.</li>
+                    </ol>
+                </div>
+            </div>
+            <div class="fase">
+                <span class="fase-title fase-cierre">CIERRE (15 min)</span>
+                <div class="fase-content">
+                    <ul>
+                        <li>Cada grupo comparte una diferencia usando conectores de contraste.</li>
+                        <li>Conectar con la realidad: <em>"If you study graphic arts, you will work with these machines."</em></li>
+                        <li>Revisar K-W-L chart: <em>"Did you learn what you wanted?"</em></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="recursos">
+                <strong>Recursos:</strong> Producto impreso de calidad, diagrama de prensa offset, texto impreso, K-W-L chart, imágenes del proceso para ordenar.
+            </div>
+        </div>
+    </div>
+
+    <!-- ==================== CLASE 7 ==================== -->
+    <div class="clase-card">
+        <div class="clase-header normal">
+            <span class="clase-num">Clase 7</span>
+            <span class="clase-fecha">Semana 13 · mayo</span>
+            <span class="badge badge-oa">OA8 · OA9</span>
+        </div>
+        <div class="clase-body">
+            <div class="objetivo">
+                <strong>Objetivo de la clase:</strong> Comprender y utilizar conectores de contraste y causa-efecto para describir problemas y soluciones en contextos técnicos.
+            </div>
+            <div class="fase">
+                <span class="fase-title fase-inicio">INICIO (15 min)</span>
+                <div class="fase-content">
+                    <ul>
+                        <li>Escribir en la pizarra: <em>"The machine stopped."</em> Preguntar: <em>"WHY? What was the result?"</em></li>
+                        <li>Mostrar dos categorías de conectores:
+                            <ul>
+                                <li>Causa-efecto: <em>because, so, therefore, as a result, so that, due to</em></li>
+                                <li>Contraste: <em>although, however, but, on the other hand, even though, while</em></li>
+                            </ul>
+                        </li>
+                        <li>Ejemplo técnico: <em>"The machine stopped because the motor overheated. However, the operator restarted it after 30 minutes."</em></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="fase">
+                <span class="fase-title fase-desarrollo">DESARROLLO (60 min)</span>
+                <div class="fase-content">
+                    <ol>
+                        <li><b>Grammar focus – Connectors (15 min):</b> Explicar uso y posición de cada conector con ejemplos técnicos. Diagrama visual de causa → efecto y contraste. Práctica: unir oraciones con el conector correcto (10 ejercicios).</li>
+                        <li><b>Reading (25 min):</b> <em>"Technical Incident Reports"</em> — 3 informes breves de incidentes técnicos (uno automotriz, uno eléctrico, uno industrial). Cada informe describe: el problema, la causa, la acción tomada y el resultado. Todos usan conectores de causa-efecto y contraste. Los estudiantes:
+                            <ul>
+                                <li>Leen los 3 informes.</li>
+                                <li>Subrayan conectores con colores diferentes (azul = causa-efecto, rojo = contraste).</li>
+                                <li>Completan tabla: Problem / Cause / Action / Result para cada informe.</li>
+                            </ul>
+                        </li>
+                        <li><b>Writing + Oral (20 min):</b> En parejas, crear un breve incidente técnico ficticio (5-6 oraciones) usando al menos 3 conectores diferentes. Luego, leerlo como un "reporte" oral ante otra pareja.</li>
+                    </ol>
+                </div>
+            </div>
+            <div class="fase">
+                <span class="fase-title fase-cierre">CIERRE (15 min)</span>
+                <div class="fase-content">
+                    <ul>
+                        <li>3-4 parejas leen su incidente técnico ante la clase.</li>
+                        <li>La clase identifica los conectores usados.</li>
+                        <li>Resumen visual: poster con los conectores clasificados (causa-efecto vs. contraste) que queda en la sala.</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="recursos">
+                <strong>Recursos:</strong> Poster de conectores, 3 informes de incidentes impresos, ejercicios de conectores impresos, tabla de análisis.
+            </div>
+        </div>
+    </div>
+
+    <!-- ==================== CLASE 8 ==================== -->
+    <div class="clase-card">
+        <div class="clase-header normal">
+            <span class="clase-num">Clase 8</span>
+            <span class="clase-fecha">Semana 13 · mayo/junio</span>
+            <span class="badge badge-oa">OA1 · OA9 · OA7</span>
+        </div>
+        <div class="clase-body">
+            <div class="objetivo">
+                <strong>Objetivo de la clase:</strong> Comprender un texto sobre automatización industrial y discutir sus implicaciones comparando prácticas tradicionales con modernas.
+            </div>
+            <div class="fase">
+                <span class="fase-title fase-inicio">INICIO (15 min)</span>
+                <div class="fase-content">
+                    <ul>
+                        <li>Video corto (2-3 min): fábrica automatizada con robots (sugerencia: <em>"How cars are made – Factory tour"</em> en YouTube).</li>
+                        <li>Preguntas: <em>"What did you see? Are there any humans? What are the robots doing?"</em></li>
+                        <li>Escribir en la pizarra: <em>"Automation: is it good or bad for workers?"</em></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="fase">
+                <span class="fase-title fase-desarrollo">DESARROLLO (60 min)</span>
+                <div class="fase-content">
+                    <ol>
+                        <li><b>Vocabulary (10 min):</b> <em>automation, robot, sensor, PLC (Programmable Logic Controller), conveyor belt, production line, efficiency, precision, quality control, maintenance, downtime, production rate</em>.</li>
+                        <li><b>Reading (25 min):</b> <em>"The Rise of Automation in Chilean Industry"</em> — Texto que describe cómo la automatización ha llegado a distintos sectores en Chile (automotriz, manufactura, imprentas, instalaciones eléctricas). Incluye ventajas y desventajas. Usa Passive Voice, conectores de causa-efecto y contraste. Los estudiantes:
+                            <ul>
+                                <li>Leen e identifican ventajas (green) y desventajas (red) de la automatización.</li>
+                                <li>Responden preguntas de comprensión e inferencia.</li>
+                            </ul>
+                        </li>
+                        <li><b>Debate preparation (10 min):</b> Dividir la clase en 2 grupos: PRO-automation vs. ANTI-automation. Cada grupo prepara 3 argumentos usando vocabulario técnico y conectores.</li>
+                        <li><b>Mini-debate (15 min):</b> Cada grupo presenta sus argumentos. El otro grupo puede hacer una pregunta de réplica. El docente modera.</li>
+                    </ol>
+                </div>
+            </div>
+            <div class="fase">
+                <span class="fase-title fase-cierre">CIERRE (15 min)</span>
+                <div class="fase-content">
+                    <ul>
+                        <li>Reflexión personal: <em>"Do you think automation will change YOUR specialty? How?"</em></li>
+                        <li>Quick write: 3 oraciones con opinión personal usando <em>I believe…, In my opinion…, Although…</em></li>
+                        <li>Conectar: <em>"Understanding these changes in English will help you adapt to the modern workplace."</em></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="recursos">
+                <strong>Recursos:</strong> Video de fábrica automatizada, texto impreso, tarjetas para debate (PRO/ANTI), pizarra para argumentos.
+            </div>
+        </div>
+    </div>
+
+    <!-- ==================== CLASE 9 ==================== -->
+    <div class="clase-card">
+        <div class="clase-header normal">
+            <span class="clase-num">Clase 9</span>
+            <span class="clase-fecha">Semana 14 · junio</span>
+            <span class="badge badge-oa">OA9 · OA12</span>
+        </div>
+        <div class="clase-body">
+            <div class="objetivo">
+                <strong>Objetivo de la clase:</strong> Comprender fichas técnicas y manuales simplificados en inglés, extrayendo información clave sobre especificaciones de equipos.
+            </div>
+            <div class="fase">
+                <span class="fase-title fase-inicio">INICIO (15 min)</span>
+                <div class="fase-content">
+                    <ul>
+                        <li>Mostrar una ficha técnica real (datasheet) de un equipo técnico en inglés (ej: un multímetro, un taladro, una impresora). <em>"Technical manuals and datasheets are almost always in English. Can you understand this?"</em></li>
+                        <li>Los estudiantes identifican lo que pueden entender vs. lo que no.</li>
+                        <li>Introducir la lectura de fichas técnicas como habilidad práctica: <em>"You don't need to understand every word. You need to find the KEY information."</em></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="fase">
+                <span class="fase-title fase-desarrollo">DESARROLLO (60 min)</span>
+                <div class="fase-content">
+                    <ol>
+                        <li><b>Vocabulary – Specifications (10 min):</b> <em>dimensions, weight, power supply, voltage rating, capacity, speed, material, temperature range, warranty, model number, serial number, operating instructions</em>.</li>
+                        <li><b>Reading – Technical datasheets (30 min):</b> Los estudiantes reciben 3 fichas técnicas simplificadas (de equipos reales):
+                            <ul>
+                                <li>Ficha 1: Taladro eléctrico (<em>Power drill specifications</em>)</li>
+                                <li>Ficha 2: Multímetro digital (<em>Digital multimeter datasheet</em>)</li>
+                                <li>Ficha 3: Impresora offset pequeña (<em>Small offset press specifications</em>)</li>
+                            </ul>
+                            Para cada ficha, los estudiantes extraen: nombre del equipo, voltaje/potencia, dimensiones, funciones principales, precauciones de seguridad. Usan estrategia de scanning.
+                        </li>
+                        <li><b>Oral comparison (20 min):</b> En grupos de 3, cada estudiante se "especializa" en una ficha y la explica a los demás: <em>"This is a power drill. It operates at 220V. It weighs 2.5 kg. It is used for drilling holes in metal and wood."</em> Los demás toman notas y hacen preguntas.</li>
+                    </ol>
+                </div>
+            </div>
+            <div class="fase">
+                <span class="fase-title fase-cierre">CIERRE (15 min)</span>
+                <div class="fase-content">
+                    <ul>
+                        <li>Reflexión: <em>"Could you read a real datasheet now? What would you still need to learn?"</em></li>
+                        <li>Ticket de salida: <em>"Write 3 things you can find in a technical datasheet."</em></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="recursos">
+                <strong>Recursos:</strong> Fichas técnicas reales o adaptadas impresas (3), datasheet original como ejemplo, tabla de extracción de información.
+            </div>
+        </div>
+    </div>
+
+    <!-- ==================== CLASE 10 ==================== -->
+    <div class="clase-card">
+        <div class="clase-header normal">
+            <span class="clase-num">Clase 10</span>
+            <span class="clase-fecha">Semana 14 · junio</span>
+            <span class="badge badge-oa">OA5 · OA8 · OA7</span>
+        </div>
+        <div class="clase-body">
+            <div class="objetivo">
+                <strong>Objetivo de la clase:</strong> Describir objetos técnicos en detalle (material, tamaño, función, uso) utilizando Passive Voice y Relative Clauses en un contexto de presentación oral.
+            </div>
+            <div class="fase">
+                <span class="fase-title fase-inicio">INICIO (15 min)</span>
+                <div class="fase-content">
+                    <ul>
+                        <li>Juego: <em>"What's in the box?"</em> — El docente describe un objeto técnico oculto sin nombrarlo: <em>"It is made of plastic and metal. It is used to measure voltage and current. It has a digital screen. It is held in one hand."</em> Los estudiantes adivinan (multímetro).</li>
+                        <li>Modelar la estructura de descripción: Material + Size + Function + How it is used.</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="fase">
+                <span class="fase-title fase-desarrollo">DESARROLLO (60 min)</span>
+                <div class="fase-content">
+                    <ol>
+                        <li><b>Language focus – Describing objects (15 min):</b>
+                            <ul>
+                                <li>Material: <em>It is made of steel/plastic/copper/rubber.</em></li>
+                                <li>Tamaño: <em>It is approximately 30 cm long. It weighs about 2 kg.</em></li>
+                                <li>Función: <em>It is used for/to + verb. It is designed to…</em></li>
+                                <li>Info adicional (Relative Clause): <em>…which is commonly found in workshops.</em></li>
+                                <li>Práctica: 5 objetos proyectados, los estudiantes escriben una descripción de 3 oraciones cada uno.</li>
+                            </ul>
+                        </li>
+                        <li><b>Preparation for Nota 3 (20 min):</b> Explicar evaluación: <em>Interrogación oral — Describe a technical process or mechanism using Passive Voice</em>. Los estudiantes eligen un proceso/mecanismo de su especialidad preferida y preparan una descripción oral de 2 min con apoyo visual (dibujo o esquema). Deben incluir:
+                            <ul>
+                                <li>Al menos 4 oraciones en Passive Voice</li>
+                                <li>Al menos 2 Relative Clauses</li>
+                                <li>Vocabulario técnico apropiado</li>
+                                <li>Conectores de secuencia y/o causa-efecto</li>
+                            </ul>
+                        </li>
+                        <li><b>Pair practice (25 min):</b> Los estudiantes practican su descripción con un compañero. El compañero usa checklist para verificar que incluya los elementos requeridos. Intercambian retroalimentación.</li>
+                    </ol>
+                </div>
+            </div>
+            <div class="fase">
+                <span class="fase-title fase-cierre">CIERRE (15 min)</span>
+                <div class="fase-content">
+                    <ul>
+                        <li>2 voluntarios hacen un ensayo ante la clase como modelo.</li>
+                        <li>Feedback colectivo: <em>"What was good? What could be improved?"</em></li>
+                        <li>Recordar: <em>"Practice at home. Next class we start the oral interrogation."</em></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="recursos">
+                <strong>Recursos:</strong> Objeto oculto para juego, imágenes de objetos técnicos, rúbrica de interrogación oral, checklist de pares, materiales para apoyo visual.
+            </div>
+            <div class="evaluacion-box">
+                <strong>Sugerencia de rúbrica (Nota 3 - Interrogación Oral):</strong><br>
+                <table style="width:100%; border-collapse:collapse; margin:10px 0; font-size:0.85em;">
+                    <tr style="background:#c62828; color:white;"><th style="padding:6px; border:1px solid #999;">Criterio</th><th style="padding:6px; border:1px solid #999;">Logrado (3)</th><th style="padding:6px; border:1px solid #999;">Med. logrado (2)</th><th style="padding:6px; border:1px solid #999;">Por lograr (1)</th></tr>
+                    <tr><td style="padding:6px; border:1px solid #ddd;"><b>Passive Voice</b></td><td style="padding:6px; border:1px solid #ddd;">Usa 4+ oraciones correctamente</td><td style="padding:6px; border:1px solid #ddd;">Usa 2-3 oraciones</td><td style="padding:6px; border:1px solid #ddd;">Usa 0-1 oraciones</td></tr>
+                    <tr><td style="padding:6px; border:1px solid #ddd;"><b>Relative Clauses</b></td><td style="padding:6px; border:1px solid #ddd;">Usa 2+ correctamente</td><td style="padding:6px; border:1px solid #ddd;">Usa 1 correctamente</td><td style="padding:6px; border:1px solid #ddd;">No usa o usa incorrectamente</td></tr>
+                    <tr><td style="padding:6px; border:1px solid #ddd;"><b>Vocabulario técnico</b></td><td style="padding:6px; border:1px solid #ddd;">Usa 8+ palabras técnicas correctas</td><td style="padding:6px; border:1px solid #ddd;">Usa 5-7 palabras</td><td style="padding:6px; border:1px solid #ddd;">Usa menos de 5</td></tr>
+                    <tr><td style="padding:6px; border:1px solid #ddd;"><b>Claridad y coherencia</b></td><td style="padding:6px; border:1px solid #ddd;">Explicación clara, lógica, bien organizada</td><td style="padding:6px; border:1px solid #ddd;">Parcialmente clara, algunos saltos</td><td style="padding:6px; border:1px solid #ddd;">Confusa, difícil de seguir</td></tr>
+                    <tr><td style="padding:6px; border:1px solid #ddd;"><b>Pronunciación y fluidez</b></td><td style="padding:6px; border:1px solid #ddd;">Se entiende bien, fluido</td><td style="padding:6px; border:1px solid #ddd;">Se entiende con dificultad</td><td style="padding:6px; border:1px solid #ddd;">Muy difícil de comprender</td></tr>
+                </table>
+                <em>Puntaje total: 15 puntos. Escala: 60% de exigencia.</em>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==================== CLASE 11 ==================== -->
+    <div class="clase-card">
+        <div class="clase-header normal">
+            <span class="clase-num">Clase 11</span>
+            <span class="clase-fecha">Semana 15 · junio</span>
+            <span class="badge badge-oa">OA5 · OA8</span>
+        </div>
+        <div class="clase-body">
+            <div class="objetivo">
+                <strong>Objetivo de la clase:</strong> Ensayar y perfeccionar la descripción oral de un proceso técnico en preparación para la interrogación evaluada.
+            </div>
+            <div class="fase">
+                <span class="fase-title fase-inicio">INICIO (15 min)</span>
+                <div class="fase-content">
+                    <ul>
+                        <li>Warm-up: <em>"Quick fire round"</em> — El docente muestra una imagen técnica y un estudiante al azar debe decir una oración en Passive Voice sobre ella en 10 segundos.</li>
+                        <li>Repasar rúbrica y expectativas para la interrogación.</li>
+                        <li>Consejos: <em>"Use your visual support. Make eye contact. Speak slowly and clearly."</em></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="fase">
+                <span class="fase-title fase-desarrollo">DESARROLLO (60 min)</span>
+                <div class="fase-content">
+                    <ol>
+                        <li><b>Individual preparation (15 min):</b> Los estudiantes revisan y mejoran su descripción oral. Pueden agregar detalles, corregir gramática y practicar pronunciación de palabras difíciles con apoyo del docente.</li>
+                        <li><b>Speed dating practice (30 min):</b> Estructura tipo <em>speed dating</em>: los estudiantes se sientan en dos filas enfrentadas. Cada 3 minutos, presentan su proceso al compañero de enfrente. Luego, una fila se mueve un puesto. Así practican con 8-10 compañeros diferentes, ganando fluidez y confianza.</li>
+                        <li><b>Final review (15 min):</b> Los estudiantes identifican sus puntos débiles y hacen mejoras finales. El docente responde consultas individuales.</li>
+                    </ol>
+                </div>
+            </div>
+            <div class="fase">
+                <span class="fase-title fase-cierre">CIERRE (15 min)</span>
+                <div class="fase-content">
+                    <ul>
+                        <li>2 voluntarios presentan como modelo final ante la clase.</li>
+                        <li>Aplausos y feedback positivo: <em>"You're ready. Trust your preparation."</em></li>
+                        <li>Confirmar orden de interrogación para próxima clase.</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="recursos">
+                <strong>Recursos:</strong> Imágenes técnicas para warm-up, rúbrica visible, materiales de apoyo visual de cada estudiante, cronómetro para speed dating.
+            </div>
+        </div>
+    </div>
+
+    <!-- ==================== CLASE 12 ==================== -->
+    <div class="clase-card evaluacion">
+        <div class="clase-header eval">
+            <span class="clase-num">Clase 12</span>
+            <span class="clase-fecha">Semana 15 · junio</span>
+            <span class="badge badge-eval">EVALUACIÓN — NOTA 3</span>
+        </div>
+        <div class="clase-body">
+            <div class="objetivo">
+                <strong>Objetivo de la clase:</strong> Describir oralmente un proceso o mecanismo técnico demostrando uso de Passive Voice, Relative Clauses y vocabulario técnico apropiado.
+            </div>
+            <div class="fase">
+                <span class="fase-title fase-inicio">INICIO (10 min)</span>
+                <div class="fase-content">
+                    <ul>
+                        <li>Instrucciones finales. Rúbrica visible. Crear ambiente de confianza.</li>
+                        <li>Orden de interrogación confirmado.</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="fase">
+                <span class="fase-title fase-desarrollo">DESARROLLO (65 min)</span>
+                <div class="fase-content">
+                    <ol>
+                        <li><b>Interrogación oral individual:</b> Cada estudiante pasa al frente (2-3 min) y describe su proceso/mecanismo técnico. El docente puede hacer 1-2 preguntas de seguimiento: <em>"Why is this step important?" "What happens if this is not done correctly?"</em></li>
+                        <li>Los demás estudiantes escuchan y completan fichas de evaluación entre pares (opcional, como actividad mientras esperan).</li>
+                        <li><b>Nota:</b> Si el curso es grande y no todos alcanzan a presentar, continuar en la siguiente clase (clase 31).</li>
+                    </ol>
+                </div>
+            </div>
+            <div class="fase">
+                <span class="fase-title fase-cierre">CIERRE (15 min)</span>
+                <div class="fase-content">
+                    <ul>
+                        <li>Feedback general: fortalezas y áreas de mejora comunes.</li>
+                        <li>Si quedan estudiantes pendientes, recordar que continúan la próxima clase.</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="recursos">
+                <strong>Recursos:</strong> Rúbrica de interrogación oral, fichas de evaluación entre pares, cronómetro.
+            </div>
+            <div class="evaluacion-box">
+                <strong>Evaluación:</strong> SUMATIVA — Nota 3 del semestre (Expresión Oral – Interrogación). Rúbrica de 5 criterios × 3 niveles = 15 puntos. Escala 60%.
+            </div>
+        </div>
+    </div>
+
+    <!-- ==================== CLASE 13 ==================== -->
+    <div class="clase-card evaluacion">
+        <div class="clase-header eval">
+            <span class="clase-num">Clase 13</span>
+            <span class="clase-fecha">Semana 16 · junio</span>
+            <span class="badge badge-eval">EVALUACIÓN — NOTA 4</span>
+        </div>
+        <div class="clase-body">
+            <div class="objetivo">
+                <strong>Objetivo de la clase:</strong> Demostrar comprensión de textos técnicos descriptivos y de procesos, aplicando estrategias de lectura y conocimiento de Passive Voice y conectores.
+            </div>
+            <div class="fase">
+                <span class="fase-title fase-inicio">INICIO (10 min)</span>
+                <div class="fase-content">
+                    <ul>
+                        <li>Instrucciones de la prueba: formato, tiempo, materiales permitidos.</li>
+                        <li>Recordar estrategias: <em>"Skim first, then scan. Underline key words. Read questions before the text."</em></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="fase">
+                <span class="fase-title fase-desarrollo">DESARROLLO (65 min)</span>
+                <div class="fase-content">
+                    <p><b>Prueba escrita en 3 secciones:</b></p>
+                    <ol>
+                        <li><b>Sección I – Vocabulary in Context (15 min, 20 pts):</b>
+                            <ul>
+                                <li>10 oraciones técnicas con una palabra subrayada. Elegir el sinónimo o definición correcta (opción múltiple).</li>
+                                <li>5 definiciones → escribir la palabra técnica correspondiente.</li>
+                            </ul>
+                        </li>
+                        <li><b>Sección II – Reading Comprehension (30 min, 30 pts):</b>
+                            <ul>
+                                <li>Texto: Estudio de caso técnico nuevo (diferente a los de clase) sobre un problema en un taller/fábrica que requiere diagnóstico.</li>
+                                <li>5 preguntas de opción múltiple (comprensión global).</li>
+                                <li>5 preguntas de respuesta breve (detalles específicos).</li>
+                                <li>2 preguntas de inferencia: <em>"Why do you think…?" "What would happen if…?"</em></li>
+                            </ul>
+                        </li>
+                        <li><b>Sección III – Grammar (20 min, 20 pts):</b>
+                            <ul>
+                                <li>5 oraciones: transformar de activa a Passive Voice.</li>
+                                <li>5 oraciones: completar con el conector correcto (because, however, although, as a result, so that).</li>
+                                <li>5 oraciones: completar con relative pronoun (who, which, that).</li>
+                            </ul>
+                        </li>
+                    </ol>
+                    <p><em>Total: 70 puntos. Escala: 60% de exigencia.</em></p>
+                </div>
+            </div>
+            <div class="fase">
+                <span class="fase-title fase-cierre">CIERRE (15 min)</span>
+                <div class="fase-content">
+                    <ul>
+                        <li>Recoger pruebas.</li>
+                        <li>Breve conversación: <em>"How was the test compared to Unit 1? Easier or harder?"</em></li>
+                        <li>Anticipar Nota 5 y cierre de semestre.</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="recursos">
+                <strong>Recursos:</strong> Prueba impresa, hojas de respuesta.
+            </div>
+            <div class="evaluacion-box">
+                <strong>Evaluación:</strong> SUMATIVA — Nota 4 del semestre (Comprensión Lectora + Gramática). 70 puntos, escala 60%.
+            </div>
+        </div>
+    </div>
+
+    <!-- ==================== CLASE 14 ==================== -->
+    <div class="clase-card evaluacion">
+        <div class="clase-header eval">
+            <span class="clase-num">Clase 14</span>
+            <span class="clase-fecha">Semana 17 · junio</span>
+            <span class="badge badge-eval">EVALUACIÓN — NOTA 5 (Integradora Semestral)</span>
+        </div>
+        <div class="clase-body">
+            <div class="objetivo">
+                <strong>Objetivo de la clase:</strong> Demostrar dominio integrado del vocabulario técnico y las estructuras gramaticales del semestre en contextos técnico-profesionales.
+            </div>
+            <div class="fase">
+                <span class="fase-title fase-inicio">INICIO (10 min)</span>
+                <div class="fase-content">
+                    <ul>
+                        <li>Instrucciones claras. Ambiente tranquilo.</li>
+                        <li>Recordar: <em>"Read carefully. Answer what you know first. Go back to difficult ones."</em></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="fase">
+                <span class="fase-title fase-desarrollo">DESARROLLO (65 min)</span>
+                <div class="fase-content">
+                    <p><b>Evaluación integradora en 4 secciones:</b></p>
+                    <ol>
+                        <li><b>Sección I – Technical Vocabulary (15 min, 15 pts):</b>
+                            <ul>
+                                <li>15 ítems: imágenes de herramientas/equipos → escribir el nombre en inglés.</li>
+                            </ul>
+                        </li>
+                        <li><b>Sección II – Grammar Integration (20 min, 25 pts):</b>
+                            <ul>
+                                <li>5 oraciones: completar con Present Perfect (forma correcta del verbo).</li>
+                                <li>5 oraciones: reescribir usando "used to".</li>
+                                <li>5 oraciones: transformar a Passive Voice.</li>
+                                <li>5 oraciones: elegir el conector correcto.</li>
+                                <li>5 oraciones: completar con who, which o that.</li>
+                            </ul>
+                        </li>
+                        <li><b>Sección III – Reading Comprehension (20 min, 20 pts):</b>
+                            <ul>
+                                <li>Texto: Situación integradora que combina elementos de varias especialidades.</li>
+                                <li>10 preguntas de comprensión (opción múltiple y respuesta breve).</li>
+                            </ul>
+                        </li>
+                        <li><b>Sección IV – Written Production (10 min, 10 pts):</b>
+                            <ul>
+                                <li>Escribir un párrafo breve (6-8 oraciones) describiendo un proceso técnico de su especialidad en Passive Voice, incluyendo al menos 1 conector y 1 relative clause.</li>
+                            </ul>
+                        </li>
+                    </ol>
+                    <p><em>Total: 70 puntos. Escala: 60% de exigencia.</em></p>
+                </div>
+            </div>
+            <div class="fase">
+                <span class="fase-title fase-cierre">CIERRE (15 min)</span>
+                <div class="fase-content">
+                    <ul>
+                        <li>Recoger pruebas.</li>
+                        <li>Cierre de semestre: <em>"Congratulations! You have completed the first semester. You can now read technical texts, describe processes, and talk about your specialty in English."</em></li>
+                        <li>Preview del segundo semestre: <em>"In semester 2, we'll go deeper: case studies, problem-solving, innovation, and a final project."</em></li>
+                        <li>Despedida para vacaciones de invierno.</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="recursos">
+                <strong>Recursos:</strong> Prueba integradora impresa, hojas de respuesta.
+            </div>
+            <div class="evaluacion-box">
+                <strong>Evaluación:</strong> SUMATIVA — Nota 5 del semestre (Evaluación Integradora). 70 puntos, escala 60%. Cubre vocabulario técnico, Present Perfect, Used to, Passive Voice, Connectors, Relative Clauses, Comprensión Lectora.
+            </div>
+        </div>
+    </div>
+
+    <!-- DISTRIBUCIÓN DE NOTAS SEMESTRE 1 -->
+    <div class="notas-dist">
+        <h3>📝 Resumen de Evaluaciones — Unidad 2 (Notas 3–5 de 5 del semestre)</h3>
+        <table class="notas">
+            <tr>
+                <th>Nota</th>
+                <th>Tipo</th>
+                <th>Clase</th>
+                <th>Habilidad</th>
+                <th>Instrumento</th>
+                <th>Puntaje</th>
+            </tr>
+            <tr>
+                <td><b>Nota 3</b></td>
+                <td>Interrogación oral</td>
+                <td>Clase 30 (+31)</td>
+                <td>Expresión Oral</td>
+                <td>Rúbrica (5 criterios × 3 niveles)</td>
+                <td>15 pts / 60%</td>
+            </tr>
+            <tr>
+                <td><b>Nota 4</b></td>
+                <td>Prueba escrita</td>
+                <td>Clase 32</td>
+                <td>Comprensión Lectora + Gramática</td>
+                <td>Prueba: vocabulary, reading, grammar</td>
+                <td>70 pts / 60%</td>
+            </tr>
+            <tr>
+                <td><b>Nota 5</b></td>
+                <td>Evaluación integradora</td>
+                <td>Clase 14</td>
+                <td>Integrada (Vocabulario + Gramática + Lectura + Producción escrita)</td>
+                <td>Prueba integradora semestral</td>
+                <td>70 pts / 60%</td>
+            </tr>
+        </table>
+        <p style="margin-top:15px; font-size:0.9em; color:#444;">
+            <b>Resumen completo Semestre 1 (5 notas):</b><br>
+            Nota 1 (U1): Presentación oral "My Future Career" · Nota 2 (U1): Prueba de comprensión lectora · 
+            Nota 3 (U2): Interrogación oral (proceso técnico) · Nota 4 (U2): Prueba de lectura y gramática · 
+            Nota 5 (U2): Evaluación integradora semestral.
+        </p>
+    </div>
+
+    <div class="footer">
+        <p>Planificación elaborada para Liceo Técnico Profesional — Asignatura de Inglés — 1° Medio 2026</p>
+        <p>Basada en OA del MINEDUC (Actualización Priorización Curricular 2023) con integración de especialidades TP</p>
+        <p>⚡ Cierre Semestre 1 — Vacaciones de Invierno: 22 junio – 5 julio 2026</p>
+    </div>
+
+</div>
+
+</body>
+</html>

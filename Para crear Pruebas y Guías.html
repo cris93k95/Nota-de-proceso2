@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Walkthrough del Proyecto — Inglés TP 2026</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+        * { margin:0; padding:0; box-sizing:border-box; }
+        body { font-family:'Inter','Segoe UI',sans-serif; background:#f0f2f5; color:#1a1a2e; line-height:1.7; }
+        .header { background:linear-gradient(135deg,#0d47a1,#1565c0,#6a1b9a); color:#fff; padding:40px 30px; text-align:center; }
+        .header h1 { font-size:2.2em; font-weight:800; margin-bottom:6px; }
+        .header p { font-size:1.05em; opacity:.85; }
+        .header .date { margin-top:10px; font-size:.88em; opacity:.6; }
+        .container { max-width:1050px; margin:30px auto; padding:0 20px; }
+
+        /* Status badges */
+        .badge { display:inline-block; padding:3px 12px; border-radius:14px; font-size:.78em; font-weight:700; vertical-align:middle; }
+        .badge-done { background:#e8f5e9; color:#2e7d32; }
+        .badge-wip  { background:#fff3e0; color:#e65100; }
+        .badge-todo { background:#e3f2fd; color:#1565c0; }
+        .badge-future { background:#f3e5f5; color:#6a1b9a; }
+
+        /* Section cards */
+        .section { background:#fff; border-radius:12px; padding:28px 32px; margin-bottom:24px; box-shadow:0 2px 12px rgba(0,0,0,.06); }
+        .section h2 { font-size:1.4em; margin-bottom:14px; display:flex; align-items:center; gap:10px; }
+        .section h3 { font-size:1.1em; color:#555; margin:18px 0 8px; }
+        .section p { margin-bottom:10px; }
+        .section ul, .section ol { margin-left:22px; margin-bottom:12px; }
+        .section li { margin-bottom:5px; }
+        .section li b { color:#0d47a1; }
+
+        /* Tables */
+        table { width:100%; border-collapse:collapse; margin:14px 0; font-size:.92em; }
+        th { background:#1565c0; color:#fff; padding:10px 14px; text-align:left; font-weight:600; }
+        td { padding:9px 14px; border-bottom:1px solid #e0e0e0; }
+        tr:nth-child(even) td { background:#f8f9fa; }
+        .tbl-red th { background:#c62828; }
+        .tbl-purple th { background:#6a1b9a; }
+
+        /* Specialty chips */
+        .chip { display:inline-block; padding:2px 10px; border-radius:10px; font-size:.78em; font-weight:600; margin:2px 2px; }
+        .chip-auto { background:#ffebee; color:#c62828; }
+        .chip-elec { background:#fff3e0; color:#e65100; }
+        .chip-electr { background:#e3f2fd; color:#1565c0; }
+        .chip-graf { background:#f3e5f5; color:#6a1b9a; }
+        .chip-ind  { background:#e8f5e9; color:#2e7d32; }
+
+        /* Progress bar */
+        .progress-wrap { background:#e0e0e0; border-radius:8px; height:18px; margin:10px 0; overflow:hidden; }
+        .progress-bar { height:100%; border-radius:8px; transition:width .4s; display:flex; align-items:center; justify-content:center; font-size:.7em; font-weight:700; color:#fff; }
+        .pb-green  { background:linear-gradient(90deg,#43a047,#66bb6a); }
+        .pb-orange { background:linear-gradient(90deg,#ef6c00,#ffa726); }
+        .pb-blue   { background:linear-gradient(90deg,#1565c0,#42a5f5); }
+
+        /* Connector lines */
+        .timeline { position:relative; padding-left:30px; }
+        .timeline::before { content:''; position:absolute; left:10px; top:0; bottom:0; width:3px; background:#e0e0e0; border-radius:2px; }
+        .tl-item { position:relative; margin-bottom:20px; }
+        .tl-item::before { content:''; position:absolute; left:-24px; top:6px; width:14px; height:14px; border-radius:50%; border:3px solid; }
+        .tl-done::before   { border-color:#2e7d32; background:#e8f5e9; }
+        .tl-wip::before    { border-color:#e65100; background:#fff3e0; }
+        .tl-todo::before   { border-color:#1565c0; background:#e3f2fd; }
+        .tl-future::before { border-color:#6a1b9a; background:#f3e5f5; }
+
+        .footer { text-align:center; padding:30px; color:#999; font-size:.82em; }
+
+        @media (max-width:768px) {
+            .header h1 { font-size:1.5em; }
+            .section { padding:18px 16px; }
+            th, td { padding:6px 8px; font-size:.85em; }
+        }
+        @media print {
+            body { background:#fff; }
+            .section { box-shadow:none; border:1px solid #ddd; page-break-inside:avoid; }
+            .header { background:#1565c0 !important; -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="header">
+    <h1>📋 Walkthrough del Proyecto</h1>
+    <p>Planificación de Inglés — Liceo Técnico Profesional 2026</p>
+    <p class="date">Actualizado: 3 de marzo de 2026</p>
+</div>
+
+<div class="container">
+
+    <!-- ══════════════════ RESUMEN GENERAL ══════════════════ -->
+    <div class="section">
+        <h2>📊 Resumen General del Proyecto</h2>
+        <p>Proyecto de planificación anual de inglés para un liceo TP chileno con <b>3 niveles</b> y <b>5 especialidades</b>.</p>
+
+        <table>
+            <tr><th>Componente</th><th>Estado</th><th>Archivos</th><th>Detalle</th></tr>
+            <tr>
+                <td><b>Planificaciones clase a clase</b></td>
+                <td><span class="badge badge-done">✅ Completado</span></td>
+                <td>44 HTML</td>
+                <td>1ro (4) + 3ro (20) + 4to (20)</td>
+            </tr>
+            <tr>
+                <td><b>Pruebas diagnósticas KET</b></td>
+                <td><span class="badge badge-done">✅ Completado</span></td>
+                <td>11 HTML</td>
+                <td>1ro (1) + 3ro (5) + 4to (5) — con pautas de corrección</td>
+            </tr>
+            <tr>
+                <td><b>Presentaciones V1</b></td>
+                <td><span class="badge badge-wip">⚠️ Descartadas</span></td>
+                <td>98 HTML</td>
+                <td>Eran la planificación en slides, no material de clase</td>
+            </tr>
+            <tr>
+                <td><b>Presentaciones V2 — Unidad 1</b></td>
+                <td><span class="badge badge-done">✅ Completado</span></td>
+                <td>108 HTML</td>
+                <td>Material para proyectar: vocabulario, textos, gramática, ejercicios</td>
+            </tr>
+        </table>
+
+        <h3>Progreso global</h3>
+        <div style="display:flex;gap:8px;align-items:center;margin-bottom:4px;">
+            <span style="width:140px;font-size:.88em;">Planificaciones</span>
+            <div class="progress-wrap" style="flex:1;"><div class="progress-bar pb-green" style="width:100%;">100%</div></div>
+        </div>
+        <div style="display:flex;gap:8px;align-items:center;margin-bottom:4px;">
+            <span style="width:140px;font-size:.88em;">Diagnósticas</span>
+            <div class="progress-wrap" style="flex:1;"><div class="progress-bar pb-green" style="width:100%;">100%</div></div>
+        </div>
+        <div style="display:flex;gap:8px;align-items:center;margin-bottom:4px;">
+            <span style="width:140px;font-size:.88em;">Presentaciones V2</span>
+            <div class="progress-wrap" style="flex:1;"><div class="progress-bar pb-green" style="width:25%;">U1: 100% (108/~432)</div></div>
+        </div>
+    </div>
+
+    <!-- ══════════════════ 1. PLANIFICACIONES ══════════════════ -->
+    <div class="section">
+        <h2><span class="badge badge-done">✅</span> 1. Planificaciones Clase a Clase</h2>
+        <p>44 archivos HTML con planificación detallada (objetivo, fases inicio/desarrollo/cierre, recursos, evaluación) para cada clase del año.</p>
+
+        <h3>1ro Medio — "Inglés general con integración TP"</h3>
+        <table>
+            <tr><th>Unidad</th><th>Título</th><th>Clases</th><th>Semanas</th><th>Archivo</th></tr>
+            <tr><td>1</td><td>The World of Technical Work</td><td>18</td><td>1–9</td><td>planificacion_unidad1.html</td></tr>
+            <tr><td>2</td><td>(contenido unidad 2)</td><td>18</td><td>10–18</td><td>planificacion_unidad2.html</td></tr>
+            <tr><td>3</td><td>(contenido unidad 3)</td><td>18</td><td>19–27</td><td>planificacion_unidad3.html</td></tr>
+            <tr><td>4</td><td>(contenido unidad 4)</td><td>18</td><td>28–36</td><td>planificacion_unidad4.html</td></tr>
+        </table>
+        <p><b>Total:</b> 72 clases × 90 min = 4 hrs/semana (2 sesiones)</p>
+
+        <h3>3ro Medio — "Technical Skills & Career Paths"</h3>
+        <table class="tbl-red">
+            <tr><th>Especialidad</th><th>Clases/Unidad</th><th>Total clases</th><th>Archivos</th></tr>
+            <tr><td><span class="chip chip-auto">Mecánica Automotriz</span></td><td>~9</td><td>~36</td><td>4 HTML</td></tr>
+            <tr><td><span class="chip chip-elec">Electricidad</span></td><td>~9</td><td>~36</td><td>4 HTML</td></tr>
+            <tr><td><span class="chip chip-electr">Electrónica</span></td><td>~9</td><td>~36</td><td>4 HTML</td></tr>
+            <tr><td><span class="chip chip-graf">Gráfica</span></td><td>~9</td><td>~36</td><td>4 HTML</td></tr>
+            <tr><td><span class="chip chip-ind">Mecánica Industrial</span></td><td>~9</td><td>~36</td><td>4 HTML</td></tr>
+        </table>
+        <p><b>Total:</b> ~36 clases × 5 especialidades = ~180 clases, 2 hrs/semana (1 sesión)</p>
+
+        <h3>4to Medio — "Professional Profile & Workplace English"</h3>
+        <table class="tbl-purple">
+            <tr><th>Especialidad</th><th>Clases/Unidad</th><th>Total clases</th><th>Archivos</th></tr>
+            <tr><td><span class="chip chip-auto">Mecánica Automotriz</span></td><td>~9</td><td>~33</td><td>4 HTML</td></tr>
+            <tr><td><span class="chip chip-elec">Electricidad</span></td><td>~9</td><td>~33</td><td>4 HTML</td></tr>
+            <tr><td><span class="chip chip-electr">Electrónica</span></td><td>~9</td><td>~33</td><td>4 HTML</td></tr>
+            <tr><td><span class="chip chip-graf">Gráfica</span></td><td>~9</td><td>~33</td><td>4 HTML</td></tr>
+            <tr><td><span class="chip chip-ind">Mecánica Industrial</span></td><td>~9</td><td>~33</td><td>4 HTML</td></tr>
+        </table>
+        <p><b>Total:</b> ~33 clases × 5 especialidades = ~165 clases, 2 hrs/semana (1 sesión)</p>
+    </div>
+
+    <!-- ══════════════════ 2. DIAGNÓSTICAS ══════════════════ -->
+    <div class="section">
+        <h2><span class="badge badge-done">✅</span> 2. Pruebas Diagnósticas — Formato KET Reading</h2>
+        <p>11 archivos HTML con logo institucional, encabezado con datos del alumno, pauta de corrección en página separada y <b>5 alternativas por pregunta (A-E)</b>. Generados con <code>generate_diagnosticos_html.py</code> usando Python + BeautifulSoup + Pillow, con distractores técnicos por especialidad en nivel B1.</p>
+
+        <table>
+            <tr><th>Nivel</th><th>Pruebas</th><th>Formato</th><th>Ubicación</th></tr>
+            <tr><td>1ro Medio</td><td>1 prueba general</td><td>KET Reading Parts 1-5 + Pauta + ítems A-E</td><td>Pruebas Diagnostico/</td></tr>
+            <tr><td>3ro Medio</td><td>5 pruebas (1 por especialidad)</td><td>KET Reading + vocabulario técnico + Pauta + ítems A-E</td><td>Pruebas Diagnostico/</td></tr>
+            <tr><td>4to Medio</td><td>5 pruebas (1 por especialidad)</td><td>KET Reading + vocabulario avanzado + Pauta + ítems A-E</td><td>Pruebas Diagnostico/</td></tr>
+        </table>
+
+        <h3>Formato estandarizado de las pruebas</h3>
+        <ul>
+            <li><b>Página:</b> Carta (21.59 × 27.94 cm) — márgenes 1.5 cm arriba/abajo, 1.8 cm izq/der</li>
+            <li><b>Logo:</b> Ancho completo, auto-recortado (Pillow <code>getbbox()</code>) para eliminar espacio transparente</li>
+            <li><b>Título:</b> 11pt bold, centrado, 4px de separación</li>
+            <li><b>Tabla de datos:</b> 6 columnas (<code>&lt;colgroup&gt;</code> 14%/28%/16%/18%/10%/14%) — Profesor, Nombre, Asignatura, Curso, N° Lista, Semestre, Puntos, NOTA, Fecha, Visado, Objetivo, Habilidades</li>
+            <li><b>Encabezados de parte:</b> 9pt bold, fondo <code>#2962FF</code> texto blanco</li>
+            <li><b>Preguntas:</b> 8.5pt bold — cada pregunta de selección múltiple usa <b>5 alternativas (A, B, C, D, E)</b></li>
+            <li><b>Distribución de claves:</b> respuestas correctas 1-24 balanceadas entre A-E (evita sesgo hacia A/B/C)</li>
+            <li><b>Distractores B1:</b> opciones técnicas alineadas a especialidad (Automotriz, Electricidad, Electrónica, Gráfica, Industrial)</li>
+            <li><b>Part 4 (Vocabulary):</b> distractores de 1-2 palabras y misma categoría gramatical esperada por ítem</li>
+            <li><b>Textos de lectura:</b> 8.5pt, fondo <code>#f5f5f5</code>, line-height 1.35</li>
+            <li><b>Saltos de página:</b> <code>.part-intro</code> y <code>.reading-text</code> con <code>page-break-inside: avoid</code></li>
+            <li><b>Pauta de corrección:</b> Página separada (<code>page-break-before: always</code>), grilla de 5 columnas, 8pt</li>
+            <li><b>Print-ready:</b> <code>print-color-adjust: exact</code> para mantener colores al imprimir</li>
+        </ul>
+    </div>
+
+    <!-- ══════════════════ 3. PRESENTACIONES V1 ══════════════════ -->
+    <div class="section">
+        <h2><span class="badge badge-wip">⚠️</span> 3. Presentaciones V1 — Descartadas</h2>
+        <p>Se generaron 98 presentaciones HTML con transiciones y navegación, pero contenían <b>extractos de la planificación</b> (instrucciones para el profesor), no material para proyectar en clase.</p>
+        <p><b>Ejemplo del problema:</b> En lugar de mostrar vocabulario con imágenes, decía <em>"Presentar vocabulario específico con imágenes: engine, brake, transmission…"</em></p>
+        <p><b>Ubicación:</b> <code>[Nivel]/Unidad 1/Presentaciones/</code> — pendiente de reemplazar con V2.</p>
+    </div>
+
+    <!-- ══════════════════ 4. PRESENTACIONES V2 ══════════════════ -->
+    <div class="section">
+        <h2><span class="badge badge-done">✅</span> 4. Presentaciones V2 — Unidad 1 — Material Real de Enseñanza (Completado)</h2>
+        <p>108 presentaciones HTML interactivas generadas con <code>generate_slides_v2.py</code>, con <b>contenido real para proyectar</b>: tarjetas de vocabulario con fonética, textos de lectura con keywords resaltados, explicaciones gramaticales, ejercicios interactivos (click to reveal), rúbricas de evaluación, preguntas de discusión con sentence frames.</p>
+
+        <table>
+            <tr><th>Nivel</th><th>Clases U1</th><th>Especialidades</th><th>Total presentaciones</th></tr>
+            <tr><td>1ro Medio</td><td>18</td><td>1 (general)</td><td>18</td></tr>
+            <tr><td>3ro Medio</td><td>~9</td><td>5</td><td>~45</td></tr>
+            <tr><td>4to Medio</td><td>~9</td><td>5</td><td>~45</td></tr>
+            <tr><td colspan="3"><b>Total estimado</b></td><td><b>~108</b></td></tr>
+        </table>
+
+        <h3>Contenido a generar por clase — 1ro Medio (18 clases)</h3>
+        <table>
+            <tr><th>#</th><th>Tema</th><th>Material real que necesita la presentación</th></tr>
+            <tr><td>1</td><td>Evaluación diagnóstica</td><td>Instrucciones de la prueba, preguntas orales modelo (ya existe PDF aparte)</td></tr>
+            <tr><td>2</td><td>Vocabulario: herramientas</td><td><b>20 flashcards</b> de herramientas (hammer, screwdriver, wrench…) con nombre, texto "The Right Tool for the Right Job", diagrama de Venn interactivo</td></tr>
+            <tr><td>3</td><td>Mecánica Automotriz</td><td><b>14 palabras</b> automotrices con ilustración, texto completo "A Day at González Automotive Workshop", diagrama de un auto para etiquetar</td></tr>
+            <tr><td>4</td><td>Mecánica Industrial + seguridad</td><td><b>15 palabras</b> industriales, texto "Welding Safety: A Case Study", preguntas de comprensión</td></tr>
+            <tr><td>5</td><td>Electricidad</td><td><b>15 palabras</b> eléctricas (con fonética), texto "Understanding Basic Electrical Circuits", diagrama de circuito para etiquetar</td></tr>
+            <tr><td>6</td><td>Electrónica</td><td><b>14 palabras</b> electrónicas, texto instructivo "How to Build a Simple LED Circuit", conectores de secuencia (first, then, next…)</td></tr>
+            <tr><td>7</td><td>Gráfica</td><td><b>15 palabras</b> de gráfica, texto "From Digital File to Printed Product", flowchart del proceso</td></tr>
+            <tr><td>8</td><td>Integración 5 especialidades</td><td>Bingo técnico, 5 textos "Five Careers, Five Futures", tabla comparativa</td></tr>
+            <tr><td>9</td><td>Present Perfect</td><td><b>Explicación gramatical</b> (have/has + past participle), ejemplos técnicos, lista participios irregulares, texto "Interview with Don Pedro"</td></tr>
+            <tr><td>10</td><td>Since / For</td><td><b>Línea de tiempo visual</b>, reglas since vs for, ejercicios, perfiles "Five Professionals, Five Stories"</td></tr>
+            <tr><td>11</td><td>Used to</td><td><b>Explicación gramatical</b> (afirmativa/negativa/interrogativa), imágenes comparativas antes/ahora, texto "Then and Now"</td></tr>
+            <tr><td>12</td><td>Caso de estudio + estrategias</td><td>Texto "The Day Everything Went Wrong", Incident Report Form visual, preguntas guiadas</td></tr>
+            <tr><td>13</td><td>Descripciones de procesos</td><td>Flashcards de conectores, modelo de proceso técnico paso a paso, plantilla de presentación</td></tr>
+            <tr><td>14</td><td>Profesionales del mundo</td><td>5 textos jigsaw (Hans/Alemania, Yuki/Japón, Camila/Chile, Mike/USA, Jake/Australia), tabla comparativa</td></tr>
+            <tr><td>15</td><td>Preparación presentación oral</td><td>Rúbrica de evaluación proyectable, plantilla de planificación, modelo, tips</td></tr>
+            <tr><td>16</td><td>Evaluación oral Grupo A</td><td>Rúbrica visible, timer/cronómetro visual, peer evaluation form</td></tr>
+            <tr><td>17</td><td>Evaluación oral Grupo B</td><td>Rúbrica visible, timer, premios simbólicos</td></tr>
+            <tr><td>18</td><td>Prueba escrita</td><td>Instrucciones de la prueba, recordatorio de estrategias, preview Unidad 2</td></tr>
+        </table>
+
+        <h3>Contenido a generar por clase — 3ro Medio (9 clases × 5 especialidades)</h3>
+        <p>Misma estructura para las 5 especialidades; cambian vocabulario, textos y caso de estudio:</p>
+        <table class="tbl-red">
+            <tr><th>#</th><th>Tema</th><th>Material diferenciado por especialidad</th></tr>
+            <tr><td>1</td><td>Vocabulario técnico</td><td><b>14 palabras</b> con imagen por especialidad + texto "A Day in a [taller]"</td></tr>
+            <tr><td>2</td><td>Lectura profunda</td><td>Comprensión del mismo texto, tabla Task/Tool/Time</td></tr>
+            <tr><td>3</td><td>Simple Present + verbos</td><td><b>8 verbos de acción</b> (check, repair, install…), sentence frames, plantilla de párrafo</td></tr>
+            <tr><td>4</td><td>Caso de estudio</td><td>Texto completo del caso (Overheating Engine / Power Outage / Faulty Circuit / Color Mismatch / Defective Weld), diagrama Problem→Solution</td></tr>
+            <tr><td>5</td><td>Video + descripción oral</td><td>Preguntas guía del video, vocabulario del video, plantilla de descripción</td></tr>
+            <tr><td>6</td><td>Seguridad</td><td>Texto de seguridad, tabla Safety Rule→Reason→PPE, modelo de póster</td></tr>
+            <tr><td>7</td><td>Prep. evaluación oral</td><td>Rúbrica (5×4=20pts), modelo de presentación, checklist</td></tr>
+            <tr><td>8</td><td>Evaluación oral</td><td>Rúbrica proyectable, peer feedback form, timer</td></tr>
+            <tr><td>9</td><td>Revisión + cierre</td><td>Jeopardy categories, ficha autoevaluación, preview U2</td></tr>
+        </table>
+
+        <h3>Contenido a generar por clase — 4to Medio (9 clases × 5 especialidades)</h3>
+        <table class="tbl-purple">
+            <tr><th>#</th><th>Tema</th><th>Material diferenciado por especialidad</th></tr>
+            <tr><td>1</td><td>Vocabulario avanzado + metas</td><td><b>8 palabras</b> avanzadas por especialidad, texto "The Modern [Professional]", Career Pathway Map</td></tr>
+            <tr><td>2</td><td>Caso de estudio — trayectoria</td><td>Texto completo del caso (From Workshop to Dealership / Powering a Career / Building a Tech Career / Ink to Innovation / From Apprentice to Specialist), tabla de análisis</td></tr>
+            <tr><td>3</td><td>CV en inglés</td><td><b>CV modelo</b> real de un técnico, plantilla en blanco, lista de <b>verbos de acción</b> (operated, maintained, installed…), secciones etiquetadas</td></tr>
+            <tr><td>4</td><td>Entrevista laboral</td><td><b>8 preguntas comunes</b> de entrevista, sentence frames para responder, tips de presentación, modelo de entrevista</td></tr>
+            <tr><td>5</td><td>Evaluación — Mock Interview</td><td>Rúbrica (5×4=20pts), preguntas de la entrevista, ficha autorreflexión</td></tr>
+            <tr><td>6</td><td>Emails formales</td><td><b>Estructura de email</b> (subject, greeting, body, closing), 2 modelos (formal vs informal), plantillas para escribir, vocabulario formal</td></tr>
+            <tr><td>7</td><td>Video + análisis crítico</td><td>Preguntas guía, vocabulario del video, preguntas de análisis crítico</td></tr>
+            <tr><td>8</td><td>Seguridad laboral</td><td>Señales de seguridad en inglés, texto de protocolos (SDS/SOPs), vocabulario de seguridad avanzado</td></tr>
+            <tr><td>9</td><td>Revisión + cierre</td><td>Career Jeopardy, ficha reflexión, preview U2</td></tr>
+        </table>
+    </div>
+
+    <!-- ══════════════════ LÍNEA DE TIEMPO ══════════════════ -->
+    <div class="section">
+        <h2>🗺️ Línea de Tiempo del Proyecto</h2>
+        <div class="timeline">
+            <div class="tl-item tl-done">
+                <h3><span class="badge badge-done">✅</span> Planificaciones clase a clase</h3>
+                <p>44 archivos HTML — 1ro Medio (4 unidades), 3ro Medio (4 unidades × 5 esp.), 4to Medio (4 unidades × 5 esp.)</p>
+            </div>
+            <div class="tl-item tl-done">
+                <h3><span class="badge badge-done">✅</span> Pruebas diagnósticas KET Reading</h3>
+                <p>11 HTML con logo del colegio + pauta de corrección + alternativas A-E con claves balanceadas y distractores técnicos B1 por especialidad</p>
+            </div>
+            <div class="tl-item tl-done">
+                <h3><span class="badge badge-done">✅</span> Presentaciones V2 — Unidad 1 (completado)</h3>
+                <p>108 presentaciones HTML con contenido real de enseñanza — generadas con <code>generate_slides_v2.py</code></p>
+            </div>
+            <div class="tl-item tl-todo">
+                <h3><span class="badge badge-todo">⬜</span> Presentaciones — Unidades 2, 3 y 4</h3>
+                <p>~324 presentaciones adicionales para el resto del año</p>
+            </div>
+            <div class="tl-item tl-future">
+                <h3><span class="badge badge-future">🔮</span> Material complementario (no solicitado aún)</h3>
+                <p>Worksheets impresos, pruebas sumativas de cada unidad, rúbricas, material audiovisual</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- ══════════════════ ESTRUCTURA DE ARCHIVOS ══════════════════ -->
+    <div class="section">
+        <h2>📁 Estructura de Archivos</h2>
+        <pre style="background:#f5f5f5; padding:18px; border-radius:8px; font-size:.88em; overflow-x:auto; line-height:1.5;">
+2026/
+├── generate_diagnosticos.py          ← Script generador de diagnósticas (v1 PDF, descartado)
+├── generate_diagnosticos_html.py     ← Script generador de diagnósticas HTML (ACTIVO)
+├── generate_slides.py                ← Script generador V1 (descartado)
+├── generate_slides_v2.py             ← Script generador V2 (108 presentaciones U1)
+├── walkthrough_proyecto.html         ← Este archivo
+├── .github/
+│   └── (opcional) copilot-instructions.md
+├── Logo Colegio Guías.png
+├── Cuadro Encabezado Guías.png
+├── Ejemplo Prueba.docx               ← Documento de referencia de formato
+│
+├── Pruebas Diagnostico/              ← 11 HTML diagnósticas + pautas de corrección
+│   ├── diagnostico_1ro_medio.html
+│   ├── diagnostico_3ro_automotriz.html
+│   ├── diagnostico_3ro_electricidad.html
+│   └── ... (11 total)
+│
+├── 1ro Medio/
+│   ├── Unidad 1/
+│   │   ├── planificacion_unidad1.html       ← 18 clases
+│   │   └── Presentaciones/                  ← 18 slides V2 ✅
+│   ├── Unidad 2/ ...
+│   ├── Unidad 3/ ...
+│   └── Unidad 4/ ...
+│
+├── 3ro Medio/
+│   ├── Unidad 1/
+│   │   ├── planificacion_u1_automotriz.html  ← ~9 clases
+│   │   ├── planificacion_u1_electricidad.html
+│   │   ├── planificacion_u1_electronica.html
+│   │   ├── planificacion_u1_grafica.html
+│   │   ├── planificacion_u1_industrial.html
+│   │   └── Presentaciones/                   ← 45 slides V2 ✅
+│   ├── Unidad 2/ ...
+│   ├── Unidad 3/ ...
+│   └── Unidad 4/ ...
+│
+└── 4to Medio/
+    ├── Unidad 1/
+    │   ├── planificacion_u1_automotriz.html  ← ~9 clases
+    │   ├── planificacion_u1_electricidad.html
+    │   ├── planificacion_u1_electronica.html
+    │   ├── planificacion_u1_grafica.html
+    │   ├── planificacion_u1_industrial.html
+    │   └── Presentaciones/                   ← 45 slides V2 ✅
+    ├── Unidad 2/ ...
+    ├── Unidad 3/ ...
+    └── Unidad 4/ ...
+        </pre>
+    </div>
+
+    <!-- ══════════════════ FORMATO ESTÁNDAR ══════════════════ -->
+    <div class="section">
+        <h2>📐 Formato Estándar del Proyecto</h2>
+        <p>Todos los materiales generados siguen un formato estandarizado, aplicado desde <code>generate_diagnosticos_html.py</code>.</p>
+        <table>
+            <tr><th>Parámetro</th><th>Valor</th></tr>
+            <tr><td>Tamaño de página</td><td>Carta — 21.59 cm × 27.94 cm (8.5" × 11")</td></tr>
+            <tr><td>Márgenes</td><td>1.5 cm arriba/abajo, 1.8 cm izquierda/derecha</td></tr>
+            <tr><td>Logo</td><td>Ancho completo, auto-cropped (Pillow <code>getbbox()</code>), base64 embebido</td></tr>
+            <tr><td>Fuente base</td><td>Arial, sans-serif — 9pt</td></tr>
+            <tr><td>Fuente título</td><td>11pt bold, centrado</td></tr>
+            <tr><td>Fuente contenido</td><td>8–8.5pt para preguntas/opciones/textos</td></tr>
+            <tr><td>Alternativas</td><td>5 por pregunta (A-E), con claves balanceadas entre letras y sin patrón fijo</td></tr>
+            <tr><td>Distractores</td><td>Técnicos por especialidad (B1), con coherencia temática en Parts 1-4</td></tr>
+            <tr><td>Part 4</td><td>Opciones de 1-2 palabras con forma gramatical consistente (verbo/sustantivo/plural)</td></tr>
+            <tr><td>Tabla de datos</td><td>6 columnas con <code>&lt;colgroup&gt;</code>, bordes #000, labels con fondo #e8e8e8</td></tr>
+            <tr><td>Header de sección</td><td>Fondo <code>#2962FF</code>, texto blanco, 9pt bold</td></tr>
+            <tr><td>Impresión</td><td><code>print-color-adjust: exact</code> para mantener colores</td></tr>
+            <tr><td>Codificación</td><td>UTF-8 con BOM si es necesario (no usar PowerShell para escribir archivos)</td></tr>
+        </table>
+    </div>
+
+    <!-- ══════════════════ PRÓXIMOS PASOS ══════════════════ -->
+    <div class="section">
+        <h2>🎯 Próximos Pasos</h2>
+        <ol>
+            <li><s>Crear script generador V2</s> — <span class="badge badge-done">✅</span> <code>generate_slides_v2.py</code></li>
+            <li><s>Generar presentaciones V2 — Unidad 1</s> — <span class="badge badge-done">✅</span> 108 archivos HTML generados</li>
+            <li><s>Convertir diagnósticas a HTML con pauta</s> — <span class="badge badge-done">✅</span> 11 archivos HTML con formato estándar</li>
+            <li><s>Ajustar alternativas a formato A-E</s> — <span class="badge badge-done">✅</span> 5 opciones por pregunta con claves balanceadas y distractores B1 por especialidad</li>
+            <li><b>Verificar calidad visual</b> — Revisar en navegador que contenido, diseño y funcionalidad estén correctos</li>
+            <li><b>Expandir a Unidades 2–4</b> — ~324 presentaciones adicionales</li>
+            <li><b>Material complementario</b> — Guías impresas, pruebas sumativas, rúbricas</li>
+        </ol>
+    </div>
+
+</div>
+
+<div class="footer">
+    <p>Proyecto de Planificación de Inglés — Centro Educativo Salesianos Talca — 2026</p>
+    <p>5 especialidades: Mecánica Automotriz · Electricidad · Electrónica · Gráfica · Mecánica Industrial</p>
+    <p>Formato estandarizado · Aplicado desde generate_diagnosticos_html.py</p>
+</div>
+
+</body>
+</html>

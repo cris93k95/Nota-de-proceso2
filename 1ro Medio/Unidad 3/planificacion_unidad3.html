@@ -1,0 +1,1285 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>1° Medio - Unidad 3: Problem Solving in the Workshop</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: #f5f5f5; color: #333; line-height: 1.6; }
+        .header { background: linear-gradient(135deg, #4a148c, #6a1b9a); color: white; padding: 30px; text-align: center; }
+        .header h1 { font-size: 1.8em; margin-bottom: 5px; }
+        .header h2 { font-size: 1.3em; font-weight: 300; margin-bottom: 10px; }
+        .header .subtitle { font-size: 0.95em; opacity: 0.9; }
+        .meta-info { display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; margin-top: 15px; }
+        .meta-info span { background: rgba(255,255,255,0.15); padding: 5px 15px; border-radius: 20px; font-size: 0.85em; }
+        .container { max-width: 1100px; margin: 20px auto; padding: 0 15px; }
+        .unit-overview { background: white; border-radius: 10px; padding: 25px; margin-bottom: 25px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); }
+        .unit-overview h3 { color: #4a148c; margin-bottom: 15px; font-size: 1.2em; border-bottom: 2px solid #4a148c; padding-bottom: 8px; }
+        .overview-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
+        .overview-item { padding: 10px; background: #f3e5f5; border-radius: 6px; }
+        .overview-item strong { color: #4a148c; }
+        .overview-item ul { margin-left: 20px; margin-top: 5px; }
+        .overview-item ul li { margin-bottom: 3px; font-size: 0.9em; }
+        .clase-card { background: white; border-radius: 10px; margin-bottom: 20px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); overflow: hidden; }
+        .clase-card.evaluacion { border-left: 5px solid #c62828; }
+        .clase-header { padding: 15px 20px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px; }
+        .clase-header.normal { background: #e1bee7; }
+        .clase-header.eval { background: #ffebee; }
+        .clase-header .clase-num { font-size: 1.1em; font-weight: 700; color: #4a148c; }
+        .clase-header .clase-fecha { font-size: 0.85em; color: #666; }
+        .clase-header .badge { padding: 3px 10px; border-radius: 12px; font-size: 0.75em; font-weight: 600; }
+        .badge-oa { background: #f3e5f5; color: #6a1b9a; }
+        .badge-eval { background: #ffcdd2; color: #c62828; }
+        .clase-body { padding: 20px; }
+        .objetivo { background: #fff3e0; border-left: 4px solid #ef6c00; padding: 12px 15px; margin-bottom: 15px; border-radius: 0 6px 6px 0; }
+        .objetivo strong { color: #ef6c00; }
+        .fase { margin-bottom: 12px; }
+        .fase-title { display: inline-block; padding: 3px 12px; border-radius: 4px; font-weight: 600; font-size: 0.85em; color: white; margin-bottom: 6px; }
+        .fase-inicio { background: #2e7d32; }
+        .fase-desarrollo { background: #1565c0; }
+        .fase-cierre { background: #6a1b9a; }
+        .fase-content { padding-left: 15px; font-size: 0.92em; }
+        .fase-content ol, .fase-content ul { margin-left: 15px; }
+        .fase-content li { margin-bottom: 4px; }
+        .recursos { background: #f1f8e9; padding: 10px 15px; border-radius: 6px; margin-top: 10px; font-size: 0.88em; }
+        .recursos strong { color: #33691e; }
+        .evaluacion-box { background: #fce4ec; padding: 10px 15px; border-radius: 6px; margin-top: 10px; font-size: 0.88em; }
+        .evaluacion-box strong { color: #c62828; }
+        .sugerencia { background: #e8f5e9; border-left: 4px solid #2e7d32; padding: 10px 15px; border-radius: 0 6px 6px 0; margin-top: 10px; font-size: 0.88em; }
+        .sugerencia strong { color: #2e7d32; }
+        .notas-dist { background: white; border-radius: 10px; padding: 25px; margin-bottom: 25px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); }
+        .notas-dist h3 { color: #c62828; margin-bottom: 15px; font-size: 1.1em; }
+        table.notas { width: 100%; border-collapse: collapse; }
+        table.notas th { background: #4a148c; color: white; padding: 8px 12px; text-align: left; font-size: 0.9em; }
+        table.notas td { padding: 8px 12px; border-bottom: 1px solid #e0e0e0; font-size: 0.88em; }
+        table.notas tr:nth-child(even) { background: #f3e5f5; }
+        .footer { text-align: center; padding: 20px; color: #999; font-size: 0.8em; }
+        @media print {
+            body { background: white; }
+            .clase-card { break-inside: avoid; page-break-inside: avoid; box-shadow: none; border: 1px solid #ddd; }
+            .header { background: #4a148c !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+        }
+        @media (max-width: 768px) {
+            .overview-grid { grid-template-columns: 1fr; }
+            .meta-info { flex-direction: column; align-items: center; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="header">
+    <h1>PLANIFICACIÓN CLASE A CLASE — 1° MEDIO</h1>
+    <h2>Unidad 3: Problem Solving in the Workshop</h2>
+    <p class="subtitle">Inglés — Liceo Técnico Profesional — Año Escolar 2026 — Semestre 2</p>
+    <div class="meta-info">
+        <span>📅 Semanas 18–27 (julio – septiembre)</span>
+        <span>⏱ 20 clases de 90 min (Clases 35–54)</span>
+        <span>📚 4 hrs/semana (2 sesiones)</span>
+        <span>🎯 Foco: Estudios de caso (lectura) + Describir problemas y soluciones (oral)</span>
+    </div>
+</div>
+
+<div class="container">
+
+    <!-- VISIÓN GENERAL DE LA UNIDAD -->
+    <div class="unit-overview">
+        <h3>Visión General de la Unidad 3</h3>
+        <div class="overview-grid">
+            <div class="overview-item">
+                <strong>OA Basales trabajados:</strong>
+                <ul>
+                    <li><b>OA1:</b> Comprensión de textos orales adaptados y auténticos simples (instrucciones, descripciones de problemas, conversaciones de diagnóstico).</li>
+                    <li><b>OA7:</b> Reaccionar a textos leídos o escuchados explicando relaciones causa-efecto, expresando opiniones y generando hipótesis.</li>
+                    <li><b>OA8:</b> Demostrar conocimiento y uso del lenguaje: Relative Clauses (who/which/that), Connectors (although, so that, both…and).</li>
+                    <li><b>OA9:</b> Comprensión de ideas generales e información explícita en textos de problema-solución técnicos.</li>
+                    <li><b>OA12:</b> Estrategias de lectura: predicciones, inferencias, identificación de estructura problema-solución, resumen.</li>
+                </ul>
+            </div>
+            <div class="overview-item">
+                <strong>Contenidos lingüísticos:</strong>
+                <ul>
+                    <li>Relative Clauses: who, which, that (defining & non-defining)</li>
+                    <li>Connectors: although, so that, both…and, later, last, for example, first, then, finally</li>
+                    <li>Problem-Solution text structure</li>
+                    <li>Vocabulary: diagnostic terms, malfunction descriptions, repair actions</li>
+                    <li>Consolidación: Present Perfect, Passive Voice, Used to</li>
+                </ul>
+                <br>
+                <strong>Especialidades TP integradas (rotación):</strong>
+                <ul>
+                    <li>Mecánica Automotriz (caso: falla de motor)</li>
+                    <li>Mecánica Industrial (caso: avería de máquina)</li>
+                    <li>Electricidad (caso: corte de suministro eléctrico)</li>
+                    <li>Electrónica (caso: falla de circuito/placa)</li>
+                    <li>Gráfica (caso: problemas de calidad de impresión)</li>
+                </ul>
+            </div>
+            <div class="overview-item">
+                <strong>Habilidades priorizadas:</strong>
+                <ul>
+                    <li><b>Lectura:</b> Estudios de caso de problemas técnicos reales. Estructura problema-solución. Inferencia y predicción a partir de evidencia textual.</li>
+                    <li><b>Expresión Oral:</b> Describir problemas, proponer soluciones, explicar procesos de diagnóstico en interacciones de pares.</li>
+                </ul>
+            </div>
+            <div class="overview-item">
+                <strong>Evaluaciones de la unidad (Notas 1–2 del semestre 2):</strong>
+                <ul>
+                    <li>Clases 45–46: <b>Nota 1</b> — Evaluación oral: Describir un problema técnico y proponer una solución.</li>
+                    <li>Clase 53: <b>Nota 2</b> — Prueba de comprensión lectora (estudios de caso).</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==================== CLASE 35 ==================== -->
+    <div class="clase-card">
+        <div class="clase-header normal">
+            <span class="clase-num">Clase 35</span>
+            <span class="clase-fecha">Semana 18 · julio</span>
+            <span class="badge badge-oa">OA9 · OA12</span>
+        </div>
+        <div class="clase-body">
+            <div class="objetivo">
+                <strong>Objetivo de la clase:</strong> Identificar conocimientos previos sobre vocabulario técnico y estructuras gramaticales del semestre 1 mediante actividades de revisión en contexto técnico-profesional.
+            </div>
+            <div class="fase">
+                <span class="fase-title fase-inicio">INICIO (15 min)</span>
+                <div class="fase-content">
+                    <ul>
+                        <li>Bienvenida al segundo semestre: <em>"Welcome back! I hope you had a great winter break."</em></li>
+                        <li>Warm-up: <em>"Quick quiz!"</em> — Proyectar 10 imágenes de herramientas/equipos del semestre 1. Los estudiantes escriben los nombres en inglés en una hoja. Corrección inmediata oral.</li>
+                        <li>Pregunta motivadora: <em>"Has anything broken at home during the holidays? What happened? How did you fix it?"</em> 2-3 estudiantes responden.</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="fase">
+                <span class="fase-title fase-desarrollo">DESARROLLO (60 min)</span>
+                <div class="fase-content">
+                    <ol>
+                        <li><b>Grammar review game (20 min):</b> <em>"Grammar Relay"</em> — En equipos de 4-5. Cada equipo recibe 15 tarjetas con oraciones para completar o transformar:
+                            <ul>
+                                <li>5 Present Perfect: <em>"The mechanic ___ (repair) the engine."</em></li>
+                                <li>5 Passive Voice: <em>"The cable is connected by the electrician." → Rewrite active.</em></li>
+                                <li>5 Used to: <em>"He ___ (drive) a manual car, but now he drives automatic."</em></li>
+                            </ul>
+                            Cada miembro completa una tarjeta y pasa al siguiente. El equipo más rápido y correcto gana.
+                        </li>
+                        <li><b>Reading – Texto modelo (25 min):</b> <em>"When Things Go Wrong"</em> — Texto introductorio que presenta 5 situaciones breves (una por especialidad) donde algo falla:
+                            <ul>
+                                <li><em>"At the auto shop, the car engine won't start…"</em></li>
+                                <li><em>"At the factory, the CNC machine stopped cutting precisely…"</em></li>
+                                <li><em>"At the construction site, the power went out…"</em></li>
+                                <li><em>"At the electronics lab, the circuit board is overheating…"</em></li>
+                                <li><em>"At the print shop, the colors look wrong on the page…"</em></li>
+                            </ul>
+                            Los estudiantes leen y para cada situación responden: <em>What is the problem? Who can fix it? What do they need?</em>
+                        </li>
+                        <li><b>Vocabulary preview (15 min):</b> Introducir vocabulario clave de la unidad con apoyo visual: <em>malfunction, breakdown, failure, troubleshoot, diagnose, repair, replace, symptoms, cause, solution, fixed, resolved</em>. Pronunciación coral. Los estudiantes copian con definiciones simples.</li>
+                    </ol>
+                </div>
+            </div>
+            <div class="fase">
+                <span class="fase-title fase-cierre">CIERRE (15 min)</span>
+                <div class="fase-content">
+                    <ul>
+                        <li>Presentar la Unidad 3: <em>"This semester, you will become problem solvers. We'll read real case studies about things that go wrong in workshops and learn how technicians fix them."</em></li>
+                        <li>Exit ticket: <em>"Write one thing that can go wrong in YOUR specialty and one word you learned today."</em></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="recursos">
+                <strong>Recursos:</strong> Flashcards de herramientas (revisión), tarjetas de grammar relay, texto <em>"When Things Go Wrong"</em> impreso, vocabulario nuevo con imágenes, proyector.
+            </div>
+        </div>
+    </div>
+
+    <!-- ==================== CLASE 36 ==================== -->
+    <div class="clase-card">
+        <div class="clase-header normal">
+            <span class="clase-num">Clase 36</span>
+            <span class="clase-fecha">Semana 18 · julio</span>
+            <span class="badge badge-oa">OA8</span>
+        </div>
+        <div class="clase-body">
+            <div class="objetivo">
+                <strong>Objetivo de la clase:</strong> Comprender y aplicar cláusulas relativas con <em>who, which</em> y <em>that</em> para describir personas, objetos y situaciones del contexto técnico-profesional.
+            </div>
+            <div class="fase">
+                <span class="fase-title fase-inicio">INICIO (15 min)</span>
+                <div class="fase-content">
+                    <ul>
+                        <li>Proyectar tres oraciones en la pizarra:
+                            <ul>
+                                <li><em>"The mechanic fixed the car. The mechanic works at the shop."</em></li>
+                                <li><em>"The tool is broken. The tool was on the table."</em></li>
+                                <li><em>"That is the wire. It connects to the motherboard."</em></li>
+                            </ul>
+                        </li>
+                        <li>Preguntar: <em>"Can we combine these sentences into one? How?"</em> Guiar a los estudiantes a descubrir <em>who/which/that</em>.</li>
+                        <li>Escribir las combinaciones: <em>"The mechanic who works at the shop fixed the car."</em> etc.</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="fase">
+                <span class="fase-title fase-desarrollo">DESARROLLO (60 min)</span>
+                <div class="fase-content">
+                    <ol>
+                        <li><b>Explicit grammar teaching (20 min):</b> Explicar con diagramas claros:
+                            <ul>
+                                <li><b>WHO</b> → para personas: <em>"The electrician who installed the wiring is very experienced."</em></li>
+                                <li><b>WHICH</b> → para cosas/animales: <em>"The drill which I bought last week is very powerful."</em></li>
+                                <li><b>THAT</b> → para ambos (informal): <em>"The student that won the competition studies electronics."</em></li>
+                            </ul>
+                            Mostrar ejemplos contextualizados en las 5 especialidades. Los estudiantes copian tabla resumen.
+                        </li>
+                        <li><b>Guided practice (20 min):</b> Worksheet con 15 ejercicios:
+                            <ul>
+                                <li>5 ejercicios de completar con who/which/that: <em>"The printer ___ is in the corner needs new ink."</em></li>
+                                <li>5 ejercicios de combinar oraciones: <em>"The voltage tester is useful. It measures electrical current." → "The voltage tester which measures electrical current is useful."</em></li>
+                                <li>5 ejercicios de producción: crear oraciones propias con who/which/that sobre su especialidad.</li>
+                            </ul>
+                        </li>
+                        <li><b>Communicative activity (20 min):</b> <em>"Who is who in the Workshop?"</em> — Cada estudiante recibe una tarjeta con un rol técnico (welder, automotive mechanic, electrician, graphic designer, electronics technician, etc.). Deben presentarse usando relative clauses: <em>"I am the technician who repairs circuit boards."</em> Sus compañeros adivinan la especialidad.</li>
+                    </ol>
+                </div>
+            </div>
+            <div class="fase">
+                <span class="fase-title fase-cierre">CIERRE (15 min)</span>
+                <div class="fase-content">
+                    <ul>
+                        <li>Juego rápido: <em>"Define it!"</em> — El docente dice una herramienta o equipo, los estudiantes la definen usando relative clause: <em>"A multimeter is a device which measures voltage."</em></li>
+                        <li>Ticket de salida: <em>"Write 2 sentences about your specialty using 'who' and 'which'."</em></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="recursos">
+                <strong>Recursos:</strong> Presentación con diagramas de Relative Clauses, worksheet impreso (15 ejercicios), tarjetas de roles técnicos, proyector.
+            </div>
+        </div>
+    </div>
+
+    <!-- ==================== CLASE 37 ==================== -->
+    <div class="clase-card">
+        <div class="clase-header normal">
+            <span class="clase-num">Clase 37</span>
+            <span class="clase-fecha">Semana 19 · julio</span>
+            <span class="badge badge-oa">OA8 · OA9</span>
+        </div>
+        <div class="clase-body">
+            <div class="objetivo">
+                <strong>Objetivo de la clase:</strong> Aplicar cláusulas relativas en la comprensión de un estudio de caso sobre diagnóstico automotriz, identificando la estructura problema-solución del texto.
+            </div>
+            <div class="fase">
+                <span class="fase-title fase-inicio">INICIO (15 min)</span>
+                <div class="fase-content">
+                    <ul>
+                        <li>Proyectar imagen de un auto con humo saliendo del capó. Preguntar: <em>"What do you think happened? What could be the problem?"</em></li>
+                        <li>Brainstorm de posibles problemas en la pizarra: <em>overheating, oil leak, broken hose, dead battery…</em></li>
+                        <li>Pre-reading strategy: <em>"Before we read, let's predict: Who do you think will fix this? What tools will they need?"</em></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="fase">
+                <span class="fase-title fase-desarrollo">DESARROLLO (60 min)</span>
+                <div class="fase-content">
+                    <ol>
+                        <li><b>Reading – Case Study 1: Automotriz (30 min):</b> <em>"The Car That Wouldn't Start"</em>
+                            <p style="margin:8px 0; font-style:italic; color:#555;">A customer brought a 2015 sedan which had been making strange noises for two weeks. The mechanic who examined the car first checked the battery. The battery, which was only one year old, seemed fine. Then he tested the starter motor that connects to the engine. He found a loose wire which was causing the problem. The solution was simple: he reconnected the wire and replaced a fuse that had burned out. The car started perfectly.</p>
+                            <ul>
+                                <li>Primera lectura: Skimming — <em>"What is the general problem and solution?"</em> (2 min)</li>
+                                <li>Segunda lectura: Scanning — Subrayar todas las relative clauses (who/which/that) en el texto.</li>
+                                <li>Comprensión: Responder 6 preguntas: <em>What was the symptom? Who examined the car? What did he check first? What was the real cause? How was it fixed? What extra part was replaced?</em></li>
+                            </ul>
+                        </li>
+                        <li><b>Text structure analysis (15 min):</b> Identificar las partes del caso: PROBLEM → DIAGNOSIS → CAUSE → SOLUTION. Los estudiantes completan un diagrama de flujo con la información del texto.</li>
+                        <li><b>Grammar in context (15 min):</b> Extraer 5 oraciones con relative clauses del texto. Para cada una, identificar: ¿Cuál es la relative clause? ¿Qué describe? ¿Es who, which o that? Luego crear 3 oraciones propias sobre el caso.</li>
+                    </ol>
+                </div>
+            </div>
+            <div class="fase">
+                <span class="fase-title fase-cierre">CIERRE (15 min)</span>
+                <div class="fase-content">
+                    <ul>
+                        <li>Oral retelling: En parejas, un estudiante cuenta el caso sin mirar el texto. El compañero verifica con el texto.</li>
+                        <li>Pregunta de reflexión: <em>"Have you ever seen a similar problem? What happened?"</em> 2-3 comparten.</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="recursos">
+                <strong>Recursos:</strong> Estudio de caso impreso <em>"The Car That Wouldn't Start"</em>, diagrama de flujo vacío (Problem → Diagnosis → Cause → Solution), proyector.
+            </div>
+        </div>
+    </div>
+
+    <!-- ==================== CLASE 38 ==================== -->
+    <div class="clase-card">
+        <div class="clase-header normal">
+            <span class="clase-num">Clase 38</span>
+            <span class="clase-fecha">Semana 19 · julio</span>
+            <span class="badge badge-oa">OA9 · OA7</span>
+        </div>
+        <div class="clase-body">
+            <div class="objetivo">
+                <strong>Objetivo de la clase:</strong> Comprender información específica en un estudio de caso sobre una avería en una fábrica (Mecánica Industrial), expresando opiniones sobre las posibles causas y soluciones.
+            </div>
+            <div class="fase">
+                <span class="fase-title fase-inicio">INICIO (15 min)</span>
+                <div class="fase-content">
+                    <ul>
+                        <li>Proyectar imagen de una fábrica con maquinaria pesada. Preguntar: <em>"What machines can you see? What happens if a machine breaks down in a factory?"</em></li>
+                        <li>Vocabulary preview: <em>CNC machine, lathe, drill press, conveyor belt, welding station, bearing, gear, axle, coolant, RPM (revolutions per minute)</em>. Pronunciación y matching rápido con imágenes.</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="fase">
+                <span class="fase-title fase-desarrollo">DESARROLLO (60 min)</span>
+                <div class="fase-content">
+                    <ol>
+                        <li><b>Reading – Case Study 2: Mecánica Industrial (30 min):</b> <em>"Breakdown on the Production Line"</em>
+                            <p style="margin:8px 0; font-style:italic; color:#555;">At a metal parts factory, the CNC machine which cuts precision components suddenly stopped working during the morning shift. The supervisor who was in charge called the maintenance team. The technician that arrived first noticed that the machine was overheating. He checked the coolant system, which had a blocked filter. Both the filter and the coolant hose were damaged. Although the repair seemed simple, the team also discovered that a bearing which supports the main shaft was worn out. They replaced both parts so that the machine could operate safely again.</p>
+                            <ul>
+                                <li>Pre-reading: Identificar palabras conocidas del vocabulario previamente presentado.</li>
+                                <li>Lectura guiada: El docente lee en voz alta la primera vez. Los estudiantes siguen con el dedo.</li>
+                                <li>Preguntas de comprensión: <em>What machine had the problem? What were the symptoms? What was the first thing the technician checked? How many problems did they find?</em></li>
+                            </ul>
+                        </li>
+                        <li><b>Problem-Solution diagram (15 min):</b> Completar el mismo formato de diagrama de flujo de la clase anterior. Comparar con el caso automotriz: <em>"What's similar? What's different?"</em></li>
+                        <li><b>Oral discussion (15 min):</b> En grupos de 4, discutir: <em>"Was this a serious problem? Why? What could happen if they didn't fix the bearing? In your opinion, should the factory stop production completely or only the broken machine?"</em> Cada grupo comparte una conclusión.</li>
+                    </ol>
+                </div>
+            </div>
+            <div class="fase">
+                <span class="fase-title fase-cierre">CIERRE (15 min)</span>
+                <div class="fase-content">
+                    <ul>
+                        <li>Highlight: Marcar en el texto los conectores usados: <em>although, both…and, so that</em>. Preguntar: <em>"What does each connector do in the sentence?"</em></li>
+                        <li>Anticipar próxima clase: <em>"Next class, we'll learn how to use these connectors to write and speak about problems."</em></li>
+                        <li>Exit ticket: Escribir el problema y la solución del caso en una oración cada uno.</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="recursos">
+                <strong>Recursos:</strong> Estudio de caso impreso <em>"Breakdown on the Production Line"</em>, vocabulario industrial con imágenes, diagrama de flujo, proyector.
+            </div>
+        </div>
+    </div>
+
+    <!-- ==================== CLASE 39 ==================== -->
+    <div class="clase-card">
+        <div class="clase-header normal">
+            <span class="clase-num">Clase 39</span>
+            <span class="clase-fecha">Semana 20 · julio</span>
+            <span class="badge badge-oa">OA8</span>
+        </div>
+        <div class="clase-body">
+            <div class="objetivo">
+                <strong>Objetivo de la clase:</strong> Comprender y utilizar conectores de contraste, propósito y adición (<em>although, so that, both…and</em>) para describir situaciones técnicas complejas.
+            </div>
+            <div class="fase">
+                <span class="fase-title fase-inicio">INICIO (15 min)</span>
+                <div class="fase-content">
+                    <ul>
+                        <li>Escribir en la pizarra 3 pares de oraciones simples:
+                            <ul>
+                                <li><em>"The machine was old. It still worked perfectly."</em></li>
+                                <li><em>"He wore gloves. He wore goggles."</em></li>
+                                <li><em>"She checked the wires. The system could be safe."</em></li>
+                            </ul>
+                        </li>
+                        <li>Pedir a los estudiantes que intenten combinarlas. Aceptar respuestas variadas.</li>
+                        <li>Revelar: <em>"Although the machine was old, it still worked perfectly." / "He wore both gloves and goggles." / "She checked the wires so that the system could be safe."</em></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="fase">
+                <span class="fase-title fase-desarrollo">DESARROLLO (60 min)</span>
+                <div class="fase-content">
+                    <ol>
+                        <li><b>Explicit teaching – Connectors (20 min):</b>
+                            <ul>
+                                <li><b>ALTHOUGH</b> (contraste): <em>"Although the circuit was damaged, the device still turned on."</em> → Introduce una idea contraria a lo esperado.</li>
+                                <li><b>SO THAT</b> (propósito): <em>"The technician replaced the filter so that the machine could run smoothly."</em> → Indica propósito/objetivo.</li>
+                                <li><b>BOTH…AND</b> (adición): <em>"Both the motor and the transmission need repair."</em> → Suma dos elementos.</li>
+                                <li>Añadir repaso de conectores de secuencia: <em>first, then, later, last, finally</em>.</li>
+                            </ul>
+                            Los estudiantes llenan tabla resumen con función, traducción y ejemplo técnico.
+                        </li>
+                        <li><b>Practice (20 min):</b> Worksheet 20 ejercicios:
+                            <ul>
+                                <li>10 de completar huecos con el conector correcto (todos en contexto técnico).</li>
+                                <li>5 de combinar pares de oraciones usando el conector indicado.</li>
+                                <li>5 de producción libre: crear oraciones sobre su especialidad usando cada conector.</li>
+                            </ul>
+                        </li>
+                        <li><b>Speaking game (20 min):</b> <em>"Connector Chain"</em> — En círculos de 6-8 estudiantes. El primero dice una oración técnica simple. El siguiente debe conectarla usando uno de los conectores aprendidos. Ejemplo: <em>S1: "The printer stopped." → S2: "Although the printer stopped, we finished the project on time." → S3: "We finished both the project and the report." → S4: "We printed the report so that the client could read it."</em> Se pierde el turno si no se usa un conector correcto.</li>
+                    </ol>
+                </div>
+            </div>
+            <div class="fase">
+                <span class="fase-title fase-cierre">CIERRE (15 min)</span>
+                <div class="fase-content">
+                    <ul>
+                        <li>Revisión oral rápida: El docente dice una función y los estudiantes dicen el conector: <em>"Contrast?" → "Although!" / "Purpose?" → "So that!" / "Addition?" → "Both…and!"</em></li>
+                        <li>Exit ticket: <em>"Write 3 sentences about a problem in your specialty using 'although', 'so that', and 'both…and'."</em></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="recursos">
+                <strong>Recursos:</strong> Presentación visual de conectores, tabla resumen, worksheet de práctica (20 ejercicios), proyector.
+            </div>
+        </div>
+    </div>
+
+    <!-- ==================== CLASE 40 ==================== -->
+    <div class="clase-card">
+        <div class="clase-header normal">
+            <span class="clase-num">Clase 40</span>
+            <span class="clase-fecha">Semana 20 · julio</span>
+            <span class="badge badge-oa">OA9 · OA7 · OA8</span>
+        </div>
+        <div class="clase-body">
+            <div class="objetivo">
+                <strong>Objetivo de la clase:</strong> Analizar un estudio de caso sobre un corte de suministro eléctrico (Electricidad), identificando conectores y cláusulas relativas en la estructura problema-solución.
+            </div>
+            <div class="fase">
+                <span class="fase-title fase-inicio">INICIO (15 min)</span>
+                <div class="fase-content">
+                    <ul>
+                        <li>Proyectar imagen de un edificio a oscuras / un tablero eléctrico abierto. Preguntar: <em>"What happened here? What could cause a power outage?"</em></li>
+                        <li>Quick brainstorm: <em>short circuit, overloaded circuit, damaged cable, faulty breaker, blown fuse…</em></li>
+                        <li>Vocabulary preview: <em>circuit breaker, fuse box, wiring, voltage, amperage, ground wire, insulation, overload, short circuit, transformer</em>.</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="fase">
+                <span class="fase-title fase-desarrollo">DESARROLLO (60 min)</span>
+                <div class="fase-content">
+                    <ol>
+                        <li><b>Reading – Case Study 3: Electricidad (25 min):</b> <em>"The Building That Lost Power"</em>
+                            <p style="margin:8px 0; font-style:italic; color:#555;">An office building which is located downtown lost electricity during a storm. The electrician who was called to investigate first checked the main circuit breaker, which had tripped. Although he reset the breaker, the power went out again ten minutes later. He then inspected the wiring that runs through the basement. He found a cable which had damaged insulation. Water from the storm had caused a short circuit. He replaced both the cable and the insulation so that the system could work safely. He also installed a new surge protector that protects the building from future power surges.</p>
+                            <ul>
+                                <li>Lectura independiente (primera vez). Subrayar palabras desconocidas.</li>
+                                <li>Lectura guiada (segunda vez). Responder 6 preguntas de comprensión.</li>
+                                <li>Identificar TODAS las relative clauses y conectores en el texto. Contar: ¿Cuántos <em>who</em>? ¿Cuántos <em>which</em>? ¿Cuántos <em>that</em>? ¿Cuántos conectores?</li>
+                            </ul>
+                        </li>
+                        <li><b>Comparative analysis (15 min):</b> Llenar tabla comparativa con los 3 casos vistos hasta ahora (Automotriz, Industrial, Electricidad):
+                            <table style="width:100%; border-collapse:collapse; margin:8px 0; font-size:0.85em;">
+                                <tr style="background:#e1bee7;"><th style="padding:4px 8px; border:1px solid #ccc;">Caso</th><th style="padding:4px 8px; border:1px solid #ccc;">Problema</th><th style="padding:4px 8px; border:1px solid #ccc;">Causa</th><th style="padding:4px 8px; border:1px solid #ccc;">Solución</th></tr>
+                                <tr><td style="padding:4px 8px; border:1px solid #ccc;">Automotriz</td><td style="padding:4px 8px; border:1px solid #ccc;">...</td><td style="padding:4px 8px; border:1px solid #ccc;">...</td><td style="padding:4px 8px; border:1px solid #ccc;">...</td></tr>
+                                <tr><td style="padding:4px 8px; border:1px solid #ccc;">Industrial</td><td style="padding:4px 8px; border:1px solid #ccc;">...</td><td style="padding:4px 8px; border:1px solid #ccc;">...</td><td style="padding:4px 8px; border:1px solid #ccc;">...</td></tr>
+                                <tr><td style="padding:4px 8px; border:1px solid #ccc;">Electricidad</td><td style="padding:4px 8px; border:1px solid #ccc;">...</td><td style="padding:4px 8px; border:1px solid #ccc;">...</td><td style="padding:4px 8px; border:1px solid #ccc;">...</td></tr>
+                            </table>
+                        </li>
+                        <li><b>Pair discussion (20 min):</b> En parejas, discutir: <em>"Which problem was the most dangerous? Why? What would happen if the electrician didn't fix it?"</em> Usar relative clauses y conectores en las respuestas. Compartir conclusiones con la clase.</li>
+                    </ol>
+                </div>
+            </div>
+            <div class="fase">
+                <span class="fase-title fase-cierre">CIERRE (15 min)</span>
+                <div class="fase-content">
+                    <ul>
+                        <li>Recapitulación: <em>"We've now studied 3 case studies. What pattern do they all follow?"</em> → PROBLEM → DIAGNOSIS → CAUSE → SOLUTION.</li>
+                        <li>Exit ticket: <em>"In your own words, write the problem and solution from today's case in 2 sentences."</em></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="recursos">
+                <strong>Recursos:</strong> Estudio de caso impreso, tabla comparativa vacía, vocabulario de electricidad con imágenes, proyector.
+            </div>
+        </div>
+    </div>
+
+    <!-- ==================== CLASE 41 ==================== -->
+    <div class="clase-card">
+        <div class="clase-header normal">
+            <span class="clase-num">Clase 41</span>
+            <span class="clase-fecha">Semana 21 · julio</span>
+            <span class="badge badge-oa">OA8 · OA12</span>
+        </div>
+        <div class="clase-body">
+            <div class="objetivo">
+                <strong>Objetivo de la clase:</strong> Integrar el uso de cláusulas relativas y conectores en la producción de oraciones complejas sobre situaciones técnicas.
+            </div>
+            <div class="fase">
+                <span class="fase-title fase-inicio">INICIO (15 min)</span>
+                <div class="fase-content">
+                    <ul>
+                        <li>Warm-up: <em>"Sentence auction"</em> — Proyectar 10 oraciones con relative clauses y conectores. Algunas correctas, otras con errores. Los estudiantes deben identificar cuáles son correctas y cuáles no (en parejas, con pizarras individuales).</li>
+                        <li>Corrección colectiva explicando los errores.</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="fase">
+                <span class="fase-title fase-desarrollo">DESARROLLO (60 min)</span>
+                <div class="fase-content">
+                    <ol>
+                        <li><b>Grammar integration workshop (25 min):</b> Worksheet avanzado donde los estudiantes deben:
+                            <ul>
+                                <li>Combinar 5 pares de oraciones simples usando relative clauses: <em>"The technician repaired the printer. The technician works at the graphics lab."</em> → <em>"The technician who works at the graphics lab repaired the printer."</em></li>
+                                <li>Expandir 5 oraciones simples agregando conectores: <em>"He checked the wires. The system could be safe."</em> → <em>"He checked the wires so that the system could be safe."</em></li>
+                                <li>Reescribir 5 oraciones usando BOTH structures vistos: relative clause + connector + passive voice o present perfect.</li>
+                            </ul>
+                        </li>
+                        <li><b>Collaborative writing (20 min):</b> En grupos de 3, los estudiantes escriben un mini caso de estudio (8-10 oraciones) inventado, sobre una de las 5 especialidades, usando:
+                            <ul>
+                                <li>Al menos 3 relative clauses (who, which, that)</li>
+                                <li>Al menos 2 conectores (although, so that, both…and)</li>
+                                <li>La estructura: Problem → Diagnosis → Cause → Solution</li>
+                            </ul>
+                        </li>
+                        <li><b>Gallery walk (15 min):</b> Los grupos pegan sus mini casos en las paredes. Los demás estudiantes rotan leyendo y dejando un post-it con un comentario o pregunta sobre cada caso.</li>
+                    </ol>
+                </div>
+            </div>
+            <div class="fase">
+                <span class="fase-title fase-cierre">CIERRE (15 min)</span>
+                <div class="fase-content">
+                    <ul>
+                        <li>Seleccionar 2-3 mini casos destacados para leer en voz alta y comentar.</li>
+                        <li>Reflexión: <em>"How do relative clauses and connectors help make our descriptions clearer and more professional?"</em></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="recursos">
+                <strong>Recursos:</strong> Worksheet de integración gramatical, papelógrafos, marcadores, post-its, proyector para sentence auction.
+            </div>
+        </div>
+    </div>
+
+    <!-- ==================== CLASE 42 ==================== -->
+    <div class="clase-card">
+        <div class="clase-header normal">
+            <span class="clase-num">Clase 42</span>
+            <span class="clase-fecha">Semana 21 · julio</span>
+            <span class="badge badge-oa">OA9 · OA12 · OA7</span>
+        </div>
+        <div class="clase-body">
+            <div class="objetivo">
+                <strong>Objetivo de la clase:</strong> Comprender información explícita en un estudio de caso sobre falla de circuito electrónico, aplicando estrategias de lectura focalizada e inferencia.
+            </div>
+            <div class="fase">
+                <span class="fase-title fase-inicio">INICIO (15 min)</span>
+                <div class="fase-content">
+                    <ul>
+                        <li>Mostrar imagen de una placa de circuito impreso (PCB). Preguntar: <em>"Do you know what this is? What components can you see?"</em></li>
+                        <li>Vocabulary: <em>circuit board, resistor, capacitor, transistor, solder, PCB (printed circuit board), LED, diode, microchip, overheating, burnt component</em>. Pronunciación coral.</li>
+                        <li>Pre-reading prediction: <em>"Look at the title: 'The Circuit Board That Overheated.' What do you think happened?"</em></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="fase">
+                <span class="fase-title fase-desarrollo">DESARROLLO (60 min)</span>
+                <div class="fase-content">
+                    <ol>
+                        <li><b>Reading – Case Study 4: Electrónica (30 min):</b> <em>"The Circuit Board That Overheated"</em>
+                            <p style="margin:8px 0; font-style:italic; color:#555;">A company that manufactures alarm systems reported that several units were failing after a few months. The electronics technician who investigated the problem examined a defective unit. She found that a capacitor which was connected to the main circuit had burned out. Although the component was rated for the correct voltage, it was placed too close to a resistor that generated heat. The solder joints, which should be smooth and shiny, were dull and cracked. She resolved both the component placement and the soldering quality so that future units would be more reliable. She also recommended a design change that would improve ventilation.</p>
+                            <ul>
+                                <li>Lectura silenciosa individual. Subrayar: rojo = problema, verde = solución, azul = relative clauses.</li>
+                                <li>Comprensión: 8 preguntas (4 explícitas + 4 inferenciales):
+                                    <ul>
+                                        <li>Explícitas: <em>What product was failing? What component burned out? Where was it placed? What did the technician recommend?</em></li>
+                                        <li>Inferenciales: <em>Why do you think the solder joints were cracked? What does "reliable" mean in this context? Was there a design problem or a manufacturing problem? How could better ventilation help?</em></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                        <li><b>Vocabulary depth (15 min):</b> Buscar en el texto: <em>rated, defective, solder joints, dull, cracked, reliable, ventilation</em>. Deducir significado por contexto. Verificar con definiciones proporcionadas por el docente.</li>
+                        <li><b>Group discussion (15 min):</b> <em>"Is it more important to find the problem or to prevent the problem? Why?"</em> Compartir opiniones usando: <em>"In my opinion… / I think that… / Although both are important…"</em></li>
+                    </ol>
+                </div>
+            </div>
+            <div class="fase">
+                <span class="fase-title fase-cierre">CIERRE (15 min)</span>
+                <div class="fase-content">
+                    <ul>
+                        <li>Completar diagrama Problem → Diagnosis → Cause → Solution para este caso.</li>
+                        <li>Comparar brevemente con los casos anteriores: <em>"How is this case different from the others? Which was more complex?"</em></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="recursos">
+                <strong>Recursos:</strong> Estudio de caso impreso, imagen de PCB, vocabulario de electrónica, lápices de colores para subrayar, diagrama de flujo.
+            </div>
+        </div>
+    </div>
+
+    <!-- ==================== CLASE 43 ==================== -->
+    <div class="clase-card">
+        <div class="clase-header normal">
+            <span class="clase-num">Clase 43</span>
+            <span class="clase-fecha">Semana 22 · agosto</span>
+            <span class="badge badge-oa">OA7 · OA8</span>
+        </div>
+        <div class="clase-body">
+            <div class="objetivo">
+                <strong>Objetivo de la clase:</strong> Describir oralmente problemas técnicos y sus soluciones utilizando la estructura problema-solución, cláusulas relativas y conectores en interacciones de pares.
+            </div>
+            <div class="fase">
+                <span class="fase-title fase-inicio">INICIO (15 min)</span>
+                <div class="fase-content">
+                    <ul>
+                        <li><em>"Diagnosis Warm-up"</em>: El docente describe oralmente 3 síntomas técnicos. Los estudiantes deben diagnosticar:
+                            <ul>
+                                <li><em>"The car makes a clicking noise when you turn the key but the engine doesn't start."</em> → Dead battery</li>
+                                <li><em>"The lights in the house flicker when you turn on the air conditioner."</em> → Overloaded circuit</li>
+                                <li><em>"The printer produces pages with horizontal lines across the image."</em> → Blocked print head</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="fase">
+                <span class="fase-title fase-desarrollo">DESARROLLO (60 min)</span>
+                <div class="fase-content">
+                    <ol>
+                        <li><b>Oral scaffolding (15 min):</b> Entregar a cada estudiante una "speaking frame" con estructura:
+                            <ul>
+                                <li><em>"The problem is that… / The [equipment] which… has a…"</em></li>
+                                <li><em>"First, I would check… / The technician who… should…"</em></li>
+                                <li><em>"Although… / So that… / Both… and…"</em></li>
+                                <li><em>"The solution is to…"</em></li>
+                            </ul>
+                            Modelar con un ejemplo completo. Los estudiantes practican con un compañero.
+                        </li>
+                        <li><b>Pair role-play (25 min):</b> <em>"Technician and Client"</em> — Cada pareja recibe una tarjeta con un problema técnico (10 problemas diferentes, 2 por especialidad). Uno es el cliente que describe los síntomas, el otro es el técnico que diagnostica y propone una solución. Luego cambian roles con un nuevo problema. El docente circula evaluando formativamente.</li>
+                        <li><b>Group challenge (20 min):</b> En grupos de 4, reciben un caso complejo con múltiples problemas simultáneos. Deben discutir oralmente: <em>"Which problem do we fix first? Why? What tools do we need?"</em> Cada grupo presenta su plan de acción en 2 minutos al curso.</li>
+                    </ol>
+                </div>
+            </div>
+            <div class="fase">
+                <span class="fase-title fase-cierre">CIERRE (15 min)</span>
+                <div class="fase-content">
+                    <ul>
+                        <li>Feedback grupal sobre los role-plays: qué salió bien, qué mejorar.</li>
+                        <li>Anunciar que la evaluación oral (Nota 1) será en formato similar: describir un problema y proponer una solución.</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="recursos">
+                <strong>Recursos:</strong> Speaking frame impreso, tarjetas de problemas técnicos (10), caso complejo para grupo, proyector.
+            </div>
+            <div class="sugerencia">
+                <strong>💡 Sugerencia de actividad:</strong> Grabar (con celular) los role-plays para que los estudiantes puedan autoevaluarse. Esto los prepara para la evaluación oral formal de las clases 45-46.
+            </div>
+        </div>
+    </div>
+
+    <!-- ==================== CLASE 44 ==================== -->
+    <div class="clase-card">
+        <div class="clase-header normal">
+            <span class="clase-num">Clase 44</span>
+            <span class="clase-fecha">Semana 22 · agosto</span>
+            <span class="badge badge-oa">OA9 · OA12</span>
+        </div>
+        <div class="clase-body">
+            <div class="objetivo">
+                <strong>Objetivo de la clase:</strong> Comprender información específica en un estudio de caso sobre problemas de calidad de impresión (Gráfica), completando la rotación de las cinco especialidades.
+            </div>
+            <div class="fase">
+                <span class="fase-title fase-inicio">INICIO (15 min)</span>
+                <div class="fase-content">
+                    <ul>
+                        <li>Mostrar ejemplos de impresiones con defectos: colores desalineados, manchas, texto borroso. Preguntar: <em>"What's wrong with these prints? Have you ever printed something that looked bad?"</em></li>
+                        <li>Vocabulary: <em>ink cartridge, print head, paper jam, resolution, alignment, color calibration, toner, offset printing, bleed, trim marks, CMYK</em>.</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="fase">
+                <span class="fase-title fase-desarrollo">DESARROLLO (60 min)</span>
+                <div class="fase-content">
+                    <ol>
+                        <li><b>Reading – Case Study 5: Gráfica (25 min):</b> <em>"The Colors That Didn't Match"</em>
+                            <p style="margin:8px 0; font-style:italic; color:#555;">A graphic design company which prints magazines received a complaint from a client. The printed photos, which should have been vibrant, looked dull and yellowish. The technician who handles the press first checked the ink levels, which were normal. Although the CMYK settings were correct on the computer, the colors that appeared on paper were wrong. She then cleaned the print heads that distribute the ink and ran a calibration test. The problem was caused by both a dirty print head and an expired ink cartridge that had lost its color quality. She replaced the cartridge and recalibrated the machine so that the colors would match the original design.</p>
+                            <ul>
+                                <li>Lectura con técnica Jigsaw: dividir el párrafo en 3 partes. Cada grupo lee una parte y luego comparte con los demás para reconstruir la historia completa.</li>
+                                <li>Comprehension: <em>What was the client's complaint? Was the computer setting wrong? What two things caused the problem? How was it resolved?</em></li>
+                            </ul>
+                        </li>
+                        <li><b>Complete comparative table (20 min):</b> Actualizar la tabla con los 5 casos. En parejas, completar la última fila (Gráfica) y revisar que toda la tabla esté completa.</li>
+                        <li><b>Ranking activity (15 min):</b> En grupos, ordenar los 5 problemas de más grave a menos grave. Defender su ranking oralmente: <em>"We think the electrical problem was the most dangerous because…"</em></li>
+                    </ol>
+                </div>
+            </div>
+            <div class="fase">
+                <span class="fase-title fase-cierre">CIERRE (15 min)</span>
+                <div class="fase-content">
+                    <ul>
+                        <li>Recapitulación: <em>"We've completed case studies for all 5 specialties! What did they all have in common?"</em></li>
+                        <li>Recordatorio: <em>"In 2 days, we start preparing for your oral assessment. Study the speaking frame and your vocabulary!"</em></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="recursos">
+                <strong>Recursos:</strong> Estudio de caso impreso, ejemplos de impresiones defectuosas, tabla comparativa de 5 casos, vocabulario gráfica con imágenes.
+            </div>
+        </div>
+    </div>
+
+    <!-- ==================== CLASE 45 ==================== -->
+    <div class="clase-card evaluacion">
+        <div class="clase-header eval">
+            <span class="clase-num">Clase 45</span>
+            <span class="clase-fecha">Semana 23 · agosto</span>
+            <span class="badge badge-eval">📝 NOTA 1 (parte 1)</span>
+        </div>
+        <div class="clase-body">
+            <div class="objetivo">
+                <strong>Objetivo de la clase:</strong> Describir oralmente un problema técnico y proponer una solución estructurada, utilizando cláusulas relativas, conectores y vocabulario técnico de su especialidad.
+            </div>
+            <div class="fase">
+                <span class="fase-title fase-inicio">INICIO (10 min)</span>
+                <div class="fase-content">
+                    <ul>
+                        <li>Explicar dinámica de la evaluación: cada estudiante recibe una tarjeta con un problema técnico (distinto para cada uno). Tienen 10 minutos para preparar y luego presentan individualmente al docente (2-3 min c/u).</li>
+                        <li>Mostrar la rúbrica de evaluación y los criterios.</li>
+                        <li>Revisar la speaking frame una última vez.</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="fase">
+                <span class="fase-title fase-desarrollo">DESARROLLO (70 min)</span>
+                <div class="fase-content">
+                    <ol>
+                        <li><b>Preparation time (10 min):</b> Cada estudiante recibe su tarjeta de problema y prepara su respuesta usando la estructura Problem → Diagnosis → Cause → Solution. Pueden tomar notas pero NO leer al presentar.</li>
+                        <li><b>Individual oral assessment (60 min):</b> Cada estudiante presenta al docente (2-3 min):
+                            <ul>
+                                <li>Describe el problema y los síntomas.</li>
+                                <li>Explica el proceso de diagnóstico.</li>
+                                <li>Identifica la causa.</li>
+                                <li>Propone la solución.</li>
+                            </ul>
+                            Mientras cada estudiante presenta, los demás trabajan en una actividad de lectura silenciosa (texto de refuerzo) o completan un crossword de vocabulario técnico.
+                        </li>
+                    </ol>
+                </div>
+            </div>
+            <div class="fase">
+                <span class="fase-title fase-cierre">CIERRE (10 min)</span>
+                <div class="fase-content">
+                    <ul>
+                        <li>Mencionar que los estudiantes que no alcanzaron a presentar lo harán en la próxima clase.</li>
+                        <li>Comentarios generales positivos sobre el desempeño: <em>"I'm impressed with your vocabulary and problem-solving descriptions!"</em></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="recursos">
+                <strong>Recursos:</strong> Tarjetas de problemas técnicos individuales (uno por estudiante), rúbrica impresa, speaking frame de referencia, actividad de lectura silenciosa / crossword para el resto.
+            </div>
+            <div class="evaluacion-box">
+                <strong>Evaluación:</strong> SUMATIVA — Nota 1 del semestre 2 (Expresión Oral). Rúbrica 5 criterios × 3 niveles = 15 pts, escala 60%.<br>
+                <b>Criterios:</b> (1) Estructura problema-solución, (2) Vocabulario técnico apropiado, (3) Uso de relative clauses, (4) Uso de conectores, (5) Pronunciación y fluidez.
+            </div>
+        </div>
+    </div>
+
+    <!-- ==================== CLASE 46 ==================== -->
+    <div class="clase-card evaluacion">
+        <div class="clase-header eval">
+            <span class="clase-num">Clase 46</span>
+            <span class="clase-fecha">Semana 23 · agosto</span>
+            <span class="badge badge-eval">📝 NOTA 1 (parte 2)</span>
+        </div>
+        <div class="clase-body">
+            <div class="objetivo">
+                <strong>Objetivo de la clase:</strong> Completar la evaluación oral de los estudiantes restantes y retroalimentar el desempeño general del curso.
+            </div>
+            <div class="fase">
+                <span class="fase-title fase-inicio">INICIO (10 min)</span>
+                <div class="fase-content">
+                    <ul>
+                        <li>Recordar la dinámica y la rúbrica.</li>
+                        <li>¿Quiénes faltan por presentar? Ordenar la lista.</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="fase">
+                <span class="fase-title fase-desarrollo">DESARROLLO (65 min)</span>
+                <div class="fase-content">
+                    <ol>
+                        <li><b>Oral assessment continuation (40-50 min):</b> Completar las presentaciones individuales de los estudiantes restantes.</li>
+                        <li><b>Peer feedback activity (15-25 min):</b> Una vez completadas todas las presentaciones, actividad grupal: en parejas, los estudiantes comparten qué vocabulario nuevo aprendieron de las presentaciones de sus compañeros. Cada pareja escribe 5 palabras nuevas que escucharon.</li>
+                    </ol>
+                </div>
+            </div>
+            <div class="fase">
+                <span class="fase-title fase-cierre">CIERRE (15 min)</span>
+                <div class="fase-content">
+                    <ul>
+                        <li>Feedback general: fortalezas y áreas de mejora del curso. Destacar los mejores usos de relative clauses y conectores.</li>
+                        <li>Preview: <em>"Now that you can describe problems orally, let's deepen our reading skills with more complex case studies."</em></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="evaluacion-box">
+                <strong>Evaluación:</strong> SUMATIVA — Continuación Nota 1 del semestre 2.
+            </div>
+        </div>
+    </div>
+
+    <!-- ==================== CLASE 47 ==================== -->
+    <div class="clase-card">
+        <div class="clase-header normal">
+            <span class="clase-num">Clase 47</span>
+            <span class="clase-fecha">Semana 24 · agosto</span>
+            <span class="badge badge-oa">OA1 · OA9</span>
+        </div>
+        <div class="clase-body">
+            <div class="objetivo">
+                <strong>Objetivo de la clase:</strong> Comprender información central en un video de troubleshooting técnico en inglés, identificando secuencias de diagnóstico y vocabulario en contexto auditivo.
+            </div>
+            <div class="fase">
+                <span class="fase-title fase-inicio">INICIO (15 min)</span>
+                <div class="fase-content">
+                    <ul>
+                        <li>Discusión: <em>"Do you watch YouTube videos to learn how to fix things? In what language?"</em></li>
+                        <li>Explicar que muchos manuales técnicos y tutoriales de reparación están en inglés. <em>"Understanding English in these videos is a real skill for your career."</em></li>
+                        <li>Pre-viewing: Mostrar título y thumbnail del video. Predecir: <em>"What do you think this video is about?"</em></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="fase">
+                <span class="fase-title fase-desarrollo">DESARROLLO (60 min)</span>
+                <div class="fase-content">
+                    <ol>
+                        <li><b>Video 1 (20 min):</b> Video de YouTube: <em>"How to diagnose a car that won't start"</em> (o similar, 5-7 min, con subtítulos en inglés). Primera visualización: <em>"Just watch and listen. What is the general problem?"</em> Segunda visualización con guía: worksheet con 8 preguntas de comprensión sobre los pasos del diagnóstico.</li>
+                        <li><b>Video 2 (20 min):</b> Video corto de una reparación eléctrica o industrial (3-5 min). Misma dinámica: visualización general + guiada. Los estudiantes completan un diagrama de secuencia: <em>Step 1 → Step 2 → Step 3…</em></li>
+                        <li><b>Comparative discussion (20 min):</b> En grupos, comparar lo visto en los videos con los estudios de caso leídos: <em>"What additional information do you get from the video that you don't get from reading? Which format is easier to understand? Why?"</em> Cada grupo comparte una conclusión.</li>
+                    </ol>
+                </div>
+            </div>
+            <div class="fase">
+                <span class="fase-title fase-cierre">CIERRE (15 min)</span>
+                <div class="fase-content">
+                    <ul>
+                        <li>Pregunta de reflexión: <em>"How confident are you understanding technical English in videos? 1-5?"</em> Hacer encuesta rápida a mano alzada.</li>
+                        <li>Sugerencia: <em>"This week, try watching one YouTube tutorial about your specialty in English with subtitles."</em></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="recursos">
+                <strong>Recursos:</strong> Videos de YouTube (previamente seleccionados y descargados como respaldo), worksheets de comprensión audiovisual, proyector con audio.
+            </div>
+            <div class="sugerencia">
+                <strong>💡 Sugerencia de videos:</strong> Buscar en YouTube: "car diagnosis step by step", "how to troubleshoot electrical problems", "basic electronics repair tutorial". Elegir videos con audio claro, ritmo pausado y subtítulos disponibles.
+            </div>
+        </div>
+    </div>
+
+    <!-- ==================== CLASE 48 ==================== -->
+    <div class="clase-card">
+        <div class="clase-header normal">
+            <span class="clase-num">Clase 48</span>
+            <span class="clase-fecha">Semana 24 · agosto</span>
+            <span class="badge badge-oa">OA9 · OA7</span>
+        </div>
+        <div class="clase-body">
+            <div class="objetivo">
+                <strong>Objetivo de la clase:</strong> Analizar un estudio de caso integrado que combina elementos de múltiples especialidades, evaluando la gravedad de los problemas y priorizando soluciones.
+            </div>
+            <div class="fase">
+                <span class="fase-title fase-inicio">INICIO (15 min)</span>
+                <div class="fase-content">
+                    <ul>
+                        <li>Scenario setting: <em>"Imagine a new technical school is opening. During the first week, EVERYTHING goes wrong. The electrical system, the machines, the computers, the printers — all have problems at the same time."</em></li>
+                        <li>Preguntar: <em>"If you could only fix ONE thing first, what would it be? Why?"</em></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="fase">
+                <span class="fase-title fase-desarrollo">DESARROLLO (60 min)</span>
+                <div class="fase-content">
+                    <ol>
+                        <li><b>Reading – Integrated Case Study (30 min):</b> <em>"Chaos at the New Technical School"</em> — Texto largo (300+ palabras) que describe 5 problemas simultáneos: el sistema eléctrico del edificio tiene un cortocircuito, el torno CNC no calibra bien, los computadores del laboratorio de electrónica se apagan solos, la impresora offset está descalibrada, y un auto del taller de práctica pierde aceite. Los estudiantes leen y completan una ficha para cada problema: síntoma, especialidad que lo resuelve, urgencia (alta/media/baja), posible causa.</li>
+                        <li><b>Group debate (20 min):</b> <em>"Priority Meeting"</em> — Simular una reunión de coordinación. En grupos de 5 (cada uno representa una especialidad), deben acordar el orden de prioridad para resolver los problemas. Deben argumentar: <em>"The electrical problem should be first because… / Although the car needs repair, it's not urgent because…"</em></li>
+                        <li><b>Report back (10 min):</b> Cada grupo presenta su orden de prioridad y la justificación (1 min por grupo).</li>
+                    </ol>
+                </div>
+            </div>
+            <div class="fase">
+                <span class="fase-title fase-cierre">CIERRE (15 min)</span>
+                <div class="fase-content">
+                    <ul>
+                        <li>Discusión final: <em>"Did all groups agree on the priorities? Why or why not?"</em></li>
+                        <li>Conexión con la realidad: <em>"In real workplaces, deciding priorities is a key skill. And communicating those decisions in English is increasingly important."</em></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="recursos">
+                <strong>Recursos:</strong> Estudio de caso integrado impreso, fichas de problema individual, proyector.
+            </div>
+        </div>
+    </div>
+
+    <!-- ==================== CLASE 49 ==================== -->
+    <div class="clase-card">
+        <div class="clase-header normal">
+            <span class="clase-num">Clase 49</span>
+            <span class="clase-fecha">Semana 25 · agosto/septiembre</span>
+            <span class="badge badge-oa">OA7 · OA8</span>
+        </div>
+        <div class="clase-body">
+            <div class="objetivo">
+                <strong>Objetivo de la clase:</strong> Producir diálogos orales estructurados simulando situaciones reales de diagnóstico técnico mediante role-play extendido.
+            </div>
+            <div class="fase">
+                <span class="fase-title fase-inicio">INICIO (15 min)</span>
+                <div class="fase-content">
+                    <ul>
+                        <li>Warm-up: <em>"Telephone repair call"</em> — El docente simula una llamada telefónica con un estudiante voluntario: <em>"Hello, I'm calling because my [device] is not working. It makes a [sound] and then…"</em> El estudiante debe hacer preguntas de diagnóstico.</li>
+                        <li>Discutir: <em>"What questions should a good technician ask?"</em> Construir lista colectiva: <em>When did it start? What were you doing? Did anything happen before? Have you tried…?</em></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="fase">
+                <span class="fase-title fase-desarrollo">DESARROLLO (60 min)</span>
+                <div class="fase-content">
+                    <ol>
+                        <li><b>Role-play preparation (15 min):</b> En parejas, cada pareja recibe un escenario detallado con:
+                            <ul>
+                                <li>Tarjeta del CLIENTE: descripción de síntomas, cuándo empezó, qué intentó hacer.</li>
+                                <li>Tarjeta del TÉCNICO: lista de preguntas diagnósticas, posibles causas, soluciones.</li>
+                            </ul>
+                            Tiempo de preparación para leer sus tarjetas y planificar el diálogo.
+                        </li>
+                        <li><b>Role-play performance (30 min):</b> Cada pareja actúa su escenario (3-4 min). Deben usar:
+                            <ul>
+                                <li>Al menos 2 relative clauses.</li>
+                                <li>Al menos 2 conectores (although, so that, both…and).</li>
+                                <li>La estructura de diagnóstico: síntomas → preguntas → causa → solución.</li>
+                            </ul>
+                            El resto del curso escucha y completa una ficha: <em>What is the problem? What is the solution?</em>
+                        </li>
+                        <li><b>Peer evaluation (15 min):</b> Después de cada 2-3 presentaciones, breve feedback de los compañeros: <em>"What did they do well? What could they improve?"</em></li>
+                    </ol>
+                </div>
+            </div>
+            <div class="fase">
+                <span class="fase-title fase-cierre">CIERRE (15 min)</span>
+                <div class="fase-content">
+                    <ul>
+                        <li>Premiar la "mejor consulta técnica" (votación del curso).</li>
+                        <li>Reflexión: <em>"How would this be useful in a real job? What if the client speaks only English?"</em></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="recursos">
+                <strong>Recursos:</strong> Tarjetas de escenarios (10 pares completos), fichas de peer evaluation, proyector.
+            </div>
+        </div>
+    </div>
+
+    <!-- ==================== CLASE 50 ==================== -->
+    <div class="clase-card">
+        <div class="clase-header normal">
+            <span class="clase-num">Clase 50</span>
+            <span class="clase-fecha">Semana 25 · septiembre</span>
+            <span class="badge badge-oa">OA8 · OA12</span>
+        </div>
+        <div class="clase-body">
+            <div class="objetivo">
+                <strong>Objetivo de la clase:</strong> Organizar información de un estudio de caso en un párrafo escrito siguiendo la estructura problema-solución con apoyo de scaffolding.
+            </div>
+            <div class="fase">
+                <span class="fase-title fase-inicio">INICIO (15 min)</span>
+                <div class="fase-content">
+                    <ul>
+                        <li>Mostrar un párrafo de problema-solución desordenado (las oraciones en desorden). Los estudiantes deben ordenarlo correctamente.</li>
+                        <li>Identificar los elementos de cohesión que ayudaron a ordenar: conectores, relative clauses, secuencia lógica.</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="fase">
+                <span class="fase-title fase-desarrollo">DESARROLLO (60 min)</span>
+                <div class="fase-content">
+                    <ol>
+                        <li><b>Writing model analysis (15 min):</b> Presentar un párrafo modelo de problema-solución bien escrito. Identificar: oración temática, descripción del problema, proceso de diagnóstico, causa, solución, conclusión. Marcar relative clauses y conectores usados.</li>
+                        <li><b>Guided writing (25 min):</b> Con un scaffolding template, los estudiantes escriben su propio párrafo (8-12 oraciones) sobre un problema técnico de su especialidad:
+                            <ul>
+                                <li>Sentence 1: Introduce the situation. <em>"At [place] which [description], there was a problem with…"</em></li>
+                                <li>Sentence 2-3: Describe symptoms. <em>"The [equipment] that… was/had…"</em></li>
+                                <li>Sentence 4-5: Diagnosis process. <em>"The technician who… first checked… Although…"</em></li>
+                                <li>Sentence 6-7: Cause and solution. <em>"Both… and… were… so that…"</em></li>
+                                <li>Sentence 8: Conclusion. <em>"Finally, the [equipment] which… was working again."</em></li>
+                            </ul>
+                        </li>
+                        <li><b>Peer review (20 min):</b> Intercambiar textos entre compañeros. Cada lector verifica: ¿Tiene la estructura completa? ¿Usa relative clauses? ¿Usa conectores? ¿Tiene sentido? Escribir 1 comentario positivo y 1 sugerencia.</li>
+                    </ol>
+                </div>
+            </div>
+            <div class="fase">
+                <span class="fase-title fase-cierre">CIERRE (15 min)</span>
+                <div class="fase-content">
+                    <ul>
+                        <li>2-3 voluntarios leen sus párrafos en voz alta.</li>
+                        <li>Feedback general del docente sobre errores comunes.</li>
+                        <li>Recordar: <em>"This type of writing will help you prepare for the reading comprehension test, where you'll see similar text structures."</em></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="recursos">
+                <strong>Recursos:</strong> Párrafo desordenado, párrafo modelo, writing scaffolding template impreso, fichas de peer review.
+            </div>
+        </div>
+    </div>
+
+    <!-- ==================== CLASE 51 ==================== -->
+    <div class="clase-card">
+        <div class="clase-header normal">
+            <span class="clase-num">Clase 51</span>
+            <span class="clase-fecha">Semana 26 · septiembre</span>
+            <span class="badge badge-oa">OA9 · OA12 · OA7</span>
+        </div>
+        <div class="clase-body">
+            <div class="objetivo">
+                <strong>Objetivo de la clase:</strong> Aplicar estrategias de lectura (skimming, scanning, inferencia) en un estudio de caso más extenso y complejo que integra vocabulario de múltiples especialidades.
+            </div>
+            <div class="fase">
+                <span class="fase-title fase-inicio">INICIO (15 min)</span>
+                <div class="fase-content">
+                    <ul>
+                        <li>Review de estrategias de lectura: <em>"What do we do BEFORE reading? DURING reading? AFTER reading?"</em> Completar un mapa mental colectivo.</li>
+                        <li>Pre-reading: Leer solo el título y las primeras 2 oraciones del texto nuevo. Predecir de qué trata.</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="fase">
+                <span class="fase-title fase-desarrollo">DESARROLLO (60 min)</span>
+                <div class="fase-content">
+                    <ol>
+                        <li><b>Reading – Extended Case Study (35 min):</b> <em>"A Day of Disasters at the Technical School"</em> — Texto de 400+ palabras que narra un día donde ocurren fallas encadenadas: un cortocircuito afecta las máquinas del taller industrial, lo que sobrecalienta el equipo de electrónica, lo que a su vez daña la impresora del laboratorio de gráfica. Los estudiantes de automotriz salen al patio y descubren una fuga de aceite en un vehículo de práctica.
+                            <ul>
+                                <li>1ra lectura: Skimming (3 min) — <em>"How many problems are there in total?"</em></li>
+                                <li>2da lectura: Scanning — Completar tabla con 4 columnas: Problema, Especialidad, Causa, Solución.</li>
+                                <li>3ra lectura: Inferencias — <em>"Why do you think the problems were connected? Could they have been prevented?"</em></li>
+                            </ul>
+                        </li>
+                        <li><b>Comprehension deep dive (15 min):</b> 10 preguntas mixtas (opción múltiple + respuesta abierta). Incluir preguntas inferenciales y de opinión.</li>
+                        <li><b>Oral summary (10 min):</b> En parejas, hacer un resumen oral del caso sin mirar el texto. El compañero puede dar pistas.</li>
+                    </ol>
+                </div>
+            </div>
+            <div class="fase">
+                <span class="fase-title fase-cierre">CIERRE (15 min)</span>
+                <div class="fase-content">
+                    <ul>
+                        <li>Discusión: <em>"How are reading strategies helping you understand more complex texts?"</em></li>
+                        <li>Pre-aviso: <em>"The reading comprehension test (Nota 2) is coming in 2 classes. Let's review!"</em></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="recursos">
+                <strong>Recursos:</strong> Estudio de caso extendido impreso, tabla de comprensión, cuestionario de 10 preguntas.
+            </div>
+        </div>
+    </div>
+
+    <!-- ==================== CLASE 52 ==================== -->
+    <div class="clase-card">
+        <div class="clase-header normal">
+            <span class="clase-num">Clase 52</span>
+            <span class="clase-fecha">Semana 26 · septiembre</span>
+            <span class="badge badge-oa">OA8 · OA9 · OA12</span>
+        </div>
+        <div class="clase-body">
+            <div class="objetivo">
+                <strong>Objetivo de la clase:</strong> Consolidar conocimientos de vocabulario, gramática y estrategias de lectura de la unidad mediante actividades de revisión integrada.
+            </div>
+            <div class="fase">
+                <span class="fase-title fase-inicio">INICIO (15 min)</span>
+                <div class="fase-content">
+                    <ul>
+                        <li><em>"Vocabulary Race"</em> — En equipos, escribir la mayor cantidad de palabras técnicas en 3 minutos (categorías: herramientas, partes de máquinas, acciones de reparación, problemas/síntomas). El equipo con más palabras correctas gana.</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="fase">
+                <span class="fase-title fase-desarrollo">DESARROLLO (60 min)</span>
+                <div class="fase-content">
+                    <ol>
+                        <li><b>Grammar review stations (30 min):</b> 4 estaciones rotativas (7-8 min cada una):
+                            <ul>
+                                <li><b>Estación 1:</b> Relative Clauses — Combinar oraciones con who/which/that.</li>
+                                <li><b>Estación 2:</b> Connectors — Completar huecos con although/so that/both…and.</li>
+                                <li><b>Estación 3:</b> Mixed grammar (Present Perfect + Passive Voice + Used to) — Transformar oraciones.</li>
+                                <li><b>Estación 4:</b> Reading mini-case — Leer un caso corto y responder 5 preguntas de comprensión.</li>
+                            </ul>
+                        </li>
+                        <li><b>Practice test (30 min):</b> Simular formato de la prueba: dar un texto tipo estudio de caso con preguntas de comprensión, vocabulario y gramática. Los estudiantes trabajan individualmente. Corregir en conjunto al final.</li>
+                    </ol>
+                </div>
+            </div>
+            <div class="fase">
+                <span class="fase-title fase-cierre">CIERRE (15 min)</span>
+                <div class="fase-content">
+                    <ul>
+                        <li>Resolver dudas finales.</li>
+                        <li>Tips para la prueba: <em>"Read the questions BEFORE the text. Use skimming first, then scanning. Underline key words."</em></li>
+                        <li>Recordar fecha de la prueba: próxima clase.</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="recursos">
+                <strong>Recursos:</strong> Material de estaciones rotativas, prueba de práctica impresa, proyector para corrección.
+            </div>
+        </div>
+    </div>
+
+    <!-- ==================== CLASE 53 ==================== -->
+    <div class="clase-card evaluacion">
+        <div class="clase-header eval">
+            <span class="clase-num">Clase 53</span>
+            <span class="clase-fecha">Semana 27 · septiembre</span>
+            <span class="badge badge-eval">📝 NOTA 2</span>
+        </div>
+        <div class="clase-body">
+            <div class="objetivo">
+                <strong>Objetivo de la clase:</strong> Demostrar comprensión lectora de estudios de caso técnicos y dominio de cláusulas relativas y conectores en contextos de problema-solución.
+            </div>
+            <div class="fase">
+                <span class="fase-title fase-inicio">INICIO (10 min)</span>
+                <div class="fase-content">
+                    <ul>
+                        <li>Instrucciones de la prueba: 3 secciones, 70 puntos, 70 minutos.</li>
+                        <li>Recordar: <em>"Read the questions first, then the text. Use your reading strategies."</em></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="fase">
+                <span class="fase-title fase-desarrollo">DESARROLLO (70 min)</span>
+                <div class="fase-content">
+                    <p><b>Prueba de comprensión lectora en 3 secciones:</b></p>
+                    <ol>
+                        <li><b>Sección I – Technical Vocabulary (15 pts, 15 min):</b>
+                            <ul>
+                                <li>10 ítems: matching (definición → palabra técnica)</li>
+                                <li>5 ítems: completar oraciones con la palabra correcta del recuadro.</li>
+                            </ul>
+                        </li>
+                        <li><b>Sección II – Reading Comprehension (35 pts, 35 min):</b>
+                            <ul>
+                                <li>Texto A: Estudio de caso técnico (diferente a los trabajados en clase, pero con vocabulario y estructura familiar). 7 preguntas: 4 opción múltiple + 3 respuesta breve.</li>
+                                <li>Texto B: Estudio de caso más breve. 5 preguntas: True/False con justificación + 2 inferenciales.</li>
+                            </ul>
+                        </li>
+                        <li><b>Sección III – Grammar in Context (20 pts, 20 min):</b>
+                            <ul>
+                                <li>5 oraciones: completar con who/which/that.</li>
+                                <li>5 oraciones: completar con although/so that/both…and.</li>
+                                <li>5 oraciones: combinar pares de oraciones usando relative clauses.</li>
+                                <li>Todas en contexto técnico-profesional.</li>
+                            </ul>
+                        </li>
+                    </ol>
+                    <p><em>Total: 70 puntos. Escala: 60% de exigencia.</em></p>
+                </div>
+            </div>
+            <div class="fase">
+                <span class="fase-title fase-cierre">CIERRE (10 min)</span>
+                <div class="fase-content">
+                    <ul>
+                        <li>Recoger pruebas.</li>
+                        <li>Breve comentario: <em>"How did you find it? Was it similar to what we practiced?"</em></li>
+                        <li>Anticipar: <em>"Next class we'll start our final unit of the year: Innovation, Safety, and Your Future!"</em></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="evaluacion-box">
+                <strong>Evaluación:</strong> SUMATIVA — Nota 2 del semestre 2 (Comprensión Lectora + Gramática contextualizada). 70 puntos, escala 60%.
+            </div>
+        </div>
+    </div>
+
+    <!-- ==================== CLASE 54 ==================== -->
+    <div class="clase-card">
+        <div class="clase-header normal">
+            <span class="clase-num">Clase 54</span>
+            <span class="clase-fecha">Semana 27 · septiembre</span>
+            <span class="badge badge-oa">OA7 · OA9</span>
+        </div>
+        <div class="clase-body">
+            <div class="objetivo">
+                <strong>Objetivo de la clase:</strong> Reflexionar sobre los aprendizajes de la Unidad 3 y establecer metas de aprendizaje para la unidad final del año.
+            </div>
+            <div class="fase">
+                <span class="fase-title fase-inicio">INICIO (15 min)</span>
+                <div class="fase-content">
+                    <ul>
+                        <li>Devolver y comentar resultados de la Nota 1 (oral). Destacar fortalezas generales y errores frecuentes.</li>
+                        <li>Auto-reflexión escrita rápida (en español si es necesario): <em>"¿Qué aprendí en esta unidad? ¿Qué puedo hacer ahora en inglés que no podía antes? ¿Qué me cuesta más?"</em></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="fase">
+                <span class="fase-title fase-desarrollo">DESARROLLO (60 min)</span>
+                <div class="fase-content">
+                    <ol>
+                        <li><b>Prueba review (20 min):</b> Revisar colectivamente las preguntas más difíciles de la Nota 2. Corregir errores comunes. Los estudiantes marcan en sus pruebas lo que erraron.</li>
+                        <li><b>Unit recap game (20 min):</b> <em>"Jeopardy-style quiz"</em> — Categorías: Technical Vocabulary (5 preguntas), Relative Clauses (5), Connectors (5), Case Studies (5), Bonus (5). Los equipos compiten. Las preguntas cubren todo el contenido de la Unidad 3.</li>
+                        <li><b>Preview Unit 4 (20 min):</b> Presentar el tema de la Unidad 4: <em>"Innovation, Safety & My Future."</em>
+                            <ul>
+                                <li>Proyectar collage de imágenes: señales de seguridad en inglés, robots industriales, autos eléctricos, impresoras 3D, domótica.</li>
+                                <li>Discusión: <em>"What innovations are changing YOUR specialty? What safety rules do you know?"</em></li>
+                                <li>Anunciar el proyecto final: <em>"At the end of the year, you will make a presentation called 'My Career Path' about your specialty, in English."</em></li>
+                            </ul>
+                        </li>
+                    </ol>
+                </div>
+            </div>
+            <div class="fase">
+                <span class="fase-title fase-cierre">CIERRE (15 min)</span>
+                <div class="fase-content">
+                    <ul>
+                        <li>Los estudiantes escriben 1 meta personal para la Unidad 4: <em>"I want to be able to…"</em></li>
+                        <li>Cierre motivador: <em>"You've come a long way! You can now read technical cases, describe problems, and discuss solutions in English. Unit 4 will bring it all together."</em></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="recursos">
+                <strong>Recursos:</strong> Pruebas devueltas, presentación Jeopardy (PowerPoint o Genially), collage de imágenes para Unit 4 preview, proyector.
+            </div>
+        </div>
+    </div>
+
+    <!-- DISTRIBUCIÓN DE NOTAS -->
+    <div class="notas-dist">
+        <h3>📝 Resumen de Evaluaciones — Unidad 3 (Notas 1–2 del semestre 2)</h3>
+        <table class="notas">
+            <tr>
+                <th>Nota</th>
+                <th>Tipo</th>
+                <th>Clase</th>
+                <th>Habilidad</th>
+                <th>Instrumento</th>
+                <th>Puntaje</th>
+            </tr>
+            <tr>
+                <td><b>Nota 1</b></td>
+                <td>Evaluación oral</td>
+                <td>Clases 45–46</td>
+                <td>Expresión Oral</td>
+                <td>Rúbrica: estructura problema-solución, vocabulario, relative clauses, conectores, pronunciación</td>
+                <td>15 pts / 60%</td>
+            </tr>
+            <tr>
+                <td><b>Nota 2</b></td>
+                <td>Prueba escrita</td>
+                <td>Clase 53</td>
+                <td>Comprensión Lectora + Gramática</td>
+                <td>Prueba: vocabulary, reading comprehension (2 textos), grammar (relative clauses + connectors)</td>
+                <td>70 pts / 60%</td>
+            </tr>
+        </table>
+    </div>
+
+    <div class="footer">
+        <p>Planificación elaborada para Liceo Técnico Profesional — Asignatura de Inglés — 1° Medio 2026</p>
+        <p>Basada en OA del MINEDUC (Actualización Priorización Curricular 2023) con integración de especialidades TP</p>
+        <p>📌 Unidad 3 — Semestre 2 — Julio a Septiembre 2026</p>
+    </div>
+
+</div>
+
+</body>
+</html>

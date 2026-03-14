@@ -1,0 +1,156 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Clase 5 — Technical Skills & Career Paths — 3ro Medio — Mecánica Automotriz</title><style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@700&display=swap');
+:root{--primary:#c62828;--primary-dark:#b71c1c;--primary-light:#ef5350;--gradient:linear-gradient(135deg, #b71c1c, #d32f2f);--bg-light:#ffebee;
+--inicio:#2e7d32;--inicio-light:#e8f5e9;--desarrollo:#1565c0;--desarrollo-light:#e3f2fd;
+--cierre:#6a1b9a;--cierre-light:#f3e5f5;--text:#1a1a2e;--text-light:#555;--white:#fff;--shadow:0 8px 32px rgba(0,0,0,.10)}
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{width:100%;height:100%;overflow:hidden;font-family:'Inter','Segoe UI',sans-serif;background:#0a0a1a}
+.presentation{width:100%;height:100%;position:relative}
+.slide{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;opacity:0;
+transform:translateX(50px);transition:opacity .55s cubic-bezier(.4,0,.2,1),transform .55s cubic-bezier(.4,0,.2,1);
+pointer-events:none;padding:40px 50px;background:var(--white);overflow-y:auto}
+.slide.active{opacity:1;transform:translateX(0);pointer-events:auto;z-index:10}
+.slide.exit-l{opacity:0;transform:translateX(-50px)}
+.slide-content{max-width:960px;width:100%;text-align:center}
+
+/* Title slide */
+.slide-title{background:var(--gradient);color:var(--white)}
+.slide-title .deco{display:flex;align-items:center;justify-content:center;gap:14px;margin-bottom:28px}
+.slide-title .deco-line{width:70px;height:2px;background:rgba(255,255,255,.35)}
+.slide-title .deco-dot{width:10px;height:10px;border:2px solid rgba(255,255,255,.5);border-radius:50%}
+.slide-title .cls-num{font-family:'Playfair Display',serif;font-size:3.8em;font-weight:700;margin-bottom:12px;text-shadow:0 4px 18px rgba(0,0,0,.18);animation:fadeUp .8s ease-out}
+.slide-title .unit-t{font-size:1.5em;font-weight:300;margin-bottom:18px;opacity:.95;animation:fadeUp .8s ease-out .12s both}
+.slide-title .lvl{font-size:1.05em;font-weight:500;opacity:.85;animation:fadeUp .8s ease-out .22s both}
+.slide-title .spec{font-size:.95em;opacity:.78;margin-top:2px;animation:fadeUp .8s ease-out .28s both}
+.hint{margin-top:36px;font-size:.82em;opacity:.45;animation:pulse 2.2s ease-in-out infinite}
+
+/* Objective */
+.slide-obj{background:linear-gradient(135deg,#fff8e1,#fff3e0)}
+.slide-obj .ico{font-size:3.2em;margin-bottom:16px;animation:popIn .55s ease-out}
+.slide-obj h2{font-size:1.9em;color:#ef6c00;margin-bottom:24px}
+.obj-box{background:var(--white);padding:28px 36px;border-radius:14px;box-shadow:var(--shadow);border-left:5px solid #ef6c00;text-align:left;font-size:1.2em;line-height:1.65;color:var(--text);animation:fadeUp .55s ease-out .15s both}
+
+/* Vocab card */
+.slide-vocab{background:linear-gradient(135deg,#e8eaf6,#e3f2fd)}
+.vocab-card{background:var(--white);border-radius:16px;padding:32px 40px;box-shadow:var(--shadow);max-width:700px;margin:0 auto;animation:fadeUp .5s ease-out}
+.vocab-card .word{font-size:2.8em;font-weight:800;color:var(--primary-dark);margin-bottom:4px}
+.vocab-card .phonetic{font-size:1.1em;color:var(--text-light);font-style:italic;margin-bottom:16px}
+.vocab-card .emoji{font-size:3.5em;margin-bottom:16px}
+.vocab-card .def{font-size:1.15em;color:var(--text);margin-bottom:12px;line-height:1.6}
+.vocab-card .example{font-size:1em;color:#555;font-style:italic;background:#f5f5f5;padding:10px 16px;border-radius:8px;border-left:3px solid var(--primary)}
+.vocab-counter{position:absolute;top:20px;right:30px;font-size:.85em;color:var(--text-light);background:rgba(255,255,255,.8);padding:4px 14px;border-radius:12px}
+
+/* Reading text */
+.slide-reading{background:linear-gradient(135deg,#fafafa,#f5f5f5)}
+.reading-box{background:var(--white);border-radius:14px;padding:28px 36px;box-shadow:var(--shadow);text-align:left;max-width:850px;margin:0 auto;animation:fadeUp .5s ease-out}
+.reading-box h3{font-size:1.5em;color:var(--primary-dark);margin-bottom:16px;text-align:center}
+.reading-box p{font-size:1.08em;line-height:1.8;color:var(--text);margin-bottom:12px}
+.reading-box .keyword{background:#fff9c4;padding:1px 5px;border-radius:3px;font-weight:600;color:#e65100}
+
+/* Grammar */
+.slide-grammar{background:linear-gradient(135deg,#e8f5e9,#f1f8e9)}
+.grammar-box{background:var(--white);border-radius:14px;padding:28px 36px;box-shadow:var(--shadow);text-align:left;max-width:800px;margin:0 auto;animation:fadeUp .5s ease-out}
+.grammar-box h3{font-size:1.5em;color:#2e7d32;margin-bottom:16px;text-align:center}
+.grammar-rule{background:#e8f5e9;padding:16px 22px;border-radius:10px;margin-bottom:16px;font-size:1.2em;text-align:center;font-weight:600;color:#1b5e20;border:2px dashed #66bb6a}
+.grammar-box .example-row{display:flex;align-items:center;gap:12px;margin-bottom:10px;padding:8px 14px;background:#fafafa;border-radius:8px}
+.grammar-box .ex-label{font-size:.8em;font-weight:700;color:var(--white);background:#43a047;padding:2px 10px;border-radius:6px;white-space:nowrap}
+.grammar-box .ex-label.neg{background:#e53935}
+.grammar-box .ex-label.q{background:#1565c0}
+.grammar-box .ex-text{font-size:1.05em;color:var(--text)}
+.grammar-box .ex-text b{color:#2e7d32}
+
+/* Exercise */
+.slide-exercise{background:linear-gradient(135deg,#fff3e0,#fbe9e7)}
+.exercise-box{background:var(--white);border-radius:14px;padding:28px 36px;box-shadow:var(--shadow);text-align:left;max-width:800px;margin:0 auto;animation:fadeUp .5s ease-out}
+.exercise-box h3{font-size:1.4em;color:#e65100;margin-bottom:20px;text-align:center}
+.exercise-box .q-item{margin-bottom:14px;padding:10px 16px;background:#fafafa;border-radius:8px;font-size:1.05em;line-height:1.6}
+.exercise-box .q-item .blank{display:inline-block;min-width:100px;border-bottom:2px dashed #e65100;text-align:center;color:#e65100;font-weight:600;cursor:pointer}
+.exercise-box .q-item .blank.revealed{border-bottom-color:#2e7d32;color:#2e7d32}
+
+/* Discussion */
+.slide-discuss{background:linear-gradient(135deg,#ede7f6,#e8eaf6)}
+.discuss-box{background:var(--white);border-radius:14px;padding:28px 36px;box-shadow:var(--shadow);text-align:left;max-width:800px;margin:0 auto}
+.discuss-box h3{font-size:1.4em;color:#5e35b1;margin-bottom:20px;text-align:center}
+.discuss-q{margin-bottom:14px;padding:12px 18px;background:#ede7f6;border-radius:10px;font-size:1.12em;font-weight:500;color:#4527a0;border-left:4px solid #7e57c2}
+.sentence-frame{margin-top:16px;padding:14px 18px;background:#f3e5f5;border-radius:10px;font-size:1em;color:#6a1b9a;font-style:italic}
+
+/* Table / Diagram */
+.slide-table{background:linear-gradient(135deg,#fafafa,#f0f0f0)}
+.table-box{background:var(--white);border-radius:14px;padding:22px 30px;box-shadow:var(--shadow);max-width:850px;margin:0 auto;overflow-x:auto;animation:fadeUp .5s ease-out}
+.table-box h3{font-size:1.4em;color:var(--primary-dark);margin-bottom:16px;text-align:center}
+.table-box table{width:100%;border-collapse:collapse;font-size:.95em}
+.table-box th{background:var(--primary);color:white;padding:10px 14px;text-align:left;font-weight:600}
+.table-box td{padding:9px 14px;border-bottom:1px solid #e0e0e0}
+.table-box tr:nth-child(even) td{background:#f8f9fa}
+
+/* Rubric */
+.slide-rubric{background:linear-gradient(135deg,#fce4ec,#fff3e0)}
+.rubric-box{background:var(--white);border-radius:14px;padding:22px 30px;box-shadow:var(--shadow);max-width:900px;margin:0 auto;overflow-x:auto}
+.rubric-box h3{font-size:1.4em;color:#c62828;margin-bottom:16px;text-align:center}
+.rubric-box table{width:100%;border-collapse:collapse;font-size:.82em}
+.rubric-box th{background:#c62828;color:white;padding:8px 10px;text-align:center;font-weight:600}
+.rubric-box td{padding:7px 10px;border:1px solid #e0e0e0;text-align:center;vertical-align:top}
+.rubric-box td:first-child{text-align:left;font-weight:600;background:#fce4ec}
+
+/* End slide */
+.slide-end{background:var(--gradient);color:var(--white)}
+.slide-end .end-ico{font-size:3.8em;margin-bottom:16px;animation:popIn .55s ease-out}
+.slide-end h2{font-size:2.4em;font-weight:700;margin-bottom:12px;color:var(--white)}
+.slide-end .sub{font-size:1.05em;opacity:.78;margin-bottom:10px}
+.slide-end .msg{font-size:1.25em;opacity:.9}
+
+/* Section header */
+.slide-section{background:var(--gradient);color:var(--white)}
+.slide-section .sec-ico{font-size:4em;margin-bottom:16px;animation:popIn .55s ease-out}
+.slide-section h2{font-size:2.2em;font-weight:700;margin-bottom:12px}
+.slide-section .sec-sub{font-size:1.15em;opacity:.8}
+
+/* Nav */
+.nav{position:fixed;bottom:22px;left:50%;transform:translateX(-50%);display:flex;gap:12px;z-index:100}
+.nav button{width:46px;height:46px;border-radius:50%;border:none;background:rgba(0,0,0,.12);color:var(--text);font-size:1.2em;cursor:pointer;transition:all .25s;display:flex;align-items:center;justify-content:center;backdrop-filter:blur(8px)}
+.nav button:hover{background:rgba(0,0,0,.25);transform:scale(1.08)}
+.prog-wrap{position:fixed;top:0;left:0;width:100%;height:4px;background:rgba(0,0,0,.08);z-index:100}
+.prog-bar{height:100%;background:var(--primary);transition:width .4s ease;border-radius:0 2px 2px 0}
+.counter{position:fixed;bottom:28px;right:28px;font-size:.82em;color:var(--text-light);z-index:100;background:rgba(255,255,255,.75);padding:3px 10px;border-radius:10px;backdrop-filter:blur(8px)}
+
+@keyframes fadeUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
+@keyframes popIn{0%{opacity:0;transform:scale(.3)}55%{opacity:1;transform:scale(1.05)}75%{transform:scale(.96)}100%{transform:scale(1)}}
+@keyframes pulse{0%,100%{opacity:.45}50%{opacity:.75}}
+@media(max-width:900px){.slide{padding:24px 20px}.slide-title .cls-num{font-size:2.6em}.vocab-card .word{font-size:2em}.nav button{width:38px;height:38px;font-size:1em}}
+@media print{.slide{position:relative!important;opacity:1!important;transform:none!important;page-break-after:always;height:auto;min-height:100vh}.nav,.prog-wrap,.counter{display:none}}
+</style></head><body>
+<div class="presentation"><section class="slide slide-title"><div class="slide-content">
+<div class="deco"><div class="deco-line"></div><div class="deco-dot"></div><div class="deco-line"></div></div>
+<h1 class="cls-num">Clase 5</h1><h2 class="unit-t">Technical Skills & Career Paths</h2>
+<p class="lvl">3ro Medio</p><p class="spec">Mecánica Automotriz</p><p class="hint">▶ Press any key or click to start</p>
+</div></section>
+<section class="slide slide-obj"><div class="slide-content">
+<div class="ico">🎯</div><h2>Objective / Objetivo</h2>
+<div class="obj-box"><p>Understand information from a video and produce oral descriptions about Mecánica Automotriz.</p></div></div></section>
+<section class="slide slide-discuss"><div class="slide-content">
+<div class="discuss-box"><h3>Pre-Viewing Questions</h3><div class="discuss-q">💬 What do you expect to see in the video?</div><div class="discuss-q">💬 What vocabulary might appear?</div></div></div></section>
+<section class="slide slide-discuss"><div class="slide-content">
+<div class="discuss-box"><h3>Post-Viewing — Describe & Explain</h3><div class="discuss-q">💬 Describe the main equipment shown</div><div class="discuss-q">💬 What process was demonstrated?</div><div class="discuss-q">💬 What tools were used?</div><div class="sentence-frame">💡 Sentence frames: "In the video, I saw... They used... to... The process involves..."</div></div></div></section>
+<section class="slide slide-end"><div class="slide-content">
+<div class="end-ico">✅</div><h2>Class 5 Complete!</h2>
+<p class="sub">Technical Skills & Career Paths</p><p class="msg">Great work today! See you next class! 🎓</p></div></section></div>
+<div class="nav"><button onclick="prev()">◀</button><button onclick="next()">▶</button></div>
+<div class="prog-wrap"><div class="prog-bar" id="bar"></div></div>
+<div class="counter" id="ctr">1 / 5</div>
+<script>
+let cur=0;const slides=document.querySelectorAll('.slide');const N=slides.length;
+const bar=document.getElementById('bar');const ctr=document.getElementById('ctr');
+function go(idx,dir){if(idx<0||idx>=N)return;const old=slides[cur];old.classList.remove('active');
+if(dir===1)old.classList.add('exit-l');setTimeout(()=>old.classList.remove('exit-l'),600);
+cur=idx;slides[cur].classList.add('active');bar.style.width=((cur+1)/N*100)+'%';ctr.textContent=(cur+1)+' / '+N}
+function next(){go(cur+1,1)}function prev(){go(cur-1,-1)}
+document.addEventListener('keydown',e=>{if(e.key==='ArrowRight'||e.key===' '||e.key==='Enter'){e.preventDefault();next()}
+else if(e.key==='ArrowLeft'||e.key==='Backspace'){e.preventDefault();prev()}
+else if(e.key==='Home'){e.preventDefault();go(0,-1)}else if(e.key==='End'){e.preventDefault();go(N-1,1)}});
+let tx=0;document.addEventListener('touchstart',e=>{tx=e.changedTouches[0].screenX});
+document.addEventListener('touchend',e=>{const d=tx-e.changedTouches[0].screenX;if(Math.abs(d)>50){d>0?next():prev()}});
+document.querySelector('.presentation').addEventListener('click',e=>{if(!e.target.closest('.nav')&&!e.target.closest('.blank'))next()});
+slides[0].classList.add('active');bar.style.width=(1/N*100)+'%';
+document.querySelectorAll('.blank').forEach(b=>{b.addEventListener('click',e=>{e.stopPropagation();b.textContent=b.dataset.a;b.classList.add('revealed')})});
+</script></body></html>

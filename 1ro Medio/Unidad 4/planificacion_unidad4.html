@@ -1,0 +1,1307 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>1° Medio - Unidad 4: Innovation, Safety & My Future</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: #f5f5f5; color: #333; line-height: 1.6; }
+        .header { background: linear-gradient(135deg, #bf360c, #e65100); color: white; padding: 30px; text-align: center; }
+        .header h1 { font-size: 1.8em; margin-bottom: 5px; }
+        .header h2 { font-size: 1.3em; font-weight: 300; margin-bottom: 10px; }
+        .header .subtitle { font-size: 0.95em; opacity: 0.9; }
+        .meta-info { display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; margin-top: 15px; }
+        .meta-info span { background: rgba(255,255,255,0.15); padding: 5px 15px; border-radius: 20px; font-size: 0.85em; }
+        .container { max-width: 1100px; margin: 20px auto; padding: 0 15px; }
+        .unit-overview { background: white; border-radius: 10px; padding: 25px; margin-bottom: 25px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); }
+        .unit-overview h3 { color: #bf360c; margin-bottom: 15px; font-size: 1.2em; border-bottom: 2px solid #bf360c; padding-bottom: 8px; }
+        .overview-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
+        .overview-item { padding: 10px; background: #fbe9e7; border-radius: 6px; }
+        .overview-item strong { color: #bf360c; }
+        .overview-item ul { margin-left: 20px; margin-top: 5px; }
+        .overview-item ul li { margin-bottom: 3px; font-size: 0.9em; }
+        .clase-card { background: white; border-radius: 10px; margin-bottom: 20px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); overflow: hidden; }
+        .clase-card.evaluacion { border-left: 5px solid #c62828; }
+        .clase-header { padding: 15px 20px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px; }
+        .clase-header.normal { background: #ffccbc; }
+        .clase-header.eval { background: #ffebee; }
+        .clase-header .clase-num { font-size: 1.1em; font-weight: 700; color: #bf360c; }
+        .clase-header .clase-fecha { font-size: 0.85em; color: #666; }
+        .clase-header .badge { padding: 3px 10px; border-radius: 12px; font-size: 0.75em; font-weight: 600; }
+        .badge-oa { background: #fbe9e7; color: #bf360c; }
+        .badge-eval { background: #ffcdd2; color: #c62828; }
+        .clase-body { padding: 20px; }
+        .objetivo { background: #fff3e0; border-left: 4px solid #ef6c00; padding: 12px 15px; margin-bottom: 15px; border-radius: 0 6px 6px 0; }
+        .objetivo strong { color: #ef6c00; }
+        .fase { margin-bottom: 12px; }
+        .fase-title { display: inline-block; padding: 3px 12px; border-radius: 4px; font-weight: 600; font-size: 0.85em; color: white; margin-bottom: 6px; }
+        .fase-inicio { background: #2e7d32; }
+        .fase-desarrollo { background: #1565c0; }
+        .fase-cierre { background: #6a1b9a; }
+        .fase-content { padding-left: 15px; font-size: 0.92em; }
+        .fase-content ol, .fase-content ul { margin-left: 15px; }
+        .fase-content li { margin-bottom: 4px; }
+        .recursos { background: #f1f8e9; padding: 10px 15px; border-radius: 6px; margin-top: 10px; font-size: 0.88em; }
+        .recursos strong { color: #33691e; }
+        .evaluacion-box { background: #fce4ec; padding: 10px 15px; border-radius: 6px; margin-top: 10px; font-size: 0.88em; }
+        .evaluacion-box strong { color: #c62828; }
+        .sugerencia { background: #e8f5e9; border-left: 4px solid #2e7d32; padding: 10px 15px; border-radius: 0 6px 6px 0; margin-top: 10px; font-size: 0.88em; }
+        .sugerencia strong { color: #2e7d32; }
+        .notas-dist { background: white; border-radius: 10px; padding: 25px; margin-bottom: 25px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); }
+        .notas-dist h3 { color: #c62828; margin-bottom: 15px; font-size: 1.1em; }
+        table.notas { width: 100%; border-collapse: collapse; }
+        table.notas th { background: #bf360c; color: white; padding: 8px 12px; text-align: left; font-size: 0.9em; }
+        table.notas td { padding: 8px 12px; border-bottom: 1px solid #e0e0e0; font-size: 0.88em; }
+        table.notas tr:nth-child(even) { background: #fbe9e7; }
+        .footer { text-align: center; padding: 20px; color: #999; font-size: 0.8em; }
+        @media print {
+            body { background: white; }
+            .clase-card { break-inside: avoid; page-break-inside: avoid; box-shadow: none; border: 1px solid #ddd; }
+            .header { background: #bf360c !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+        }
+        @media (max-width: 768px) {
+            .overview-grid { grid-template-columns: 1fr; }
+            .meta-info { flex-direction: column; align-items: center; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="header">
+    <h1>PLANIFICACIÓN CLASE A CLASE — 1° MEDIO</h1>
+    <h2>Unidad 4: Innovation, Safety & My Future</h2>
+    <p class="subtitle">Inglés — Liceo Técnico Profesional — Año Escolar 2026 — Semestre 2</p>
+    <div class="meta-info">
+        <span>📅 Semanas 28–38 (septiembre – diciembre)</span>
+        <span>⏱ 20 clases de 90 min (Clases 55–74)</span>
+        <span>📚 4 hrs/semana (2 sesiones)</span>
+        <span>🎯 Foco: Seguridad laboral, innovación tecnológica + Proyecto final oral</span>
+    </div>
+</div>
+
+<div class="container">
+
+    <!-- VISIÓN GENERAL DE LA UNIDAD -->
+    <div class="unit-overview">
+        <h3>Visión General de la Unidad 4</h3>
+        <div class="overview-grid">
+            <div class="overview-item">
+                <strong>OA Basales trabajados:</strong>
+                <ul>
+                    <li><b>OA1:</b> Comprensión de textos orales (videos de innovación, instrucciones de seguridad).</li>
+                    <li><b>OA5:</b> Presentar información oral usando recursos multimodales (proyecto final).</li>
+                    <li><b>OA7:</b> Reaccionar a textos leídos/escuchados expresando opiniones, haciendo conexiones.</li>
+                    <li><b>OA8:</b> Tag Questions, consolidación de todas las estructuras del año.</li>
+                    <li><b>OA9:</b> Comprensión de ideas generales en textos sobre seguridad e innovación.</li>
+                    <li><b>OA12:</b> Estrategias de lectura: predicción, inferencia, resumen, evaluación.</li>
+                </ul>
+            </div>
+            <div class="overview-item">
+                <strong>Contenidos lingüísticos:</strong>
+                <ul>
+                    <li>Tag Questions: <em>It's dangerous, isn't it? / You wear goggles, don't you?</em></li>
+                    <li>Consolidación: Present Perfect, Passive Voice, Used to, Relative Clauses, Connectors</li>
+                    <li>Vocabulario: seguridad laboral (PPE, hazards, warnings), innovación tecnológica por especialidad</li>
+                    <li>Funciones comunicativas: expresar opinión, confirmar información, describir tendencias</li>
+                </ul>
+                <br>
+                <strong>Especialidades TP integradas:</strong>
+                <ul>
+                    <li>Todas, con énfasis en innovación tecnológica de cada especialidad y protocolos de seguridad universales + específicos.</li>
+                </ul>
+            </div>
+            <div class="overview-item">
+                <strong>Habilidades priorizadas:</strong>
+                <ul>
+                    <li><b>Lectura:</b> Protocolos de seguridad, artículos sobre innovación tecnológica, textos informativos sobre tendencias por especialidad.</li>
+                    <li><b>Expresión Oral:</b> Interrogaciones, debates sobre seguridad, presentación final del proyecto "My Career Path".</li>
+                </ul>
+            </div>
+            <div class="overview-item">
+                <strong>Evaluaciones de la unidad (Notas 3–5 del semestre 2):</strong>
+                <ul>
+                    <li>Clase 64: <b>Nota 3</b> — Interrogación oral sobre innovación en su especialidad.</li>
+                    <li>Clases 71–72: <b>Nota 4</b> — Proyecto final "My Career Path" (presentación oral).</li>
+                    <li>Clase 73: <b>Nota 5</b> — Evaluación integradora escrita final.</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==================== CLASE 55 ==================== -->
+    <div class="clase-card">
+        <div class="clase-header normal">
+            <span class="clase-num">Clase 55</span>
+            <span class="clase-fecha">Semana 28 · septiembre</span>
+            <span class="badge badge-oa">OA9 · OA12</span>
+        </div>
+        <div class="clase-body">
+            <div class="objetivo">
+                <strong>Objetivo de la clase:</strong> Reconocer y categorizar vocabulario de seguridad laboral en inglés, identificando señales de advertencia y equipos de protección personal (PPE).
+            </div>
+            <div class="fase">
+                <span class="fase-title fase-inicio">INICIO (15 min)</span>
+                <div class="fase-content">
+                    <ul>
+                        <li>Proyectar collage de señales de seguridad internacionales (en inglés): <em>DANGER, WARNING, CAUTION, NO ENTRY, WEAR SAFETY GOGGLES, HIGH VOLTAGE</em>.</li>
+                        <li>Preguntar: <em>"Where do you see these signs? Why are they in English? Can you understand them?"</em></li>
+                        <li>Discusión: <em>"Why is it important for a technician to understand safety instructions in English?"</em></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="fase">
+                <span class="fase-title fase-desarrollo">DESARROLLO (60 min)</span>
+                <div class="fase-content">
+                    <ol>
+                        <li><b>Vocabulary – Safety Equipment (PPE) (20 min):</b> Presentar con imágenes: <em>safety goggles, hard hat/helmet, gloves (leather/rubber), steel-toe boots, ear protection/earplugs, face shield, high-visibility vest, respirator/dust mask, welding mask, fire extinguisher, first aid kit</em>. Pronunciación coral. Los estudiantes copian con dibujo y categorizar por especialidad que más lo usa.</li>
+                        <li><b>Vocabulary – Hazards & Warnings (15 min):</b> <em>hazard, risk, danger, flammable, toxic, corrosive, electrical shock, burn, cut, fall, slip, noise exposure, chemical spill</em>. Matching: imagen de riesgo → palabra.</li>
+                        <li><b>Reading (25 min):</b> <em>"Safety First: A Universal Rule"</em> — Texto introductorio sobre la importancia de la seguridad en talleres técnicos. Describe reglas universales que aplican a TODAS las especialidades. Los estudiantes leen y completan una tabla:
+                            <table style="width:100%; border-collapse:collapse; margin:8px 0; font-size:0.85em;">
+                                <tr style="background:#ffccbc;"><th style="padding:4px 8px; border:1px solid #ccc;">Rule</th><th style="padding:4px 8px; border:1px solid #ccc;">Why?</th><th style="padding:4px 8px; border:1px solid #ccc;">My specialty example</th></tr>
+                                <tr><td style="padding:4px 8px; border:1px solid #ccc;">Always wear PPE</td><td style="padding:4px 8px; border:1px solid #ccc;">...</td><td style="padding:4px 8px; border:1px solid #ccc;">...</td></tr>
+                                <tr><td style="padding:4px 8px; border:1px solid #ccc;">Keep workspace clean</td><td style="padding:4px 8px; border:1px solid #ccc;">...</td><td style="padding:4px 8px; border:1px solid #ccc;">...</td></tr>
+                                <tr><td style="padding:4px 8px; border:1px solid #ccc;">Report hazards</td><td style="padding:4px 8px; border:1px solid #ccc;">...</td><td style="padding:4px 8px; border:1px solid #ccc;">...</td></tr>
+                            </table>
+                        </li>
+                    </ol>
+                </div>
+            </div>
+            <div class="fase">
+                <span class="fase-title fase-cierre">CIERRE (15 min)</span>
+                <div class="fase-content">
+                    <ul>
+                        <li>Quiz rápido: El docente muestra una señal de seguridad → los estudiantes dicen el significado en inglés.</li>
+                        <li>Preguntar: <em>"What is the most important safety rule in YOUR specialty? Why?"</em> 3-4 comparten.</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="recursos">
+                <strong>Recursos:</strong> Señales de seguridad impresas/proyectadas, flashcards de PPE, texto <em>"Safety First"</em> impreso, tabla de reglas, proyector.
+            </div>
+        </div>
+    </div>
+
+    <!-- ==================== CLASE 56 ==================== -->
+    <div class="clase-card">
+        <div class="clase-header normal">
+            <span class="clase-num">Clase 56</span>
+            <span class="clase-fecha">Semana 28 · septiembre</span>
+            <span class="badge badge-oa">OA9 · OA7</span>
+        </div>
+        <div class="clase-body">
+            <div class="objetivo">
+                <strong>Objetivo de la clase:</strong> Comprender un protocolo de seguridad adaptado en inglés, identificando instrucciones, advertencias y procedimientos de emergencia.
+            </div>
+            <div class="fase">
+                <span class="fase-title fase-inicio">INICIO (15 min)</span>
+                <div class="fase-content">
+                    <ul>
+                        <li>Mostrar un extracto real de un manual de seguridad de un equipo (simplificado): instrucciones de una soldadora, un torno, o un equipo eléctrico. <em>"Can you understand any of this?"</em></li>
+                        <li>Vocabulario de instrucciones de seguridad: <em>DO / DO NOT / MUST / MUST NOT / ALWAYS / NEVER / IN CASE OF EMERGENCY</em>. Los estudiantes identifican estos marcadores en el extracto.</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="fase">
+                <span class="fase-title fase-desarrollo">DESARROLLO (60 min)</span>
+                <div class="fase-content">
+                    <ol>
+                        <li><b>Reading – Safety Protocol (25 min):</b> <em>"Workshop Safety Protocol — Technical School"</em> — Documento adaptado tipo protocolo oficial que incluye secciones:
+                            <ul>
+                                <li><em>General Rules</em> (All workshops)</li>
+                                <li><em>Electrical Safety</em> (Electricidad / Electrónica)</li>
+                                <li><em>Machine Safety</em> (Mec. Industrial / Automotriz)</li>
+                                <li><em>Chemical Safety</em> (Gráfica — tintas, solventes)</li>
+                            </ul>
+                            Los estudiantes leen la sección general + la sección de su especialidad. Responden: <em>What must you always do? What must you never do? What should you do in an emergency?</em>
+                        </li>
+                        <li><b>Jigsaw reading (20 min):</b> Formar grupos con estudiantes de diferentes especialidades. Cada uno comparte las reglas de seguridad específicas de su sección. El grupo compila una lista conjunta de las reglas más importantes.</li>
+                        <li><b>Group poster (15 min):</b> Cada grupo crea un mini-póster de seguridad en inglés (papelógrafo) con 5 reglas clave + ilustraciones. Usar <em>MUST / MUST NOT / ALWAYS / NEVER</em>.</li>
+                    </ol>
+                </div>
+            </div>
+            <div class="fase">
+                <span class="fase-title fase-cierre">CIERRE (15 min)</span>
+                <div class="fase-content">
+                    <ul>
+                        <li>Gallery walk: Leer los pósters de los otros grupos.</li>
+                        <li>Votación al mejor póster (más claro, más completo, más creativo).</li>
+                        <li>Reflexión: <em>"Could you understand a real safety manual in English now? Why is this skill important?"</em></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="recursos">
+                <strong>Recursos:</strong> Extracto de manual real (simplificado), protocolo de seguridad adaptado impreso, papelógrafos, marcadores de colores, proyector.
+            </div>
+        </div>
+    </div>
+
+    <!-- ==================== CLASE 57 ==================== -->
+    <div class="clase-card">
+        <div class="clase-header normal">
+            <span class="clase-num">Clase 57</span>
+            <span class="clase-fecha">Semana 29 · octubre</span>
+            <span class="badge badge-oa">OA8</span>
+        </div>
+        <div class="clase-body">
+            <div class="objetivo">
+                <strong>Objetivo de la clase:</strong> Comprender y formular Tag Questions para confirmar información sobre normas de seguridad y procedimientos técnicos.
+            </div>
+            <div class="fase">
+                <span class="fase-title fase-inicio">INICIO (15 min)</span>
+                <div class="fase-content">
+                    <ul>
+                        <li>El docente hace afirmaciones sobre las reglas de seguridad vistas, buscando confirmación:
+                            <ul>
+                                <li><em>"You need to wear goggles when welding, don't you?"</em></li>
+                                <li><em>"It's important to disconnect the power before repairs, isn't it?"</em></li>
+                                <li><em>"Chemicals must be stored in a ventilated area, mustn't they?"</em></li>
+                            </ul>
+                        </li>
+                        <li>Preguntar: <em>"What's different about the end of these questions? What pattern do you notice?"</em></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="fase">
+                <span class="fase-title fase-desarrollo">DESARROLLO (60 min)</span>
+                <div class="fase-content">
+                    <ol>
+                        <li><b>Grammar presentation (20 min):</b> Tag Questions — Reglas:
+                            <ul>
+                                <li>Oración afirmativa → tag negativo: <em>"It's hot, isn't it?"</em></li>
+                                <li>Oración negativa → tag positivo: <em>"You don't work here, do you?"</em></li>
+                                <li>Tabla de formación con los auxiliares principales: <em>is/isn't, are/aren't, do/don't, does/doesn't, did/didn't, have/haven't, will/won't, can/can't, should/shouldn't</em></li>
+                            </ul>
+                            Todos los ejemplos en contexto técnico: <em>"The machine has been repaired, hasn't it?" / "They used to work manually, didn't they?" / "The wire was cut by the technician, wasn't it?"</em>
+                        </li>
+                        <li><b>Guided practice (20 min):</b> Worksheet 20 ejercicios:
+                            <ul>
+                                <li>10 oraciones: agregar el tag question correcto.</li>
+                                <li>5 preguntas: responder tag questions sobre seguridad (<em>"Yes, it is." / "No, they don't."</em>).</li>
+                                <li>5 de producción: crear tag questions sobre su especialidad.</li>
+                            </ul>
+                        </li>
+                        <li><b>Communicative game (20 min):</b> <em>"Safety Inspector"</em> — Un estudiante es el "inspector de seguridad" que recorre el taller (sala) haciendo tag questions para verificar que todo esté en orden: <em>"The extinguisher is near the door, isn't it?" / "You always wear your helmet, don't you?" / "This cable hasn't been damaged, has it?"</em> El compañero responde. Rotar inspectores.</li>
+                    </ol>
+                </div>
+            </div>
+            <div class="fase">
+                <span class="fase-title fase-cierre">CIERRE (15 min)</span>
+                <div class="fase-content">
+                    <ul>
+                        <li>Rapid fire: El docente dice oraciones y los estudiantes gritan el tag: <em>"It's dangerous…" → "isn't it!"</em></li>
+                        <li>Exit ticket: <em>"Write 3 tag questions you could use during a safety inspection at your workshop."</em></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="recursos">
+                <strong>Recursos:</strong> Presentación de Tag Questions, worksheet 20 ejercicios, tarjetas de Safety Inspector role-play.
+            </div>
+        </div>
+    </div>
+
+    <!-- ==================== CLASE 58 ==================== -->
+    <div class="clase-card">
+        <div class="clase-header normal">
+            <span class="clase-num">Clase 58</span>
+            <span class="clase-fecha">Semana 29 · octubre</span>
+            <span class="badge badge-oa">OA9 · OA8 · OA7</span>
+        </div>
+        <div class="clase-body">
+            <div class="objetivo">
+                <strong>Objetivo de la clase:</strong> Comprender un reporte de accidente laboral en inglés, practicando Tag Questions para confirmar los hechos del caso.
+            </div>
+            <div class="fase">
+                <span class="fase-title fase-inicio">INICIO (15 min)</span>
+                <div class="fase-content">
+                    <ul>
+                        <li>Discusión: <em>"Have you ever heard about a workplace accident? What happened?"</em> 2-3 comparten (en inglés con apoyo).</li>
+                        <li>Mostrar estadísticas simples: <em>"In Chile, there are approximately X workplace accidents per year in the industrial sector."</em></li>
+                        <li>Pregunta motivadora: <em>"How can we PREVENT accidents? What role does English play in safety?"</em></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="fase">
+                <span class="fase-title fase-desarrollo">DESARROLLO (60 min)</span>
+                <div class="fase-content">
+                    <ol>
+                        <li><b>Reading – Accident report (25 min):</b> <em>"Workplace Accident Report: Electric Shock at the Assembly Line"</em>
+                            <p style="margin:8px 0; font-style:italic; color:#555;">On March 15, a technician who was working on the assembly line received an electrical shock. He was repairing a motor which had a loose connection. Although the machine should have been turned off, it wasn't properly disconnected. The worker was wearing gloves, but they weren't rated for electrical work. Both his hands and arms were burned. He was taken to the hospital immediately so that he could receive medical treatment. The investigation found that the lockout/tagout procedure, which is mandatory, hadn't been followed.</p>
+                            <ul>
+                                <li>Lectura y comprensión: <em>What happened? Why? Who was responsible? How could it have been prevented?</em></li>
+                                <li>Vocabulary in context: <em>electrical shock, loose connection, lockout/tagout, rated for, mandatory, burned</em>.</li>
+                            </ul>
+                        </li>
+                        <li><b>Tag Questions from the text (15 min):</b> A partir del reporte, crear tag questions para confirmar los hechos:
+                            <ul>
+                                <li><em>"The technician was repairing a motor, wasn't he?"</em></li>
+                                <li><em>"The machine wasn't properly disconnected, was it?"</em></li>
+                                <li><em>"The gloves weren't rated for electrical work, were they?"</em></li>
+                            </ul>
+                            Los estudiantes crean 5 tag questions propias sobre el caso. Compartir y verificar en parejas.
+                        </li>
+                        <li><b>Group analysis (20 min):</b> En grupos, responder: <em>"What safety rules were broken? What should have been done differently? Create a list of 5 recommendations to prevent this accident."</em> Escribir recomendaciones usando: <em>must/must not, should/should not, always/never</em>.</li>
+                    </ol>
+                </div>
+            </div>
+            <div class="fase">
+                <span class="fase-title fase-cierre">CIERRE (15 min)</span>
+                <div class="fase-content">
+                    <ul>
+                        <li>Cada grupo comparte su recomendación más importante.</li>
+                        <li>Reflexión: <em>"Safety is not just rules — it's about protecting yourself and others. Understanding safety protocols in English can save lives."</em></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="recursos">
+                <strong>Recursos:</strong> Reporte de accidente adaptado impreso, proyector.
+            </div>
+        </div>
+    </div>
+
+    <!-- ==================== CLASE 59 ==================== -->
+    <div class="clase-card">
+        <div class="clase-header normal">
+            <span class="clase-num">Clase 59</span>
+            <span class="clase-fecha">Semana 30 · octubre</span>
+            <span class="badge badge-oa">OA5 · OA7</span>
+        </div>
+        <div class="clase-body">
+            <div class="objetivo">
+                <strong>Objetivo de la clase:</strong> Presentar oralmente las reglas de seguridad específicas de cada especialidad, utilizando vocabulario de PPE, imperativos y tag questions.
+            </div>
+            <div class="fase">
+                <span class="fase-title fase-inicio">INICIO (15 min)</span>
+                <div class="fase-content">
+                    <ul>
+                        <li><em>"Safety Quiz Championship"</em> — Preguntas rápidas sobre PPE y hazards vistos en clases anteriores. Equipos compiten levantando la mano.</li>
+                        <li>Anunciar actividad del día: <em>"Today each group will become safety experts for their specialty and teach the class."</em></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="fase">
+                <span class="fase-title fase-desarrollo">DESARROLLO (60 min)</span>
+                <div class="fase-content">
+                    <ol>
+                        <li><b>Group preparation (20 min):</b> Formar 5 grupos (uno por especialidad). Cada grupo prepara una presentación de 5 minutos sobre seguridad en su especialidad:
+                            <ul>
+                                <li>3 riesgos principales de la especialidad.</li>
+                                <li>PPE obligatorio con justificación.</li>
+                                <li>3 reglas de seguridad esenciales.</li>
+                                <li>Deben incluir al menos 3 tag questions dirigidas al público: <em>"You should always check the voltage before touching a wire, shouldn't you?"</em></li>
+                            </ul>
+                        </li>
+                        <li><b>Group presentations (35 min):</b> Cada grupo presenta (5-7 min). El resto del curso toma notas en una ficha: <em>Main risks / Required PPE / Key rules</em> para cada especialidad.</li>
+                        <li><b>Q&A (5 min después de cada presentación):</b> Los compañeros hacen preguntas o comentarios.</li>
+                    </ol>
+                </div>
+            </div>
+            <div class="fase">
+                <span class="fase-title fase-cierre">CIERRE (15 min)</span>
+                <div class="fase-content">
+                    <ul>
+                        <li>Discusión final: <em>"Which specialty has the most dangerous risks? Are there safety rules that apply to ALL specialties?"</em></li>
+                        <li>Feedback del docente sobre las presentaciones: fluidez, vocabulario, uso de tag questions.</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="recursos">
+                <strong>Recursos:</strong> Ficha de notas para audiencia, materiales de preparación (pueden usar lo aprendido en clases 55-58), proyector si los grupos quieren mostrar imágenes.
+            </div>
+        </div>
+    </div>
+
+    <!-- ==================== CLASE 60 ==================== -->
+    <div class="clase-card">
+        <div class="clase-header normal">
+            <span class="clase-num">Clase 60</span>
+            <span class="clase-fecha">Semana 30 · octubre</span>
+            <span class="badge badge-oa">OA9 · OA1</span>
+        </div>
+        <div class="clase-body">
+            <div class="objetivo">
+                <strong>Objetivo de la clase:</strong> Comprender información sobre innovaciones tecnológicas en Mecánica Automotriz, identificando vocabulario técnico relacionado con vehículos eléctricos y diagnóstico moderno.
+            </div>
+            <div class="fase">
+                <span class="fase-title fase-inicio">INICIO (15 min)</span>
+                <div class="fase-content">
+                    <ul>
+                        <li>Proyectar imágenes: un auto clásico vs. un Tesla / auto eléctrico moderno. <em>"What's different? What has changed in the automotive industry?"</em></li>
+                        <li>Brainstorm: <em>"What innovations can you think of in the automotive world?"</em> → <em>electric cars, hybrid engines, self-driving cars, GPS, OBD sensors, airbag systems…</em></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="fase">
+                <span class="fase-title fase-desarrollo">DESARROLLO (60 min)</span>
+                <div class="fase-content">
+                    <ol>
+                        <li><b>Reading – Innovation Article (25 min):</b> <em>"The Future of Automotive Repair"</em> — Artículo sobre cómo la tecnología está transformando el trabajo del mecánico automotriz: diagnóstico computarizado (OBD-II scanners), vehículos eléctricos y sus componentes diferentes, mantenimiento preventivo con sensores IoT.
+                            <ul>
+                                <li>Vocabulary: <em>electric vehicle (EV), hybrid, battery pack, charging station, OBD-II scanner, diagnostic software, sensor, autonomous driving, regenerative braking</em>.</li>
+                                <li>Comprensión: <em>How is car repair changing? What new skills does a modern mechanic need? Do you think traditional mechanics will disappear?</em></li>
+                            </ul>
+                        </li>
+                        <li><b>Video (15 min):</b> Video corto (3-4 min) sobre cómo funciona un auto eléctrico (con subtítulos en inglés). Worksheet: completar 5 hechos clave del video.</li>
+                        <li><b>Discussion (20 min):</b> En parejas: <em>"Would you like to specialize in electric vehicles? Why or why not? What are the advantages and disadvantages of EVs?"</em> Compartir respuestas.</li>
+                    </ol>
+                </div>
+            </div>
+            <div class="fase">
+                <span class="fase-title fase-cierre">CIERRE (15 min)</span>
+                <div class="fase-content">
+                    <ul>
+                        <li>Exit ticket: <em>"Name one innovation that will change YOUR specialty in the next 10 years."</em></li>
+                        <li>Preview: <em>"Next class, we'll explore innovations in the industrial world."</em></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="recursos">
+                <strong>Recursos:</strong> Artículo impreso, video YouTube (EV technology), worksheet de video, proyector.
+            </div>
+        </div>
+    </div>
+
+    <!-- ==================== CLASE 61 ==================== -->
+    <div class="clase-card">
+        <div class="clase-header normal">
+            <span class="clase-num">Clase 61</span>
+            <span class="clase-fecha">Semana 31 · octubre</span>
+            <span class="badge badge-oa">OA9 · OA7</span>
+        </div>
+        <div class="clase-body">
+            <div class="objetivo">
+                <strong>Objetivo de la clase:</strong> Comprender información sobre innovaciones en Mecánica Industrial, identificando vocabulario de automatización, CNC y robótica.
+            </div>
+            <div class="fase">
+                <span class="fase-title fase-inicio">INICIO (15 min)</span>
+                <div class="fase-content">
+                    <ul>
+                        <li>Proyectar video corto (1-2 min) de una fábrica automatizada con robots industriales. <em>"What's different about this factory compared to 50 years ago?"</em></li>
+                        <li>Vocabulary preview: <em>robot arm, conveyor belt, CNC machine, 3D printing, automation, laser cutting, welding robot, quality control sensor, production line</em>.</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="fase">
+                <span class="fase-title fase-desarrollo">DESARROLLO (60 min)</span>
+                <div class="fase-content">
+                    <ol>
+                        <li><b>Reading (25 min):</b> <em>"Industry 4.0: The Smart Factory"</em> — Artículo sobre la cuarta revolución industrial: robots, CNC avanzado, impresión 3D de piezas metálicas, sensores IoT para mantenimiento predictivo.
+                            <ul>
+                                <li>Comprensión: <em>What is Industry 4.0? How are CNC machines evolving? What is predictive maintenance? Will robots replace human workers?</em></li>
+                            </ul>
+                        </li>
+                        <li><b>Comparing past and future (15 min):</b> Tabla comparativa usando <em>"used to"</em> y <em>"will/is going to"</em>: <em>"Workers used to weld manually. In the future, robots will do most of the welding." / "Factories used to rely on human inspectors. Now, sensors which are connected to AI detect problems automatically."</em> Students create 5 comparisons.</li>
+                        <li><b>Debate (20 min):</b> Divida la clase en 2 grupos: <em>"Robots are good for industry"</em> vs. <em>"Robots will take our jobs."</em> Cada lado prepara 3 argumentos. Mini debate estructurado (3 min por lado + 2 min rebuttal).</li>
+                    </ol>
+                </div>
+            </div>
+            <div class="fase">
+                <span class="fase-title fase-cierre">CIERRE (15 min)</span>
+                <div class="fase-content">
+                    <ul>
+                        <li>Conclusión del debate: <em>"The truth is probably in the middle. Technology changes jobs but also creates new ones."</em></li>
+                        <li>Reflexión personal: <em>"How do YOU feel about automation in your future career?"</em></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="recursos">
+                <strong>Recursos:</strong> Video de fábrica automatizada, artículo impreso, tabla comparativa, proyector.
+            </div>
+        </div>
+    </div>
+
+    <!-- ==================== CLASE 62 ==================== -->
+    <div class="clase-card">
+        <div class="clase-header normal">
+            <span class="clase-num">Clase 62</span>
+            <span class="clase-fecha">Semana 31 · octubre</span>
+            <span class="badge badge-oa">OA9 · OA1</span>
+        </div>
+        <div class="clase-body">
+            <div class="objetivo">
+                <strong>Objetivo de la clase:</strong> Comprender información sobre innovaciones en Electricidad y Electrónica, identificando vocabulario de energías renovables, domótica e IoT.
+            </div>
+            <div class="fase">
+                <span class="fase-title fase-inicio">INICIO (15 min)</span>
+                <div class="fase-content">
+                    <ul>
+                        <li>Mostrar imagen de una "smart home" con dispositivos conectados. <em>"What can you control from your phone in a modern home?"</em></li>
+                        <li>Vocabulary: <em>solar panel, wind turbine, smart home, IoT (Internet of Things), home automation/domotics, programmable logic controller (PLC), renewable energy, LED lighting, smart meter, Wi-Fi thermostat</em>.</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="fase">
+                <span class="fase-title fase-desarrollo">DESARROLLO (60 min)</span>
+                <div class="fase-content">
+                    <ol>
+                        <li><b>Reading – Two mini-articles (25 min):</b>
+                            <ul>
+                                <li><em>"Smart Homes: The Electrician of Tomorrow"</em> — Cómo los electricistas necesitan saber de redes, Wi-Fi, y programación básica para instalar sistemas domóticos.</li>
+                                <li><em>"Electronics in a Connected World"</em> — Cómo la electrónica está en todo: sensores de temperatura, circuitos de control, placas Arduino/Raspberry Pi.</li>
+                            </ul>
+                            Los estudiantes leen uno de los dos artículos y luego trabajan en pares mixtos para compartir información.
+                        </li>
+                        <li><b>Video (15 min):</b> Video corto sobre instalación de paneles solares o un sistema domótico. Completar worksheet: <em>What is installed? How does it work? What tools are needed?</em></li>
+                        <li><b>Creative activity (20 min):</b> En grupos de 3-4, diseñar la "classroom of the future" con tecnología inteligente. Dibujar un plano simple y etiquetar en inglés: <em>"Smart lights which turn off automatically" / "A thermostat that you control from your phone"</em>. Presentar brevemente al curso.</li>
+                    </ol>
+                </div>
+            </div>
+            <div class="fase">
+                <span class="fase-title fase-cierre">CIERRE (15 min)</span>
+                <div class="fase-content">
+                    <ul>
+                        <li>Votación al diseño más innovador.</li>
+                        <li>Reflexión: <em>"Technology is changing every specialty. How are you preparing for these changes?"</em></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="recursos">
+                <strong>Recursos:</strong> Dos mini-artículos impresos, video de smart home/solar, hojas para plano, proyector.
+            </div>
+        </div>
+    </div>
+
+    <!-- ==================== CLASE 63 ==================== -->
+    <div class="clase-card">
+        <div class="clase-header normal">
+            <span class="clase-num">Clase 63</span>
+            <span class="clase-fecha">Semana 32 · noviembre</span>
+            <span class="badge badge-oa">OA9 · OA7</span>
+        </div>
+        <div class="clase-body">
+            <div class="objetivo">
+                <strong>Objetivo de la clase:</strong> Comprender información sobre innovaciones en la industria Gráfica, analizando tendencias de impresión digital y diseño 3D, y prepararse para la interrogación oral.
+            </div>
+            <div class="fase">
+                <span class="fase-title fase-inicio">INICIO (15 min)</span>
+                <div class="fase-content">
+                    <ul>
+                        <li>Mostrar ejemplos: un libro impreso tradicionalmente vs. impresión digital on-demand vs. un objeto impreso en 3D. <em>"How has printing changed?"</em></li>
+                        <li>Vocabulary: <em>digital printing, 3D printing/additive manufacturing, offset vs. digital, print on demand, packaging design, UV printing, large format printing, graphic design software, color management</em>.</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="fase">
+                <span class="fase-title fase-desarrollo">DESARROLLO (60 min)</span>
+                <div class="fase-content">
+                    <ol>
+                        <li><b>Reading (20 min):</b> <em>"From Gutenberg to 3D: The Evolution of Printing"</em> — Texto que recorre la evolución de la industria gráfica y termina con las tendencias actuales: impresión digital, sustentabilidad (tintas ecológicas), empaques inteligentes.
+                            <ul>
+                                <li>Comprensión: <em>How has printing technology evolved? What are eco-friendly inks? What is "print on demand"?</em></li>
+                            </ul>
+                        </li>
+                        <li><b>Synthesis across all specialties (20 min):</b> En grupos mixtos, completar tabla resumen:
+                            <table style="width:100%; border-collapse:collapse; margin:8px 0; font-size:0.85em;">
+                                <tr style="background:#ffccbc;"><th style="padding:4px 8px; border:1px solid #ccc;">Specialty</th><th style="padding:4px 8px; border:1px solid #ccc;">Main Innovation</th><th style="padding:4px 8px; border:1px solid #ccc;">Impact on Workers</th></tr>
+                                <tr><td style="padding:4px 8px; border:1px solid #ccc;">Automotriz</td><td style="padding:4px 8px; border:1px solid #ccc;">EVs, OBD-II diagnostics</td><td style="padding:4px 8px; border:1px solid #ccc;">...</td></tr>
+                                <tr><td style="padding:4px 8px; border:1px solid #ccc;">Industrial</td><td style="padding:4px 8px; border:1px solid #ccc;">Robotics, CNC, 3D printing</td><td style="padding:4px 8px; border:1px solid #ccc;">...</td></tr>
+                                <tr><td style="padding:4px 8px; border:1px solid #ccc;">Electricidad</td><td style="padding:4px 8px; border:1px solid #ccc;">Smart homes, renewables</td><td style="padding:4px 8px; border:1px solid #ccc;">...</td></tr>
+                                <tr><td style="padding:4px 8px; border:1px solid #ccc;">Electrónica</td><td style="padding:4px 8px; border:1px solid #ccc;">IoT, domotics, Arduino</td><td style="padding:4px 8px; border:1px solid #ccc;">...</td></tr>
+                                <tr><td style="padding:4px 8px; border:1px solid #ccc;">Gráfica</td><td style="padding:4px 8px; border:1px solid #ccc;">Digital printing, eco-inks</td><td style="padding:4px 8px; border:1px solid #ccc;">...</td></tr>
+                            </table>
+                        </li>
+                        <li><b>Preparation for Nota 3 (20 min):</b> Explicar el formato de la interrogación oral (próxima clase). Cada estudiante preparará una respuesta oral de 2-3 min sobre: <em>"What is the most important innovation in your specialty and how will it change your future work?"</em> Tiempo para investigar en sus apuntes y preparar notas.</li>
+                    </ol>
+                </div>
+            </div>
+            <div class="fase">
+                <span class="fase-title fase-cierre">CIERRE (15 min)</span>
+                <div class="fase-content">
+                    <ul>
+                        <li>Práctica oral en parejas: cada estudiante ensaya su respuesta para la interrogación con un compañero que da feedback.</li>
+                        <li>Recordar: <em>"Tomorrow is your oral assessment about innovation. Study your vocabulary and practice your speaking!"</em></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="recursos">
+                <strong>Recursos:</strong> Artículo de gráfica impreso, tabla-resumen de innovaciones, proyector.
+            </div>
+        </div>
+    </div>
+
+    <!-- ==================== CLASE 64 ==================== -->
+    <div class="clase-card evaluacion">
+        <div class="clase-header eval">
+            <span class="clase-num">Clase 64</span>
+            <span class="clase-fecha">Semana 32 · noviembre</span>
+            <span class="badge badge-eval">📝 NOTA 3</span>
+        </div>
+        <div class="clase-body">
+            <div class="objetivo">
+                <strong>Objetivo de la clase:</strong> Expresar oralmente conocimiento sobre innovación tecnológica en su especialidad, utilizando vocabulario técnico, tag questions y estructuras gramaticales del año.
+            </div>
+            <div class="fase">
+                <span class="fase-title fase-inicio">INICIO (10 min)</span>
+                <div class="fase-content">
+                    <ul>
+                        <li>Explicar la dinámica: interrogación oral individual. El docente hace 3-4 preguntas basadas en lo preparado. El estudiante responde oralmente (2-3 min total).</li>
+                        <li>Mostrar rúbrica. Los estudiantes que esperan trabajan en actividad escrita de refuerzo.</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="fase">
+                <span class="fase-title fase-desarrollo">DESARROLLO (70 min)</span>
+                <div class="fase-content">
+                    <ol>
+                        <li><b>Oral interrogation (70 min):</b> El docente llama a cada estudiante individualmente. Preguntas tipo:
+                            <ul>
+                                <li><em>"Tell me about an important innovation in your specialty."</em></li>
+                                <li><em>"How will this change the way technicians work?"</em></li>
+                                <li><em>"This innovation is important for safety, isn't it?"</em> (revisar uso de tag questions)</li>
+                                <li><em>"What skills do you need to learn for this technology?"</em></li>
+                            </ul>
+                            Mientras tanto, el resto completa una actividad de lectura independiente: artículo sobre <em>"Top 10 Jobs That Will Change in the Next 20 Years"</em> con preguntas de comprensión.
+                        </li>
+                    </ol>
+                </div>
+            </div>
+            <div class="fase">
+                <span class="fase-title fase-cierre">CIERRE (10 min)</span>
+                <div class="fase-content">
+                    <ul>
+                        <li>Feedback general: <em>"Great job! I can see you've learned a lot about your specialty in English."</em></li>
+                        <li>Anunciar proyecto final: <em>"Starting next class, we'll work on your final project: My Career Path!"</em></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="evaluacion-box">
+                <strong>Evaluación:</strong> SUMATIVA — Nota 3 del semestre 2 (Interrogación Oral). Rúbrica 5 criterios × 3 niveles = 15 pts, escala 60%.<br>
+                <b>Criterios:</b> (1) Conocimiento del tema (innovación en la especialidad), (2) Vocabulario técnico, (3) Gramática (tag questions, structures del año), (4) Fluidez y pronunciación, (5) Capacidad de responder preguntas espontáneas.
+            </div>
+        </div>
+    </div>
+
+    <!-- ==================== CLASE 65 ==================== -->
+    <div class="clase-card">
+        <div class="clase-header normal">
+            <span class="clase-num">Clase 65</span>
+            <span class="clase-fecha">Semana 33 · noviembre</span>
+            <span class="badge badge-oa">OA8</span>
+        </div>
+        <div class="clase-body">
+            <div class="objetivo">
+                <strong>Objetivo de la clase:</strong> Consolidar todas las estructuras gramaticales del año (Present Perfect, Used to, Passive Voice, Relative Clauses, Connectors, Tag Questions) en contextos técnico-profesionales integrados.
+            </div>
+            <div class="fase">
+                <span class="fase-title fase-inicio">INICIO (15 min)</span>
+                <div class="fase-content">
+                    <ul>
+                        <li><em>"Grammar Timeline"</em> — Proyectar una línea de tiempo con todas las estructuras del año. Preguntar por cada una: <em>"Who can give me an example of [structure]?"</em> Los estudiantes crean ejemplos rápidos.</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="fase">
+                <span class="fase-title fase-desarrollo">DESARROLLO (60 min)</span>
+                <div class="fase-content">
+                    <ol>
+                        <li><b>Grammar review game: "Structure Roulette" (30 min):</b> Una ruleta virtual con 6 secciones (una por estructura gramatical). Un estudiante gira la ruleta, obtiene la estructura, y debe crear una oración correcta en contexto técnico en 15 seg. Si es correcta, punto para su equipo. Rotar entre equipos.</li>
+                        <li><b>Integrated practice (30 min):</b> Worksheet de consolidación final con 30 ejercicios mixtos:
+                            <ul>
+                                <li>5 Present Perfect</li>
+                                <li>5 Used to</li>
+                                <li>5 Passive Voice</li>
+                                <li>5 Relative Clauses</li>
+                                <li>5 Connectors</li>
+                                <li>5 Tag Questions</li>
+                            </ul>
+                            Todos en contexto técnico. Corrección colectiva al final.
+                        </li>
+                    </ol>
+                </div>
+            </div>
+            <div class="fase">
+                <span class="fase-title fase-cierre">CIERRE (15 min)</span>
+                <div class="fase-content">
+                    <ul>
+                        <li>Auto-evaluación: Los estudiantes se califican del 1-5 en cada estructura: <em>"I feel confident / I need more practice"</em></li>
+                        <li>El docente recoge las auto-evaluaciones para identificar áreas que necesitan refuerzo.</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="recursos">
+                <strong>Recursos:</strong> Ruleta virtual (Wordwall o similar), worksheet de consolidación (30 ejercicios), proyector.
+            </div>
+        </div>
+    </div>
+
+    <!-- ==================== CLASE 66 ==================== -->
+    <div class="clase-card">
+        <div class="clase-header normal">
+            <span class="clase-num">Clase 66</span>
+            <span class="clase-fecha">Semana 33 · noviembre</span>
+            <span class="badge badge-oa">OA9 · OA7</span>
+        </div>
+        <div class="clase-body">
+            <div class="objetivo">
+                <strong>Objetivo de la clase:</strong> Analizar un artículo sobre el futuro del trabajo técnico-profesional, evaluando tendencias y expresando opiniones fundamentadas.
+            </div>
+            <div class="fase">
+                <span class="fase-title fase-inicio">INICIO (15 min)</span>
+                <div class="fase-content">
+                    <ul>
+                        <li>Pregunta abierta: <em>"What will your job look like in 2040? Will it be the same as today?"</em></li>
+                        <li>Brainstorm rápido en la pizarra: cambios esperados en cada especialidad.</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="fase">
+                <span class="fase-title fase-desarrollo">DESARROLLO (60 min)</span>
+                <div class="fase-content">
+                    <ol>
+                        <li><b>Reading (25 min):</b> <em>"The Future of Technical Work: Skills for 2030 and Beyond"</em> — Artículo extenso (350+ palabras) que discute: la importancia del inglés técnico, habilidades digitales, trabajo colaborativo con IA, nuevas certificaciones, lifelong learning. Los estudiantes leen y responden 8 preguntas (comprensión + opinión).</li>
+                        <li><b>Think-Pair-Share (15 min):</b> Cada estudiante reflexiona individualmente sobre: <em>"What skill from this article is most important for MY career?"</em> Luego comparte con un compañero. Finalmente, algunas parejas comparten con la clase.</li>
+                        <li><b>Future vision writing (20 min):</b> Cada estudiante escribe un párrafo: <em>"In 2035, I will be a [career]. I will have learned… I will use… which will help me… Technology will have changed… so that…"</em> Usar Present Perfect, Passive Voice, Relative Clauses, Connectors.</li>
+                    </ol>
+                </div>
+            </div>
+            <div class="fase">
+                <span class="fase-title fase-cierre">CIERRE (15 min)</span>
+                <div class="fase-content">
+                    <ul>
+                        <li>3-4 voluntarios leen su "future vision" en voz alta.</li>
+                        <li>Mensaje motivador: <em>"Your career starts NOW, and speaking English is one of the tools that will open doors for you."</em></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="recursos">
+                <strong>Recursos:</strong> Artículo impreso, ficha de escritura, proyector.
+            </div>
+        </div>
+    </div>
+
+    <!-- ==================== CLASE 67 ==================== -->
+    <div class="clase-card">
+        <div class="clase-header normal">
+            <span class="clase-num">Clase 67</span>
+            <span class="clase-fecha">Semana 34 · noviembre</span>
+            <span class="badge badge-oa">OA1 · OA7</span>
+        </div>
+        <div class="clase-body">
+            <div class="objetivo">
+                <strong>Objetivo de la clase:</strong> Comprender información audiovisual sobre innovación en especialidades TP, extrayendo datos clave de videos en inglés para incorporar al proyecto final.
+            </div>
+            <div class="fase">
+                <span class="fase-title fase-inicio">INICIO (15 min)</span>
+                <div class="fase-content">
+                    <ul>
+                        <li>Presentar los 5 videos seleccionados (uno por especialidad). Los estudiantes elegirán 2 para ver.</li>
+                        <li>Pre-viewing: Discutir títulos y predecir contenido.</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="fase">
+                <span class="fase-title fase-desarrollo">DESARROLLO (60 min)</span>
+                <div class="fase-content">
+                    <ol>
+                        <li><b>Video rotation (40 min):</b> 5 estaciones con videos (4-5 min c/u, con subtítulos en inglés). Sugerencias:
+                            <ul>
+                                <li>Automotriz: <em>"How Electric Cars Work"</em></li>
+                                <li>Industrial: <em>"CNC Machining — How It Works"</em></li>
+                                <li>Electricidad: <em>"How Solar Panels Work"</em></li>
+                                <li>Electrónica: <em>"What is IoT?"</em></li>
+                                <li>Gráfica: <em>"How 3D Printing Works"</em></li>
+                            </ul>
+                            Cada estudiante ve al menos 2 videos (su especialidad + otro). Completan ficha por video: <em>Main idea / 3 new facts / 3 new words / My opinion</em>.
+                        </li>
+                        <li><b>Information exchange (20 min):</b> Formar grupos con estudiantes que vieron videos diferentes. Compartir oralmente lo aprendido: <em>"In the video about [topic], I learned that…"</em></li>
+                    </ol>
+                </div>
+            </div>
+            <div class="fase">
+                <span class="fase-title fase-cierre">CIERRE (15 min)</span>
+                <div class="fase-content">
+                    <ul>
+                        <li>Discusión: <em>"Which video was most interesting? Why?"</em></li>
+                        <li>Conectar con proyecto final: <em>"You can use information from these videos in your 'My Career Path' presentation."</em></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="recursos">
+                <strong>Recursos:</strong> 5 videos descargados/con enlace, audifonos o parlantes por estación (o proyectar uno a uno si no hay formato estaciones), fichas de video, proyector.
+            </div>
+        </div>
+    </div>
+
+    <!-- ==================== CLASE 68 ==================== -->
+    <div class="clase-card">
+        <div class="clase-header normal">
+            <span class="clase-num">Clase 68</span>
+            <span class="clase-fecha">Semana 34 · noviembre</span>
+            <span class="badge badge-oa">OA5</span>
+        </div>
+        <div class="clase-body">
+            <div class="objetivo">
+                <strong>Objetivo de la clase:</strong> Planificar y estructurar el contenido del proyecto final "My Career Path", definiendo secciones, vocabulario clave y apoyo visual.
+            </div>
+            <div class="fase">
+                <span class="fase-title fase-inicio">INICIO (15 min)</span>
+                <div class="fase-content">
+                    <ul>
+                        <li>Presentar el proyecto final en detalle:
+                            <ul>
+                                <li><b>Nombre:</b> <em>"My Career Path"</em></li>
+                                <li><b>Formato:</b> Presentación oral individual de 3-5 minutos.</li>
+                                <li><b>Apoyo visual:</b> Pueden usar un póster, un PowerPoint simple, o material concreto.</li>
+                                <li><b>Contenido obligatorio</b> (5 secciones):
+                                    <ol>
+                                        <li><em>My Specialty</em> — Qué es, qué hacen los profesionales de esta especialidad.</li>
+                                        <li><em>Key Tools & Equipment</em> — Herramientas y equipos principales (usar vocabulario del año).</li>
+                                        <li><em>A Real Problem</em> — Describir un problema técnico y su solución (estilo caso de estudio).</li>
+                                        <li><em>Innovation</em> — Una innovación que cambiará su especialidad.</li>
+                                        <li><em>My Future</em> — Qué quieren lograr en su carrera profesional.</li>
+                                    </ol>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>Mostrar rúbrica de evaluación.</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="fase">
+                <span class="fase-title fase-desarrollo">DESARROLLO (60 min)</span>
+                <div class="fase-content">
+                    <ol>
+                        <li><b>Planning (25 min):</b> Cada estudiante organiza su presentación completando un <em>"Project Planning Sheet"</em>:
+                            <ul>
+                                <li>Sección 1: Mi especialidad — Ideas clave, vocabulario.</li>
+                                <li>Sección 2: Herramientas — Lista de 5-8 herramientas en inglés.</li>
+                                <li>Sección 3: Problema y solución — Resumen del caso (structure: Problem → Cause → Solution).</li>
+                                <li>Sección 4: Innovación — Qué innovación y por qué es importante.</li>
+                                <li>Sección 5: Mi futuro — Metas personales.</li>
+                            </ul>
+                        </li>
+                        <li><b>Draft writing (20 min):</b> Escribir el texto guía de la presentación (NO para leerlo literal, sino como referencia). Usar checklist gramatical: <em>Present Perfect ✓ / Passive Voice ✓ / Relative Clauses ✓ / Connectors ✓ / Tag Questions ✓</em></li>
+                        <li><b>Teacher support (15 min):</b> El docente circula ayudando individualmente con vocabulario, gramática y estructura. Resolver dudas frecuentes en la pizarra.</li>
+                    </ol>
+                </div>
+            </div>
+            <div class="fase">
+                <span class="fase-title fase-cierre">CIERRE (15 min)</span>
+                <div class="fase-content">
+                    <ul>
+                        <li>Check-in rápido: <em>"Show me 👍 if you've completed your planning sheet. 👎 if you need more time."</em></li>
+                        <li>Recordar: <em>"Next class is workshop time to practice. Bring your visual support if you're making a poster!"</em></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="recursos">
+                <strong>Recursos:</strong> Project Planning Sheet impreso, checklist gramatical, rúbrica de evaluación, proyector.
+            </div>
+        </div>
+    </div>
+
+    <!-- ==================== CLASE 69 ==================== -->
+    <div class="clase-card">
+        <div class="clase-header normal">
+            <span class="clase-num">Clase 69</span>
+            <span class="clase-fecha">Semana 35 · noviembre</span>
+            <span class="badge badge-oa">OA5</span>
+        </div>
+        <div class="clase-body">
+            <div class="objetivo">
+                <strong>Objetivo de la clase:</strong> Desarrollar y practicar la presentación oral del proyecto final "My Career Path" con retroalimentación de pares y del docente.
+            </div>
+            <div class="fase">
+                <span class="fase-title fase-inicio">INICIO (10 min)</span>
+                <div class="fase-content">
+                    <ul>
+                        <li>Tips para presentaciones orales: <em>"Don't READ — use notes as support. Make eye contact. Speak clearly and slowly. Use your visual support."</em></li>
+                        <li>Mostrar ejemplo breve del docente: <em>"My Career Path"</em> versión mini del profe (1 minuto) como modelo.</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="fase">
+                <span class="fase-title fase-desarrollo">DESARROLLO (65 min)</span>
+                <div class="fase-content">
+                    <ol>
+                        <li><b>Individual preparation (20 min):</b> Los estudiantes finalizan su material visual y practican su discurso individualmente (en voz baja). El docente circula revisando planning sheets y ofreciendo correcciones de última hora.</li>
+                        <li><b>Peer practice (30 min):</b> En parejas, cada estudiante presenta su proyecto completo al compañero (3-5 min c/u). El compañero completa una ficha de peer feedback:
+                            <ul>
+                                <li><em>Content: Was all 5 sections included? 1-3</em></li>
+                                <li><em>Grammar: Did they use different structures? 1-3</em></li>
+                                <li><em>Vocabulary: Was the technical vocabulary rich? 1-3</em></li>
+                                <li><em>Delivery: Eye contact? Clear voice? Good pace? 1-3</em></li>
+                                <li><em>One thing done well / One suggestion for improvement</em></li>
+                            </ul>
+                        </li>
+                        <li><b>Revision time (15 min):</b> Basándose en el feedback del compañero, hacer ajustes finales a la presentación.</li>
+                    </ol>
+                </div>
+            </div>
+            <div class="fase">
+                <span class="fase-title fase-cierre">CIERRE (15 min)</span>
+                <div class="fase-content">
+                    <ul>
+                        <li>Preguntas y dudas finales.</li>
+                        <li>Definir orden de presentación (sorteo o voluntarios primero).</li>
+                        <li>Motivación: <em>"You've worked hard all year. This is YOUR moment to show what you've learned. I'm proud of your progress!"</em></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="recursos">
+                <strong>Recursos:</strong> Ficha de peer feedback, materiales de preparación de los estudiantes, proyector.
+            </div>
+        </div>
+    </div>
+
+    <!-- ==================== CLASE 70 ==================== -->
+    <div class="clase-card">
+        <div class="clase-header normal">
+            <span class="clase-num">Clase 70</span>
+            <span class="clase-fecha">Semana 35 · noviembre</span>
+            <span class="badge badge-oa">OA5 · OA8</span>
+        </div>
+        <div class="clase-body">
+            <div class="objetivo">
+                <strong>Objetivo de la clase:</strong> Ensayar la presentación final con último feedback formativo y preparar material visual definitivo.
+            </div>
+            <div class="fase">
+                <span class="fase-title fase-inicio">INICIO (10 min)</span>
+                <div class="fase-content">
+                    <ul>
+                        <li>Recordar criterios de la rúbrica y dar tips finales de presentación.</li>
+                        <li>Resolver dudas de vocabulario o pronunciación específicas que los estudiantes hayan preparado.</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="fase">
+                <span class="fase-title fase-desarrollo">DESARROLLO (65 min)</span>
+                <div class="fase-content">
+                    <ol>
+                        <li><b>Final rehearsal in small groups (35 min):</b> Grupos de 3-4. Cada integrante presenta ante su grupo. El grupo da feedback usando la rúbrica como guía. El docente rota por los grupos ofreciendo feedback de pronunciación y gramática.</li>
+                        <li><b>Pronunciation clinic (15 min):</b> El docente aborda problemas de pronunciación comunes detectados durante los ensayos. Práctica coral de palabras técnicas difíciles.</li>
+                        <li><b>Final preparation (15 min):</b> Tiempo individual para últimos ajustes. Los que presenten con apoyo visual (póster/PPT) lo finalizan.</li>
+                    </ol>
+                </div>
+            </div>
+            <div class="fase">
+                <span class="fase-title fase-cierre">CIERRE (15 min)</span>
+                <div class="fase-content">
+                    <ul>
+                        <li>Confirmar el orden de presentación para la próxima clase.</li>
+                        <li><em>"Tomorrow is the big day! Remember: confidence, vocabulary, and your technical knowledge. You can do this!"</em></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="recursos">
+                <strong>Recursos:</strong> Rúbrica de evaluación, materiales de los estudiantes.
+            </div>
+        </div>
+    </div>
+
+    <!-- ==================== CLASE 71 ==================== -->
+    <div class="clase-card evaluacion">
+        <div class="clase-header eval">
+            <span class="clase-num">Clase 71</span>
+            <span class="clase-fecha">Semana 36 · noviembre/diciembre</span>
+            <span class="badge badge-eval">📝 NOTA 4 (parte 1)</span>
+        </div>
+        <div class="clase-body">
+            <div class="objetivo">
+                <strong>Objetivo de la clase:</strong> Presentar oralmente el proyecto final "My Career Path", demostrando dominio de vocabulario técnico, estructuras gramaticales y habilidades de comunicación oral.
+            </div>
+            <div class="fase">
+                <span class="fase-title fase-inicio">INICIO (10 min)</span>
+                <div class="fase-content">
+                    <ul>
+                        <li>Ambiente de presentación: organizar la sala. Los pósters se pegan en las paredes.</li>
+                        <li>Explicar que el público debe ser respetuoso y atento. Cada presentación dura 3-5 min + 1-2 min de preguntas del docente y compañeros.</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="fase">
+                <span class="fase-title fase-desarrollo">DESARROLLO (70 min)</span>
+                <div class="fase-content">
+                    <ol>
+                        <li><b>Student presentations (70 min):</b> ~10-12 estudiantes presentan hoy (5-7 min c/u incluyendo Q&A).
+                            <ul>
+                                <li>El docente evalúa con la rúbrica durante cada presentación.</li>
+                                <li>El público completa una ficha simple: <em>"Name one thing you liked about this presentation" / "One new thing you learned".</em></li>
+                                <li>Después de cada presentación, el docente hace 1-2 preguntas espontáneas para evaluar capacidad de respuesta en inglés.</li>
+                            </ul>
+                        </li>
+                    </ol>
+                </div>
+            </div>
+            <div class="fase">
+                <span class="fase-title fase-cierre">CIERRE (10 min)</span>
+                <div class="fase-content">
+                    <ul>
+                        <li>Felicitaciones a los presentadores del día.</li>
+                        <li>Confirmar que el resto presenta la próxima clase.</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="evaluacion-box">
+                <strong>Evaluación:</strong> SUMATIVA — Nota 4 del semestre 2 (Proyecto Final "My Career Path"). Rúbrica 6 criterios × 4 niveles = 24 pts, escala 60%.<br>
+                <b>Criterios:</b> (1) Contenido completo (5 secciones), (2) Vocabulario técnico de la especialidad, (3) Gramática variada (al menos 4 estructuras del año), (4) Apoyo visual pertinente, (5) Fluidez y pronunciación, (6) Capacidad de responder preguntas.
+            </div>
+        </div>
+    </div>
+
+    <!-- ==================== CLASE 72 ==================== -->
+    <div class="clase-card evaluacion">
+        <div class="clase-header eval">
+            <span class="clase-num">Clase 72</span>
+            <span class="clase-fecha">Semana 36 · diciembre</span>
+            <span class="badge badge-eval">📝 NOTA 4 (parte 2)</span>
+        </div>
+        <div class="clase-body">
+            <div class="objetivo">
+                <strong>Objetivo de la clase:</strong> Completar las presentaciones del proyecto final "My Career Path" y reflexionar sobre el proceso.
+            </div>
+            <div class="fase">
+                <span class="fase-title fase-inicio">INICIO (5 min)</span>
+                <div class="fase-content">
+                    <ul>
+                        <li>Reiterar indicaciones. Recordar el orden de presentación.</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="fase">
+                <span class="fase-title fase-desarrollo">DESARROLLO (70 min)</span>
+                <div class="fase-content">
+                    <ol>
+                        <li><b>Remaining presentations (50-60 min):</b> Completar las presentaciones de los estudiantes restantes.</li>
+                        <li><b>End-of-presentations activity (10-20 min):</b> Votación secreta a:
+                            <ul>
+                                <li>Mejor presentación (contenido)</li>
+                                <li>Mejor orador/a (delivery)</li>
+                                <li>Mejor apoyo visual</li>
+                                <li>Más creativo/a</li>
+                            </ul>
+                        </li>
+                    </ol>
+                </div>
+            </div>
+            <div class="fase">
+                <span class="fase-title fase-cierre">CIERRE (15 min)</span>
+                <div class="fase-content">
+                    <ul>
+                        <li>Anunciar "ganadores" de las categorías. Aplausos generales.</li>
+                        <li>Reflexión grupal: <em>"At the beginning of the year, could you have done this presentation? What has changed?"</em></li>
+                        <li>Preview: <em>"Next class: final review before your last exam. Then we close the year!"</em></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="evaluacion-box">
+                <strong>Evaluación:</strong> SUMATIVA — Continuación Nota 4 del semestre 2.
+            </div>
+        </div>
+    </div>
+
+    <!-- ==================== CLASE 73 ==================== -->
+    <div class="clase-card evaluacion">
+        <div class="clase-header eval">
+            <span class="clase-num">Clase 73</span>
+            <span class="clase-fecha">Semana 37 · diciembre</span>
+            <span class="badge badge-eval">📝 NOTA 5</span>
+        </div>
+        <div class="clase-body">
+            <div class="objetivo">
+                <strong>Objetivo de la clase:</strong> Demostrar comprensión lectora, dominio gramatical y conocimiento de vocabulario técnico de todo el año escolar mediante una evaluación integradora final.
+            </div>
+            <div class="fase">
+                <span class="fase-title fase-inicio">INICIO (10 min)</span>
+                <div class="fase-content">
+                    <ul>
+                        <li>Instrucciones de la prueba: 4 secciones, 80 puntos, 70 minutos.</li>
+                        <li><em>"This is your last exam. Show me everything you've learned this year!"</em></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="fase">
+                <span class="fase-title fase-desarrollo">DESARROLLO (70 min)</span>
+                <div class="fase-content">
+                    <p><b>Evaluación integradora final — 4 secciones:</b></p>
+                    <ol>
+                        <li><b>Sección I – Technical Vocabulary (15 pts, 12 min):</b>
+                            <ul>
+                                <li>10 matching: herramienta/equipo → definición.</li>
+                                <li>5 completar oraciones con vocabulario de seguridad/innovación.</li>
+                            </ul>
+                        </li>
+                        <li><b>Sección II – Reading Comprehension (30 pts, 25 min):</b>
+                            <ul>
+                                <li>Texto A: Estudio de caso técnico (problema-solución) — 8 preguntas.</li>
+                                <li>Texto B: Artículo breve sobre innovación tecnológica — 7 preguntas (incluye 2 inferenciales).</li>
+                            </ul>
+                        </li>
+                        <li><b>Sección III – Grammar Integration (25 pts, 23 min):</b>
+                            <ul>
+                                <li>5 Present Perfect (completar).</li>
+                                <li>4 Passive Voice (transformar).</li>
+                                <li>3 Used to (reescribir).</li>
+                                <li>4 Relative Clauses (combinar con who/which/that).</li>
+                                <li>4 Connectors (elegir although/so that/both…and).</li>
+                                <li>5 Tag Questions (completar el tag).</li>
+                            </ul>
+                        </li>
+                        <li><b>Sección IV – Written Production (10 pts, 10 min):</b>
+                            <ul>
+                                <li>Escribir un párrafo de 8-10 oraciones sobre: <em>"Describe a problem in your specialty and explain how technology can help solve it."</em></li>
+                                <li>Debe incluir: 1 relative clause, 1 connector, 1 estructura adicional del año.</li>
+                            </ul>
+                        </li>
+                    </ol>
+                    <p><em>Total: 80 puntos. Escala: 60% de exigencia.</em></p>
+                </div>
+            </div>
+            <div class="fase">
+                <span class="fase-title fase-cierre">CIERRE (10 min)</span>
+                <div class="fase-content">
+                    <ul>
+                        <li>Recoger pruebas.</li>
+                        <li><em>"Congratulations on completing your last English exam of 1° Medio! Whatever the result, you've grown so much this year."</em></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="evaluacion-box">
+                <strong>Evaluación:</strong> SUMATIVA — Nota 5 del semestre 2 (Evaluación Integradora Final). 80 puntos, escala 60%. Cubre TODO el contenido del año: vocabulario técnico, comprensión lectora, Present Perfect, Used to, Passive Voice, Relative Clauses, Connectors, Tag Questions.
+            </div>
+        </div>
+    </div>
+
+    <!-- ==================== CLASE 74 ==================== -->
+    <div class="clase-card">
+        <div class="clase-header normal">
+            <span class="clase-num">Clase 74</span>
+            <span class="clase-fecha">Semana 37 · diciembre</span>
+            <span class="badge badge-oa">Cierre anual</span>
+        </div>
+        <div class="clase-body">
+            <div class="objetivo">
+                <strong>Objetivo de la clase:</strong> Reflexionar sobre los aprendizajes del año escolar, celebrar el progreso alcanzado y proyectar el uso del inglés en la trayectoria técnico-profesional.
+            </div>
+            <div class="fase">
+                <span class="fase-title fase-inicio">INICIO (15 min)</span>
+                <div class="fase-content">
+                    <ul>
+                        <li>Devolver prueba final con notas y feedback escrito.</li>
+                        <li>Revisión colectiva de las preguntas más difíciles.</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="fase">
+                <span class="fase-title fase-desarrollo">DESARROLLO (60 min)</span>
+                <div class="fase-content">
+                    <ol>
+                        <li><b>Year in review (20 min):</b> Recorrido visual por las 4 unidades: proyectar fotos de actividades, pósters, presentaciones. <em>"Look how much you've accomplished!"</em>
+                            <ul>
+                                <li>U1: The World of Technical Work — Vocabulario, herramientas, especialidades.</li>
+                                <li>U2: How Things Work — Procesos, Passive Voice, descripciones técnicas.</li>
+                                <li>U3: Problem Solving — Estudios de caso, diagnóstico, Relative Clauses.</li>
+                                <li>U4: Innovation, Safety & My Future — Seguridad, innovación, Tag Questions, proyecto final.</li>
+                            </ul>
+                        </li>
+                        <li><b>Self-assessment & reflection (20 min):</b> Cada estudiante completa una ficha de reflexión final:
+                            <ul>
+                                <li><em>"At the beginning of the year, my English was… Now I can…"</em></li>
+                                <li><em>"The most useful thing I learned was…"</em></li>
+                                <li><em>"In 2° medio, I want to improve…"</em></li>
+                                <li><em>"English will help my career because…"</em></li>
+                            </ul>
+                        </li>
+                        <li><b>Fun activity (20 min):</b> <em>"English Technical Trivia"</em> — Quiz final en equipos con preguntas de todo el año (formato Kahoot o juego de mesa impreso). Premiar al equipo ganador.</li>
+                    </ol>
+                </div>
+            </div>
+            <div class="fase">
+                <span class="fase-title fase-cierre">CIERRE (15 min)</span>
+                <div class="fase-content">
+                    <ul>
+                        <li>Mensaje de cierre: <em>"This year, you didn't just learn English — you learned English FOR your career. You can now read technical texts, describe processes, solve problems, and talk about your specialty in English. That's a real skill that will help you in the workplace."</em></li>
+                        <li><em>"Keep practicing: watch videos in English about your specialty, read manuals, listen to podcasts. Every word you learn is an investment in your future."</em></li>
+                        <li>Despedida del año. <em>"Thank you for your hard work. Have a wonderful summer!"</em></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="recursos">
+                <strong>Recursos:</strong> Pruebas devueltas, fichas de reflexión, trivia impreso o Kahoot, proyector, premios simbólicos.
+            </div>
+        </div>
+    </div>
+
+    <!-- DISTRIBUCIÓN DE NOTAS SEMESTRE 2 COMPLETO -->
+    <div class="notas-dist">
+        <h3>📝 Resumen de Evaluaciones — Unidad 4 (Notas 3–5 del semestre 2)</h3>
+        <table class="notas">
+            <tr>
+                <th>Nota</th>
+                <th>Tipo</th>
+                <th>Clase</th>
+                <th>Habilidad</th>
+                <th>Instrumento</th>
+                <th>Puntaje</th>
+            </tr>
+            <tr>
+                <td><b>Nota 3</b></td>
+                <td>Interrogación oral</td>
+                <td>Clase 64</td>
+                <td>Expresión Oral</td>
+                <td>Interrogación: innovación en la especialidad</td>
+                <td>15 pts / 60%</td>
+            </tr>
+            <tr>
+                <td><b>Nota 4</b></td>
+                <td>Proyecto final oral</td>
+                <td>Clases 71–72</td>
+                <td>Expresión Oral + Integración</td>
+                <td>Presentación "My Career Path" — Rúbrica 6 criterios</td>
+                <td>24 pts / 60%</td>
+            </tr>
+            <tr>
+                <td><b>Nota 5</b></td>
+                <td>Evaluación integradora final</td>
+                <td>Clase 73</td>
+                <td>Integrada (Vocabulario + Lectura + Gramática + Escritura)</td>
+                <td>Prueba integradora anual</td>
+                <td>80 pts / 60%</td>
+            </tr>
+        </table>
+        <p style="margin-top:15px; font-size:0.9em; color:#444;">
+            <b>Resumen completo Semestre 2 (5 notas):</b><br>
+            Nota 1 (U3): Evaluación oral — Problema y solución · Nota 2 (U3): Prueba de comprensión lectora · 
+            Nota 3 (U4): Interrogación oral — Innovación · Nota 4 (U4): Proyecto final "My Career Path" · 
+            Nota 5 (U4): Evaluación integradora final.
+        </p>
+    </div>
+
+    <!-- RESUMEN ANUAL -->
+    <div class="notas-dist">
+        <h3>📊 Resumen Anual de Evaluaciones — 1° Medio Inglés 2026</h3>
+        <table class="notas">
+            <tr>
+                <th>Semestre</th>
+                <th>Nota</th>
+                <th>Unidad</th>
+                <th>Tipo</th>
+                <th>Habilidad principal</th>
+            </tr>
+            <tr><td>S1</td><td>Nota 1</td><td>U1</td><td>Presentación oral "My Future Career"</td><td>Expresión Oral</td></tr>
+            <tr><td>S1</td><td>Nota 2</td><td>U1</td><td>Prueba de comprensión lectora</td><td>Lectura</td></tr>
+            <tr><td>S1</td><td>Nota 3</td><td>U2</td><td>Interrogación oral (proceso técnico)</td><td>Expresión Oral</td></tr>
+            <tr><td>S1</td><td>Nota 4</td><td>U2</td><td>Prueba de lectura y gramática</td><td>Lectura + Gramática</td></tr>
+            <tr><td>S1</td><td>Nota 5</td><td>U2</td><td>Evaluación integradora semestral</td><td>Integrada</td></tr>
+            <tr><td>S2</td><td>Nota 1</td><td>U3</td><td>Evaluación oral (problema-solución)</td><td>Expresión Oral</td></tr>
+            <tr><td>S2</td><td>Nota 2</td><td>U3</td><td>Prueba de comprensión lectora</td><td>Lectura</td></tr>
+            <tr><td>S2</td><td>Nota 3</td><td>U4</td><td>Interrogación oral (innovación)</td><td>Expresión Oral</td></tr>
+            <tr><td>S2</td><td>Nota 4</td><td>U4</td><td>Proyecto final "My Career Path"</td><td>Expresión Oral + Integrada</td></tr>
+            <tr><td>S2</td><td>Nota 5</td><td>U4</td><td>Evaluación integradora final</td><td>Integrada</td></tr>
+        </table>
+        <p style="margin-top:15px; font-size:0.9em; color:#444;">
+            <b>Distribución por habilidad:</b> 5 evaluaciones orales (50%) + 3 pruebas de lectura/gramática (30%) + 2 evaluaciones integradoras (20%). 
+            Esto refleja el enfoque prioritario en lectura y expresión oral con contexto técnico-profesional.
+        </p>
+    </div>
+
+    <div class="footer">
+        <p>Planificación elaborada para Liceo Técnico Profesional — Asignatura de Inglés — 1° Medio 2026</p>
+        <p>Basada en OA del MINEDUC (Actualización Priorización Curricular 2023) con integración de especialidades TP</p>
+        <p>🎓 Cierre Año Escolar — 12 de diciembre 2026</p>
+    </div>
+
+</div>
+
+</body>
+</html>

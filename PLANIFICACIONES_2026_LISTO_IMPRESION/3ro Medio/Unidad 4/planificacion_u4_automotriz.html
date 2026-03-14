@@ -1,0 +1,736 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3° Medio Mecánica Automotriz - Unidad 4: Innovation & New Trends</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: #f5f5f5; color: #333; line-height: 1.6; }
+        .header { background: linear-gradient(135deg, #b71c1c, #d32f2f); color: white; padding: 30px; text-align: center; }
+        .header h1 { font-size: 1.8em; margin-bottom: 5px; }
+        .header h2 { font-size: 1.3em; font-weight: 300; margin-bottom: 10px; }
+        .header .subtitle { font-size: 0.95em; opacity: 0.9; }
+        .meta-info { display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; margin-top: 15px; }
+        .meta-info span { background: rgba(255,255,255,0.15); padding: 5px 15px; border-radius: 20px; font-size: 0.85em; }
+        .container { max-width: 1100px; margin: 20px auto; padding: 0 15px; }
+        .unit-overview { background: white; border-radius: 10px; padding: 25px; margin-bottom: 25px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); }
+        .unit-overview h3 { color: #b71c1c; margin-bottom: 15px; font-size: 1.2em; border-bottom: 2px solid #b71c1c; padding-bottom: 8px; }
+        .overview-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
+        .overview-item { padding: 10px; background: #ffebee; border-radius: 6px; }
+        .overview-item strong { color: #b71c1c; }
+        .overview-item ul { margin-left: 20px; margin-top: 5px; }
+        .overview-item ul li { margin-bottom: 3px; font-size: 0.9em; }
+        .clase-card { background: white; border-radius: 10px; margin-bottom: 20px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); overflow: hidden; }
+        .clase-card.evaluacion { border-left: 5px solid #c62828; }
+        .clase-header { padding: 15px 20px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px; }
+        .clase-header.normal { background: #ffcdd2; }
+        .clase-header.eval { background: #ffebee; }
+        .clase-header .clase-num { font-size: 1.1em; font-weight: 700; color: #b71c1c; }
+        .clase-header .clase-fecha { font-size: 0.85em; color: #666; }
+        .clase-header .badge { padding: 3px 10px; border-radius: 12px; font-size: 0.75em; font-weight: 600; }
+        .badge-oa { background: #ffebee; color: #b71c1c; }
+        .badge-eval { background: #ffcdd2; color: #c62828; }
+        .clase-body { padding: 20px; }
+        .objetivo { background: #fff3e0; border-left: 4px solid #ef6c00; padding: 12px 15px; margin-bottom: 15px; border-radius: 0 6px 6px 0; }
+        .objetivo strong { color: #ef6c00; }
+        .fase { margin-bottom: 12px; }
+        .fase-title { display: inline-block; padding: 3px 12px; border-radius: 4px; font-weight: 600; font-size: 0.85em; color: white; margin-bottom: 6px; }
+        .fase-inicio { background: #2e7d32; }
+        .fase-desarrollo { background: #1565c0; }
+        .fase-cierre { background: #6a1b9a; }
+        .fase-content { padding-left: 15px; font-size: 0.92em; }
+        .fase-content ol, .fase-content ul { margin-left: 15px; }
+        .fase-content li { margin-bottom: 4px; }
+        .recursos { background: #f1f8e9; padding: 10px 15px; border-radius: 6px; margin-top: 10px; font-size: 0.88em; }
+        .recursos strong { color: #33691e; }
+        .evaluacion-box { background: #fce4ec; padding: 10px 15px; border-radius: 6px; margin-top: 10px; font-size: 0.88em; }
+        .evaluacion-box strong { color: #c62828; }
+        .sugerencia { background: #e8f5e9; border-left: 4px solid #2e7d32; padding: 10px 15px; border-radius: 0 6px 6px 0; margin-top: 10px; font-size: 0.88em; }
+        .sugerencia strong { color: #2e7d32; }
+        .notas-dist { background: white; border-radius: 10px; padding: 25px; margin-bottom: 25px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); }
+        .notas-dist h3 { color: #c62828; margin-bottom: 15px; font-size: 1.1em; }
+        table.notas { width: 100%; border-collapse: collapse; }
+        table.notas th { background: #b71c1c; color: white; padding: 8px 12px; text-align: left; font-size: 0.9em; }
+        table.notas td { padding: 8px 12px; border-bottom: 1px solid #e0e0e0; font-size: 0.88em; }
+        table.notas tr:nth-child(even) { background: #ffebee; }
+        .footer { text-align: center; padding: 20px; color: #999; font-size: 0.8em; }
+        @media print {
+            body { background: white; }
+            .clase-card { break-inside: avoid; page-break-inside: avoid; box-shadow: none; border: 1px solid #ddd; }
+            .header { background: #b71c1c !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+        }
+        @media (max-width: 768px) {
+            .overview-grid { grid-template-columns: 1fr; }
+            .meta-info { flex-direction: column; align-items: center; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="header">
+    <h1>PLANIFICACIÓN CLASE A CLASE — 3° MEDIO — MECÁNICA AUTOMOTRIZ</h1>
+    <h2>Unidad 4: Innovation & New Trends</h2>
+    <p class="subtitle">Inglés — Liceo Técnico Profesional — Año Escolar 2026 — Semestre 2</p>
+    <div class="meta-info">
+        <span>📅 21 septiembre – 12 diciembre (12 sesiones)</span>
+        <span>⏱ 12 clases de 90 min (Clases 27–38)</span>
+        <span>📚 2 hrs/semana (1 sesión)</span>
+        <span>🎯 Foco: Tendencias tecnológicas, debate, proyecto final de investigación</span>
+    </div>
+</div>
+
+<div class="container">
+
+    <div class="unit-overview">
+        <h3>Visión General de la Unidad 4</h3>
+        <div class="overview-grid">
+            <div class="overview-item">
+                <strong>OA Basales trabajados (3° Medio):</strong>
+                <ul>
+                    <li><b>OA1:</b> Comprender información central de textos orales y escritos.</li><li><b>OA3:</b> Utilizar su conocimiento del inglés para construir postura personal crítica.</li><li><b>OA4:</b> Producir y comprender con fluidez textos orales y escritos.</li>
+                </ul>
+            </div>
+            <div class="overview-item">
+                <strong>Evaluaciones de la unidad:</strong>
+                <ul>
+            <li>Clase 32: <b>Nota 2 S2</b> — Prueba de comprensión lectora: texto de innovación. 30 pts.</li>
+            <li>Clase 35: <b>Nota 3 S2</b> — Proyecto final: presentación de innovación tecnológica. 20 pts.</li>
+        </ul>
+            </div>
+            <div class="overview-item">
+                <strong>Habilidades priorizadas:</strong>
+                <ul>
+                    <li><b>Lectura:</b> Textos técnicos, estudios de caso, reportes e instrucciones de mecánica automotriz.</li>
+                    <li><b>Expresión Oral:</b> Descripciones, explicaciones de procedimientos, debates y presentaciones.</li>
+                </ul>
+            </div>
+            <div class="overview-item">
+                <strong>Especialidad:</strong>
+                <ul><li>Mecánica Automotriz</li></ul>
+                <strong>Nivel de los estudiantes:</strong>
+                <ul><li>A1-A2 (Básico)</li></ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==================== CLASE 27 ==================== -->
+    <div class="clase-card">
+        <div class="clase-header normal">
+            <span class="clase-num">Clase 27</span>
+            <span class="badge badge-oa">OA1</span>  
+        </div>
+        <div class="clase-body">
+            <div class="objetivo">
+                <strong>Objetivo de la clase (Bloom):</strong> Identificar tendencias tecnológicas actuales relacionadas con Mecánica Automotriz a partir de un texto introductorio en inglés.
+            </div>
+            <div class="fase">
+                <span class="fase-title fase-inicio">INICIO (15 min)</span>
+                <div class="fase-content">
+                    <ul>
+                <li>Docente muestra 3-4 imágenes impactantes sobre innovaciones del área (ej: electric vehicles, autonomous driving, and smart diagnostics) y pregunta: <em>"What do you see? What do you know about these technologies?"</em></li>
+                <li>Brainstorm: <em>"What new technologies are changing mecánica automotriz?"</em> — mapa conceptual en la pizarra.</li>
+                <li>Vocabulario clave: <em>innovation, trend, technology, artificial intelligence, automation, sustainable, efficiency, future</em>.</li>
+            </ul>
+                </div>
+            </div>
+            <div class="fase">
+                <span class="fase-title fase-desarrollo">DESARROLLO (60 min)</span>
+                <div class="fase-content">
+                    <ol>
+                <li><b>Reading (25 min):</b> <em>'The Rise of Electric Vehicles'</em> — How EVs work, their advantages, challenges, and the future of the automotive industry. Texto adaptado A2 (1 página).
+                    <ul>
+                        <li>Pre-reading: predicciones a partir del título e imágenes.</li>
+                        <li>Lectura guiada con pausas para vocabulario nuevo.</li>
+                        <li>Completar tabla: <b>Technology → How it works → Advantages → Challenges</b></li>
+                    </ul>
+                </li>
+                <li><b>Comprehension (15 min):</b> 6 preguntas: 3 explícitas + 3 de opinión.</li>
+                <li><b>Discussion (15 min):</b> En parejas: <em>"Which technology is the most interesting? Why? How will it affect your career?"</em> Usar sentence starters: <em>"I think… because…", "This technology is important because…"</em></li>
+                <li><b>Vocabulary log (5 min):</b> Registrar 8 nuevas palabras con definición y oración propia.</li>
+            </ol>
+                </div>
+            </div>
+            <div class="fase">
+                <span class="fase-title fase-cierre">CIERRE (15 min)</span>
+                <div class="fase-content">
+                    <ul>
+                <li>3 estudiantes comparten su opinión con la clase.</li>
+                <li>Preview: <em>"This unit we will explore innovations, debate about them, and finish with your final project presentation."</em></li>
+            </ul>
+                </div>
+            </div>
+            <div class="recursos">
+                <strong>📦 Recursos:</strong> Texto impreso sobre innovación del área, ficha de análisis, imágenes/fotos de innovaciones, pizarra.
+            </div>
+            <div class="evaluacion-box">
+                <strong>📋 Evaluación:</strong> Formativa — revisión de tabla de análisis y participación en discusión.
+            </div>
+            
+        </div>
+    </div>
+
+    <!-- ==================== CLASE 28 ==================== -->
+    <div class="clase-card">
+        <div class="clase-header normal">
+            <span class="clase-num">Clase 28</span>
+            <span class="badge badge-oa">OA1</span> <span class="badge badge-oa">OA3</span>  
+        </div>
+        <div class="clase-body">
+            <div class="objetivo">
+                <strong>Objetivo de la clase (Bloom):</strong> Comprender un video en inglés sobre el futuro de Mecánica Automotriz y expresar una postura crítica fundamentada sobre las tendencias presentadas.
+            </div>
+            <div class="fase">
+                <span class="fase-title fase-inicio">INICIO (15 min)</span>
+                <div class="fase-content">
+                    <ul>
+                <li>Warm-up: <em>"Imagine your job in 10 years. What will be different?"</em> — quick-write (3 min): escribir 3 predicciones.</li>
+                <li>Pre-viewing: se entregan preguntas guía para el video.</li>
+                <li>Vocabulario nuevo del video: 5 palabras clave presentadas con contexto.</li>
+            </ul>
+                </div>
+            </div>
+            <div class="fase">
+                <span class="fase-title fase-desarrollo">DESARROLLO (60 min)</span>
+                <div class="fase-content">
+                    <ol>
+                <li><b>Video (15 min):</b> YouTube video: 'The Future of Cars — 2030' (adapted, 5 min) Primera reproducción completa; segunda por segmentos con pausas para preguntas.</li>
+                <li><b>Comprehension (10 min):</b> Responder preguntas guía. Corrección en parejas.</li>
+                <li><b>Critical discussion (20 min):</b> Mesa redonda guiada por el docente:
+                    <ul>
+                        <li><em>"Do you agree with the predictions in the video? Why/why not?"</em></li>
+                        <li><em>"What opportunity does this create for technicians like you?"</em></li>
+                        <li><em>"What skills will you need in the future?"</em></li>
+                    </ul>
+                    Expresiones: <em>"I agree/disagree because…", "On the other hand…", "I believe that…"</em>
+                </li>
+                <li><b>Written reflection (15 min):</b> Párrafo de 6-8 oraciones: <em>"My opinion about the future of mecánica automotriz"</em> — usar vocabulario del video y expresiones de opinión.</li>
+            </ol>
+                </div>
+            </div>
+            <div class="fase">
+                <span class="fase-title fase-cierre">CIERRE (15 min)</span>
+                <div class="fase-content">
+                    <ul>
+                <li>2-3 voluntarios leen sus párrafos. Retroalimentación positiva.</li>
+                <li>Preview del caso de estudio de la próxima clase.</li>
+            </ul>
+                </div>
+            </div>
+            <div class="recursos">
+                <strong>📦 Recursos:</strong> Video con subtítulos, ficha de preguntas guía, ficha de expresiones de opinión, cuaderno.
+            </div>
+            <div class="evaluacion-box">
+                <strong>📋 Evaluación:</strong> Formativa — observación de participación en discusión; revisión de párrafos reflexivos.
+            </div>
+            
+        </div>
+    </div>
+
+    <!-- ==================== CLASE 29 ==================== -->
+    <div class="clase-card">
+        <div class="clase-header normal">
+            <span class="clase-num">Clase 29</span>
+            <span class="badge badge-oa">OA1</span> <span class="badge badge-oa">OA3</span>  
+        </div>
+        <div class="clase-body">
+            <div class="objetivo">
+                <strong>Objetivo de la clase (Bloom):</strong> Evaluar un estudio de caso sobre innovación en Mecánica Automotriz comparando perspectivas diferentes y formulando una opinión fundamentada.
+            </div>
+            <div class="fase">
+                <span class="fase-title fase-inicio">INICIO (15 min)</span>
+                <div class="fase-content">
+                    <ul>
+                <li>Warm-up: <em>"What do you already know about this topic?"</em> — 2-3 estudiantes comparten.</li>
+                <li>Vocabulario de comparación: <em>compared to, while, whereas, on the other hand, similarly, in contrast, advantage, disadvantage</em>.</li>
+            </ul>
+                </div>
+            </div>
+            <div class="fase">
+                <span class="fase-title fase-desarrollo">DESARROLLO (60 min)</span>
+                <div class="fase-content">
+                    <ol>
+                <li><b>Reading (25 min):</b> <em>'Tesla vs. Traditional Automakers'</em> — Comparing business models, technology, and market impact. Texto de 1 página (A2+).
+                    <ul>
+                        <li>Lectura guiada con pausas para aclarar vocabulario.</li>
+                        <li>Completar tabla comparativa: <b>Aspect — Option A — Option B</b></li>
+                    </ul>
+                </li>
+                <li><b>Group analysis (15 min):</b> Grupos de 3-4 discuten: <em>"Which option is better? What are the pros and cons?"</em> Preparan 3 argumentos.</li>
+                <li><b>Presentations (15 min):</b> Cada grupo presenta sus argumentos usando vocabulario de comparación.</li>
+                <li><b>Individual opinion (5 min):</b> Cada estudiante escribe: <em>"I prefer… because… However…"</em></li>
+            </ol>
+                </div>
+            </div>
+            <div class="fase">
+                <span class="fase-title fase-cierre">CIERRE (15 min)</span>
+                <div class="fase-content">
+                    <ul>
+                <li>Síntesis: el docente resume las diferentes posturas presentadas.</li>
+                <li>Conexión con el proyecto final: <em>"You will research and present an innovation like this for your final project."</em></li>
+            </ul>
+                </div>
+            </div>
+            <div class="recursos">
+                <strong>📦 Recursos:</strong> Caso de estudio impreso, ficha de tabla comparativa, fichas de vocabulario de comparación, pizarra.
+            </div>
+            <div class="evaluacion-box">
+                <strong>📋 Evaluación:</strong> Formativa — calidad de tabla comparativa y argumentos presentados.
+            </div>
+            
+        </div>
+    </div>
+
+    <!-- ==================== CLASE 30 ==================== -->
+    <div class="clase-card">
+        <div class="clase-header normal">
+            <span class="clase-num">Clase 30</span>
+            <span class="badge badge-oa">OA3</span> <span class="badge badge-oa">OA4</span>  
+        </div>
+        <div class="clase-body">
+            <div class="objetivo">
+                <strong>Objetivo de la clase (Bloom):</strong> Construir y defender argumentos en inglés a favor y en contra de una tendencia tecnológica clave en Mecánica Automotriz.
+            </div>
+            <div class="fase">
+                <span class="fase-title fase-inicio">INICIO (15 min)</span>
+                <div class="fase-content">
+                    <ul>
+                <li>Docente presenta el tema del debate: <em>"Will autonomous vehicles replace human drivers within the next 20 years?"</em></li>
+                <li>Quick poll: a favor / en contra / no sé.</li>
+                <li>Repaso de expresiones de debate: <em>"I strongly believe…", "The evidence shows…", "However, we must consider…", "In conclusion…"</em></li>
+            </ul>
+                </div>
+            </div>
+            <div class="fase">
+                <span class="fase-title fase-desarrollo">DESARROLLO (60 min)</span>
+                <div class="fase-content">
+                    <ol>
+                <li><b>Preparation (15 min):</b> Clase dividida en dos equipos. Leen mini-textos con argumentos (a favor y en contra). Cada equipo construye 4-5 argumentos.</li>
+                <li><b>Debate (30 min):</b> Formato estructurado:
+                    <ul>
+                        <li>Round 1: Equipo A presenta 2 argumentos (2 min). Equipo B responde (1 min).</li>
+                        <li>Round 2: Equipo B presenta 2 argumentos (2 min). Equipo A responde (1 min).</li>
+                        <li>Round 3: Libre — cualquier miembro puede dar un argumento o réplica.</li>
+                        <li>Conclusiones: 1 representante por equipo resume (1 min c/u).</li>
+                    </ul>
+                </li>
+                <li><b>Final vote (10 min):</b> Nueva votación. <em>"Did anyone change their opinion? Why?"</em> Discusión abierta.</li>
+                <li><b>Reflection (5 min):</b> Escribir 2-3 oraciones: <em>"The best argument was… because…"</em></li>
+            </ol>
+                </div>
+            </div>
+            <div class="fase">
+                <span class="fase-title fase-cierre">CIERRE (15 min)</span>
+                <div class="fase-content">
+                    <ul>
+                <li>Docente destaca los mejores argumentos y el uso del inglés durante el debate.</li>
+                <li>Adelanto: <em>"Next classes: reading evaluation and then your final project."</em></li>
+            </ul>
+                </div>
+            </div>
+            <div class="recursos">
+                <strong>📦 Recursos:</strong> Mini-textos con argumentos, ficha de expresiones de debate, pizarra, cronómetro.
+            </div>
+            <div class="evaluacion-box">
+                <strong>📋 Evaluación:</strong> Formativa — participación en debate, calidad de argumentos en inglés.
+            </div>
+            
+        </div>
+    </div>
+
+    <!-- ==================== CLASE 31 ==================== -->
+    <div class="clase-card">
+        <div class="clase-header normal">
+            <span class="clase-num">Clase 31</span>
+            <span class="badge badge-oa">OA1</span> <span class="badge badge-oa">OA3</span>  
+        </div>
+        <div class="clase-body">
+            <div class="objetivo">
+                <strong>Objetivo de la clase (Bloom):</strong> Aplicar estrategias de lectura consolidadas en textos sobre innovación y tendencias en Mecánica Automotriz como preparación para la evaluación final.
+            </div>
+            <div class="fase">
+                <span class="fase-title fase-inicio">INICIO (15 min)</span>
+                <div class="fase-content">
+                    <ul>
+                <li>Repaso de estrategias: <em>"What strategies do you use before, during, and after reading?"</em></li>
+                <li>Tips para la evaluación: <em>"Read questions first. Underline key words. Use context clues for unknown words."</em></li>
+            </ul>
+                </div>
+            </div>
+            <div class="fase">
+                <span class="fase-title fase-desarrollo">DESARROLLO (60 min)</span>
+                <div class="fase-content">
+                    <ol>
+                <li><b>Practice text (25 min):</b> Texto similar al formato de evaluación sobre una tendencia tecnológica del área. 6 preguntas de comprensión. Trabajo individual.</li>
+                <li><b>Correction (10 min):</b> Revisión grupal — se analiza cómo encontrar cada respuesta.</li>
+                <li><b>Second practice (20 min):</b> Segundo texto de práctica. Los estudiantes trabajan solos, cronometrados (simular condiciones de evaluación).</li>
+                <li><b>Self-check (5 min):</b> Se entrega pauta de respuestas. Los estudiantes se autoevalúan.</li>
+            </ol>
+                </div>
+            </div>
+            <div class="fase">
+                <span class="fase-title fase-cierre">CIERRE (15 min)</span>
+                <div class="fase-content">
+                    <ul>
+                <li>Dudas finales. <em>"The reading test is next class. Review vocabulary from Units 3 and 4."</em></li>
+                <li>Recordatorio del formato de evaluación.</li>
+            </ul>
+                </div>
+            </div>
+            <div class="recursos">
+                <strong>📦 Recursos:</strong> 2 textos de práctica impresos, fichas de preguntas, pauta de respuestas.
+            </div>
+            <div class="evaluacion-box">
+                <strong>📋 Evaluación:</strong> Formativa — práctica de evaluación.
+            </div>
+            
+        </div>
+    </div>
+
+    <!-- ==================== CLASE 32 ==================== -->
+    <div class="clase-card evaluacion">
+        <div class="clase-header eval">
+            <span class="clase-num">Clase 32</span>
+            <span class="badge badge-oa">OA1</span> <span class="badge badge-oa">OA3</span>  <span class="badge badge-eval">EVALUACIÓN</span>
+        </div>
+        <div class="clase-body">
+            <div class="objetivo">
+                <strong>Objetivo de la clase (Bloom):</strong> Demostrar comprensión de información central y específica en un texto sobre innovación y tendencias en Mecánica Automotriz.
+            </div>
+            <div class="fase">
+                <span class="fase-title fase-inicio">INICIO (15 min)</span>
+                <div class="fase-content">
+                    <ul>
+                <li>Organización de la sala en disposición de evaluación.</li>
+                <li>Instrucciones: <em>"You have 60 minutes. Read carefully. Answer in English."</em></li>
+            </ul>
+                </div>
+            </div>
+            <div class="fase">
+                <span class="fase-title fase-desarrollo">DESARROLLO (60 min)</span>
+                <div class="fase-content">
+                    <ol>
+                <li><b>Evaluación escrita (60 min):</b> Texto sobre una innovación o tendencia tecnológica de mecánica automotriz + 8 preguntas.
+                    <ul>
+                        <li>Sección A: Verdadero/Falso con justificación (3 ítems — 9 pts)</li>
+                        <li>Sección B: Preguntas de comprensión explícita (3 preguntas — 12 pts)</li>
+                        <li>Sección C: Preguntas de análisis y opinión (2 preguntas — 9 pts)</li>
+                        <li>Total: 30 pts — 60% exigencia</li>
+                    </ul>
+                </li>
+            </ol>
+                </div>
+            </div>
+            <div class="fase">
+                <span class="fase-title fase-cierre">CIERRE (15 min)</span>
+                <div class="fase-content">
+                    <ul>
+                <li>Recogida de evaluaciones.</li>
+                <li><em>"Next classes: your final project. Start thinking about your topic!"</em></li>
+            </ul>
+                </div>
+            </div>
+            <div class="recursos">
+                <strong>📦 Recursos:</strong> Evaluación impresa (texto + preguntas).
+            </div>
+            <div class="evaluacion-box">
+                <strong>📋 Evaluación:</strong> <b>SUMATIVA — Nota 2 Semestre 2:</b> Prueba de comprensión lectora — texto de innovación técnica. 30 pts, 60% exigencia.
+            </div>
+            
+        </div>
+    </div>
+
+    <!-- ==================== CLASE 33 ==================== -->
+    <div class="clase-card">
+        <div class="clase-header normal">
+            <span class="clase-num">Clase 33</span>
+            <span class="badge badge-oa">OA3</span> <span class="badge badge-oa">OA4</span>  
+        </div>
+        <div class="clase-body">
+            <div class="objetivo">
+                <strong>Objetivo de la clase (Bloom):</strong> Planificar una presentación oral sobre una innovación tecnológica en Mecánica Automotriz, organizando la investigación y el guion en inglés.
+            </div>
+            <div class="fase">
+                <span class="fase-title fase-inicio">INICIO (15 min)</span>
+                <div class="fase-content">
+                    <ul>
+                <li>Docente presenta el proyecto final (Nota 3 S2): <em>"Research and present an innovation in the automotive industry (EV technology, autonomous cars, hybrid systems, diagnostic AI, etc.)"</em></li>
+                <li>Criterios: contenido e investigación (6 pts), vocabulario técnico (4 pts), pronunciación y fluidez (4 pts), apoyo visual (3 pts), estructura y coherencia (3 pts). Total: 20 pts.</li>
+                <li>Se muestran ejemplos de presentaciones modelo.</li>
+            </ul>
+                </div>
+            </div>
+            <div class="fase">
+                <span class="fase-title fase-desarrollo">DESARROLLO (60 min)</span>
+                <div class="fase-content">
+                    <ol>
+                <li><b>Topic selection (10 min):</b> Cada estudiante elige su tema de innovación. El docente aprueba para asegurar variedad.</li>
+                <li><b>Research (25 min):</b> Los estudiantes investigan su tema usando textos proporcionados por el docente y/o búsqueda guiada. Completan ficha:
+                    <ul>
+                        <li>What is the innovation?</li>
+                        <li>How does it work?</li>
+                        <li>What are the advantages and challenges?</li>
+                        <li>How will it affect mecánica automotriz professionals?</li>
+                        <li>My opinion about this innovation</li>
+                    </ul>
+                </li>
+                <li><b>Script drafting (20 min):</b> Escribir el guion de 12-15 oraciones. El docente circula apoyando con vocabulario y estructura.</li>
+                <li><b>Visual support planning (5 min):</b> Planificar el apoyo visual (imágenes, diagrama, poster, PPT básico).</li>
+            </ol>
+                </div>
+            </div>
+            <div class="fase">
+                <span class="fase-title fase-cierre">CIERRE (15 min)</span>
+                <div class="fase-content">
+                    <ul>
+                <li>Revisión rápida de avances: <em>"Who has their topic? Who has started their script?"</em></li>
+                <li><em>"Next class: rehearsal and final preparation."</em></li>
+            </ul>
+                </div>
+            </div>
+            <div class="recursos">
+                <strong>📦 Recursos:</strong> Ficha de investigación, textos/artículos de referencia sobre innovaciones del área, rúbrica del proyecto, acceso a computadores si es posible.
+            </div>
+            <div class="evaluacion-box">
+                <strong>📋 Evaluación:</strong> Preparación — el docente revisa avances y da retroalimentación.
+            </div>
+            <div class="sugerencia"><strong>💡 Sugerencia:</strong> <b>Sugerencia:</b> Si no hay acceso a computadores, preparar un set de mini-artículos impresos sobre diferentes innovaciones del área para que los estudiantes investiguen a partir de ellos.</div>
+        </div>
+    </div>
+
+    <!-- ==================== CLASE 34 ==================== -->
+    <div class="clase-card">
+        <div class="clase-header normal">
+            <span class="clase-num">Clase 34</span>
+            <span class="badge badge-oa">OA4</span>  
+        </div>
+        <div class="clase-body">
+            <div class="objetivo">
+                <strong>Objetivo de la clase (Bloom):</strong> Ensayar y perfeccionar la presentación oral del proyecto final sobre innovación en Mecánica Automotriz incorporando retroalimentación de pares.
+            </div>
+            <div class="fase">
+                <span class="fase-title fase-inicio">INICIO (15 min)</span>
+                <div class="fase-content">
+                    <ul>
+                <li>Estado de avance: <em>"How is your project going? Any questions?"</em> El docente resuelve dudas comunes.</li>
+                <li>Tips finales de presentación: <em>"Eye contact, clear voice, use your visual aid, don't read — speak."</em></li>
+            </ul>
+                </div>
+            </div>
+            <div class="fase">
+                <span class="fase-title fase-desarrollo">DESARROLLO (60 min)</span>
+                <div class="fase-content">
+                    <ol>
+                <li><b>Final script revision (15 min):</b> Los estudiantes completan y pulen su guion. El docente revisa los guiones pendientes.</li>
+                <li><b>Peer rehearsal round 1 (20 min):</b> En parejas, practican la presentación completa. El compañero evalúa con la rúbrica y da retroalimentación específica.</li>
+                <li><b>Adjustments (10 min):</b> Los estudiantes incorporan la retroalimentación recibida.</li>
+                <li><b>Peer rehearsal round 2 (15 min):</b> Con una pareja diferente. Segunda ronda de retroalimentación.</li>
+            </ol>
+                </div>
+            </div>
+            <div class="fase">
+                <span class="fase-title fase-cierre">CIERRE (15 min)</span>
+                <div class="fase-content">
+                    <ul>
+                <li>Pronunciation practice grupal: palabras técnicas difíciles identificadas durante los ensayos.</li>
+                <li>Recordatorio: <em>"Next class is your FINAL presentation. Bring your visual support. Be ready!"</em></li>
+            </ul>
+                </div>
+            </div>
+            <div class="recursos">
+                <strong>📦 Recursos:</strong> Guiones de los estudiantes, rúbrica, checklist de retroalimentación entre pares, material visual de los estudiantes.
+            </div>
+            <div class="evaluacion-box">
+                <strong>📋 Evaluación:</strong> Preparación — el docente da retroalimentación final individual.
+            </div>
+            
+        </div>
+    </div>
+
+    <!-- ==================== CLASE 35 ==================== -->
+    <div class="clase-card evaluacion">
+        <div class="clase-header eval">
+            <span class="clase-num">Clase 35</span>
+            <span class="badge badge-oa">OA3</span> <span class="badge badge-oa">OA4</span>  <span class="badge badge-eval">EVALUACIÓN</span>
+        </div>
+        <div class="clase-body">
+            <div class="objetivo">
+                <strong>Objetivo de la clase (Bloom):</strong> Producir una presentación oral fundamentada en inglés sobre una innovación tecnológica en Mecánica Automotriz, demostrando investigación, vocabulario técnico y postura crítica.
+            </div>
+            <div class="fase">
+                <span class="fase-title fase-inicio">INICIO (15 min)</span>
+                <div class="fase-content">
+                    <ul>
+                <li>Docente recuerda criterios y estructura.</li>
+                <li>Se establece el orden de presentaciones.</li>
+                <li>Normas de audiencia: escuchar, tomar notas, respetar.</li>
+            </ul>
+                </div>
+            </div>
+            <div class="fase">
+                <span class="fase-title fase-desarrollo">DESARROLLO (60 min)</span>
+                <div class="fase-content">
+                    <ol>
+                <li><b>Presentaciones (60 min):</b> Cada estudiante presenta (3-4 min): Research and present an innovation in the automotive industry (EV technology, autonomous cars, hybrid systems, diagnostic AI, etc.)
+                    <ul>
+                        <li>Docente evalúa con rúbrica de 5 criterios (20 pts).</li>
+                        <li>Compañeros completan ficha de peer feedback.</li>
+                        <li>Después de cada presentación, 1-2 preguntas del público.</li>
+                    </ul>
+                </li>
+            </ol>
+                </div>
+            </div>
+            <div class="fase">
+                <span class="fase-title fase-cierre">CIERRE (15 min)</span>
+                <div class="fase-content">
+                    <ul>
+                <li>Retroalimentación general: logros del grupo, aspectos destacados.</li>
+                <li>Entrega de fichas de peer feedback.</li>
+            </ul>
+                </div>
+            </div>
+            <div class="recursos">
+                <strong>📦 Recursos:</strong> Rúbrica, fichas de peer feedback, proyector para apoyo visual, cronómetro.
+            </div>
+            <div class="evaluacion-box">
+                <strong>📋 Evaluación:</strong> <b>SUMATIVA — Nota 3 Semestre 2:</b> Proyecto final — Presentación oral sobre innovación técnica. 20 pts, 60% exigencia.
+            </div>
+            <div class="sugerencia"><strong>💡 Sugerencia:</strong> <b>Nota:</b> Si no alcanzan todas las presentaciones en esta clase, continuar en la siguiente.</div>
+        </div>
+    </div>
+
+    <!-- ==================== CLASE 36 ==================== -->
+    <div class="clase-card">
+        <div class="clase-header normal">
+            <span class="clase-num">Clase 36</span>
+            <span class="badge badge-oa">OA1</span> <span class="badge badge-oa">OA3</span> <span class="badge badge-oa">OA4</span>  
+        </div>
+        <div class="clase-body">
+            <div class="objetivo">
+                <strong>Objetivo de la clase (Bloom):</strong> Sintetizar y reflexionar sobre los aprendizajes del año en inglés técnico de Mecánica Automotriz, evaluando el progreso personal y las metas alcanzadas.
+            </div>
+            <div class="fase">
+                <span class="fase-title fase-inicio">INICIO (15 min)</span>
+                <div class="fase-content">
+                    <ul>
+                <li>Si quedan presentaciones pendientes, se completan primero.</li>
+                <li>Docente entrega rúbricas del proyecto final y notas del semestre.</li>
+                <li>Actividad de memoria: <em>"What is your best memory from English class this year?"</em> — round robin.</li>
+            </ul>
+                </div>
+            </div>
+            <div class="fase">
+                <span class="fase-title fase-desarrollo">DESARROLLO (60 min)</span>
+                <div class="fase-content">
+                    <ol>
+                <li><b>Year review game (20 min):</b> <em>"The Big Quiz"</em> — equipos compiten respondiendo preguntas de vocabulario, gramática, lectura y conocimiento técnico de todo el año.</li>
+                <li><b>Reflection writing (15 min):</b> Cada estudiante escribe un párrafo en inglés: <em>"This year I learned… My biggest achievement was… I need to improve… English will help me in my career because…"</em></li>
+                <li><b>Sharing circle (15 min):</b> Voluntarios leen sus reflexiones. El grupo aplaude cada contribución.</li>
+                <li><b>Final self-assessment (10 min):</b> Ficha: <em>"At the beginning of the year I could… Now I can…"</em> — comparar con la evaluación diagnóstica del inicio.</li>
+            </ol>
+                </div>
+            </div>
+            <div class="fase">
+                <span class="fase-title fase-cierre">CIERRE (15 min)</span>
+                <div class="fase-content">
+                    <ul>
+                <li>Mensaje de cierre del docente: valoración del esfuerzo y los logros del curso.</li>
+                <li><em>"Remember: English is a lifelong tool. Keep practicing. I'm proud of your progress."</em></li>
+                <li>Despedida y buenos deseos para el futuro.</li>
+            </ul>
+                </div>
+            </div>
+            <div class="recursos">
+                <strong>📦 Recursos:</strong> Quiz en PPT/pizarra, ficha de reflexión, ficha de autoevaluación, rúbricas y notas.
+            </div>
+            <div class="evaluacion-box">
+                <strong>📋 Evaluación:</strong> Formativa — reflexión escrita y autoevaluación de cierre.
+            </div>
+            <div class="sugerencia"><strong>💡 Sugerencia:</strong> <b>Sugerencia:</b> Crear un certificado simbólico de 'Technical English Communicator' para cada estudiante como reconocimiento de su esfuerzo durante el año.</div>
+        </div>
+    </div>
+
+    <!-- ==================== CLASE 37 ==================== -->
+    <div class="clase-card">
+        <div class="clase-header normal">
+            <span class="clase-num">Clase 37</span>
+            <span class="badge badge-oa">OA1</span> <span class="badge badge-oa">OA4</span>  
+        </div>
+        <div class="clase-body">
+            <div class="objetivo">
+                <strong>Objetivo de la clase (Bloom):</strong> Consolidar aprendizajes de la unidad mediante actividades integradas de lectura técnica, producción oral y reflexión metacognitiva.
+            </div>
+            <div class="fase">
+                <span class="fase-title fase-inicio">INICIO (15 min)</span>
+                <div class="fase-content">
+                    <ul><li>Activación breve de aprendizajes previos con preguntas guiadas de repaso.</li><li>Recordatorio de objetivos y criterios de desempeño esperados.</li></ul>
+                </div>
+            </div>
+            <div class="fase">
+                <span class="fase-title fase-desarrollo">DESARROLLO (60 min)</span>
+                <div class="fase-content">
+                    <ol><li><b>Repaso guiado:</b> lectura breve y extracción de ideas clave.</li><li><b>Aplicación práctica:</b> actividad colaborativa de resolución de tarea técnica en inglés.</li><li><b>Producción oral:</b> socialización de resultados con retroalimentación del docente.</li></ol>
+                </div>
+            </div>
+            <div class="fase">
+                <span class="fase-title fase-cierre">CIERRE (15 min)</span>
+                <div class="fase-content">
+                    <ul><li>Síntesis de aprendizajes de la sesión.</li><li>Autoevaluación rápida: fortalezas y aspectos a mejorar.</li></ul>
+                </div>
+            </div>
+            <div class="recursos">
+                <strong>📦 Recursos:</strong> Guías de repaso, material de lectura breve, pizarra y recursos multimodales.
+            </div>
+            <div class="evaluacion-box">
+                <strong>📋 Evaluación:</strong> Formativa — evidencia de consolidación y participación activa.
+            </div>
+            
+        </div>
+    </div>
+
+    <!-- ==================== CLASE 38 ==================== -->
+    <div class="clase-card">
+        <div class="clase-header normal">
+            <span class="clase-num">Clase 38</span>
+            <span class="badge badge-oa">OA1</span> <span class="badge badge-oa">OA4</span>  
+        </div>
+        <div class="clase-body">
+            <div class="objetivo">
+                <strong>Objetivo de la clase (Bloom):</strong> Consolidar aprendizajes de la unidad mediante actividades integradas de lectura técnica, producción oral y reflexión metacognitiva.
+            </div>
+            <div class="fase">
+                <span class="fase-title fase-inicio">INICIO (15 min)</span>
+                <div class="fase-content">
+                    <ul><li>Activación breve de aprendizajes previos con preguntas guiadas de repaso.</li><li>Recordatorio de objetivos y criterios de desempeño esperados.</li></ul>
+                </div>
+            </div>
+            <div class="fase">
+                <span class="fase-title fase-desarrollo">DESARROLLO (60 min)</span>
+                <div class="fase-content">
+                    <ol><li><b>Repaso guiado:</b> lectura breve y extracción de ideas clave.</li><li><b>Aplicación práctica:</b> actividad colaborativa de resolución de tarea técnica en inglés.</li><li><b>Producción oral:</b> socialización de resultados con retroalimentación del docente.</li></ol>
+                </div>
+            </div>
+            <div class="fase">
+                <span class="fase-title fase-cierre">CIERRE (15 min)</span>
+                <div class="fase-content">
+                    <ul><li>Síntesis de aprendizajes de la sesión.</li><li>Autoevaluación rápida: fortalezas y aspectos a mejorar.</li></ul>
+                </div>
+            </div>
+            <div class="recursos">
+                <strong>📦 Recursos:</strong> Guías de repaso, material de lectura breve, pizarra y recursos multimodales.
+            </div>
+            <div class="evaluacion-box">
+                <strong>📋 Evaluación:</strong> Formativa — evidencia de consolidación y participación activa.
+            </div>
+            
+        </div>
+    </div>
+
+    <div class="footer">
+        <p>Planificación elaborada para Liceo Técnico Profesional — Inglés 3° Medio — Especialidad: Mecánica Automotriz — 2026</p>
+        <p>Basada en OA de Bases Curriculares 3° Medio (Decreto N°193/2019) y Programa de Estudio (Decreto N°496/2020)</p>
+    </div>
+</div>
+</body>
+</html>

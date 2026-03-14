@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>4° Medio Electrónica - Unidad 3: Technical Documentation & Procedures</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: #f5f5f5; color: #333; line-height: 1.6; }
+        .header { background: linear-gradient(135deg, #1b5e20, #2e7d32); color: white; padding: 30px; text-align: center; }
+        .header h1 { font-size: 1.8em; margin-bottom: 5px; }
+        .header h2 { font-size: 1.3em; font-weight: 300; margin-bottom: 10px; }
+        .header .subtitle { font-size: 0.95em; opacity: 0.9; }
+        .meta-info { display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; margin-top: 15px; }
+        .meta-info span { background: rgba(255,255,255,0.15); padding: 5px 15px; border-radius: 20px; font-size: 0.85em; }
+        .container { max-width: 1100px; margin: 20px auto; padding: 0 15px; }
+        .unit-overview { background: white; border-radius: 10px; padding: 25px; margin-bottom: 25px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); }
+        .unit-overview h3 { color: #1b5e20; margin-bottom: 15px; font-size: 1.2em; border-bottom: 2px solid #1b5e20; padding-bottom: 8px; }
+        .overview-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
+        .overview-item { padding: 10px; background: #e8f5e9; border-radius: 6px; }
+        .overview-item strong { color: #1b5e20; }
+        .overview-item ul { margin-left: 20px; margin-top: 5px; }
+        .overview-item ul li { margin-bottom: 3px; font-size: 0.9em; }
+        .clase-card { background: white; border-radius: 10px; margin-bottom: 20px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); overflow: hidden; }
+        .clase-card.evaluacion { border-left: 5px solid #c62828; }
+        .clase-header { padding: 15px 20px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px; }
+        .clase-header.normal { background: #c8e6c9; }
+        .clase-header.eval { background: #ffebee; }
+        .clase-header .clase-num { font-size: 1.1em; font-weight: 700; color: #1b5e20; }
+        .clase-header .clase-fecha { font-size: 0.85em; color: #666; }
+        .clase-header .badge { padding: 3px 10px; border-radius: 12px; font-size: 0.75em; font-weight: 600; }
+        .badge-oa { background: #e8f5e9; color: #1b5e20; }
+        .badge-eval { background: #ffcdd2; color: #c62828; }
+        .clase-body { padding: 20px; }
+        .objetivo { background: #fff3e0; border-left: 4px solid #ef6c00; padding: 12px 15px; margin-bottom: 15px; border-radius: 0 6px 6px 0; }
+        .objetivo strong { color: #ef6c00; }
+        .fase { margin-bottom: 12px; }
+        .fase-title { display: inline-block; padding: 3px 12px; border-radius: 4px; font-weight: 600; font-size: 0.85em; color: white; margin-bottom: 6px; }
+        .fase-inicio { background: #2e7d32; }
+        .fase-desarrollo { background: #1565c0; }
+        .fase-cierre { background: #6a1b9a; }
+        .fase-content { padding-left: 15px; font-size: 0.92em; }
+        .fase-content ol, .fase-content ul { margin-left: 15px; }
+        .fase-content li { margin-bottom: 4px; }
+        .recursos { background: #f1f8e9; padding: 10px 15px; border-radius: 6px; margin-top: 10px; font-size: 0.88em; }
+        .recursos strong { color: #33691e; }
+        .evaluacion-box { background: #fce4ec; padding: 10px 15px; border-radius: 6px; margin-top: 10px; font-size: 0.88em; }
+        .evaluacion-box strong { color: #c62828; }
+        .sugerencia { background: #e8f5e9; border-left: 4px solid #2e7d32; padding: 10px 15px; border-radius: 0 6px 6px 0; margin-top: 10px; font-size: 0.88em; }
+        .sugerencia strong { color: #2e7d32; }
+        .notas-dist { background: white; border-radius: 10px; padding: 25px; margin-bottom: 25px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); }
+        .notas-dist h3 { color: #c62828; margin-bottom: 15px; font-size: 1.1em; }
+        table.notas { width: 100%; border-collapse: collapse; }
+        table.notas th { background: #1b5e20; color: white; padding: 8px 12px; text-align: left; font-size: 0.9em; }
+        table.notas td { padding: 8px 12px; border-bottom: 1px solid #e0e0e0; font-size: 0.88em; }
+        table.notas tr:nth-child(even) { background: #e8f5e9; }
+        .footer { text-align: center; padding: 20px; color: #999; font-size: 0.8em; }
+        @media print {
+            body { background: white; }
+            .clase-card { break-inside: avoid; page-break-inside: avoid; box-shadow: none; border: 1px solid #ddd; }
+            .header { background: #1b5e20 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+        }
+        @media (max-width: 768px) {
+            .overview-grid { grid-template-columns: 1fr; }
+            .meta-info { flex-direction: column; align-items: center; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="header">
+    <h1>PLANIFICACIÓN CLASE A CLASE — 4° MEDIO — ELECTRÓNICA</h1>
+    <h2>Unidad 3: Technical Documentation & Procedures</h2>
+    <p class="subtitle">Inglés — Liceo Técnico Profesional — Año Escolar 2026 — Semestre 2</p>
+    <div class="meta-info">
+        <span>📅 6 julio – 30 agosto (8 sesiones)</span>
+        <span>⏱ 8 clases de 90 min (Clases 16–23)</span>
+        <span>📚 2 hrs/semana (1 sesión)</span>
+        <span>🎯 Foco: Manuales técnicos, redacción de informes, explicación de procedimientos</span>
+    </div>
+</div>
+
+<div class="container">
+
+    <div class="unit-overview">
+        <h3>Visión General de la Unidad 3</h3>
+        <div class="overview-grid">
+            <div class="overview-item">
+                <strong>OA Basales trabajados (4° Medio):</strong>
+                <ul>
+                    <li><b>OA1:</b> Comprender textos orales y escritos que contengan información relevante.</li><li><b>OA2:</b> Producir textos orales y escritos claros para comunicar información.</li><li><b>OA4:</b> Producir y comprender con fluidez textos orales y escritos claros.</li>
+                </ul>
+            </div>
+            <div class="overview-item">
+                <strong>Evaluaciones de la unidad:</strong>
+                <ul>
+            <li>Clase 22: <b>Nota 1 S2</b> — Evaluación oral: explicar un procedimiento técnico. 20 pts.</li>
+        </ul>
+            </div>
+            <div class="overview-item">
+                <strong>Habilidades priorizadas:</strong>
+                <ul>
+                    <li><b>Lectura:</b> Textos técnicos avanzados, estudios de caso, manuales e informes de electrónica.</li>
+                    <li><b>Expresión Oral:</b> Entrevistas, explicaciones de procedimientos, debates y defensa de proyectos.</li>
+                </ul>
+            </div>
+            <div class="overview-item">
+                <strong>Especialidad:</strong>
+                <ul><li>Electrónica</li></ul>
+                <strong>Nivel de los estudiantes:</strong>
+                <ul><li>A1-A2 (Básico)</li></ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==================== CLASE 16 ==================== -->
+    <div class="clase-card">
+        <div class="clase-header normal">
+            <span class="clase-num">Clase 16</span>
+            <span class="badge badge-oa">OA1</span>  
+        </div>
+        <div class="clase-body">
+            <div class="objetivo">
+                <strong>Objetivo de la clase (Bloom):</strong> Comprender información técnica específica en un documento profesional en inglés del área de Electrónica, identificando pasos, precauciones y especificaciones.
+            </div>
+            <div class="fase">
+                <span class="fase-title fase-inicio">INICIO (15 min)</span>
+                <div class="fase-content">
+                    <ul>
+                <li>Docente da la bienvenida al Semestre 2: <em>"Welcome back! This semester, we focus on reading real technical documents, writing reports, and your final project."</em></li>
+                <li>Pregunta: <em>"Have you ever had to read a manual or instruction in English? What was it?"</em></li>
+                <li>Se presentan tipos de documentos técnicos: manuals, datasheets, SOPs, reports, specifications.</li>
+            </ul>
+                </div>
+            </div>
+            <div class="fase">
+                <span class="fase-title fase-desarrollo">DESARROLLO (60 min)</span>
+                <div class="fase-content">
+                    <ol>
+                <li><b>Reading (25 min):</b> a component datasheet: <em>Arduino Uno Microcontroller Technical Specifications</em> — pin configuration, operating voltage, memory specifications, and application notes for connecting sensors and actuators. Texto adaptado A2-B1 (1.5 páginas con diagramas).
+                    <ul>
+                        <li>Pre-reading: identificar secciones visuales (título, pasos numerados, advertencias, diagramas).</li>
+                        <li>Lectura guiada: el docente modela cómo leer un documento técnico (no lineal: primero precauciones, luego materiales, luego pasos).</li>
+                        <li>Los estudiantes completan: <b>Step → Action → Tool/Material → Safety Note</b></li>
+                    </ul>
+                </li>
+                <li><b>Comprehension (15 min):</b> 8 preguntas: vocabulario técnico (4) + comprensión de pasos (4).</li>
+                <li><b>Transfer activity (15 min):</b> En parejas, los estudiantes explican oralmente el procedimiento a su compañero usando sus propias palabras en inglés.</li>
+                <li><b>Wrap-up (5 min):</b> Discusión: <em>"Why is it important to read these documents carefully?"</em></li>
+            </ol>
+                </div>
+            </div>
+            <div class="fase">
+                <span class="fase-title fase-cierre">CIERRE (15 min)</span>
+                <div class="fase-content">
+                    <ul>
+                <li>Vocabulario nuevo registrado en cuadernos (mínimo 10 palabras).</li>
+                <li>Preview: <em>"Next class, you will practice following and giving technical instructions in English."</em></li>
+            </ul>
+                </div>
+            </div>
+            <div class="recursos">
+                <strong>📦 Recursos:</strong> Documento técnico impreso de electrónica con diagramas, ficha de análisis (tabla Step-Action-Tool-Safety), preguntas de comprensión.
+            </div>
+            <div class="evaluacion-box">
+                <strong>📋 Evaluación:</strong> Formativa — calidad de la tabla de análisis y capacidad de explicar el procedimiento oralmente.
+            </div>
+            
+        </div>
+    </div>
+
+    <!-- ==================== CLASE 17 ==================== -->
+    <div class="clase-card">
+        <div class="clase-header normal">
+            <span class="clase-num">Clase 17</span>
+            <span class="badge badge-oa">OA1</span> <span class="badge badge-oa">OA4</span>  
+        </div>
+        <div class="clase-body">
+            <div class="objetivo">
+                <strong>Objetivo de la clase (Bloom):</strong> Producir instrucciones técnicas claras en inglés para un procedimiento específico de Electrónica, utilizando secuenciadores e imperativos.
+            </div>
+            <div class="fase">
+                <span class="fase-title fase-inicio">INICIO (15 min)</span>
+                <div class="fase-content">
+                    <ul>
+                <li>Warm-up: <em>"Simon Says"</em> con instrucciones técnicas simples para activar memoria cinestésica.</li>
+                <li>Repaso de secuenciadores: <em>First, Next, Then, After that, Finally</em> + imperativos: <em>Connect, Remove, Check, Tighten, Verify</em>.</li>
+                <li>Se muestra un ejemplo de instrucciones mal escritas y se pide mejorarlas.</li>
+            </ul>
+                </div>
+            </div>
+            <div class="fase">
+                <span class="fase-title fase-desarrollo">DESARROLLO (60 min)</span>
+                <div class="fase-content">
+                    <ol>
+                <li><b>Model procedure (10 min):</b> Docente presenta un procedimiento modelo con pasos claros: sensor integration project: select sensor, connect to Arduino pins, upload firmware, calibrate sensor, test output, document results. Los estudiantes identifican secuenciadores y verbos imperativos.</li>
+                <li><b>Writing instructions (25 min):</b> Cada estudiante escribe un procedimiento de 8-10 pasos para una tarea técnica de su especialidad. Deben incluir:
+                    <ul>
+                        <li>Title</li>
+                        <li>Materials/Tools needed</li>
+                        <li>Safety precautions</li>
+                        <li>Numbered steps with clear imperatives</li>
+                    </ul>
+                </li>
+                <li><b>Peer testing (20 min):</b> En parejas, un estudiante lee las instrucciones del otro y simula seguirlas (o las sigue con dibujos). ¿Se entienden? ¿Falta algún paso?</li>
+                <li><b>Revision (5 min):</b> Los estudiantes mejoran sus instrucciones según el feedback.</li>
+            </ol>
+                </div>
+            </div>
+            <div class="fase">
+                <span class="fase-title fase-cierre">CIERRE (15 min)</span>
+                <div class="fase-content">
+                    <ul>
+                <li>2-3 estudiantes leen sus instrucciones en voz alta.</li>
+                <li>Reflexión: <em>"Were the instructions easy to follow? What made them clear or confusing?"</em></li>
+            </ul>
+                </div>
+            </div>
+            <div class="recursos">
+                <strong>📦 Recursos:</strong> Modelo de instrucciones técnicas impreso, plantilla de procedimiento, fichas de peer review.
+            </div>
+            <div class="evaluacion-box">
+                <strong>📋 Evaluación:</strong> Formativa — calidad de las instrucciones escritas y feedback del peer testing.
+            </div>
+            
+        </div>
+    </div>
+
+    <!-- ==================== CLASE 18 ==================== -->
+    <div class="clase-card">
+        <div class="clase-header normal">
+            <span class="clase-num">Clase 18</span>
+            <span class="badge badge-oa">OA1</span> <span class="badge badge-oa">OA3</span>  
+        </div>
+        <div class="clase-body">
+            <div class="objetivo">
+                <strong>Objetivo de la clase (Bloom):</strong> Comprender y evaluar un procedimiento técnico presentado en un video en inglés sobre Electrónica, comparándolo con la práctica local.
+            </div>
+            <div class="fase">
+                <span class="fase-title fase-inicio">INICIO (15 min)</span>
+                <div class="fase-content">
+                    <ul>
+                <li>Pre-viewing: <em>"Today we will watch a professional demonstration. What procedures have you seen in your workshop classes?"</em></li>
+                <li>Se entregan preguntas guía y vocabulario clave del video.</li>
+                <li>Predicción: <em>"Based on the title, what steps do you think we will see?"</em></li>
+            </ul>
+                </div>
+            </div>
+            <div class="fase">
+                <span class="fase-title fase-desarrollo">DESARROLLO (60 min)</span>
+                <div class="fase-content">
+                    <ol>
+                <li><b>Video viewing (15 min):</b> a YouTube video about assembling and programming an Arduino-based IoT sensor project, explained step-by-step in English (adapted, 6 min) Primera reproducción completa; segunda con pausas para preguntas de comprensión.</li>
+                <li><b>Comprehension tasks (15 min):</b>
+                    <ul>
+                        <li>Ordenar los pasos del procedimiento (sequence ordering).</li>
+                        <li>Responder 6 preguntas de comprensión.</li>
+                        <li>Identificar vocabulario nuevo del video.</li>
+                    </ul>
+                </li>
+                <li><b>Comparative analysis (20 min):</b> En grupos de 3: <em>"How does this procedure compare to what you do in your workshop? What is similar? What is different? What can we learn?"</em>. Completar tabla comparativa: <b>Video procedure vs Our workshop procedure</b></li>
+                <li><b>Group sharing (10 min):</b> Cada grupo comparte 2 diferencias interesantes.</li>
+            </ol>
+                </div>
+            </div>
+            <div class="fase">
+                <span class="fase-title fase-cierre">CIERRE (15 min)</span>
+                <div class="fase-content">
+                    <ul>
+                <li>Resumen: <em>"Professional videos in English are great learning resources. Use YouTube to keep learning after school."</em></li>
+                <li>Vocabulario nuevo registrado.</li>
+            </ul>
+                </div>
+            </div>
+            <div class="recursos">
+                <strong>📦 Recursos:</strong> Video técnico de electrónica (YouTube, 6 min adaptado), preguntas guía, ficha de comparación.
+            </div>
+            <div class="evaluacion-box">
+                <strong>📋 Evaluación:</strong> Formativa — calidad de respuestas de comprensión y análisis comparativo.
+            </div>
+            
+        </div>
+    </div>
+
+    <!-- ==================== CLASE 19 ==================== -->
+    <div class="clase-card">
+        <div class="clase-header normal">
+            <span class="clase-num">Clase 19</span>
+            <span class="badge badge-oa">OA2</span> <span class="badge badge-oa">OA4</span>  
+        </div>
+        <div class="clase-body">
+            <div class="objetivo">
+                <strong>Objetivo de la clase (Bloom):</strong> Producir un informe técnico breve en inglés siguiendo una estructura estándar aplicada al contexto de Electrónica.
+            </div>
+            <div class="fase">
+                <span class="fase-title fase-inicio">INICIO (15 min)</span>
+                <div class="fase-content">
+                    <ul>
+                <li>Docente muestra un ejemplo de reporte técnico real (adaptado): <em>"This is how professionals communicate results in English."</em></li>
+                <li>Se identifican las secciones: Title, Date, Author, Purpose, Procedure, Findings, Conclusion, Recommendations.</li>
+                <li>Vocabulario: <em>findings, recommendations, compliance, deviation, within tolerance, out of spec, corrective action</em>.</li>
+            </ul>
+                </div>
+            </div>
+            <div class="fase">
+                <span class="fase-title fase-desarrollo">DESARROLLO (60 min)</span>
+                <div class="fase-content">
+                    <ol>
+                <li><b>Model analysis (15 min):</b> Análisis guiado de a technical report on testing and calibrating a temperature monitoring system. Los estudiantes identifican cada sección y su propósito.</li>
+                <li><b>Guided report writing (30 min):</b> Cada estudiante redacta un reporte técnico breve basado en un escenario dado:
+                    <ul>
+                        <li><b>Scenario:</b> Usar un problema técnico ficticio pero realista de electrónica.</li>
+                        <li>Deben incluir todas las secciones del reporte.</li>
+                        <li>Se proporciona una plantilla con sentence frames para cada sección.</li>
+                    </ul>
+                </li>
+                <li><b>Peer review (10 min):</b> Intercambian reportes y evalúan: ¿Tiene todas las secciones? ¿Las conclusiones son lógicas? ¿Las recomendaciones son prácticas?</li>
+                <li><b>Revision (5 min):</b> Incorporar feedback y mejorar el reporte.</li>
+            </ol>
+                </div>
+            </div>
+            <div class="fase">
+                <span class="fase-title fase-cierre">CIERRE (15 min)</span>
+                <div class="fase-content">
+                    <ul>
+                <li>2 estudiantes leen su sección de <em>Findings and Recommendations</em>.</li>
+                <li><em>"Technical reports are essential in any professional setting. Practice writing them clearly."</em></li>
+            </ul>
+                </div>
+            </div>
+            <div class="recursos">
+                <strong>📦 Recursos:</strong> Reporte técnico modelo de electrónica, plantilla de reporte con sentence frames, ficha de peer review.
+            </div>
+            <div class="evaluacion-box">
+                <strong>📋 Evaluación:</strong> Formativa — calidad del reporte técnico y del peer review.
+            </div>
+            
+        </div>
+    </div>
+
+    <!-- ==================== CLASE 20 ==================== -->
+    <div class="clase-card">
+        <div class="clase-header normal">
+            <span class="clase-num">Clase 20</span>
+            <span class="badge badge-oa">OA1</span>  
+        </div>
+        <div class="clase-body">
+            <div class="objetivo">
+                <strong>Objetivo de la clase (Bloom):</strong> Comprender información técnica específica en un manual de equipo en inglés usado en Electrónica, aplicando estrategias de lectura selectiva.
+            </div>
+            <div class="fase">
+                <span class="fase-title fase-inicio">INICIO (15 min)</span>
+                <div class="fase-content">
+                    <ul>
+                <li>Warm-up: <em>"What manuals do you use in your workshop? Are any in English?"</em></li>
+                <li>Se presenta la diferencia entre reading for detail (intensive) y reading for specific information (scanning).</li>
+                <li>Vocabulario: <em>specifications, operating range, troubleshooting, warranty, compliance, rated capacity</em>.</li>
+            </ul>
+                </div>
+            </div>
+            <div class="fase">
+                <span class="fase-title fase-desarrollo">DESARROLLO (60 min)</span>
+                <div class="fase-content">
+                    <ol>
+                <li><b>Reading (25 min):</b> a user manual section for an oscilloscope: setting up channels, adjusting timebase, measuring voltage and frequency Texto adaptado con formato de manual (tablas, bullets, advertencias).
+                    <ul>
+                        <li>Actividad 1: Scanning — encontrar 5 datos específicos en el texto (ej: voltaje, capacidad, pasos de mantenimiento).</li>
+                        <li>Actividad 2: Comprensión detallada — responder 6 preguntas sobre procedimientos descritos.</li>
+                    </ul>
+                </li>
+                <li><b>Troubleshooting practice (20 min):</b> El manual incluye una sección de <em>Troubleshooting</em>. Los estudiantes reciben 3 escenarios de problemas y deben encontrar la solución en el manual.</li>
+                <li><b>Discussion (10 min):</b> <em>"How confident do you feel reading technical manuals in English now compared to the beginning of the year?"</em></li>
+                <li><b>Vocabulary log (5 min):</b> Registrar 8 palabras nuevas.</li>
+            </ol>
+                </div>
+            </div>
+            <div class="fase">
+                <span class="fase-title fase-cierre">CIERRE (15 min)</span>
+                <div class="fase-content">
+                    <ul>
+                <li>Quick quiz oral: docente describe un problema, los estudiantes buscan la solución en el manual.</li>
+                <li>Preview: <em>"Next class, we will analyze a case study about communication failures in the workplace."</em></li>
+            </ul>
+                </div>
+            </div>
+            <div class="recursos">
+                <strong>📦 Recursos:</strong> Manual técnico impreso de electrónica (adaptado), ficha de scanning, escenarios de troubleshooting.
+            </div>
+            <div class="evaluacion-box">
+                <strong>📋 Evaluación:</strong> Formativa — precisión en scanning, calidad de respuestas y resolución de troubleshooting.
+            </div>
+            
+        </div>
+    </div>
+
+    <!-- ==================== CLASE 21 ==================== -->
+    <div class="clase-card">
+        <div class="clase-header normal">
+            <span class="clase-num">Clase 21</span>
+            <span class="badge badge-oa">OA1</span> <span class="badge badge-oa">OA3</span>  
+        </div>
+        <div class="clase-body">
+            <div class="objetivo">
+                <strong>Objetivo de la clase (Bloom):</strong> Evaluar críticamente un caso de falla de comunicación en inglés en el contexto laboral de Electrónica y proponer estrategias de prevención.
+            </div>
+            <div class="fase">
+                <span class="fase-title fase-inicio">INICIO (15 min)</span>
+                <div class="fase-content">
+                    <ul>
+                <li>Warm-up: <em>"Have you ever misunderstood instructions? What happened?"</em> — 3 estudiantes comparten.</li>
+                <li>Se introduce el concepto de <em>miscommunication</em> en el trabajo y sus consecuencias.</li>
+                <li>Vocabulario: <em>miscommunication, misunderstand, misread, misinterpret, protocol, verification, double-check</em>.</li>
+            </ul>
+                </div>
+            </div>
+            <div class="fase">
+                <span class="fase-title fase-desarrollo">DESARROLLO (60 min)</span>
+                <div class="fase-content">
+                    <ol>
+                <li><b>Reading (25 min):</b> Case Study: <em>The Datasheet Disaster</em> — An electronics technician connects a component incorrectly because they misread the English datasheet, damaging the PCB. Students analyze what information was misunderstood and how to read datasheets effectively. Texto adaptado A2-B1 (1 página).
+                    <ul>
+                        <li>Los estudiantes completan un análisis: <b>What happened → Why → Consequences → How to prevent</b></li>
+                    </ul>
+                </li>
+                <li><b>Group problem-solving (20 min):</b> En grupos de 3-4:
+                    <ul>
+                        <li>Crear una <em>"Communication Checklist"</em> en inglés para prevenir errores similares (5-7 items).</li>
+                        <li>Ejemplo: <em>"Always read the document twice. Highlight key numbers. Ask a colleague to verify."</em></li>
+                    </ul>
+                </li>
+                <li><b>Presentation (10 min):</b> Cada grupo presenta su checklist (1 min cada uno).</li>
+                <li><b>Class vote (5 min):</b> Se vota por la mejor checklist, que se adoptará como estándar de la clase.</li>
+            </ol>
+                </div>
+            </div>
+            <div class="fase">
+                <span class="fase-title fase-cierre">CIERRE (15 min)</span>
+                <div class="fase-content">
+                    <ul>
+                <li>Reflexión: <em>"What is one thing you will always do when reading English documents in the future?"</em></li>
+                <li>Preview de la evaluación oral de la próxima clase.</li>
+            </ul>
+                </div>
+            </div>
+            <div class="recursos">
+                <strong>📦 Recursos:</strong> Texto del estudio de caso impreso, ficha de análisis, cartulinas para checklists, marcadores.
+            </div>
+            <div class="evaluacion-box">
+                <strong>📋 Evaluación:</strong> Formativa — calidad del análisis de caso y de las checklists creadas.
+            </div>
+            
+        </div>
+    </div>
+
+    <!-- ==================== CLASE 22 ==================== -->
+    <div class="clase-card evaluacion">
+        <div class="clase-header eval">
+            <span class="clase-num">Clase 22</span>
+            <span class="badge badge-oa">OA2</span> <span class="badge badge-oa">OA4</span>  <span class="badge badge-eval">EVALUACIÓN</span>
+        </div>
+        <div class="clase-body">
+            <div class="objetivo">
+                <strong>Objetivo de la clase (Bloom):</strong> Producir una explicación oral clara y secuencial en inglés de un procedimiento técnico específico de Electrónica.
+            </div>
+            <div class="fase">
+                <span class="fase-title fase-inicio">INICIO (15 min)</span>
+                <div class="fase-content">
+                    <ul>
+                <li>Docente explica la dinámica: cada estudiante explica un procedimiento técnico en inglés (3-4 minutos). Puede usar una ficha con palabras clave (no oraciones completas).</li>
+                <li>Criterios: claridad de pasos (5 pts), vocabulario técnico (5 pts), secuenciadores (3 pts), pronunciación (4 pts), seguridad mencionada (3 pts) = 20 pts.</li>
+                <li>Los estudiantes reciben su tema 5 minutos antes de presentar para preparar.</li>
+            </ul>
+                </div>
+            </div>
+            <div class="fase">
+                <span class="fase-title fase-desarrollo">DESARROLLO (60 min)</span>
+                <div class="fase-content">
+                    <ol>
+                <li><b>Oral evaluations (55 min):</b> Cada estudiante presenta individualmente (3-4 min):
+                    <ul>
+                        <li>Explicar un procedimiento técnico de electrónica en inglés.</li>
+                        <li>Temas asignados al azar de un banco de 8-10 procedimientos del área.</li>
+                        <li>Estructura esperada: Introduction (what procedure, why), Safety precautions, Steps (using sequencers), Conclusion.</li>
+                    </ul>
+                </li>
+                <li><b>Peer practice (while waiting):</b> Los demás practican explicando procedimientos en voz baja entre pares.</li>
+                <li><b>Post-evaluation (5 min):</b> Autorreflexión: <em>"I explained clearly when... I had difficulty with... I will practice..."</em></li>
+            </ol>
+                </div>
+            </div>
+            <div class="fase">
+                <span class="fase-title fase-cierre">CIERRE (15 min)</span>
+                <div class="fase-content">
+                    <ul>
+                <li>Retroalimentación general (aspectos positivos y áreas de mejora del grupo).</li>
+                <li><em>"You are becoming technical communicators in English! Well done."</em></li>
+            </ul>
+                </div>
+            </div>
+            <div class="recursos">
+                <strong>📦 Recursos:</strong> Banco de temas de procedimientos de electrónica (tarjetas), rúbrica de evaluación (5 criterios = 20 pts), fichas de autorreflexión.
+            </div>
+            <div class="evaluacion-box">
+                <strong>📋 Evaluación:</strong> <b>SUMATIVA — Nota 1 Semestre 2:</b> Explicación oral de procedimiento técnico. Rúbrica de 5 criterios = 20 pts. Exigencia 60%.
+            </div>
+            <div class="sugerencia"><strong>💡 Sugerencia:</strong> <b>Consideración:</b> Si hay muchos estudiantes, continuar en la siguiente clase. Alternativa para estudiantes con ansiedad: grabar un video explicativo.</div>
+        </div>
+    </div>
+
+    <!-- ==================== CLASE 23 ==================== -->
+    <div class="clase-card">
+        <div class="clase-header normal">
+            <span class="clase-num">Clase 23</span>
+            <span class="badge badge-oa">OA1</span> <span class="badge badge-oa">OA2</span>  
+        </div>
+        <div class="clase-body">
+            <div class="objetivo">
+                <strong>Objetivo de la clase (Bloom):</strong> Sintetizar las estrategias de lectura técnica adquiridas y planificar el proyecto final de inglés técnico para Electrónica.
+            </div>
+            <div class="fase">
+                <span class="fase-title fase-inicio">INICIO (15 min)</span>
+                <div class="fase-content">
+                    <ul>
+                <li>Devolución de rúbricas de la evaluación oral con retroalimentación.</li>
+                <li>Warm-up: <em>"What types of technical documents in English can you now read with confidence?"</em></li>
+            </ul>
+                </div>
+            </div>
+            <div class="fase">
+                <span class="fase-title fase-desarrollo">DESARROLLO (60 min)</span>
+                <div class="fase-content">
+                    <ol>
+                <li><b>Reading skills review (20 min):</b> Actividad integradora: los estudiantes reciben un texto técnico nuevo y aplican todas las estrategias aprendidas (scanning, análisis de estructura, vocabulary in context, troubleshooting).</li>
+                <li><b>Project introduction (25 min):</b> <em>"Your final project: Project Defense in English."</em>
+                    <ul>
+                        <li><b>Task:</b> Investigar un tema técnico de electrónica, preparar un informe escrito (1 página) y una presentación oral de 5 minutos (tipo "defensa de proyecto").</li>
+                        <li><b>Structure:</b> Introduction → Problem/Topic → Research → Proposed Solution/Analysis → Conclusion → Q&A.</li>
+                        <li>Se entregan rúbricas y cronograma.</li>
+                        <li>Se forman parejas o tríos (según tamaño del curso).</li>
+                    </ul>
+                </li>
+                <li><b>Topic selection (10 min):</b> Los grupos eligen su tema de una lista proporcionada o proponen uno propio (aprobado por el docente).</li>
+                <li><b>Timeline (5 min):</b> Clase 9 — Investigación. Clase 10 — Evaluación lectura. Clase 11 — Proyecto final.</li>
+            </ol>
+                </div>
+            </div>
+            <div class="fase">
+                <span class="fase-title fase-cierre">CIERRE (15 min)</span>
+                <div class="fase-content">
+                    <ul>
+                <li>Cada grupo anuncia su tema al curso.</li>
+                <li><em>"Start thinking about your research. This is your chance to show everything you have learned!"</em></li>
+            </ul>
+                </div>
+            </div>
+            <div class="recursos">
+                <strong>📦 Recursos:</strong> Texto técnico nuevo de electrónica para revisión, ficha del proyecto final (instrucciones, rúbrica, cronograma), lista de temas sugeridos.
+            </div>
+            <div class="evaluacion-box">
+                <strong>📋 Evaluación:</strong> Formativa — desempeño en lectura integradora y selección de tema del proyecto.
+            </div>
+            
+        </div>
+    </div>
+
+    <div class="footer">
+        <p>Planificación elaborada para Liceo Técnico Profesional — Inglés 4° Medio — Especialidad: Electrónica — 2026</p>
+        <p>Basada en OA de Bases Curriculares 3°-4° Medio (Decreto N°193/2019) y Programa de Estudio (Decreto N°496/2020)</p>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,772 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nota de Proceso</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.31/jspdf.plugin.autotable.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=DM+Mono:wght@400;500&family=DM+Serif+Display&display=swap" rel="stylesheet">
+    <style>
+        :root { --indigo:#4f46e5; --slate-bg:#f1f5f9; }
+        * { box-sizing:border-box; }
+        body { font-family:'DM Sans',sans-serif; background:var(--slate-bg); min-height:100vh; }
+
+        /* TABS */
+        .course-tab { transition:all 0.2s; border-bottom:3px solid transparent; }
+        .course-tab.active { border-bottom-color:var(--indigo); color:var(--indigo); background:white; font-weight:700; }
+        .course-panel { display:none; }
+        .course-panel.active { display:block; }
+
+        /* PERIOD TABS */
+        .period-tab { transition:all 0.15s; }
+        .period-tab.active { background:#4f46e5; color:white; }
+
+        /* MARK BUTTONS */
+        .mark-btn { transition:all 0.15s; border:2px solid transparent; }
+        .mark-C { background:#dcfce7; color:#15803d; border-color:#86efac; font-weight:700; }
+        .mark-I { background:#fef9c3; color:#a16207; border-color:#fde047; font-weight:700; }
+        .mark-S { background:#fee2e2; color:#b91c1c; border-color:#fca5a5; font-weight:700; }
+        .mark-none { background:#f1f5f9; color:#94a3b8; border-color:#e2e8f0; }
+
+        /* STUDENT CARD */
+        .student-row { transition:background 0.15s; }
+        .student-row:hover { background:#f8fafc; }
+
+        /* TREND */
+        .trend-up   { color:#16a34a; }
+        .trend-down { color:#dc2626; }
+        .trend-same { color:#d97706; }
+
+        /* COLLAPSIBLE */
+        .collapse-content { max-height:0; overflow:hidden; transition:max-height 0.3s ease; }
+        .collapse-content.open { max-height:2000px; }
+
+        input[type=text], input[type=number], select, textarea {
+            border:1.5px solid #e2e8f0; border-radius:0.5rem; padding:0.4rem 0.75rem;
+            font-size:0.85rem; font-family:'DM Sans',sans-serif; outline:none;
+            transition:border-color 0.2s, box-shadow 0.2s;
+        }
+        input:focus, select:focus, textarea:focus {
+            border-color:var(--indigo); box-shadow:0 0 0 3px rgba(79,70,229,0.12);
+        }
+    </style>
+</head>
+<body class="p-3 sm:p-5">
+<div class="max-w-7xl mx-auto">
+
+    <!-- HEADER -->
+    <header class="text-center mb-6">
+        <h1 class="text-3xl font-bold text-slate-800" style="font-family:'DM Serif Display',serif">Nota de Proceso</h1>
+        <p class="text-slate-500 text-sm mt-1">Registro por clase &middot; Periodos mensuales &middot; Historial completo</p>
+    </header>
+
+    <!-- TOP BAR -->
+    <div class="bg-white rounded-xl shadow-sm border border-slate-200 p-3 mb-4 flex flex-wrap gap-2 items-center">
+        <button id="addCourseBtn" class="bg-indigo-600 text-white font-bold py-2 px-4 rounded-lg hover:bg-indigo-700 text-sm">+ Agregar Curso</button>
+        <div class="h-6 border-l border-slate-200 mx-1"></div>
+        <button id="exportBtn" class="bg-emerald-600 text-white font-bold py-2 px-4 rounded-lg hover:bg-emerald-700 text-sm">&#128190; Exportar datos</button>
+        <label class="bg-blue-600 text-white font-bold py-2 px-4 rounded-lg hover:bg-blue-700 text-sm cursor-pointer">
+            &#128194; Importar datos<input type="file" id="importInput" accept=".json" class="hidden">
+        </label>
+        <div class="h-6 border-l border-slate-200 mx-1"></div>
+        <button id="clearBtn" class="bg-red-50 text-red-600 font-bold py-2 px-4 rounded-lg hover:bg-red-100 text-sm">Limpiar todo</button>
+    </div>
+
+    <!-- COURSE TABS -->
+    <div id="courseTabs" class="flex border-b border-slate-200 bg-slate-100 rounded-t-xl px-2 pt-2 gap-1 overflow-x-auto shadow-sm"></div>
+    <div id="coursePanels"></div>
+
+</div>
+
+<script>
+// ============================================================
+//  STATE & STORAGE
+// ============================================================
+var STORAGE_KEY = 'notaProceso_v1';
+var state = {};      // { courseName: { students:[{name,active}], periods:[{id,name,month,year,classes:[{label}],marks:{studentName:[mark]}}] } }
+var activeCourse = null;
+var activePeriod = {};   // { courseName: periodId }
+
+function save() { try { localStorage.setItem(STORAGE_KEY, JSON.stringify(state)); } catch(e) { alert('Error al guardar. Intenta reducir datos.'); } }
+function load() {
+    try { var d = localStorage.getItem(STORAGE_KEY); if(d) state = JSON.parse(d); }
+    catch(e) { state = {}; }
+}
+
+// ============================================================
+//  CALCULATIONS
+// ============================================================
+var WEIGHTS = { C:1.0, I:0.5, S:0.0 };
+
+function calcGrade(marks, numClasses, exigency) {
+    if(!marks || !numClasses) return null;
+    exigency = exigency || 0.60;
+    var score = 0;
+    marks.forEach(function(m){ score += (WEIGHTS[m] !== undefined ? WEIGHTS[m] : 0); });
+    var maxScore = numClasses * 1.0;
+    var passingScore = maxScore * exigency;
+    if(maxScore === 0) return 7.0;
+    var grade;
+    if(score >= passingScore) {
+        grade = 4.0 + 3.0 * ((score - passingScore) / (maxScore - passingScore));
+    } else {
+        grade = 1.0 + 3.0 * (score / passingScore);
+    }
+    return Math.max(1.0, Math.min(7.0, grade));
+}
+
+function fmtGrade(g) { return g !== null && g !== undefined ? g.toFixed(1) : '-'; }
+
+function getStudentPeriodGrade(courseName, periodId, studentName) {
+    var course = state[courseName]; if(!course) return null;
+    var period = course.periods.find(function(p){ return p.id === periodId; });
+    if(!period || !period.classes || !period.classes.length) return null;
+    var marks = (period.marks[studentName] || []);
+    return calcGrade(marks, period.classes.length);
+}
+
+function getStudentAvg(courseName, studentName) {
+    var course = state[courseName]; if(!course) return null;
+    var grades = [];
+    course.periods.forEach(function(p) {
+        var g = getStudentPeriodGrade(courseName, p.id, studentName);
+        if(g !== null) grades.push(g);
+    });
+    if(!grades.length) return null;
+    return grades.reduce(function(a,b){ return a+b; }, 0) / grades.length;
+}
+
+function getTrend(courseName, studentName, periodId) {
+    var course = state[courseName]; if(!course) return null;
+    var idx = course.periods.findIndex(function(p){ return p.id === periodId; });
+    if(idx < 1) return null;
+    var curr = getStudentPeriodGrade(courseName, periodId, studentName);
+    var prev = getStudentPeriodGrade(courseName, course.periods[idx-1].id, studentName);
+    if(curr === null || prev === null) return null;
+    if(curr > prev + 0.05) return 'up';
+    if(curr < prev - 0.05) return 'down';
+    return 'same';
+}
+
+// ============================================================
+//  RENDER
+// ============================================================
+function render() {
+    renderCourseTabs();
+    renderCoursePanels();
+}
+
+function renderCourseTabs() {
+    var tabs = document.getElementById('courseTabs');
+    tabs.innerHTML = '';
+    var names = Object.keys(state).sort();
+    if(!names.length) {
+        tabs.innerHTML = '<p class="p-3 text-slate-400 text-sm">Sin cursos. Agrega uno.</p>';
+        return;
+    }
+    names.forEach(function(name) {
+        var btn = document.createElement('button');
+        btn.className = 'course-tab py-2.5 px-5 text-sm font-semibold text-slate-500 rounded-t-lg flex-shrink-0' + (activeCourse === name ? ' active' : '');
+        btn.textContent = name;
+        btn.onclick = function() { activeCourse = name; render(); };
+        tabs.appendChild(btn);
+    });
+    if(!activeCourse || !state[activeCourse]) activeCourse = names[0];
+}
+
+function renderCoursePanels() {
+    var container = document.getElementById('coursePanels');
+    container.innerHTML = '';
+    var names = Object.keys(state).sort();
+    names.forEach(function(cname) {
+        var panel = document.createElement('div');
+        panel.id = 'cpanel-' + cname;
+        panel.className = 'course-panel' + (activeCourse === cname ? ' active' : '');
+        panel.innerHTML = buildCoursePanel(cname);
+        container.appendChild(panel);
+        bindCoursePanel(cname, panel);
+    });
+}
+
+function buildCoursePanel(cname) {
+    var course = state[cname];
+    var periods = course.periods || [];
+    var curPeriodId = activePeriod[cname] || (periods.length ? periods[periods.length-1].id : null);
+    if(curPeriodId && !periods.find(function(p){ return p.id === curPeriodId; })) {
+        curPeriodId = periods.length ? periods[periods.length-1].id : null;
+    }
+    activePeriod[cname] = curPeriodId;
+
+    var html = '';
+    // Course header
+    html += '<div class="bg-white rounded-b-xl rounded-tr-xl border border-slate-200 border-t-0 shadow-sm">';
+
+    // — Top config bar
+    html += '<div class="flex flex-wrap gap-3 items-center justify-between p-4 border-b border-slate-100">';
+    html += '<div class="flex gap-2 flex-wrap">';
+    html += '<button class="add-student-btn bg-indigo-50 text-indigo-700 font-bold py-1.5 px-3 rounded-lg hover:bg-indigo-100 text-sm" data-course="'+cname+'">+ Estudiante</button>';
+    html += '<label class="bg-slate-100 text-slate-700 font-bold py-1.5 px-3 rounded-lg hover:bg-slate-200 text-sm cursor-pointer">&#128196; Carga masiva Excel<input type="file" accept=".xlsx,.xls,.csv" class="hidden excel-input" data-course="'+cname+'"></label>';
+    html += '<button class="add-period-btn bg-emerald-50 text-emerald-700 font-bold py-1.5 px-3 rounded-lg hover:bg-emerald-100 text-sm" data-course="'+cname+'">+ Periodo</button>';
+    html += '</div>';
+    html += '<div class="flex gap-2 flex-wrap">';
+    html += '<button class="pdf-individual-btn bg-indigo-600 text-white font-bold py-1.5 px-3 rounded-lg hover:bg-indigo-700 text-sm" data-course="'+cname+'">PDF Individual</button>';
+    html += '<button class="pdf-group-btn bg-violet-600 text-white font-bold py-1.5 px-3 rounded-lg hover:bg-violet-700 text-sm" data-course="'+cname+'">PDF Grupal</button>';
+    html += '<button class="delete-course-btn bg-red-50 text-red-600 font-bold py-1.5 px-3 rounded-lg hover:bg-red-100 text-sm" data-course="'+cname+'">Eliminar curso</button>';
+    html += '</div></div>';
+
+    if(!periods.length) {
+        html += '<div class="p-8 text-center text-slate-400">No hay periodos. Crea el primero con el boton "+ Periodo".</div>';
+        html += '</div>';
+        return html;
+    }
+
+    // — Period tabs
+    html += '<div class="flex gap-1 p-3 border-b border-slate-100 overflow-x-auto bg-slate-50">';
+    periods.forEach(function(p) {
+        var isActive = p.id === curPeriodId;
+        html += '<button class="period-tab py-1.5 px-4 rounded-lg text-sm font-semibold flex-shrink-0 text-slate-600' + (isActive ? ' active' : ' hover:bg-slate-200') + '" data-course="'+cname+'" data-period="'+p.id+'">'+escHtml(p.name)+'</button>';
+    });
+    html += '</div>';
+
+    if(!curPeriodId) { html += '</div>'; return html; }
+
+    var period = periods.find(function(p){ return p.id === curPeriodId; });
+    if(!period) { html += '</div>'; return html; }
+
+    // — Period config
+    html += '<div class="p-4 border-b border-slate-100 bg-slate-50 flex flex-wrap gap-4 items-center">';
+    html += '<div class="flex items-center gap-2"><span class="text-sm font-semibold text-slate-600">Periodo:</span>';
+    html += '<input type="text" class="period-name-input w-40" value="'+escHtml(period.name)+'" data-course="'+cname+'" data-period="'+period.id+'" placeholder="Nombre del periodo"></div>';
+    html += '<div class="flex items-center gap-2"><span class="text-sm font-semibold text-slate-600">Exigencia:</span>';
+    html += '<input type="number" class="period-exig-input w-20" value="'+(period.exigency||60)+'" min="1" max="100" data-course="'+cname+'" data-period="'+period.id+'"><span class="text-sm text-slate-500">%</span></div>';
+    html += '<button class="add-class-btn bg-white border border-slate-300 text-slate-700 font-semibold py-1.5 px-3 rounded-lg hover:bg-slate-100 text-sm" data-course="'+cname+'" data-period="'+period.id+'">+ Agregar Clase</button>';
+    html += '<button class="delete-period-btn text-red-400 hover:text-red-600 text-sm font-semibold ml-auto" data-course="'+cname+'" data-period="'+period.id+'">Eliminar periodo</button>';
+    html += '</div>';
+
+    var classes = period.classes || [];
+    if(!classes.length) {
+        html += '<div class="p-8 text-center text-slate-400">Sin clases en este periodo. Agrega clases con el boton de arriba.</div>';
+        html += '</div>';
+        return html;
+    }
+
+    // — Class headers row
+    html += '<div class="overflow-x-auto">';
+    html += '<table class="w-full text-sm">';
+    html += '<thead>';
+    html += '<tr class="border-b border-slate-200">';
+    html += '<th class="text-left p-3 font-semibold text-slate-600 sticky left-0 bg-white z-10 min-w-56">Estudiante</th>';
+    classes.forEach(function(cls, i) {
+        html += '<th class="p-2 text-center font-semibold text-slate-500 min-w-28">';
+        html += '<div class="flex flex-col items-center gap-1">';
+        html += '<span class="text-xs text-slate-400">C'+(i+1)+'</span>';
+        html += '<input type="text" class="class-label-input text-center text-xs w-24 py-0.5" value="'+escHtml(cls.label||'')+'" placeholder="Etiqueta..." data-course="'+cname+'" data-period="'+period.id+'" data-class-idx="'+i+'">';
+        html += '<button class="delete-class-btn text-red-300 hover:text-red-500 text-xs" data-course="'+cname+'" data-period="'+period.id+'" data-class-idx="'+i+'">&times;</button>';
+        html += '</div></th>';
+    });
+    html += '<th class="p-3 text-center font-semibold text-slate-600 min-w-20">Nota</th>';
+    html += '<th class="p-3 text-center font-semibold text-slate-600 min-w-16">Tend.</th>';
+    html += '<th class="p-3 text-center font-semibold text-slate-600 min-w-20">Prom.</th>';
+    html += '</tr></thead>';
+    html += '<tbody>';
+
+    var students = (course.students || []).filter(function(s){ return s.active !== false; });
+    students.sort(function(a,b){ return a.name.localeCompare(b.name); });
+
+    students.forEach(function(st) {
+        var marks = period.marks[st.name] || [];
+        var grade = calcGrade(marks, classes.length, (period.exigency||60)/100);
+        var gradeStr = fmtGrade(grade);
+        var gradeColor = grade !== null ? (grade >= 4.0 ? 'text-blue-600' : 'text-red-600') : 'text-slate-400';
+        var trend = getTrend(cname, st.name, period.id);
+        var trendHtml = trend === 'up' ? '<span class="trend-up font-bold">&#8679;</span>'
+                      : trend === 'down' ? '<span class="trend-down font-bold">&#8681;</span>'
+                      : trend === 'same' ? '<span class="trend-same font-bold">&mdash;</span>'
+                      : '<span class="text-slate-300">-</span>';
+        var avg = getStudentAvg(cname, st.name);
+        var avgStr = fmtGrade(avg);
+        var avgColor = avg !== null ? (avg >= 4.0 ? 'text-blue-500' : 'text-red-500') : 'text-slate-300';
+
+        html += '<tr class="student-row border-b border-slate-100">';
+        html += '<td class="p-3 sticky left-0 bg-white z-10">';
+        html += '<div class="flex items-center justify-between gap-2">';
+        html += '<span class="font-medium text-slate-800 text-sm">'+escHtml(st.name)+'</span>';
+        html += '<button class="remove-student-btn text-slate-300 hover:text-red-400 text-xs" data-course="'+cname+'" data-student="'+escAttr(st.name)+'">&times;</button>';
+        html += '</div></td>';
+
+        classes.forEach(function(cls, i) {
+            var mark = marks[i] || '';
+            var btnClass = mark === 'C' ? 'mark-C' : mark === 'I' ? 'mark-I' : mark === 'S' ? 'mark-S' : 'mark-none';
+            var label = mark || '&nbsp;&nbsp;&nbsp;';
+            html += '<td class="p-2 text-center">';
+            html += '<button class="mark-btn '+btnClass+' rounded-lg py-1 px-3 text-xs" data-course="'+cname+'" data-period="'+period.id+'" data-student="'+escAttr(st.name)+'" data-class-idx="'+i+'">'+label+'</button>';
+            html += '</td>';
+        });
+
+        html += '<td class="p-3 text-center font-bold text-lg '+gradeColor+'">'+gradeStr+'</td>';
+        html += '<td class="p-3 text-center text-lg">'+trendHtml+'</td>';
+        html += '<td class="p-3 text-center font-semibold text-sm '+avgColor+'">'+avgStr+'</td>';
+        html += '</tr>';
+    });
+
+    html += '</tbody></table></div>';
+
+    // — Summary row
+    var passCount = 0; var totalCount = 0; var gradeSum = 0;
+    students.forEach(function(st) {
+        var marks = period.marks[st.name] || [];
+        var g = calcGrade(marks, classes.length, (period.exigency||60)/100);
+        if(g !== null) { totalCount++; gradeSum += g; if(g >= 4.0) passCount++; }
+    });
+    var avgGrade = totalCount ? (gradeSum/totalCount).toFixed(1) : '-';
+    var pctPass  = totalCount ? Math.round(passCount/totalCount*100) : 0;
+
+    html += '<div class="p-4 bg-slate-50 border-t border-slate-100 flex flex-wrap gap-6 items-center">';
+    html += '<div class="text-sm text-slate-600"><span class="font-semibold">Promedio del curso:</span> <span class="font-bold text-slate-800">'+avgGrade+'</span></div>';
+    html += '<div class="text-sm text-slate-600"><span class="font-semibold">Aprobacion:</span> <span class="font-bold text-green-700">'+pctPass+'%</span> ('+passCount+'/'+totalCount+')</div>';
+    html += '<div class="text-sm text-slate-600"><span class="font-semibold">Clases registradas:</span> <span class="font-bold text-slate-800">'+classes.length+'</span></div>';
+    html += '</div>';
+    html += '</div>';
+    return html;
+}
+
+function bindCoursePanel(cname, panel) {
+    // Period tab switch
+    panel.querySelectorAll('.period-tab').forEach(function(btn) {
+        btn.onclick = function() { activePeriod[cname] = btn.dataset.period; render(); };
+    });
+    // Add student
+    panel.querySelectorAll('.add-student-btn').forEach(function(btn) {
+        btn.onclick = function() {
+            var name = prompt('Nombre del estudiante:');
+            if(!name || !name.trim()) return;
+            var n = name.trim();
+            if(state[cname].students.find(function(s){ return s.name === n; })) { alert('Ya existe'); return; }
+            state[cname].students.push({ name:n, active:true });
+            save(); render();
+        };
+    });
+    // Excel upload
+    panel.querySelectorAll('.excel-input').forEach(function(inp) {
+        inp.onchange = function(e) {
+            var file = e.target.files[0]; if(!file) return;
+            var reader = new FileReader();
+            reader.onload = function(ev) {
+                try {
+                    var wb = XLSX.read(ev.target.result, { type:'array' });
+                    var ws = wb.Sheets[wb.SheetNames[0]];
+                    var rows = XLSX.utils.sheet_to_json(ws, { header:1 });
+                    var added = 0;
+                    rows.forEach(function(row) {
+                        var name = (row[0]||'').toString().trim();
+                        if(!name) return;
+                        if(!state[cname].students.find(function(s){ return s.name===name; })) {
+                            state[cname].students.push({ name:name, active:true });
+                            added++;
+                        }
+                    });
+                    save(); render();
+                    alert('Se agregaron '+added+' estudiantes.');
+                } catch(err) { alert('Error al leer archivo: '+err.message); }
+            };
+            reader.readAsArrayBuffer(file);
+            inp.value = '';
+        };
+    });
+    // Add period
+    panel.querySelectorAll('.add-period-btn').forEach(function(btn) {
+        btn.onclick = function() {
+            var now = new Date();
+            var months = ['Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre'];
+            var defName = months[now.getMonth()] + ' ' + now.getFullYear();
+            var name = prompt('Nombre del periodo:', defName);
+            if(!name || !name.trim()) return;
+            var id = 'p' + Date.now();
+            state[cname].periods.push({ id:id, name:name.trim(), exigency:60, classes:[], marks:{} });
+            activePeriod[cname] = id;
+            save(); render();
+        };
+    });
+    // Add class
+    panel.querySelectorAll('.add-class-btn').forEach(function(btn) {
+        btn.onclick = function() {
+            var pid = btn.dataset.period;
+            var period = state[cname].periods.find(function(p){ return p.id===pid; });
+            if(!period) return;
+            var n = period.classes.length + 1;
+            var label = prompt('Etiqueta de la clase (opcional):', 'Clase '+n) || ('Clase '+n);
+            period.classes.push({ label:label.trim() });
+            save(); render();
+        };
+    });
+    // Delete class
+    panel.querySelectorAll('.delete-class-btn').forEach(function(btn) {
+        btn.onclick = function() {
+            var pid = btn.dataset.period;
+            var idx = parseInt(btn.dataset.classIdx);
+            if(!confirm('Eliminar esta clase y sus marcas?')) return;
+            var period = state[cname].periods.find(function(p){ return p.id===pid; });
+            period.classes.splice(idx, 1);
+            Object.keys(period.marks).forEach(function(sname) {
+                if(period.marks[sname]) period.marks[sname].splice(idx,1);
+            });
+            save(); render();
+        };
+    });
+    // Class label edit
+    panel.querySelectorAll('.class-label-input').forEach(function(inp) {
+        inp.onchange = function() {
+            var pid = inp.dataset.period;
+            var idx = parseInt(inp.dataset.classIdx);
+            var period = state[cname].periods.find(function(p){ return p.id===pid; });
+            if(period && period.classes[idx]) { period.classes[idx].label = inp.value.trim(); save(); }
+        };
+    });
+    // Period name edit
+    panel.querySelectorAll('.period-name-input').forEach(function(inp) {
+        inp.onchange = function() {
+            var pid = inp.dataset.period;
+            var period = state[cname].periods.find(function(p){ return p.id===pid; });
+            if(period) { period.name = inp.value.trim(); save(); render(); }
+        };
+    });
+    // Period exigency edit
+    panel.querySelectorAll('.period-exig-input').forEach(function(inp) {
+        inp.onchange = function() {
+            var pid = inp.dataset.period;
+            var period = state[cname].periods.find(function(p){ return p.id===pid; });
+            if(period) { period.exigency = Math.max(1,Math.min(100,parseInt(inp.value)||60)); save(); render(); }
+        };
+    });
+    // Delete period
+    panel.querySelectorAll('.delete-period-btn').forEach(function(btn) {
+        btn.onclick = function() {
+            var pid = btn.dataset.period;
+            if(!confirm('Eliminar este periodo y todas sus marcas?')) return;
+            state[cname].periods = state[cname].periods.filter(function(p){ return p.id!==pid; });
+            delete activePeriod[cname];
+            save(); render();
+        };
+    });
+    // Delete course
+    panel.querySelectorAll('.delete-course-btn').forEach(function(btn) {
+        btn.onclick = function() {
+            if(!confirm('Eliminar el curso '+cname+' y todos sus datos?')) return;
+            delete state[cname];
+            activeCourse = null;
+            save(); render();
+        };
+    });
+    // Remove student
+    panel.querySelectorAll('.remove-student-btn').forEach(function(btn) {
+        btn.onclick = function() {
+            var sname = btn.dataset.student;
+            if(!confirm('Eliminar a '+sname+' del curso?')) return;
+            state[cname].students = state[cname].students.filter(function(s){ return s.name !== sname; });
+            save(); render();
+        };
+    });
+    // Mark buttons (cycle C -> I -> S -> clear)
+    panel.querySelectorAll('.mark-btn').forEach(function(btn) {
+        btn.onclick = function() {
+            var pid    = btn.dataset.period;
+            var sname  = btn.dataset.student;
+            var cidx   = parseInt(btn.dataset.classIdx);
+            var period = state[cname].periods.find(function(p){ return p.id===pid; });
+            if(!period) return;
+            if(!period.marks[sname]) period.marks[sname] = [];
+            var cur = period.marks[sname][cidx] || '';
+            var next = cur === '' ? 'C' : cur === 'C' ? 'I' : cur === 'I' ? 'S' : '';
+            period.marks[sname][cidx] = next;
+            save();
+            // Update button appearance in-place without full re-render
+            btn.className = 'mark-btn rounded-lg py-1 px-3 text-xs ' + (next === 'C' ? 'mark-C' : next === 'I' ? 'mark-I' : next === 'S' ? 'mark-S' : 'mark-none');
+            btn.innerHTML = next || '&nbsp;&nbsp;&nbsp;';
+            // Recalc grade and trend for this student
+            refreshStudentRow(cname, period, sname, panel);
+        };
+    });
+    // PDF buttons
+    panel.querySelectorAll('.pdf-individual-btn').forEach(function(btn) {
+        btn.onclick = function() { generatePDFIndividual(cname); };
+    });
+    panel.querySelectorAll('.pdf-group-btn').forEach(function(btn) {
+        btn.onclick = function() { generatePDFGroup(cname); };
+    });
+}
+
+function refreshStudentRow(cname, period, sname, panel) {
+    var course = state[cname];
+    var students = (course.students||[]).filter(function(s){ return s.active!==false; });
+    var marks = period.marks[sname] || [];
+    var grade = calcGrade(marks, (period.classes||[]).length, (period.exigency||60)/100);
+    var gradeStr = fmtGrade(grade);
+    var gradeColor = grade !== null ? (grade >= 4.0 ? 'text-blue-600' : 'text-red-600') : 'text-slate-400';
+    var trend = getTrend(cname, sname, period.id);
+    var trendHtml = trend === 'up' ? '<span class="trend-up font-bold">&#8679;</span>'
+                  : trend === 'down' ? '<span class="trend-down font-bold">&#8681;</span>'
+                  : trend === 'same' ? '<span class="trend-same font-bold">&mdash;</span>'
+                  : '<span class="text-slate-300">-</span>';
+    var avg = getStudentAvg(cname, sname);
+    var avgStr = fmtGrade(avg);
+    var avgColor = avg !== null ? (avg >= 4.0 ? 'text-blue-500' : 'text-red-500') : 'text-slate-300';
+
+    // Find all mark buttons for this student in this period and update grade/trend/avg cells
+    var allBtns = panel.querySelectorAll('.mark-btn[data-student="'+CSS.escape(sname)+'"][data-period="'+period.id+'"]');
+    if(!allBtns.length) return;
+    var row = allBtns[0].closest('tr');
+    if(!row) return;
+    var cells = row.querySelectorAll('td');
+    var lastCells = Array.from(cells).slice(-3);
+    if(lastCells.length === 3) {
+        lastCells[0].className = 'p-3 text-center font-bold text-lg '+gradeColor;
+        lastCells[0].textContent = gradeStr;
+        lastCells[1].className = 'p-3 text-center text-lg';
+        lastCells[1].innerHTML = trendHtml;
+        lastCells[2].className = 'p-3 text-center font-semibold text-sm '+avgColor;
+        lastCells[2].textContent = avgStr;
+    }
+}
+
+// ============================================================
+//  PDF GENERATION
+// ============================================================
+function generatePDFIndividual(cname) {
+    var course = state[cname];
+    var students = (course.students||[]).filter(function(s){ return s.active!==false; });
+    students.sort(function(a,b){ return a.name.localeCompare(b.name); });
+    var doc = new window.jspdf.jsPDF({ orientation:'portrait', unit:'mm', format:'a4' });
+    var today = new Date().toLocaleDateString('es-CL');
+
+    students.forEach(function(st, sidx) {
+        if(sidx > 0) doc.addPage();
+        var y = 15;
+        doc.setFillColor(79,70,229); doc.rect(0,0,210,28,'F');
+        doc.setTextColor(255,255,255);
+        doc.setFontSize(16); doc.setFont('helvetica','bold');
+        doc.text('Nota de Proceso - Informe Individual', 14, 12);
+        doc.setFontSize(10); doc.setFont('helvetica','normal');
+        doc.text('Curso: '+cname+'   |   Fecha: '+today, 14, 20);
+        y = 35;
+        doc.setTextColor(30,41,59);
+        doc.setFontSize(13); doc.setFont('helvetica','bold');
+        doc.text(st.name, 14, y); y += 8;
+
+        var avg = getStudentAvg(cname, st.name);
+        doc.setFontSize(10); doc.setFont('helvetica','normal');
+        doc.text('Promedio historico: ' + fmtGrade(avg), 14, y); y += 8;
+
+        // Table per period
+        course.periods.forEach(function(period) {
+            if(!period.classes || !period.classes.length) return;
+            var marks = period.marks[st.name] || [];
+            var grade = calcGrade(marks, period.classes.length, (period.exigency||60)/100);
+
+            var head = [['Clase', 'Etiqueta', 'Marca', 'Puntaje']];
+            var body = period.classes.map(function(cls, i) {
+                var m = marks[i] || '-';
+                var pts = m === 'C' ? '1.0' : m === 'I' ? '0.5' : m === 'S' ? '0.0' : '-';
+                return ['C'+(i+1), cls.label||'', m, pts];
+            });
+            body.push(['', '', 'NOTA', fmtGrade(grade)]);
+
+            doc.setFontSize(10); doc.setFont('helvetica','bold');
+            if(y > 250) { doc.addPage(); y = 20; }
+            doc.text(period.name, 14, y); y += 2;
+
+            doc.autoTable({
+                head: head, body: body, startY: y,
+                margin: { left:14, right:14 },
+                headStyles: { fillColor:[79,70,229], textColor:255, fontSize:8, fontStyle:'bold' },
+                bodyStyles: { fontSize:8 },
+                columnStyles: { 0:{cellWidth:12}, 1:{cellWidth:90}, 2:{cellWidth:16, halign:'center'}, 3:{cellWidth:20, halign:'center'} },
+                didParseCell: function(data) {
+                    if(data.row.index === body.length-1) {
+                        data.cell.styles.fontStyle = 'bold';
+                        var g = parseFloat(fmtGrade(grade));
+                        data.cell.styles.fillColor = g >= 4.0 ? [220,252,231] : [254,226,226];
+                        data.cell.styles.textColor = g >= 4.0 ? [22,101,52] : [153,27,27];
+                    }
+                    if(data.section==='body' && data.column.index===2) {
+                        var m = data.cell.raw;
+                        if(m==='C') { data.cell.styles.textColor=[22,101,52]; data.cell.styles.fontStyle='bold'; }
+                        else if(m==='I') { data.cell.styles.textColor=[133,77,14]; data.cell.styles.fontStyle='bold'; }
+                        else if(m==='S') { data.cell.styles.textColor=[153,27,27]; data.cell.styles.fontStyle='bold'; }
+                    }
+                }
+            });
+            y = doc.lastAutoTable.finalY + 6;
+        });
+    });
+
+    doc.save('nota_proceso_individual_'+cname+'_'+today.replace(/\//g,'-')+'.pdf');
+}
+
+function generatePDFGroup(cname) {
+    var course = state[cname];
+    var students = (course.students||[]).filter(function(s){ return s.active!==false; });
+    students.sort(function(a,b){ return a.name.localeCompare(b.name); });
+    var doc = new window.jspdf.jsPDF({ orientation:'landscape', unit:'mm', format:'a4' });
+    var today = new Date().toLocaleDateString('es-CL');
+    var y = 15;
+
+    // Cover
+    doc.setFillColor(79,70,229); doc.rect(0,0,297,28,'F');
+    doc.setTextColor(255,255,255);
+    doc.setFontSize(18); doc.setFont('helvetica','bold');
+    doc.text('Nota de Proceso - Informe de Curso', 14, 12);
+    doc.setFontSize(11); doc.setFont('helvetica','normal');
+    doc.text('Curso: '+cname+'   |   Estudiantes: '+students.length+'   |   Fecha: '+today, 14, 21);
+    y = 35;
+
+    // Summary table: student | period grades | avg
+    var periods = course.periods || [];
+    var head = [['Estudiante'].concat(periods.map(function(p){ return p.name; })).concat(['Promedio'])];
+    var body = students.map(function(st) {
+        var row = [st.name];
+        periods.forEach(function(p) {
+            var g = getStudentPeriodGrade(cname, p.id, st.name);
+            row.push(g !== null ? fmtGrade(g) : '-');
+        });
+        var avg = getStudentAvg(cname, st.name);
+        row.push(avg !== null ? fmtGrade(avg) : '-');
+        return row;
+    });
+
+    doc.autoTable({
+        head: head, body: body, startY: y,
+        margin: { left:14, right:14 },
+        headStyles: { fillColor:[79,70,229], textColor:255, fontSize:8, fontStyle:'bold', halign:'center' },
+        bodyStyles: { fontSize:8 },
+        columnStyles: { 0:{cellWidth:70} },
+        didParseCell: function(data) {
+            if(data.section==='body' && data.column.index > 0) {
+                var g = parseFloat(data.cell.raw);
+                if(!isNaN(g)) {
+                    data.cell.styles.halign = 'center';
+                    data.cell.styles.fontStyle = 'bold';
+                    data.cell.styles.textColor = g >= 4.0 ? [22,101,52] : [153,27,27];
+                }
+            }
+        }
+    });
+
+    y = doc.lastAutoTable.finalY + 10;
+
+    // Per-period summary pages
+    periods.forEach(function(period) {
+        if(!period.classes || !period.classes.length) return;
+        doc.addPage();
+        y = 15;
+        doc.setFillColor(99,102,241); doc.rect(0,0,297,24,'F');
+        doc.setTextColor(255,255,255);
+        doc.setFontSize(14); doc.setFont('helvetica','bold');
+        doc.text('Periodo: '+period.name+' - '+cname, 14, 10);
+        doc.setFontSize(9); doc.setFont('helvetica','normal');
+        doc.text('Clases: '+period.classes.length+'  |  Exigencia: '+(period.exigency||60)+'%  |  Fecha impresion: '+today, 14, 19);
+        y = 30;
+
+        var pHead = [['Estudiante'].concat(period.classes.map(function(c,i){ return 'C'+(i+1)+'\n'+(c.label||''); })).concat(['Nota','Tend.','Prom.'])];
+        var pBody = students.map(function(st) {
+            var marks = period.marks[st.name] || [];
+            var row = [st.name];
+            period.classes.forEach(function(cls,i){ row.push(marks[i]||'-'); });
+            var g = calcGrade(marks, period.classes.length, (period.exigency||60)/100);
+            var trend = getTrend(cname, st.name, period.id);
+            var trendStr = trend === 'up' ? '+ ' : trend === 'down' ? '-' : trend === 'same' ? '=' : '';
+            var avg = getStudentAvg(cname, st.name);
+            row.push(g !== null ? fmtGrade(g) : '-');
+            row.push(trendStr);
+            row.push(avg !== null ? fmtGrade(avg) : '-');
+            return row;
+        });
+
+        doc.autoTable({
+            head: pHead, body: pBody, startY: y,
+            margin: { left:14, right:14 },
+            headStyles: { fillColor:[99,102,241], textColor:255, fontSize:7, fontStyle:'bold', halign:'center' },
+            bodyStyles: { fontSize:7 },
+            columnStyles: { 0:{cellWidth:65} },
+            didParseCell: function(data) {
+                if(data.section==='body' && data.column.index > 0) {
+                    var v = data.cell.raw;
+                    if(v==='C') { data.cell.styles.textColor=[22,101,52]; data.cell.styles.fontStyle='bold'; data.cell.styles.halign='center'; }
+                    else if(v==='I') { data.cell.styles.textColor=[133,77,14]; data.cell.styles.fontStyle='bold'; data.cell.styles.halign='center'; }
+                    else if(v==='S') { data.cell.styles.textColor=[153,27,27]; data.cell.styles.fontStyle='bold'; data.cell.styles.halign='center'; }
+                    else {
+                        var g2 = parseFloat(v);
+                        if(!isNaN(g2)) { data.cell.styles.halign='center'; data.cell.styles.fontStyle='bold'; data.cell.styles.textColor = g2>=4.0?[22,101,52]:[153,27,27]; }
+                        else { data.cell.styles.halign='center'; }
+                    }
+                }
+            }
+        });
+    });
+
+    doc.save('nota_proceso_grupal_'+cname+'_'+today.replace(/\//g,'-')+'.pdf');
+}
+
+// ============================================================
+//  HELPERS
+// ============================================================
+function escHtml(str) {
+    return String(str).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+function escAttr(str) { return String(str).replace(/"/g,'&quot;'); }
+
+// ============================================================
+//  TOP BAR EVENTS
+// ============================================================
+document.getElementById('addCourseBtn').onclick = function() {
+    var name = prompt('Nombre del Curso (ej: 2C):');
+    if(!name||!name.trim()) return;
+    var n = name.trim().toUpperCase();
+    if(state[n]) { alert('Ya existe ese curso.'); return; }
+    state[n] = { students:[], periods:[] };
+    activeCourse = n;
+    save(); render();
+};
+
+document.getElementById('exportBtn').onclick = function() {
+    var blob = new Blob([JSON.stringify(state,null,2)], {type:'application/json'});
+    var url = URL.createObjectURL(blob);
+    var a = document.createElement('a');
+    a.href=url; a.download='respaldo_nota_proceso_'+new Date().toISOString().slice(0,10)+'.json';
+    document.body.appendChild(a); a.click(); document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+};
+
+document.getElementById('importInput').onchange = function(e) {
+    var file = e.target.files[0]; if(!file) return;
+    var reader = new FileReader();
+    reader.onload = function(ev) {
+        try {
+            var data = JSON.parse(ev.target.result);
+            if(!confirm('Importar datos? Se reemplazaran los actuales.')) return;
+            state = data; activeCourse = null;
+            save(); render();
+            alert('Datos importados correctamente.');
+        } catch(err) { alert('Archivo no valido.'); }
+    };
+    reader.readAsText(file);
+    e.target.value = '';
+};
+
+document.getElementById('clearBtn').onclick = function() {
+    if(!confirm('Borrar TODOS los datos?')) return;
+    localStorage.removeItem(STORAGE_KEY);
+    state = {}; activeCourse = null; activePeriod = {};
+    render();
+};
+
+// ============================================================
+//  INIT
+// ============================================================
+load();
+render();
+</script>
+</body>
+</html>

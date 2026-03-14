@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>4° Medio Mecánica Automotriz - Unidad 1: Professional Profile & Workplace English</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: #f5f5f5; color: #333; line-height: 1.6; }
+        .header { background: linear-gradient(135deg, #b71c1c, #d32f2f); color: white; padding: 30px; text-align: center; }
+        .header h1 { font-size: 1.8em; margin-bottom: 5px; }
+        .header h2 { font-size: 1.3em; font-weight: 300; margin-bottom: 10px; }
+        .header .subtitle { font-size: 0.95em; opacity: 0.9; }
+        .meta-info { display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; margin-top: 15px; }
+        .meta-info span { background: rgba(255,255,255,0.15); padding: 5px 15px; border-radius: 20px; font-size: 0.85em; }
+        .container { max-width: 1100px; margin: 20px auto; padding: 0 15px; }
+        .unit-overview { background: white; border-radius: 10px; padding: 25px; margin-bottom: 25px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); }
+        .unit-overview h3 { color: #b71c1c; margin-bottom: 15px; font-size: 1.2em; border-bottom: 2px solid #b71c1c; padding-bottom: 8px; }
+        .overview-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
+        .overview-item { padding: 10px; background: #ffebee; border-radius: 6px; }
+        .overview-item strong { color: #b71c1c; }
+        .overview-item ul { margin-left: 20px; margin-top: 5px; }
+        .overview-item ul li { margin-bottom: 3px; font-size: 0.9em; }
+        .clase-card { background: white; border-radius: 10px; margin-bottom: 20px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); overflow: hidden; }
+        .clase-card.evaluacion { border-left: 5px solid #c62828; }
+        .clase-header { padding: 15px 20px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px; }
+        .clase-header.normal { background: #ffcdd2; }
+        .clase-header.eval { background: #ffebee; }
+        .clase-header .clase-num { font-size: 1.1em; font-weight: 700; color: #b71c1c; }
+        .clase-header .clase-fecha { font-size: 0.85em; color: #666; }
+        .clase-header .badge { padding: 3px 10px; border-radius: 12px; font-size: 0.75em; font-weight: 600; }
+        .badge-oa { background: #ffebee; color: #b71c1c; }
+        .badge-eval { background: #ffcdd2; color: #c62828; }
+        .clase-body { padding: 20px; }
+        .objetivo { background: #fff3e0; border-left: 4px solid #ef6c00; padding: 12px 15px; margin-bottom: 15px; border-radius: 0 6px 6px 0; }
+        .objetivo strong { color: #ef6c00; }
+        .fase { margin-bottom: 12px; }
+        .fase-title { display: inline-block; padding: 3px 12px; border-radius: 4px; font-weight: 600; font-size: 0.85em; color: white; margin-bottom: 6px; }
+        .fase-inicio { background: #2e7d32; }
+        .fase-desarrollo { background: #1565c0; }
+        .fase-cierre { background: #6a1b9a; }
+        .fase-content { padding-left: 15px; font-size: 0.92em; }
+        .fase-content ol, .fase-content ul { margin-left: 15px; }
+        .fase-content li { margin-bottom: 4px; }
+        .recursos { background: #f1f8e9; padding: 10px 15px; border-radius: 6px; margin-top: 10px; font-size: 0.88em; }
+        .recursos strong { color: #33691e; }
+        .evaluacion-box { background: #fce4ec; padding: 10px 15px; border-radius: 6px; margin-top: 10px; font-size: 0.88em; }
+        .evaluacion-box strong { color: #c62828; }
+        .sugerencia { background: #e8f5e9; border-left: 4px solid #2e7d32; padding: 10px 15px; border-radius: 0 6px 6px 0; margin-top: 10px; font-size: 0.88em; }
+        .sugerencia strong { color: #2e7d32; }
+        .notas-dist { background: white; border-radius: 10px; padding: 25px; margin-bottom: 25px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); }
+        .notas-dist h3 { color: #c62828; margin-bottom: 15px; font-size: 1.1em; }
+        table.notas { width: 100%; border-collapse: collapse; }
+        table.notas th { background: #b71c1c; color: white; padding: 8px 12px; text-align: left; font-size: 0.9em; }
+        table.notas td { padding: 8px 12px; border-bottom: 1px solid #e0e0e0; font-size: 0.88em; }
+        table.notas tr:nth-child(even) { background: #ffebee; }
+        .footer { text-align: center; padding: 20px; color: #999; font-size: 0.8em; }
+        @media print {
+            body { background: white; }
+            .clase-card { break-inside: avoid; page-break-inside: avoid; box-shadow: none; border: 1px solid #ddd; }
+            .header { background: #b71c1c !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+        }
+        @media (max-width: 768px) {
+            .overview-grid { grid-template-columns: 1fr; }
+            .meta-info { flex-direction: column; align-items: center; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="header">
+    <h1>PLANIFICACIÓN CLASE A CLASE — 4° MEDIO — MECÁNICA AUTOMOTRIZ</h1>
+    <h2>Unidad 1: Professional Profile & Workplace English</h2>
+    <p class="subtitle">Inglés — Liceo Técnico Profesional — Año Escolar 2026 — Semestre 1</p>
+    <div class="meta-info">
+        <span>📅 10 marzo – 3 mayo (8 sesiones)</span>
+        <span>⏱ 8 clases de 90 min (Clases 1–8)</span>
+        <span>📚 2 hrs/semana (1 sesión)</span>
+        <span>🎯 Foco: Perfil profesional, CV en inglés, entrevista laboral, comunicación en el trabajo</span>
+    </div>
+</div>
+
+<div class="container">
+
+    <div class="unit-overview">
+        <h3>Visión General de la Unidad 1</h3>
+        <div class="overview-grid">
+            <div class="overview-item">
+                <strong>OA Basales trabajados (4° Medio):</strong>
+                <ul>
+                    <li><b>OA1:</b> Comprender textos orales y escritos que contengan información relevante para un propósito específico.</li><li><b>OA2:</b> Producir textos orales y escritos claros para comunicar información.</li><li><b>OA4:</b> Producir y comprender con fluidez textos orales y escritos claros.</li>
+                </ul>
+            </div>
+            <div class="overview-item">
+                <strong>Evaluaciones de la unidad:</strong>
+                <ul>
+            <li>Clase 5: <b>Nota 1 S1</b> — Mock Job Interview (entrevista laboral simulada). 20 pts.</li>
+        </ul>
+            </div>
+            <div class="overview-item">
+                <strong>Habilidades priorizadas:</strong>
+                <ul>
+                    <li><b>Lectura:</b> Textos técnicos avanzados, estudios de caso, manuales e informes de mecánica automotriz.</li>
+                    <li><b>Expresión Oral:</b> Entrevistas, explicaciones de procedimientos, debates y defensa de proyectos.</li>
+                </ul>
+            </div>
+            <div class="overview-item">
+                <strong>Especialidad:</strong>
+                <ul><li>Mecánica Automotriz</li></ul>
+                <strong>Nivel de los estudiantes:</strong>
+                <ul><li>A1-A2 (Básico)</li></ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==================== CLASE 1 ==================== -->
+    <div class="clase-card">
+        <div class="clase-header normal">
+            <span class="clase-num">Clase 1</span>
+            <span class="badge badge-oa">OA1</span>  
+        </div>
+        <div class="clase-body">
+            <div class="objetivo">
+                <strong>Objetivo de la clase (Bloom):</strong> Identificar vocabulario técnico avanzado en inglés relacionado con Mecánica Automotriz y describir metas profesionales a corto y largo plazo.
+            </div>
+            <div class="fase">
+                <span class="fase-title fase-inicio">INICIO (15 min)</span>
+                <div class="fase-content">
+                    <ul>
+                <li>Docente saluda en inglés y contextualiza: <em>"This is your final year. This year, English will help you prepare for your professional life in Mecánica Automotriz."</em></li>
+                <li>Activación: <em>"What are your career goals after graduation? Where do you see yourself in 5 years?"</em> — quick-write (3 min).</li>
+                <li>Se muestran 3-4 imágenes de profesionales del área trabajando en contextos internacionales.</li>
+            </ul>
+                </div>
+            </div>
+            <div class="fase">
+                <span class="fase-title fase-desarrollo">DESARROLLO (60 min)</span>
+                <div class="fase-content">
+                    <ol>
+                <li><b>Vocabulary expansion (20 min):</b> Presentación de vocabulario técnico avanzado: engine diagnostics, OBD scanner, fuel injection, turbocharger, hybrid system, torque, horsepower, alignment. Los estudiantes completan un <em>vocabulary map</em>: palabra → definición → imagen → oración de ejemplo.</li>
+                <li><b>Reading (20 min):</b> Lectura guiada de an adapted text: <em>The Modern Automotive Technician</em> — describing the evolving role of mechanics: from manual repairs to computer-assisted diagnostics, hybrid/electric vehicles. Los estudiantes subrayan vocabulario nuevo y responden: <em>"What skills does a modern mecánica automotriz professional need?"</em></li>
+                <li><b>Career mapping (15 min):</b> En parejas, los estudiantes crean un <em>"Career Pathway Map"</em>: Technical School → Internship → First Job → Specialization → Future Goal. Usan frases: <em>"First, I will... Then, I plan to... My goal is to..."</em></li>
+                <li><b>Sharing (5 min):</b> 3-4 parejas comparten sus mapas con la clase.</li>
+            </ol>
+                </div>
+            </div>
+            <div class="fase">
+                <span class="fase-title fase-cierre">CIERRE (15 min)</span>
+                <div class="fase-content">
+                    <ul>
+                <li>Ticket de salida: escribir 3 metas profesionales usando el vocabulario nuevo.</li>
+                <li>Preview de la unidad: <em>"This unit we will prepare your professional profile in English: CV, interview skills, and workplace communication."</em></li>
+            </ul>
+                </div>
+            </div>
+            <div class="recursos">
+                <strong>📦 Recursos:</strong> Imágenes de profesionales de mecánica automotriz en contextos internacionales, ficha de vocabulary map, ficha de Career Pathway Map, pizarra.
+            </div>
+            <div class="evaluacion-box">
+                <strong>📋 Evaluación:</strong> Diagnóstica informal — el docente observa nivel de vocabulario, capacidad de expresión escrita y oral comparado con 3° Medio.
+            </div>
+            
+        </div>
+    </div>
+
+    <!-- ==================== CLASE 2 ==================== -->
+    <div class="clase-card">
+        <div class="clase-header normal">
+            <span class="clase-num">Clase 2</span>
+            <span class="badge badge-oa">OA1</span> <span class="badge badge-oa">OA3</span>  
+        </div>
+        <div class="clase-body">
+            <div class="objetivo">
+                <strong>Objetivo de la clase (Bloom):</strong> Analizar un estudio de caso sobre la trayectoria profesional de un técnico de Mecánica Automotriz, identificando hitos clave, habilidades requeridas y el rol del inglés en su carrera.
+            </div>
+            <div class="fase">
+                <span class="fase-title fase-inicio">INICIO (15 min)</span>
+                <div class="fase-content">
+                    <ul>
+                <li>Warm-up: repaso de vocabulario con <em>"Word Relay"</em> — en equipos, cada estudiante dice una palabra técnica en inglés; el equipo con más palabras gana.</li>
+                <li>Pre-reading: <em>"What steps does someone take to become a successful professional in mecánica automotriz?"</em> — lluvia de ideas.</li>
+                <li>Se introduce el concepto de <em>Case Study</em> como herramienta de aprendizaje.</li>
+            </ul>
+                </div>
+            </div>
+            <div class="fase">
+                <span class="fase-title fase-desarrollo">DESARROLLO (60 min)</span>
+                <div class="fase-content">
+                    <ol>
+                <li><b>Reading (25 min):</b> Case Study: <em>From Workshop to Dealership</em> — Carlos, a Chilean automotive technician, describes his career path: vocational school, internship at a workshop, certification, and current job at a dealership. He explains how English helped him read technical manuals and attend a training in Germany. Lectura guiada con pausas. Los estudiantes completan una tabla:
+                    <ul>
+                        <li><b>Stage</b> (education, internship, first job, specialization)</li>
+                        <li><b>Skills developed</b> at each stage</li>
+                        <li><b>Role of English</b> at each stage</li>
+                        <li><b>Challenges faced</b></li>
+                    </ul>
+                </li>
+                <li><b>Comprehension (15 min):</b> 8 preguntas: 4 explícitas + 4 de análisis crítico (<em>"Why was English important for his/her career?"</em>, <em>"What would you do differently?"</em>).</li>
+                <li><b>Discussion (15 min):</b> En grupos de 3: <em>"Compare this career path to your own plans. What is similar? What is different?"</em> Usar: <em>"Like him/her, I will... Unlike him/her, I plan to... I agree/disagree that..."</em></li>
+                <li><b>Wrap-up (5 min):</b> Plenario: 2-3 grupos comparten conclusiones.</li>
+            </ol>
+                </div>
+            </div>
+            <div class="fase">
+                <span class="fase-title fase-cierre">CIERRE (15 min)</span>
+                <div class="fase-content">
+                    <ul>
+                <li>Reflexión escrita (3 líneas): <em>"What is the most important lesson from this case study for my own career?"</em></li>
+                <li>Preview: <em>"Next class, we will build your professional CV in English."</em></li>
+            </ul>
+                </div>
+            </div>
+            <div class="recursos">
+                <strong>📦 Recursos:</strong> Texto impreso del estudio de caso (1.5 páginas), ficha de análisis con tabla, preguntas de comprensión.
+            </div>
+            <div class="evaluacion-box">
+                <strong>📋 Evaluación:</strong> Formativa — revisión de tabla de análisis y calidad de respuestas de comprensión.
+            </div>
+            
+        </div>
+    </div>
+
+    <!-- ==================== CLASE 3 ==================== -->
+    <div class="clase-card">
+        <div class="clase-header normal">
+            <span class="clase-num">Clase 3</span>
+            <span class="badge badge-oa">OA2</span> <span class="badge badge-oa">OA4</span>  
+        </div>
+        <div class="clase-body">
+            <div class="objetivo">
+                <strong>Objetivo de la clase (Bloom):</strong> Producir un currículum vitae en inglés adaptado al perfil profesional de Mecánica Automotriz, aplicando formato estándar y vocabulario técnico apropiado.
+            </div>
+            <div class="fase">
+                <span class="fase-title fase-inicio">INICIO (15 min)</span>
+                <div class="fase-content">
+                    <ul>
+                <li>Docente muestra 2 CVs reales (adaptados): uno bien hecho y uno con errores. <em>"Which CV would you hire? Why?"</em></li>
+                <li>Se identifican las secciones de un CV: Personal Information, Objective, Education, Work Experience, Skills, Languages, References.</li>
+                <li>Vocabulario clave: <em>objective, proficient, experienced in, certified, reference, internship, vocational training</em>.</li>
+            </ul>
+                </div>
+            </div>
+            <div class="fase">
+                <span class="fase-title fase-desarrollo">DESARROLLO (60 min)</span>
+                <div class="fase-content">
+                    <ol>
+                <li><b>Model analysis (15 min):</b> Los estudiantes analizan un CV modelo de un técnico de mecánica automotriz en inglés. Identifican: secciones, verbos de acción (<em>operated, maintained, installed, designed, programmed</em>), y vocabulario técnico.</li>
+                <li><b>CV writing workshop (35 min):</b> Cada estudiante redacta su propio CV usando una plantilla guiada:
+                    <ul>
+                        <li><b>Objective:</b> <em>"To obtain a position as a [job title] where I can apply my skills in [area]."</em></li>
+                        <li><b>Education:</b> Liceo TP, especialidad Mecánica Automotriz.</li>
+                        <li><b>Skills:</b> Al menos 5 habilidades técnicas usando automotive technician CV: technical skills (engine diagnostics, brake systems, electronic fuel injection), certifications (ASE equivalent), workshop experience.</li>
+                        <li><b>Languages:</b> Spanish (native), English (basic-intermediate).</li>
+                    </ul>
+                </li>
+                <li><b>Peer review (10 min):</b> En parejas, intercambian CVs y dan feedback usando una checklist: ¿Tiene todas las secciones? ¿Los verbos están bien usados? ¿La información es clara?</li>
+            </ol>
+                </div>
+            </div>
+            <div class="fase">
+                <span class="fase-title fase-cierre">CIERRE (15 min)</span>
+                <div class="fase-content">
+                    <ul>
+                <li>3 voluntarios comparten su <em>Objective</em> con la clase.</li>
+                <li>Tarea: completar y mejorar el CV para la próxima semana.</li>
+            </ul>
+                </div>
+            </div>
+            <div class="recursos">
+                <strong>📦 Recursos:</strong> CV modelo impreso de técnico en mecánica automotriz, plantilla de CV en blanco, checklist de peer review, pizarra con verbos de acción.
+            </div>
+            <div class="evaluacion-box">
+                <strong>📋 Evaluación:</strong> Formativa — revisión del borrador de CV y calidad del peer review.
+            </div>
+            
+        </div>
+    </div>
+
+    <!-- ==================== CLASE 4 ==================== -->
+    <div class="clase-card">
+        <div class="clase-header normal">
+            <span class="clase-num">Clase 4</span>
+            <span class="badge badge-oa">OA2</span> <span class="badge badge-oa">OA4</span>  
+        </div>
+        <div class="clase-body">
+            <div class="objetivo">
+                <strong>Objetivo de la clase (Bloom):</strong> Aplicar estrategias de comunicación oral para responder preguntas frecuentes de entrevista laboral en inglés en el contexto de Mecánica Automotriz.
+            </div>
+            <div class="fase">
+                <span class="fase-title fase-inicio">INICIO (15 min)</span>
+                <div class="fase-content">
+                    <ul>
+                <li>Warm-up: <em>"Have you ever had a job interview? What questions did they ask?"</em> — Lluvia de ideas en español/inglés.</li>
+                <li>Docente presenta el contexto: <em>"Imagine you are applying for your first job in mecánica automotriz. The interview is in English. What do you need to know?"</em></li>
+                <li>Se presentan las 3 fases de una entrevista: Introduction, Questions & Answers, Closing.</li>
+            </ul>
+                </div>
+            </div>
+            <div class="fase">
+                <span class="fase-title fase-desarrollo">DESARROLLO (60 min)</span>
+                <div class="fase-content">
+                    <ol>
+                <li><b>Common questions (15 min):</b> Docente presenta las 8 preguntas más comunes:
+                    <ul>
+                        <li><em>"Tell me about yourself."</em></li>
+                        <li><em>"Why do you want this job?"</em></li>
+                        <li><em>"What are your strengths/weaknesses?"</em></li>
+                        <li><em>"What experience do you have with engine diagnostics?, Can you describe a difficult repair you completed?, What safety procedures do you follow?"</em></li>
+                    </ul>
+                    Los estudiantes practican respuestas modelo usando sentence frames.
+                </li>
+                <li><b>Model interview (10 min):</b> Docente y un estudiante voluntario modelan una entrevista completa frente a la clase.</li>
+                <li><b>Practice in pairs (25 min):</b> Rol-play: un estudiante es el entrevistador, el otro el candidato. Se turnan. Usan las preguntas de la ficha y sus CVs como referencia. El docente circula y da feedback.</li>
+                <li><b>Tips & strategies (10 min):</b> Docente presenta consejos: mantener contacto visual, usar <em>"I believe..."</em>, no decir <em>"I don't know"</em> sino <em>"I am learning about..."</em>, agradecer al final.</li>
+            </ol>
+                </div>
+            </div>
+            <div class="fase">
+                <span class="fase-title fase-cierre">CIERRE (15 min)</span>
+                <div class="fase-content">
+                    <ul>
+                <li>Cada estudiante escribe su mejor respuesta a <em>"Tell me about yourself"</em> (5 líneas).</li>
+                <li>Preview: <em>"Next class, you will do a mock interview for your first grade."</em></li>
+            </ul>
+                </div>
+            </div>
+            <div class="recursos">
+                <strong>📦 Recursos:</strong> Ficha con preguntas de entrevista para mecánica automotriz, CVs de los estudiantes (clase anterior), sentence frames, tips de entrevista.
+            </div>
+            <div class="evaluacion-box">
+                <strong>📋 Evaluación:</strong> Formativa — observación de práctica de rol-play y calidad de respuestas.
+            </div>
+            
+        </div>
+    </div>
+
+    <!-- ==================== CLASE 5 ==================== -->
+    <div class="clase-card evaluacion">
+        <div class="clase-header eval">
+            <span class="clase-num">Clase 5</span>
+            <span class="badge badge-oa">OA2</span> <span class="badge badge-oa">OA4</span>  <span class="badge badge-eval">EVALUACIÓN</span>
+        </div>
+        <div class="clase-body">
+            <div class="objetivo">
+                <strong>Objetivo de la clase (Bloom):</strong> Producir respuestas orales coherentes y pertinentes en una simulación de entrevista laboral en inglés para un puesto técnico en Mecánica Automotriz.
+            </div>
+            <div class="fase">
+                <span class="fase-title fase-inicio">INICIO (15 min)</span>
+                <div class="fase-content">
+                    <ul>
+                <li>Docente explica la dinámica: entrevista individual de 5-6 minutos, con 4 preguntas (2 generales + 2 técnicas). Se puede usar el CV como apoyo.</li>
+                <li>Se repasan los criterios de evaluación: pronunciación (4 pts), vocabulario técnico (4 pts), coherencia de respuestas (4 pts), fluidez (4 pts), presentación personal (4 pts) = 20 pts.</li>
+                <li>Mientras esperan su turno, los demás practican en silencio con un compañero.</li>
+            </ul>
+                </div>
+            </div>
+            <div class="fase">
+                <span class="fase-title fase-desarrollo">DESARROLLO (60 min)</span>
+                <div class="fase-content">
+                    <ol>
+                <li><b>Mock interviews (55 min):</b> El docente llama a cada estudiante individualmente. Entrevista de 5-6 minutos:
+                    <ul>
+                        <li>Q1: <em>"Tell me about yourself and your education."</em></li>
+                        <li>Q2: <em>"Why are you interested in working in mecánica automotriz?"</em></li>
+                        <li>Q3-Q4: Preguntas técnicas específicas de la especialidad.</li>
+                    </ul>
+                </li>
+                <li><b>Peer practice (while waiting):</b> Los estudiantes que esperan turno practican en parejas con preguntas adicionales de la ficha.</li>
+                <li><b>Self-reflection (5 min after interview):</b> Cada estudiante completa una ficha: <em>"I felt confident when... I struggled with... Next time I will..."</em></li>
+            </ol>
+                </div>
+            </div>
+            <div class="fase">
+                <span class="fase-title fase-cierre">CIERRE (15 min)</span>
+                <div class="fase-content">
+                    <ul>
+                <li>Retroalimentación general (sin notas individuales): aspectos positivos y áreas de mejora del grupo.</li>
+                <li><em>"You all did great! Remember, practice makes perfect. These skills will help you in real interviews."</em></li>
+            </ul>
+                </div>
+            </div>
+            <div class="recursos">
+                <strong>📦 Recursos:</strong> Rúbrica de evaluación (5 criterios × 4 pts = 20), CVs de los estudiantes, ficha de autorreflexión, ficha de práctica entre pares.
+            </div>
+            <div class="evaluacion-box">
+                <strong>📋 Evaluación:</strong> <b>SUMATIVA — Nota 1 Semestre 1:</b> Mock Job Interview. Rúbrica de 5 criterios × 4 puntos = 20 pts. Exigencia 60%.
+            </div>
+            <div class="sugerencia"><strong>💡 Sugerencia:</strong> <b>Consideración:</b> Para estudiantes con alta ansiedad, permitir que graben su entrevista en video como alternativa. Mantener los mismos criterios.</div>
+        </div>
+    </div>
+
+    <!-- ==================== CLASE 6 ==================== -->
+    <div class="clase-card">
+        <div class="clase-header normal">
+            <span class="clase-num">Clase 6</span>
+            <span class="badge badge-oa">OA2</span> <span class="badge badge-oa">OA4</span>  
+        </div>
+        <div class="clase-body">
+            <div class="objetivo">
+                <strong>Objetivo de la clase (Bloom):</strong> Producir correos electrónicos y mensajes formales en inglés aplicables al contexto laboral de Mecánica Automotriz, utilizando registro apropiado.
+            </div>
+            <div class="fase">
+                <span class="fase-title fase-inicio">INICIO (15 min)</span>
+                <div class="fase-content">
+                    <ul>
+                <li>Docente muestra 2 emails: uno formal correcto y uno informal/inapropiado para el trabajo. <em>"Which one is professional? Why?"</em></li>
+                <li>Se introduce vocabulario de comunicación formal: <em>Dear, I am writing to, Please find attached, Kind regards, I would like to request</em>.</li>
+                <li>Se comparan registros: formal vs informal (<em>Dear Sir → Hey, I would like → I want, Kind regards → Bye</em>).</li>
+            </ul>
+                </div>
+            </div>
+            <div class="fase">
+                <span class="fase-title fase-desarrollo">DESARROLLO (60 min)</span>
+                <div class="fase-content">
+                    <ol>
+                <li><b>Email structure (15 min):</b> Análisis de la estructura: Subject line, Greeting, Opening, Body, Closing, Signature. Los estudiantes etiquetan cada parte en un email modelo.</li>
+                <li><b>Guided writing (20 min):</b> Los estudiantes escriben 2 emails usando plantillas:
+                    <ul>
+                        <li>Email 1: Solicitar información sobre una vacante laboral en mecánica automotriz.</li>
+                        <li>Email 2: Confirmar asistencia a una entrevista de trabajo.</li>
+                    </ul>
+                </li>
+                <li><b>WhatsApp/Teams messages (10 min):</b> Práctica de mensajes semi-formales para el trabajo: reportar un problema, pedir un día libre, confirmar una reunión.</li>
+                <li><b>Peer review (15 min):</b> Intercambian emails y revisan con checklist: ¿Tiene saludo formal? ¿El propósito es claro? ¿El cierre es apropiado?</li>
+            </ol>
+                </div>
+            </div>
+            <div class="fase">
+                <span class="fase-title fase-cierre">CIERRE (15 min)</span>
+                <div class="fase-content">
+                    <ul>
+                <li>2-3 estudiantes leen su mejor email en voz alta.</li>
+                <li>Resumen: <em>"Professional communication in English can open doors. Always check your spelling and tone."</em></li>
+            </ul>
+                </div>
+            </div>
+            <div class="recursos">
+                <strong>📦 Recursos:</strong> Emails modelo impresos (formal e informal), plantilla de email, ficha de mensajes, checklist de peer review.
+            </div>
+            <div class="evaluacion-box">
+                <strong>📋 Evaluación:</strong> Formativa — revisión de emails y calidad del peer review.
+            </div>
+            
+        </div>
+    </div>
+
+    <!-- ==================== CLASE 7 ==================== -->
+    <div class="clase-card">
+        <div class="clase-header normal">
+            <span class="clase-num">Clase 7</span>
+            <span class="badge badge-oa">OA1</span> <span class="badge badge-oa">OA3</span>  
+        </div>
+        <div class="clase-body">
+            <div class="objetivo">
+                <strong>Objetivo de la clase (Bloom):</strong> Comprender y evaluar críticamente escenarios laborales presentados en un video en inglés sobre el campo de Mecánica Automotriz.
+            </div>
+            <div class="fase">
+                <span class="fase-title fase-inicio">INICIO (15 min)</span>
+                <div class="fase-content">
+                    <ul>
+                <li>Warm-up: <em>"What does a typical workday look like for a professional in mecánica automotriz?"</em> — 3 estudiantes comparten.</li>
+                <li>Pre-viewing: se entregan 5 preguntas guía y vocabulario clave del video.</li>
+                <li>Predicción: a partir del título del video, <em>"What do you think we will see?"</em></li>
+            </ul>
+                </div>
+            </div>
+            <div class="fase">
+                <span class="fase-title fase-desarrollo">DESARROLLO (60 min)</span>
+                <div class="fase-content">
+                    <ol>
+                <li><b>Video viewing (15 min):</b> a YouTube video about a day in a modern car dealership service department (adapted, 5 min). Primera reproducción completa; segunda con pausas para preguntas.</li>
+                <li><b>Comprehension tasks (15 min):</b> Responder preguntas guía. Trabajo individual, luego comparación en parejas.</li>
+                <li><b>Critical analysis (20 min):</b> En grupos de 3, discutir:
+                    <ul>
+                        <li><em>"What impressed you most about the workplace shown?"</em></li>
+                        <li><em>"Would you like to work in that environment? Why or why not?"</em></li>
+                        <li><em>"What skills from the video do you already have? Which ones do you need to develop?"</em></li>
+                    </ul>
+                    Cada grupo prepara una mini-presentación oral (1 min).
+                </li>
+                <li><b>Group presentations (10 min):</b> 3-4 grupos presentan sus conclusiones.</li>
+            </ol>
+                </div>
+            </div>
+            <div class="fase">
+                <span class="fase-title fase-cierre">CIERRE (15 min)</span>
+                <div class="fase-content">
+                    <ul>
+                <li>Resumen colectivo: <em>"What is the most important skill for the workplace?"</em> — votación.</li>
+                <li>Vocabulario nuevo del video registrado en cuadernos.</li>
+            </ul>
+                </div>
+            </div>
+            <div class="recursos">
+                <strong>📦 Recursos:</strong> Video sobre contexto laboral en mecánica automotriz (YouTube, 5 min adaptado), preguntas guía impresas, pizarra.
+            </div>
+            <div class="evaluacion-box">
+                <strong>📋 Evaluación:</strong> Formativa — calidad de análisis crítico y participación en presentaciones grupales.
+            </div>
+            
+        </div>
+    </div>
+
+    <!-- ==================== CLASE 8 ==================== -->
+    <div class="clase-card">
+        <div class="clase-header normal">
+            <span class="clase-num">Clase 8</span>
+            <span class="badge badge-oa">OA1</span> <span class="badge badge-oa">OA4</span>  
+        </div>
+        <div class="clase-body">
+            <div class="objetivo">
+                <strong>Objetivo de la clase (Bloom):</strong> Comprender y producir instrucciones de seguridad laboral en inglés específicas para el contexto de Mecánica Automotriz.
+            </div>
+            <div class="fase">
+                <span class="fase-title fase-inicio">INICIO (15 min)</span>
+                <div class="fase-content">
+                    <ul>
+                <li>Docente muestra señales de seguridad en inglés (Warning, Danger, Caution, Emergency Exit) y pregunta: <em>"Where have you seen these signs? What do they mean?"</em></li>
+                <li>Vocabulario de seguridad: <em>safety goggles, hard hat, fire extinguisher, first aid kit, hazard, emergency, prohibited, mandatory</em>.</li>
+                <li>Se introduce el concepto de <em>Safety Data Sheets (SDS)</em> y <em>Standard Operating Procedures (SOPs)</em>.</li>
+            </ul>
+                </div>
+            </div>
+            <div class="fase">
+                <span class="fase-title fase-desarrollo">DESARROLLO (60 min)</span>
+                <div class="fase-content">
+                    <ol>
+                <li><b>Reading safety protocols (20 min):</b> Texto adaptado: procedimientos de seguridad específicos para mecánica automotriz: jack stand safety, chemical handling (coolant, brake fluid), PPE in automotive workshops, lifting procedures. Los estudiantes leen e identifican: hazards, required PPE, emergency procedures.</li>
+                <li><b>Creating safety instructions (20 min):</b> En parejas, los estudiantes redactan 5 instrucciones de seguridad en inglés para su taller/laboratorio usando imperativos: <em>"Always wear...", "Never touch...", "In case of emergency..."</em></li>
+                <li><b>Safety scenario role-play (15 min):</b> Cada pareja actúa un escenario: explicar un procedimiento de seguridad a un colega nuevo que solo habla inglés.</li>
+                <li><b>Sharing (5 min):</b> Mejores instrucciones se comparten con la clase.</li>
+            </ol>
+                </div>
+            </div>
+            <div class="fase">
+                <span class="fase-title fase-cierre">CIERRE (15 min)</span>
+                <div class="fase-content">
+                    <ul>
+                <li>Quiz rápido: 5 preguntas de seguridad en inglés (oral, grupal).</li>
+                <li><em>"Safety is universal. Knowing safety vocabulary in English can save lives."</em></li>
+            </ul>
+                </div>
+            </div>
+            <div class="recursos">
+                <strong>📦 Recursos:</strong> Señales de seguridad impresas, texto de protocolos de seguridad para mecánica automotriz, fichas para redacción, tarjetas de escenarios.
+            </div>
+            <div class="evaluacion-box">
+                <strong>📋 Evaluación:</strong> Formativa — calidad de instrucciones escritas y participación en role-play.
+            </div>
+            
+        </div>
+    </div>
+
+    <div class="footer">
+        <p>Planificación elaborada para Liceo Técnico Profesional — Inglés 4° Medio — Especialidad: Mecánica Automotriz — 2026</p>
+        <p>Basada en OA de Bases Curriculares 3°-4° Medio (Decreto N°193/2019) y Programa de Estudio (Decreto N°496/2020)</p>
+    </div>
+</div>
+</body>
+</html>

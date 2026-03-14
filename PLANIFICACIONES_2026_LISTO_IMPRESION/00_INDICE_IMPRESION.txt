@@ -1,0 +1,88 @@
+PLANIFICACIONES 2026 — ÍNDICE DE IMPRESIÓN
+
+Ruta base:
+c:\Users\crist\OneDrive\Escritorio\2026\PLANIFICACIONES_2026_LISTO_IMPRESION
+
+Archivo adicional:
+- 02_CALENDARIO_EVALUACIONES_2026.txt
+- 03_CALENDARIO_EVALUACIONES_2026.csv
+
+====================================================
+1° MEDIO (8 archivos)
+====================================================
+A) Patrón Lu+Vi (1°A, 1°C, 1°D)
+- planificacion_unidad1_lu_vi.html
+- planificacion_unidad2_lu_vi.html
+- planificacion_unidad3_lu_vi.html
+- planificacion_unidad4_lu_vi.html
+
+B) Patrón Lu+Ju (1°B, 1°E)
+- planificacion_unidad1_lu_ju.html
+- planificacion_unidad2_lu_ju.html
+- planificacion_unidad3_lu_ju.html
+- planificacion_unidad4_lu_ju.html
+
+====================================================
+3° MEDIO (20 archivos)
+====================================================
+Especialidades: Industrial, Automotriz, Electricidad, Gráfica, Electrónica
+Unidades: 1, 2, 3, 4
+Total: 5 especialidades x 4 unidades = 20 archivos
+
+Carpetas:
+- 3ro Medio\Unidad 1
+- 3ro Medio\Unidad 2
+- 3ro Medio\Unidad 3
+- 3ro Medio\Unidad 4
+
+====================================================
+4° MEDIO (16 archivos)
+====================================================
+Especialidades: Industrial, Automotriz, Electricidad, Electrónica
+(NOTA: 4°D Gráfica no se incluye)
+Unidades: 1, 2, 3, 4
+Total: 4 especialidades x 4 unidades = 16 archivos
+
+Carpetas:
+- 4to Medio\Unidad 1
+- 4to Medio\Unidad 2
+- 4to Medio\Unidad 3
+- 4to Medio\Unidad 4
+
+====================================================
+RESUMEN DE SESIONES (PARA CARGA EN PLATAFORMA)
+====================================================
+
+1° MEDIO
+- U1 (4 mar – 3 may): Lu+Vi = 15 | Lu+Ju = 17
+- U2 (4 may – 21 jun): Lu+Vi = 14 | Lu+Ju = 13
+- U3 (6 jul – 20 sep): Lu+Vi = 20 | Lu+Ju = 19  (sin clases 14–20 sept.)
+- U4 (21 sep – 12 dic): Lu+Vi = 20 | Lu+Ju = 20
+
+3° MEDIO (Mi/Ju)
+- U1 (4 mar – 3 may): 9 sesiones
+- U2 (4 may – 21 jun): 7 sesiones + 1 opcional para patrón jueves
+- U3 (6 jul – 20 sep): 10 sesiones + 1 opcional para patrón jueves (sin clases 14–20 sept.)
+- U4 (21 sep – 12 dic): 12 sesiones
+
+4° MEDIO (Martes, sin 4°D)
+- U1 (10 mar – 3 may): 8 sesiones
+- U2 (4 may – 18 jun): 7 sesiones
+- U3 (6 jul – 30 ago): 8 sesiones
+- U4 (31 ago – 13 nov): 10 sesiones (sin clases 14–20 sept.)
+
+====================================================
+SUGERENCIA DE IMPRESIÓN
+====================================================
+1) Abrir cada archivo HTML en navegador (Chrome/Edge).
+2) Imprimir en PDF o impresora física.
+3) Escala recomendada: "Ajustar" o 95%-100%.
+4) Activar "Imprimir fondos" solo si quieres conservar todos los colores.
+
+====================================================
+RESUMEN FINAL
+====================================================
+Archivos totales listos: 44
+- 1° Medio: 8
+- 3° Medio: 20
+- 4° Medio: 16

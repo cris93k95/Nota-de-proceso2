@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Walkthrough Planificaciones 2026</title>
+  <style>
+    body{font-family:Segoe UI,Arial,sans-serif;background:#f4f6f8;color:#1f2937;margin:0}
+    .wrap{max-width:1100px;margin:0 auto;padding:24px}
+    .hero{background:linear-gradient(135deg,#0f172a,#1e3a8a);color:#fff;padding:26px;border-radius:14px}
+    .hero h1{margin:0 0 8px;font-size:1.9rem}
+    .hero p{margin:0;opacity:.92}
+    .card{background:#fff;border-radius:12px;padding:20px;margin-top:18px;box-shadow:0 2px 10px rgba(0,0,0,.06)}
+    h2{margin:0 0 12px;font-size:1.25rem}
+    h3{margin:14px 0 8px;font-size:1.05rem}
+    ul{margin:8px 0 0 22px}
+    li{margin:6px 0}
+    table{width:100%;border-collapse:collapse;margin-top:10px;font-size:.95rem}
+    th,td{border:1px solid #e5e7eb;padding:9px;vertical-align:top}
+    th{background:#f9fafb;text-align:left}
+    .ok{display:inline-block;background:#dcfce7;color:#166534;padding:3px 9px;border-radius:999px;font-size:.78rem;font-weight:700}
+    .tag{display:inline-block;background:#e0e7ff;color:#3730a3;padding:3px 9px;border-radius:999px;font-size:.78rem;font-weight:700}
+    code{background:#f3f4f6;padding:2px 6px;border-radius:6px}
+    .small{font-size:.92rem;color:#4b5563}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <section class="hero">
+      <h1>Walkthrough — Planificaciones Inglés TP 2026</h1>
+      <p>Estado actualizado del trabajo de planificaciones (1°, 3° y 4° medio) con calendario 2026, feriados Chile y restricciones institucionales.</p>
+      <p class="small" style="color:#cbd5e1;margin-top:8px;">Fecha de actualización: 4 de marzo de 2026</p>
+    </section>
+
+    <section class="card">
+      <h2>1) Criterios aplicados</h2>
+      <ul>
+        <li>Ventanas de unidades usadas:
+          <ul>
+            <li>U1: 4 marzo – 3 mayo</li>
+            <li>U2: 4 mayo – 21 junio</li>
+            <li>U3: 6 julio – 20 septiembre (en 4° medio hasta 30 agosto)</li>
+            <li>U4: 21 septiembre – 12 diciembre (en 4° medio: 31 agosto – 13 noviembre)</li>
+          </ul>
+        </li>
+        <li>Semana sin clases considerada: 14 al 18 de septiembre.</li>
+        <li>3° medio: se planifica con el número mayor de sesiones y se marca sesión opcional para patrón de jueves cuando corresponde.</li>
+        <li>1° medio: se mantienen 5 notas del primer semestre como <b>2 notas en U1 + 3 notas en U2</b>.</li>
+        <li>4° medio: solo cursos A, B, C y E (sin 4°D Gráfica).</li>
+      </ul>
+    </section>
+
+    <section class="card">
+      <h2>2) Resultado por nivel</h2>
+
+      <h3>1° Medio</h3>
+      <span class="ok">Completado</span>
+      <table>
+        <tr><th>Versión</th><th>U1</th><th>U2</th><th>U3</th><th>U4</th><th>Total</th></tr>
+        <tr><td>Lu+Vi (1°A, 1°C, 1°D)</td><td>13</td><td>13</td><td>20</td><td>22</td><td>68 + intro</td></tr>
+        <tr><td>Lu+Ju (1°B, 1°E)</td><td>16</td><td>13</td><td>19</td><td>23</td><td>71 + intro</td></tr>
+      </table>
+      <p class="small">Se mantienen archivos base por unidad y además variantes por patrón horario (<code>_lu_vi</code> y <code>_lu_ju</code>).</p>
+
+      <h3>3° Medio</h3>
+      <span class="ok">Completado</span>
+      <table>
+        <tr><th>Unidad</th><th>Sesiones planificadas</th><th>Nota</th></tr>
+        <tr><td>U1</td><td>8</td><td>Ajustada desde 9 a 8 sesiones reales</td></tr>
+        <tr><td>U2</td><td>7</td><td>Se marca 1 sesión opcional para patrón jueves</td></tr>
+        <tr><td>U3</td><td>10</td><td>Se marca 1 sesión opcional para patrón jueves</td></tr>
+        <tr><td>U4</td><td>12</td><td>Tramo hasta 12 de diciembre</td></tr>
+      </table>
+
+      <h3>4° Medio</h3>
+      <span class="ok">Completado</span>
+      <table>
+        <tr><th>Unidad</th><th>Rango</th><th>Sesiones</th></tr>
+        <tr><td>U1</td><td>10 marzo – 3 mayo</td><td>7</td></tr>
+        <tr><td>U2</td><td>4 mayo – 18 junio</td><td>7</td></tr>
+        <tr><td>U3</td><td>6 julio – 30 agosto</td><td>8</td></tr>
+        <tr><td>U4</td><td>31 agosto – 13 noviembre</td><td>10</td></tr>
+      </table>
+      <p class="small">Especialidades activas: Industrial, Automotriz, Electricidad y Electrónica.</p>
+    </section>
+
+    <section class="card">
+      <h2>3) Scripts y archivos clave</h2>
+      <ul>
+        <li><span class="tag">Script</span> <code>generate_1ro_medio_variantes.py</code> — genera variantes Lu+Vi / Lu+Ju para U1–U4.</li>
+        <li><span class="tag">Script</span> <code>generate_3ro_medio.py</code> — genera U1–U4 para 5 especialidades con sesiones opcionales de jueves donde aplica.</li>
+        <li><span class="tag">Script</span> <code>generate_4to_medio.py</code> — genera U1–U4 para 4 especialidades (sin Gráfica).</li>
+      </ul>
+
+      <h3>Salidas actuales</h3>
+      <ul>
+        <li><code>1ro Medio/Unidad */planificacion_unidad*.html</code> + variantes <code>_lu_vi</code> y <code>_lu_ju</code>.</li>
+        <li><code>3ro Medio/Unidad */planificacion_u*_*.html</code> (Automotriz, Electricidad, Electrónica, Gráfica, Industrial).</li>
+        <li><code>4to Medio/Unidad */planificacion_u*_*.html</code> (Automotriz, Electricidad, Electrónica, Industrial).</li>
+      </ul>
+    </section>
+
+    <section class="card">
+      <h2>4) Procedimiento de regeneración</h2>
+      <ol>
+        <li>Revisar o ajustar parámetros en los scripts generadores.</li>
+        <li>Ejecutar en este orden:
+          <ul>
+            <li><code>python generate_1ro_medio_variantes.py</code></li>
+            <li><code>python generate_3ro_medio.py</code></li>
+            <li><code>python generate_4to_medio.py</code></li>
+          </ul>
+        </li>
+        <li>Validar meta-info (fechas/sesiones) en una muestra por nivel.</li>
+      </ol>
+    </section>
+
+    <section class="card">
+      <h2>5) Estado final</h2>
+      <p><span class="ok">Planificaciones ajustadas y operativas</span></p>
+      <ul>
+        <li>Calendario y fechas institucionales integradas.</li>
+        <li>Diferencias por patrón horario resueltas en 1° medio.</li>
+        <li>Compresión de U1 en 3° medio y manejo de opcionales implementado.</li>
+        <li>4° medio acotado a cursos que realmente imparte el docente (sin 4°D).</li>
+      </ul>
+    </section>
+  </div>
+</body>
+</html>
