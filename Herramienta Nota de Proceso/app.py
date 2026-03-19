@@ -793,25 +793,15 @@ def _normalize_course_name(sheet_name: str) -> str:
 @app.route("/api/bulk-upload-excel", methods=["POST"])
 @login_required
 def api_bulk_upload_excel():
-    import sys
-    print("[BULK] === Bulk upload started ===", flush=True)
     try:
         file = request.files.get("file")
         if not file:
-            print("[BULK] No file received", flush=True)
             return jsonify({"error": "Archivo requerido"}), 400
 
-        print(f"[BULK] File received: {file.filename}", flush=True)
-        file_bytes = file.read()
-        print(f"[BULK] File size: {len(file_bytes)} bytes", flush=True)
-
         try:
-            wb = load_workbook(filename=io.BytesIO(file_bytes), data_only=True)
+            wb = load_workbook(filename=io.BytesIO(file.read()), data_only=True)
         except Exception as e:
-            print(f"[BULK] Error loading workbook: {e}", flush=True)
             return jsonify({"error": f"No se pudo leer el archivo Excel: {e}"}), 400
-
-        print(f"[BULK] Sheets: {wb.sheetnames}", flush=True)
 
         # Parse all sheets (skip RESUMEN)
         courses_data: dict[str, list[str]] = {}
@@ -821,7 +811,6 @@ def api_bulk_upload_excel():
             ws = wb[sheet_name]
             course_code = _normalize_course_name(sheet_name)
             if not course_code:
-                print(f"[BULK] Skipping sheet '{sheet_name}' (empty course code)", flush=True)
                 continue
             students: list[str] = []
             for row in ws.iter_rows(min_row=5, max_col=5):
@@ -834,19 +823,15 @@ def api_bulk_upload_excel():
                 name = str(cell_e).strip()
                 if name:
                     students.append(name)
-            print(f"[BULK] Sheet '{sheet_name}' -> '{course_code}': {len(students)} students", flush=True)
             if students:
                 courses_data[course_code] = students
 
         if not courses_data:
-            print("[BULK] No courses/students found!", flush=True)
             return jsonify({"error": "No se encontraron cursos/estudiantes en el archivo"}), 400
 
-        print(f"[BULK] Total courses to process: {len(courses_data)}", flush=True)
         details: list[dict] = []
 
         def mut(state):
-            print(f"[BULK] mut() called, current courses: {list(state.get('courses', {}).keys())}", flush=True)
             total_created = 0
             total_added = 0
             for course_code, student_names in sorted(courses_data.items()):
@@ -865,19 +850,13 @@ def api_bulk_upload_excel():
                         added += 1
                 total_added += added
                 details.append({"course": course_code, "created": created, "added": added, "total": len(course["students"])})
-            print(f"[BULK] mut() done: created={total_created}, added={total_added}", flush=True)
-            print(f"[BULK] courses in state after mut: {list(state.get('courses', {}).keys())}", flush=True)
             return {"ok": True, "courses_created": total_created, "students_added": total_added, "details": details}
 
         result = update_state(mut)
-        print(f"[BULK] update_state returned: {type(result)} - {result}", flush=True)
         if isinstance(result, tuple):
             return jsonify(result[0]), result[1]
         return jsonify(result)
     except Exception as e:
-        import traceback
-        print(f"[BULK] UNHANDLED ERROR: {e}", flush=True)
-        traceback.print_exc()
         return jsonify({"error": f"Error interno: {e}"}), 500
 
 
