@@ -164,7 +164,8 @@ function buildCoursePanel(courseName) {
   const students = (course.students || []).filter((s) => s.active !== false).sort((a, b) => a.name.localeCompare(b.name));
 
   html += `<div class="overflow-x-auto"><table class="w-full text-sm"><thead><tr class="border-b border-slate-200">
-    <th class="text-left p-3 font-semibold text-slate-600 sticky left-0 bg-white z-10 min-w-56">Estudiante</th>`;
+    <th class="text-center p-3 font-semibold text-slate-600 sticky left-0 bg-white z-10 w-10">N°</th>
+    <th class="text-left p-3 font-semibold text-slate-600 bg-white min-w-48">Estudiante</th>`;
 
   classes.forEach((cls, i) => {
     html += `<th class="p-2 text-center font-semibold text-slate-500 min-w-28">
@@ -179,7 +180,7 @@ function buildCoursePanel(courseName) {
     <th class="p-3 text-center font-semibold text-slate-600 min-w-20">Prom.</th>
   </tr></thead><tbody>`;
 
-  students.forEach((st) => {
+  students.forEach((st, idx) => {
     const marks = period.marks?.[st.name] || [];
     const g = studentPeriodGrade(course, period, st.name);
     const avg = studentAvg(course, st.name);
@@ -187,7 +188,10 @@ function buildCoursePanel(courseName) {
     const aColor = avg !== null ? (avg >= 4.0 ? "text-blue-500" : "text-red-500") : "text-slate-300";
 
     html += `<tr class="border-b border-slate-100">
-      <td class="p-3 sticky left-0 bg-white z-10">
+      <td class="p-3 text-center sticky left-0 bg-white z-10">
+        <span class="text-xs font-semibold text-slate-400">${idx + 1}</span>
+      </td>
+      <td class="p-3 bg-white">
         <div class="flex items-center justify-between gap-2">
           <span class="font-medium text-slate-800 text-sm">${esc(st.name)}</span>
           <button class="remove-student-btn text-slate-300 hover:text-red-400 text-xs" data-course="${esc(courseName)}" data-student="${esc(st.name)}">&times;</button>
