@@ -304,14 +304,57 @@ function bindPanel(courseName) {
     await loadState();
   });
 
-  panel.querySelectorAll(".mark-btn").forEach((btn) => btn.onclick = async () => {
+  panel.querySelectorAll(".mark-btn").forEach((btn) => btn.onclick = () => {
     const cur = btn.textContent.trim() || "";
     const mark = nextMark(cur === "" || cur === "\u00a0\u00a0\u00a0" ? "" : cur);
-    await api(`/api/course/${encodeURIComponent(courseName)}/period/${encodeURIComponent(btn.dataset.period)}/mark`, {
+    const { student, period: periodId, classIdx } = btn.dataset;
+    const classIdxNum = Number(classIdx);
+
+    // --- Optimistic local update ---
+    const course = state.courses[courseName];
+    const period = course?.periods?.find((p) => p.id === periodId);
+    if (period) {
+      if (!period.marks) period.marks = {};
+      if (!period.marks[student]) period.marks[student] = [];
+      while (period.marks[student].length <= classIdxNum) period.marks[student].push("");
+      period.marks[student][classIdxNum] = mark;
+    }
+
+    // --- Instant visual update (no full re-render) ---
+    const cls = mark === "C" ? "mark-C" : mark === "I" ? "mark-I" : mark === "S" ? "mark-S" : mark === "A" ? "mark-A" : "mark-none";
+    btn.className = `mark-btn ${cls} rounded-lg py-1 px-3 text-xs`;
+    btn.innerHTML = mark || "&nbsp;&nbsp;&nbsp;";
+
+    // Update grade + avg cells in the same row
+    if (period && course) {
+      const tr = btn.closest("tr");
+      if (tr) {
+        const g = studentPeriodGrade(course, period, student);
+        const avg = studentAvg(course, student);
+        const cells = tr.querySelectorAll("td");
+        const gradeCell = cells[cells.length - 2];
+        const avgCell = cells[cells.length - 1];
+        if (gradeCell) {
+          const gColor = g !== null ? (g >= 4.0 ? "text-blue-600" : "text-red-600") : "text-slate-400";
+          gradeCell.className = `p-3 text-center font-bold text-lg ${gColor}`;
+          gradeCell.textContent = fmt(g);
+        }
+        if (avgCell) {
+          const aColor = avg !== null ? (avg >= 4.0 ? "text-blue-500" : "text-red-500") : "text-slate-300";
+          avgCell.className = `p-3 text-center font-semibold text-sm ${aColor}`;
+          avgCell.textContent = fmt(avg);
+        }
+      }
+    }
+
+    // --- Background save (fire-and-forget with error handling) ---
+    api(`/api/course/${encodeURIComponent(courseName)}/period/${encodeURIComponent(periodId)}/mark`, {
       method: "POST",
-      body: JSON.stringify({ student: btn.dataset.student, class_idx: Number(btn.dataset.classIdx), mark }),
+      body: JSON.stringify({ student, class_idx: classIdxNum, mark }),
+    }).catch((err) => {
+      console.error("Error saving mark:", err);
+      loadState();  // revert to server state on error
     });
-    await loadState();
   });
 
   panel.querySelector(".pdf-individual-btn")?.addEventListener("click", () => {
